@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "astro": "^5.2.5",
+    "gsap": "^3.12.7",
+    "lottie-web": "^5.12.2",
     "sass": "^1.83.4"
   }
 }

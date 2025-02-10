@@ -1,0 +1,179 @@
+---
+
+---
+
+<header class="header">
+  <nav class="nav">
+    <div class="nav__logo">
+      <img class="nav__logo-img" src="./public/img/logo.png" alt="logo" />
+    </div>
+    <div class="nav__menu">
+      <ul class="nav__menu-list">
+        <li class="nav__menu-item"><a href="">The Soul Becomes Electric</a></li>
+        <li class="nav__menu-item"><a href="">Model Selection</a></li>
+        <li class="nav__menu-item"><a href="">Green Eengry Track</a></li>
+        <li class="nav__menu-item"><a href="">Social Media Stories</a></li>
+        <li class="nav__menu-item"><a href="">Charging Station Map</a></li>
+        <li class="nav__menu-item"><a href="">Keep Abreast US</a></li>
+      </ul>
+    </div>
+    <div class="nav__hams">
+      <span class="nav__ham"></span>
+      <span class="nav__ham"></span>
+    </div>
+  </nav>
+</header>
+<script>
+  const navHams = document.querySelector(".nav__hams");
+  const navMenu = document.querySelector(".nav__menu");
+  const navHam = document.querySelectorAll(".nav__ham");
+  const menuItems = document.querySelectorAll(".nav__menu-item");
+
+  const toggleMenu = (show = false) => {
+    if (show) {
+      navMenu?.classList.add("active");
+      navHam.forEach((ham) => ham.classList.add("active"));
+      menuItems.forEach((item, index) => {
+        setTimeout(() => {
+          item.classList.add("active");
+        }, index * 150);
+      });
+    } else {
+      navMenu?.classList.remove("active");
+      navHam.forEach((ham) => ham.classList.remove("active"));
+      menuItems.forEach((item) => item.classList.remove("active"));
+    }
+  };
+
+  navHams?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const isActive = navMenu?.classList.contains("active");
+    toggleMenu(!isActive);
+  });
+
+  navMenu?.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+
+  document.addEventListener("click", () => {
+    if (navMenu?.classList.contains("active")) {
+      toggleMenu(false);
+    }
+  });
+
+  let lastScrollPosition = window.scrollY;
+  let ticking = false;
+
+  window.addEventListener("scroll", () => {
+    lastScrollPosition = window.scrollY;
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        if (navMenu?.classList.contains("active")) {
+          toggleMenu(false);
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+</script>
+
+<style lang="scss" scoped>
+  .header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    .nav {
+      padding: 96px 208px 0 208px;
+      display: flex;
+      justify-content: space-between;
+      &__logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &-img {
+          display: block;
+          width: 280px;
+          height: 19px;
+        }
+      }
+      &__menu {
+        position: fixed;
+        top: 0;
+        right: -640px;
+        width: 640px;
+        height: 624px;
+        background-color: rgba($color: #000000, $alpha: 0.8);
+        backdrop-filter: blur(1px);
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &.active {
+          right: 0;
+          opacity: 1;
+        }
+
+        &-list {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-right: 16rem;
+          gap: 32px;
+        }
+        &-item {
+          list-style: none;
+          opacity: 0;
+          transform: translateX(20px);
+          transition: all 0.3s ease-in-out;
+
+          &.active {
+            opacity: 1;
+            transform: translateX(0);
+          }
+
+          a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+            font-weight: 100;
+            transition: color 0.3s ease;
+
+            &:hover {
+              color: rgba(255, 255, 255, 0.8);
+            }
+          }
+        }
+      }
+      &__hams {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 20;
+
+        .nav__ham {
+          width: 55px;
+          height: 3px;
+          background-color: #fff;
+          margin: 4px;
+          transition: all 0.3s;
+
+          &.active {
+            &:nth-child(1) {
+              transform: rotate(15deg) translate(7px, 5px);
+            }
+            &:nth-child(2) {
+              transform: rotate(-15deg) translate(6px, -3px);
+            }
+          }
+        }
+      }
+    }
+  }
+</style>

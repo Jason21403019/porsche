@@ -1,0 +1,59 @@
+---
+import Navbar from "./Navbar.astro";
+
+const { src, className = "w-32 h-32" } = Astro.props;
+---
+
+<div id="lottie-animation" class={className} data-src={src}>
+  <Navbar />
+  <h1>Shift To GREEN ENERGY</h1>
+  <p>Porsche is on the right path towards a sustainable future</p>
+</div>
+
+<script>
+  import { fade } from "astro:transitions";
+  import lottie from "lottie-web";
+
+  const container = document.getElementById("lottie-animation");
+  let animation;
+
+  if (container) {
+    animation = lottie.loadAnimation({
+      container,
+      renderer: "svg",
+      loop: false,
+      autoplay: true,
+      path: container.dataset.src,
+    });
+
+    animation.setSpeed(1);
+  }
+</script>
+<style lang="scss">
+  #lottie-animation {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    h1 {
+      position: absolute;
+      // display: block;
+      top: 27%;
+      left: 41.5%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      font-size: clamp(32px, 3.33vw, 64px);
+      color: #ffc000;
+    }
+    p {
+      //到1280字體大小都還可以，但是在往下就要將字體在縮小了。
+      position: absolute;
+      top: 38%;
+      left: 42.5%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      font-size: clamp(20px, 1.67vw, 36px);
+      color: #fff;
+      font-weight: 100;
+    }
+  }
+</style>

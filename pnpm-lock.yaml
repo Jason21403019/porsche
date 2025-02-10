@@ -11,6 +11,12 @@ importers:
       astro:
         specifier: ^5.2.5
         version: 5.2.5(rollup@4.34.2)(sass@1.83.4)(typescript@5.7.3)
+      gsap:
+        specifier: ^3.12.7
+        version: 3.12.7
+      lottie-web:
+        specifier: ^5.12.2
+        version: 5.12.2
       sass:
         specifier: ^1.83.4
         version: 1.83.4
@@ -843,6 +849,9 @@ packages:
   graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
 
+  gsap@3.12.7:
+    resolution: {integrity: sha512-V4GsyVamhmKefvcAKaoy0h6si0xX7ogwBoBSs2CTJwt7luW0oZzC0LhdkyuKV8PJAXr7Yaj8pMjCKD4GJ+eEMg==}
+
   h3@1.14.0:
     resolution: {integrity: sha512-ao22eiONdgelqcnknw0iD645qW0s9NnrJHr5OBz4WOMdBdycfSas1EQf1wXRsm+PcB2Yoj43pjBPwqIpJQTeWg==}
 
@@ -961,6 +970,9 @@ packages:
 
   longest-streak@3.1.0:
     resolution: {integrity: sha512-9Ri+o0JYgehTaVBBDoMqIl8GXtbWg711O3srftcHhZ0dqnETqLaoIK0x17fUw9rFSlK/0NlsKe0Ahhyl5pXE2g==}
+
+  lottie-web@5.12.2:
+    resolution: {integrity: sha512-uvhvYPC8kGPjXT3MyKMrL3JitEAmDMp30lVkuq/590Mw9ok6pWcFCwXJveo0t5uqYw1UREQHofD+jVpdjBv8wg==}
 
   lru-cache@10.4.3:
     resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
@@ -2372,6 +2384,8 @@ snapshots:
 
   graceful-fs@4.2.11: {}
 
+  gsap@3.12.7: {}
+
   h3@1.14.0:
     dependencies:
       cookie-es: 1.2.2
@@ -2538,6 +2552,8 @@ snapshots:
       p-locate: 4.1.0
 
   longest-streak@3.1.0: {}
+
+  lottie-web@5.12.2: {}
 
   lru-cache@10.4.3: {}
 

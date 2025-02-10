@@ -1,9 +1,12 @@
 ---
-import Bendo from "../components/Bendo.astro";
 import Layout from "../layouts/Layout.astro";
-
+import Bendo from "../components/Bendo.astro";
+import Banner from "../components/Banner.astro";
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
-<Bendo />
-<Layout />
+
+<Layout>
+  <Banner src="/public/porsche.json" className="w-64 h-64" />
+  <Bendo />
+</Layout>
