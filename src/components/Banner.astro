@@ -5,6 +5,7 @@ const { src, className = "w-32 h-32" } = Astro.props;
 ---
 
 <div id="lottie-animation" class={className} data-src={src}>
+  <div class="mask"></div>
   <Navbar />
   <h1>Shift To GREEN ENERGY</h1>
   <p>Porsche is on the right path towards a sustainable future</p>
@@ -34,6 +35,14 @@ const { src, className = "w-32 h-32" } = Astro.props;
     width: 100%;
     height: 100%;
     position: relative;
+    .mask {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
     h1 {
       position: absolute;
       // display: block;
