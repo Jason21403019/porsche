@@ -1,0 +1,213 @@
+---
+// Modal.astro
+---
+
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <button class="close-button" id="closeModal"
+      ><span><img src="/public/img/closebtn.png" alt="" /></span></button
+    >
+    <h2 class="modal-title"></h2>
+    <div class="modal-content">
+      <div class="modal-image-container">
+        <img class="modal-image" src="" alt="" />
+      </div>
+      <div class="modal-links">
+        <a class="modal-link1" href="">Archive for Annual and Sustainability</a>
+        <a class="modal-link2" href="">Download The</a>
+        <a class="modal-link3" href="">Share</a>
+      </div>
+    </div>
+    <div class="modal-text"></div>
+  </div>
+</div>
+
+<script>
+  import { gsap } from "gsap";
+
+  const modal = document.getElementById("modal");
+  const modalContent = modal.querySelector(".modal-content");
+  const modalTitle = document.querySelector(".modal-title");
+  const modalImage = document.querySelector(".modal-image");
+  const modalText = document.querySelector(".modal-text");
+  const closeButton = document.getElementById("closeModal");
+  const fileItems = document.querySelectorAll(
+    ".file_item1, .file_item2, .file_item3"
+  );
+
+  const modalData = [
+    {
+      title: "Comply with environmental protection policies",
+      image: "/public/img/modalimg1.jpg",
+      content: `<p>Porsche considers all the aspects of sustainability: economic, environmental, and social. The company does not see economic success, environmental awareness, and social responsibility as contradictions in terms. Quite the opposite. They unite to form a guiding principle based on doing business in a future-proof way.</p> <p>Mobility, and therefore the automotive industry, plays a key role in the transformation of business towards sustainability and the related fight against climate change. Besides Porsche’s own vehicle production, its entire value chain is an integral component of the Porsche Strategy 2030.</p> <p> To Porsche, sustainability is not a short-lived trend; but enshrined as a central cross-cutting issue in the Porsche Strategy 2030.</p><p>All the different aspects of the topic are considered: the aspects Environment (E), Social (S), and Governance (G)—ESG— describe the basic principles of sustainable business. In doing so, the Porsche AG Group wishes to embrace its responsibility, bolster sustainable and value-creating growth, and reduce its environmental footprint continuously. In the process, it remains focused on the impact of its business activities and the expectations of its stakeholders.</p><p>The Sustainability Strategy 2030 sums up the key challenges facing Porsche in six strategy fields. Where currently possible, Porsche unites all six fields of action in the Sustainability Strategy 2030 with clear objectives, indicators, and measures. Key ESG indicators, such as the Decarbonization Index (DCI), already affect on the remuneration of members of the Executive Board. Porsche also aligns the six fields in the Sustainability Strategy 2030 and its related activities with the Sustainable Development Goals (SDGs) from the 2030 Agenda of the United Nations. These help the company as an orientation for its own business activities. They indicate how economic progress, social justice, and environmental compatibility can be reconciled. </p>`,
+    },
+    {
+      title: "Sustainable brand development",
+      image: "/path/to/image2.jpg",
+      content: "詳細內容 2...",
+    },
+    {
+      title: "Respond to changes in market demand",
+      image: "/path/to/image3.jpg",
+      content: "詳細內容 3...",
+    },
+  ];
+
+  fileItems.forEach((item, index) => {
+    item.addEventListener("click", () => {
+      openModal(index);
+    });
+  });
+
+  closeButton.addEventListener("click", closeModal);
+
+  function openModal(index) {
+    const data = modalData[index];
+    modalTitle.textContent = data.title;
+    modalImage.src = data.image;
+    modalText.textContent = data.content;
+    modalText.innerHTML = data.content
+      .split("\n\n")
+      .map((paragraph) => `<p>${paragraph}</p>`)
+      .join("");
+
+    modal.style.display = "flex";
+
+    gsap.fromTo(
+      modal,
+      {
+        opacity: 0,
+        scale: 0,
+      },
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 0.5,
+        ease: "power2.out",
+      }
+    );
+
+    gsap.fromTo(
+      ".modal-content",
+      {
+        y: 50,
+        opacity: 0,
+      },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.6,
+        delay: 0.2,
+        ease: "power2.out",
+      }
+    );
+  }
+  modal.addEventListener("click", (event) => {
+    // 檢查點擊是否發生在 modal-content 之外
+    if (event.target === modal) {
+      closeModal();
+    }
+  });
+  modalContent.addEventListener("click", (event) => {
+    event.stopPropagation();
+  });
+
+  function closeModal() {
+    gsap.to(modal, {
+      opacity: 0,
+      scale: 0.8,
+      duration: 0.3,
+      ease: "power2.in",
+      onComplete: () => {
+        modal.style.display = "none";
+      },
+    });
+  }
+</script>
+
+<style lang="scss">
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+
+    .modal-content {
+      background-color: white;
+      padding: 2rem 6rem;
+      border-radius: 12px;
+      width: 50%;
+      max-width: 1625px;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+
+      .close-button {
+        position: absolute;
+        top: 48px;
+        right: 48px;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        span {
+          display: block;
+          width: 40px;
+          height: 40px;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+
+      .modal-title {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        margin-top: 5rem;
+        text-align: center;
+      }
+      .modal-content {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        .modal-image-container {
+          .modal-image {
+            max-width: 800px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+          }
+        }
+        .modal-links {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          margin-bottom: 1.5rem;
+          a {
+            margin: 0 1rem;
+            color: #333;
+            text-decoration: none;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+
+      .modal-text {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #333;
+      }
+    }
+  }
+</style>

@@ -1,0 +1,110 @@
+---
+import Modal from "./Modal.astro";
+---
+
+<section class="info">
+  <div class="info__container">
+    <h1 class="info__title">
+      The Soul Becomes <strong class="info__title-s">Electric</strong>
+    </h1>
+    <div class="files_container">
+      <div class="file_item1">
+        <h2>Comply with environmental protection policies</h2>
+      </div>
+      <div class="file_item2">
+        <h2>Maintain a modern brand image</h2>
+      </div>
+      <div class="file_item3">
+        <h2>Respond to changes in market demand</h2>
+      </div>
+    </div>
+    <Modal />
+  </div>
+</section>
+
+<style lang="scss">
+  .info {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: -5.3%;
+    background-image: url("/public/img/section1_bg.png");
+    background-size: cover;
+    background-position: center 0%;
+    background-repeat: no-repeat;
+    z-index: 2;
+    &__container {
+      max-width: 1200px;
+      width: 100%;
+      margin-top: 96px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    &__title {
+      font-size: clamp(32px, 3.33vw, 44px);
+      color: #ffc000;
+      text-align: center;
+      margin-bottom: 36px;
+      &-s {
+        color: #ff0037;
+      }
+    }
+    .files_container {
+      max-width: 936px;
+      width: 100%;
+      height: 400px;
+      position: relative;
+      //   border: 1px solid black;
+      .file_item1,
+      .file_item2,
+      .file_item3 {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #d9d9d9;
+        height: 140px;
+        cursor: pointer;
+        border-radius: 12px;
+        box-shadow: 0px -4px 10px rgba($color: #000000, $alpha: 0.5);
+        transition: all 0.3s ease;
+        &:hover {
+          transform: translateY(-5%);
+          background-color: #ffce60;
+        }
+        h2 {
+          font-size: 32px;
+          font-weight: 100;
+          &::after {
+            content: url("/public/img/circleArrow.png");
+            margin-left: 8px;
+            vertical-align: -6px;
+          }
+        }
+      }
+      .file_item1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+        // border: 1px solid red;
+      }
+      .file_item2 {
+        top: 30%;
+        z-index: 2;
+        // border: 1px solid blue;
+      }
+      .file_item3 {
+        height: 160px;
+        top: 60%;
+        z-index: 3;
+        // border: 1px solid green;
+      }
+    }
+  }
+</style>
