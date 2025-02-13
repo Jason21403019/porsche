@@ -8,7 +8,7 @@
       ><span><img src="/public/img/closebtn.png" alt="" /></span></button
     >
     <h2 class="modal-title"></h2>
-    <div class="modal-content">
+    <div class="modal-area">
       <div class="modal-image-container">
         <img class="modal-image" src="" alt="" />
       </div>
@@ -23,55 +23,56 @@
 </div>
 
 <script>
-  import { gsap } from "gsap";
-
-  const modal = document.getElementById("modal");
-  const modalContent = modal.querySelector(".modal-content");
-  const modalTitle = document.querySelector(".modal-title");
-  const modalImage = document.querySelector(".modal-image");
-  const modalText = document.querySelector(".modal-text");
-  const closeButton = document.getElementById("closeModal");
+  import { gsap } from 'gsap'
+  const modal = document.getElementById('modal')
+  const modalContent = modal.querySelector('.modal-content')
+  const modalTitle = document.querySelector('.modal-title')
+  const modalImage = document.querySelector('.modal-image') as HTMLImageElement
+  const modalText = document.querySelector('.modal-text')
+  const closeButton = document.getElementById('closeModal')
   const fileItems = document.querySelectorAll(
-    ".file_item1, .file_item2, .file_item3"
-  );
+    '.file_item1, .file_item2, .file_item3'
+  )
 
   const modalData = [
     {
-      title: "Comply with environmental protection policies",
-      image: "/public/img/modalimg1.jpg",
+      title: 'Comply with environmental protection policies',
+      image: '/public/img/modalimg1.jpg',
       content: `<p>Porsche considers all the aspects of sustainability: economic, environmental, and social. The company does not see economic success, environmental awareness, and social responsibility as contradictions in terms. Quite the opposite. They unite to form a guiding principle based on doing business in a future-proof way.</p> <p>Mobility, and therefore the automotive industry, plays a key role in the transformation of business towards sustainability and the related fight against climate change. Besides Porsche’s own vehicle production, its entire value chain is an integral component of the Porsche Strategy 2030.</p> <p> To Porsche, sustainability is not a short-lived trend; but enshrined as a central cross-cutting issue in the Porsche Strategy 2030.</p><p>All the different aspects of the topic are considered: the aspects Environment (E), Social (S), and Governance (G)—ESG— describe the basic principles of sustainable business. In doing so, the Porsche AG Group wishes to embrace its responsibility, bolster sustainable and value-creating growth, and reduce its environmental footprint continuously. In the process, it remains focused on the impact of its business activities and the expectations of its stakeholders.</p><p>The Sustainability Strategy 2030 sums up the key challenges facing Porsche in six strategy fields. Where currently possible, Porsche unites all six fields of action in the Sustainability Strategy 2030 with clear objectives, indicators, and measures. Key ESG indicators, such as the Decarbonization Index (DCI), already affect on the remuneration of members of the Executive Board. Porsche also aligns the six fields in the Sustainability Strategy 2030 and its related activities with the Sustainable Development Goals (SDGs) from the 2030 Agenda of the United Nations. These help the company as an orientation for its own business activities. They indicate how economic progress, social justice, and environmental compatibility can be reconciled. </p>`,
     },
     {
-      title: "Sustainable brand development",
-      image: "/path/to/image2.jpg",
-      content: "詳細內容 2...",
+      title: 'Sustainable brand development',
+      image: '/public/img/modalimg2.jpg',
+      content:
+        '<p>German sports car manufacturer Porsche\'s sustainable actions span across various fields. All employees perform their duties and devote themselves to their fields every day to build Porsche into a sustainable enterprise. In the "Looking to Sustainability" series of interviews, experts in various fields talk about how they contribute to sustainability at Porsche and share their unique perspectives on sustainability in their respective work fields.</p><p>Dr. Johanna Henrich is Porsche’s ESG project manager. She is not only passionate about sustainability in the professional field, but also implements it in her personal life. She firmly believes that sustainability is the first priority to maintain future living standards, and hopes to contribute to creating a comfortable and livable future world.</p><p>Johanna said: "In Porsche\'s 2030 sustainability strategy, \'corporate governance and openness and transparency\' are one of the elements that run through the six strategic axes. ESG management is the key, including the management and control of various sustainability measures. This "It is crucial for capital markets and investors." Johanna serves as a communication channel between capital markets and companies, including responding to needs from capital markets, implementing sustainability standards, and improving audit methods.</p><p>Porsche\'s efforts in sustainable development have achieved excellent results. In the future, Porsche will continue to work hard and deepen sustainable development. All sustainability performance will be tested by external evaluation agencies. However, Porsche also faces a number of significant challenges.</p>',
     },
     {
-      title: "Respond to changes in market demand",
-      image: "/path/to/image3.jpg",
-      content: "詳細內容 3...",
+      title: 'Respond to changes in market demand',
+      image: '/public/img/modalimg3.jpg',
+      content:
+        '<p>Following the Taycan, the new Macan is the second pure electric model launched by Porsche. Porsche expects that by 2030, pure electric vehicles will account for more than 80% of new car deliveries. The specific situation depends on customer demand and the development progress of electric vehicles in various markets around the world. Oliver Blume, Chairman of the Executive Board, said at the event: "Porsche firmly believes that electric vehicles are the future. Promoting industrial transformation is a joint responsibility of business, politics and society.</p><p>However, this transformation does not proceed as planned in all regions at the same time. Therefore, we remain highly motivated Flexible, providing a diversified product lineup, maintaining three different power systems equipped with passionate internal combustion engine models, efficient gasoline-electric hybrid models and pure electric vehicles.</p>  <p>The Porsche production plant in Leipzig is a pioneer and model for flexibility and sustainability, not only within Porsche but also for the entire automotive industry. \'Dr. Volker Wissing, German Federal and Transport Minister, emphasized: "I am very happy that Germany has added a new electric vehicle factory. Making electric vehicles more attractive to the public is a common goal of the current political and business circles. To achieve this goal, we look forward to We look forward to working side by side with the strong and determined automobile industry to jointly expand charging infrastructure, make the charging process more convenient, and increase the public\'s willingness to switch to electric vehicles. Through the so-called "German network" (German network), we are fully committed to expanding domestic highways in Germany. Charging infrastructure – The additional 9,000 high-speed charging points will meet the basic charging supply across the country and on highways."</p> ',
     },
-  ];
+  ]
 
   fileItems.forEach((item, index) => {
-    item.addEventListener("click", () => {
-      openModal(index);
-    });
-  });
+    item.addEventListener('click', () => {
+      openModal(index)
+    })
+  })
 
-  closeButton.addEventListener("click", closeModal);
+  closeButton.addEventListener('click', closeModal)
 
   function openModal(index) {
-    const data = modalData[index];
-    modalTitle.textContent = data.title;
-    modalImage.src = data.image;
-    modalText.textContent = data.content;
+    const data = modalData[index]
+    modalTitle.textContent = data.title
+    modalImage.src = data.image
+    modalText.textContent = data.content
     modalText.innerHTML = data.content
-      .split("\n\n")
+      .split('\n\n')
       .map((paragraph) => `<p>${paragraph}</p>`)
-      .join("");
+      .join('')
 
-    modal.style.display = "flex";
+    modal.style.display = 'flex'
 
     gsap.fromTo(
       modal,
@@ -83,12 +84,12 @@
         opacity: 1,
         scale: 1,
         duration: 0.5,
-        ease: "power2.out",
+        ease: 'power2.out',
       }
-    );
+    )
 
     gsap.fromTo(
-      ".modal-content",
+      '.modal-content',
       {
         y: 50,
         opacity: 0,
@@ -98,30 +99,30 @@
         opacity: 1,
         duration: 0.6,
         delay: 0.2,
-        ease: "power2.out",
+        ease: 'power2.out',
       }
-    );
+    )
   }
-  modal.addEventListener("click", (event) => {
+  modal.addEventListener('click', (event) => {
     // 檢查點擊是否發生在 modal-content 之外
     if (event.target === modal) {
-      closeModal();
+      closeModal()
     }
-  });
-  modalContent.addEventListener("click", (event) => {
-    event.stopPropagation();
-  });
+  })
+  modalContent.addEventListener('click', (event) => {
+    event.stopPropagation()
+  })
 
   function closeModal() {
     gsap.to(modal, {
       opacity: 0,
       scale: 0.8,
       duration: 0.3,
-      ease: "power2.in",
+      ease: 'power2.in',
       onComplete: () => {
-        modal.style.display = "none";
+        modal.style.display = 'none'
       },
-    });
+    })
   }
 </script>
 
@@ -140,10 +141,16 @@
     z-index: 1000;
 
     .modal-content {
-      background-color: white;
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 206, 96, 1) 0%,
+        rgba(255, 255, 255, 0.54) 70%,
+        rgba(168, 168, 168, 0.91) 91%,
+        rgba(115, 115, 115, 1) 100%
+      );
       padding: 2rem 6rem;
       border-radius: 12px;
-      width: 50%;
+      width: 60%;
       max-width: 1625px;
       max-height: 90vh;
       overflow-y: auto;
@@ -173,18 +180,18 @@
         margin-top: 5rem;
         text-align: center;
       }
-      .modal-content {
+      .modal-area {
         width: 100%;
         display: flex;
         justify-content: center;
-        margin-bottom: 1.5rem;
         .modal-image-container {
           .modal-image {
-            max-width: 800px;
+            background-color: transparent;
+            max-width: 640px;
             width: 100%;
             height: auto;
             margin-bottom: 1.5rem;
-            border-radius: 8px;
+            border-radius: 32px;
           }
         }
         .modal-links {
@@ -200,11 +207,42 @@
               text-decoration: underline;
             }
           }
+          .modal-link1 {
+            display: flex;
+            align-items: center;
+            &::before {
+              content: url('/public/img/Vector.svg');
+              margin-right: 0.5rem;
+              display: inline-block;
+              vertical-align: middle;
+            }
+          }
+          .modal-link2 {
+            display: flex;
+            align-items: center;
+            margin: 48px 20px;
+            &::before {
+              content: url('/public/img/Vector1.svg');
+              margin-right: 0.5rem;
+              display: inline-block;
+              display: flex;
+              align-items: center;
+            }
+          }
+          .modal-link3 {
+            display: flex;
+            align-items: center;
+            &::before {
+              content: url('/public/img/Vector2.svg');
+              margin-right: 0.5rem;
+              display: inline-block;
+            }
+          }
         }
       }
 
       .modal-text {
-        font-size: 1.1rem;
+        font-size: 32px;
         line-height: 1.6;
         color: #333;
       }
