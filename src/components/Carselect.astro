@@ -1,0 +1,303 @@
+---
+
+---
+
+<div class="wrapper">
+  <section class="section animation-section">
+    <div class="content-container">
+      <img src="/public/img/redcar.png" alt="Car" class="car-image" />
+      <img
+        src="/public/img/graycan.png"
+        alt="Platform"
+        class="platform-image"
+      />
+      <div class="circle circle-left">
+        <div class="border_line"></div>
+        <span class="number1">0</span>
+        <span class="unit">km/h</span>
+        <span class="speed">Extreme speed</span>
+      </div>
+      <div class="circle circle-right">
+        <div class="border_line"></div>
+        <span class="number2">0</span>
+        <span class="unit2">s</span>
+        <span class="speed2">0-100 km/h</span>
+      </div>
+
+      <!-- SVG 路徑（不可見，只用於定義動畫路徑） -->
+      <svg style="visibility: hidden; position: absolute; width: 0; height: 0;">
+        <path id="leftPath" d="M 0,0 C -100,-100 -100,-50 -550,50"></path>
+        <path id="rightPath" d="M 0,0 C 100,-100 100,-50 550,-250"></path>
+      </svg>
+    </div>
+  </section>
+</div>
+
+<script>
+  import gsap from 'gsap'
+  import ScrollTrigger from 'gsap/ScrollTrigger'
+  import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
+
+  gsap.registerPlugin(ScrollTrigger, MotionPathPlugin)
+
+  const leftTarget = 250 // 左側圓的最終數值
+  const rightTarget = 3.3 // 右側圓的最終數值
+
+  // 初始化位置
+  gsap.set('.car-image', {
+    y: -500,
+    opacity: 0.5,
+    scale: 0,
+  })
+
+  gsap.set('.platform-image', {
+    y: 300,
+    opacity: 0,
+  })
+
+  gsap.set(['.circle-left', '.circle-right'], {
+    opacity: 0,
+    scale: 0,
+  })
+
+  ScrollTrigger.create({
+    trigger: '.animation-section',
+    pin: true,
+    start: 'top top',
+    end: '+=300%',
+  })
+
+  const timeline = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.animation-section',
+      start: 'top top',
+      end: '+=300%',
+      scrub: 1,
+    },
+  })
+
+  timeline
+    .to('.car-image', {
+      y: -100,
+      opacity: 1,
+      scale: 1,
+      duration: 1,
+    })
+    .to(
+      '.platform-image',
+      {
+        y: 150,
+        opacity: 1,
+        duration: 1,
+      },
+      '-=0.5'
+    )
+    .to('.car-image', {
+      scale: 1.2,
+      duration: 1,
+    })
+    .to(['.circle-left', '.circle-right'], {
+      opacity: 1,
+      scale: 1,
+      duration: 1,
+      ease: 'power1.out',
+      onComplete: () => {
+        gsap.to('.circle .number1', {
+          duration: 2,
+          innerHTML: leftTarget,
+          snap: { innerHTML: 1 },
+          ease: 'power1.inOut',
+        })
+        gsap.to('.circle .number2', {
+          duration: 2,
+          innerHTML: rightTarget,
+          snap: { innerHTML: 1 },
+          ease: 'power1.inOut',
+        })
+      },
+    })
+    // 修改圓形動畫為弧形路徑
+    .to(
+      '.circle-left',
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        motionPath: {
+          path: '#leftPath',
+          align: '#leftPath',
+          autoRotate: false,
+          alignOrigin: [0.5, 0.5],
+        },
+        ease: 'power1.inOut',
+      },
+      '-=0.5'
+    )
+    .to(
+      '.circle-right',
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        motionPath: {
+          path: '#rightPath',
+          align: '#rightPath',
+          autoRotate: false,
+          alignOrigin: [0.5, 0.5],
+        },
+        ease: 'power1.inOut',
+      },
+      '<'
+    )
+</script>
+
+<style lang="scss">
+  .wrapper {
+    height: auto;
+  }
+
+  .section {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.animation-section {
+      background-color: #212121;
+      overflow: hidden;
+    }
+
+    &.next-section {
+      background-color: #e0e0e0;
+    }
+  }
+
+  .content-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .car-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 40%;
+    height: auto;
+    opacity: 0;
+    z-index: 2;
+  }
+
+  .platform-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 45%;
+    height: auto;
+    opacity: 0;
+  }
+
+  .circle {
+    position: absolute;
+    width: 164px;
+    height: 164px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0);
+    top: 20%;
+    left: 50%;
+    z-index: -1;
+    border-radius: 50%;
+    background: linear-gradient(to left, #ffffff 0%, #ffce60 100%);
+    &-left,
+    &-right {
+      transform: translate(0%, 0%) scale(0);
+    }
+    .border_line {
+      width: 98%;
+      height: 98%;
+      border-radius: 50%;
+      position: absolute;
+      background-color: #212121;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .number1,
+    .number2 {
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      position: absolute;
+      z-index: 1;
+    }
+
+    .number1 {
+      font-size: 50px;
+      color: red;
+      left: 24px;
+      font-weight: 300;
+      top: 40px;
+    }
+    .number2 {
+      font-size: 50px;
+      top: 40px;
+      color: red;
+    }
+    .unit {
+      color: red;
+      font-size: 16px;
+      font-weight: 300;
+      z-index: 10;
+      top: 67px;
+      right: 20px;
+      position: absolute;
+    }
+    .unit2 {
+      color: red;
+      font-size: 16px;
+      font-weight: 300;
+      z-index: 10;
+      top: 67px;
+      right: 20px;
+      position: absolute;
+    }
+    .speed {
+      color: #fff;
+      font-size: 18px;
+      font-weight: 100;
+      z-index: 10;
+      top: 102px;
+      right: 20px;
+      position: absolute;
+    }
+    .speed2 {
+      color: #fff;
+      font-size: 18px;
+      font-weight: 100;
+      z-index: 10;
+      top: 102px;
+      right: 20px;
+      position: absolute;
+    }
+  }
+
+  //這裡加了動畫圓形位置會跑掉
+  // @keyframes spin {
+  //   from {
+  //     transform: rotate(0);
+  //   }
+  //   to {
+  //     transform: rotate(359deg);
+  //   }
+  // }
+</style>
