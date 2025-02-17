@@ -1,11 +1,25 @@
 ---
-
+import ModelSwitch from '../components/ModelSwitch.astro'
+const cars = [
+  {
+    model: 'Taycan',
+    image: '/public/img/redcar.png',
+    className: 'car-image',
+    stats: {
+      maxSpeed: 250,
+      acceleration: 3.3,
+    },
+  },
+]
 ---
 
 <div class="wrapper">
   <section class="section animation-section">
     <div class="content-container">
+      <ModelSwitch currentModel="Taycan" />
+      <h1 class="title">Model Selection</h1>
       <img src="/public/img/redcar.png" alt="Car" class="car-image" />
+
       <img
         src="/public/img/graycan.png"
         alt="Platform"
@@ -27,7 +41,7 @@
       <!-- SVG 路徑（不可見，只用於定義動畫路徑） -->
       <svg style="visibility: hidden; position: absolute; width: 0; height: 0;">
         <path id="leftPath" d="M 0,0 C -100,-100 -100,-50 -550,50"></path>
-        <path id="rightPath" d="M 0,0 C 100,-100 100,-50 550,-250"></path>
+        <path id="rightPath" d="M 0,0 C 100,-100 100,-50 550,-200"></path>
       </svg>
     </div>
   </section>
@@ -78,7 +92,7 @@
 
   timeline
     .to('.car-image', {
-      y: -100,
+      y: 0,
       opacity: 1,
       scale: 1,
       duration: 1,
@@ -86,7 +100,7 @@
     .to(
       '.platform-image',
       {
-        y: 150,
+        y: 0,
         opacity: 1,
         duration: 1,
       },
@@ -108,11 +122,17 @@
           snap: { innerHTML: 1 },
           ease: 'power1.inOut',
         })
-        gsap.to('.circle .number2', {
+        // 修改右侧圆圈动画，使用toFixed(1)来保留一位小数
+        let count = { val: 0 }
+        gsap.to(count, {
+          val: rightTarget,
           duration: 2,
-          innerHTML: rightTarget,
-          snap: { innerHTML: 1 },
           ease: 'power1.inOut',
+          onUpdate: function () {
+            ;(
+              document.querySelector('.circle .number2') as HTMLElement
+            ).innerText = count.val.toFixed(1)
+          },
         })
       },
     })
@@ -151,7 +171,8 @@
     )
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+  @import '../styles/_reset.scss';
   .wrapper {
     height: auto;
   }
@@ -164,22 +185,27 @@
     justify-content: center;
 
     &.animation-section {
+      // border: 1px solid red;
       background-color: #212121;
       overflow: hidden;
-    }
-
-    &.next-section {
-      background-color: #e0e0e0;
     }
   }
 
   .content-container {
+    max-width: 1200px;
     width: 100%;
     height: 100%;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
+    .title {
+      font-size: 44px;
+      color: white;
+      position: absolute;
+      top: 96px;
+      left: 68px;
+    }
   }
 
   .car-image {
@@ -187,7 +213,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-width: 40%;
+    max-width: 60%;
     height: auto;
     opacity: 0;
     z-index: 2;
@@ -198,7 +224,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-width: 45%;
+    max-width: 60%;
     height: auto;
     opacity: 0;
   }
@@ -250,7 +276,9 @@
     }
     .number2 {
       font-size: 50px;
-      top: 40px;
+      top: 47px;
+      font-weight: 300;
+      left: 38px;
       color: red;
     }
     .unit {
@@ -264,11 +292,11 @@
     }
     .unit2 {
       color: red;
-      font-size: 16px;
+      font-size: 26px;
       font-weight: 300;
       z-index: 10;
-      top: 67px;
-      right: 20px;
+      top: 66px;
+      right: 42px;
       position: absolute;
     }
     .speed {
@@ -285,8 +313,8 @@
       font-size: 18px;
       font-weight: 100;
       z-index: 10;
-      top: 102px;
-      right: 20px;
+      top: 108px;
+      right: 37px;
       position: absolute;
     }
   }
@@ -298,6 +326,6 @@
   //   }
   //   to {
   //     transform: rotate(359deg);
-  //   }
+  //   }/public/img/taycan-gts.png
   // }
 </style>

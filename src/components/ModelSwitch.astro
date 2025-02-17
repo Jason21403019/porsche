@@ -1,0 +1,96 @@
+---
+const { currentModel } = Astro.props
+---
+
+<div class="model-switch">
+  <div class="indicator"></div>
+  <button
+    class={`switch-btn ${currentModel === 'Taycan' ? 'active' : ''}`}
+    data-model="Taycan">
+    Taycan
+  </button>
+  <button
+    class={`switch-btn ${currentModel === 'Macan' ? 'active' : ''}`}
+    data-model="Macan">
+    Macan
+  </button>
+</div>
+
+<style lang="scss">
+  .model-switch {
+    position: absolute;
+    top: 20%;
+    right: 50%;
+    z-index: 10;
+    display: flex;
+    transform: translate(50%, 0);
+    background-color: #b0b0b0;
+    border-radius: 44px;
+    width: 300px;
+    padding: 4px;
+  }
+
+  .switch-btn {
+    font-size: 24px;
+    padding: 12px 24px;
+    border-radius: 44px;
+    color: white;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    transition:
+      color 0.3s ease,
+      font-weight 0.3s ease;
+
+    &.active {
+      color: #212121;
+      font-weight: 600;
+    }
+  }
+
+  .indicator {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: calc(50%);
+    height: calc(100%);
+    background: linear-gradient(to right, #ffffff 0%, #ffce60 100%);
+    border-radius: 44px;
+    transition: transform 0.3s cubic-bezier(0.58, -0.56, 0.38, 1.53);
+    z-index: 1;
+  }
+</style>
+
+<script>
+  const buttons = document.querySelectorAll('.switch-btn')
+  const indicator = document.querySelector('.indicator') as HTMLElement
+
+  function updateIndicator(model) {
+    const activeButton = document.querySelector(
+      `.switch-btn[data-model="${model}"]`
+    )
+    if (activeButton) {
+      const index = [...buttons].indexOf(activeButton)
+      indicator.style.transform = `translateX(${index * 100}%)`
+
+      setTimeout(() => {
+        buttons.forEach((btn) => btn.classList.remove('active'))
+        activeButton.classList.add('active')
+      })
+    }
+  }
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const model = btn.getAttribute('data-model')
+      window.dispatchEvent(new CustomEvent('modelChange', { detail: model }))
+      updateIndicator(model)
+    })
+  })
+
+  // 頁面載入時，確保指示器位置正確
+  updateIndicator('<%= currentModel %>')
+</script>
