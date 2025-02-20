@@ -27,7 +27,7 @@ const cars = [
       />
       <div class="circle circle-left">
         <div class="border_line"></div>
-        <span class="number1">0</span>
+        <span class="number1">000</span>
         <span class="unit">km/h</span>
         <span class="speed">Extreme speed</span>
       </div>
@@ -38,7 +38,6 @@ const cars = [
         <span class="speed2">0-100 km/h</span>
       </div>
 
-      <!-- SVG 路徑（不可見，只用於定義動畫路徑） -->
       <svg style="visibility: hidden; position: absolute; width: 0; height: 0;">
         <path id="leftPath" d="M 0,0 C -100,-100 -100,-50 -550,50"></path>
         <path id="rightPath" d="M 0,0 C 100,-100 100,-50 550,-200"></path>
@@ -54,10 +53,9 @@ const cars = [
 
   gsap.registerPlugin(ScrollTrigger, MotionPathPlugin)
 
-  const leftTarget = 250 // 左側圓的最終數值
-  const rightTarget = 3.3 // 右側圓的最終數值
+  const leftTarget = 250
+  const rightTarget = 3.3
 
-  // 初始化位置
   gsap.set('.car-image', {
     y: -500,
     opacity: 0.5,
@@ -72,6 +70,7 @@ const cars = [
   gsap.set(['.circle-left', '.circle-right'], {
     opacity: 0,
     scale: 0,
+    y: 0,
   })
 
   ScrollTrigger.create({
@@ -122,7 +121,6 @@ const cars = [
           snap: { innerHTML: 1 },
           ease: 'power1.inOut',
         })
-        // 修改右侧圆圈动画，使用toFixed(1)来保留一位小数
         let count = { val: 0 }
         gsap.to(count, {
           val: rightTarget,
@@ -136,7 +134,6 @@ const cars = [
         })
       },
     })
-    // 修改圓形動畫為弧形路徑
     .to(
       '.circle-left',
       {

@@ -5,6 +5,57 @@ import Banner from '../components/Banner.astro'
 import Info from '../components/Info.astro'
 import Carselect from '../components/Carselect.astro'
 import Carouselcar from '../components/Carouselcar.astro'
+import HorizontalScroll from '../components/HorizontalScroll.astro'
+const sections = [
+  {
+    id: 'model-911',
+    years: ['2020', '2021', '2022', '2023'],
+    activeYear: '2020',
+    gradient: {
+      from: '#a88b49',
+      to: '#f8cc69',
+    },
+    title: '保時捷 911',
+    description: '傳奇跑車，完美演繹速度與優雅',
+    imageSrc: '/porsche-911.jpg',
+  },
+  {
+    id: 'model-taycan',
+    years: ['2020', '2021', '2022', '2023'],
+    activeYear: '2021',
+    gradient: {
+      from: '#f8cc69',
+      to: '#d5bd85',
+    },
+    title: '保時捷 Taycan',
+    description: '電動未來，永續創新',
+    imageSrc: '/porsche-taycan.jpg',
+  },
+  {
+    id: 'model-cayenne',
+    years: ['2020', '2021', '2022', '2023'],
+    activeYear: '2022',
+    gradient: {
+      from: '#d5bd85',
+      to: '#aeaba6',
+    },
+    title: '保時捷 Cayenne',
+    description: '豪華SUV的運動基因',
+    imageSrc: '/porsche-cayenne.jpg',
+  },
+  {
+    id: 'model-macan',
+    years: ['2020', '2021', '2022', '2023'],
+    activeYear: '2023',
+    gradient: {
+      from: '#aeaba6',
+      to: '#313131',
+    },
+    title: '保時捷 Macan',
+    description: '靈活動感的都會精靈',
+    imageSrc: '/porsche-macan.jpg',
+  },
+]
 ---
 
 <Layout>
@@ -12,5 +63,6 @@ import Carouselcar from '../components/Carouselcar.astro'
   <Info />
   <Carselect />
   <Carouselcar />
+  <HorizontalScroll {sections} />
   <Bendo />
 </Layout>

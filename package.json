@@ -11,6 +11,7 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
+    "@splidejs/splide": "^4.1.4",
     "astro": "^5.2.5",
     "gsap": "^3.12.7",
     "lottie-web": "^5.12.2",
