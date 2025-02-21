@@ -1,18 +1,22 @@
 ---
-// src/components/HorizontalScroll.astro
 interface Props {
   class?: string
   introSection?: {
     title: string
+    title1: string
+    title2: string
     description: string
     image: string
   }
   sections?: Array<{
     id: string
-    year: string
+    year?: string
+    years?: string[]
+    activeYear?: string
     title: string
-    description: string
-    image: string
+    description: string[]
+    image?: string
+    imageSrc?: string
     gradient?: {
       from: string
       to: string
@@ -24,42 +28,13 @@ interface Props {
 const {
   class: className = '',
   introSection = {
-    title: '保時捷歷史',
-    description: '探索保時捷的輝煌歷程',
+    title: 'Green',
+    title1: 'Energy',
+    title2: 'Track',
+    description: 'the future is limitless',
     image: '../../public/img/historybg.jpg',
   },
-  sections = [
-    {
-      id: 'section-1',
-      year: '2020',
-      backgroundColor: 'linear-gradient(to right, #f87171, #fbbf24)',
-      content: '2020年事件',
-    },
-    {
-      id: 'section-2',
-      year: '2021',
-      backgroundColor: '#fbbf24',
-      content: '2021年事件',
-    },
-    {
-      id: 'section-3',
-      year: '2022',
-      backgroundColor: '#34d399',
-      content: '2022年事件',
-    },
-    {
-      id: 'section-4',
-      year: '2023',
-      backgroundColor: '#60a5fa',
-      content: '2023年事件',
-    },
-    {
-      id: 'section-5',
-      year: '2024',
-      backgroundColor: '#a78bfa',
-      content: '2024年事件',
-    },
-  ],
+  sections = [],
 } = Astro.props
 ---
 
@@ -73,6 +48,8 @@ const {
         </div>
         <div class="intro__content">
           <h1>{introSection.title}</h1>
+          <h1>{introSection.title1}</h1>
+          <h1>{introSection.title2}</h1>
           <p>{introSection.description}</p>
         </div>
       </div>
@@ -83,7 +60,11 @@ const {
           <div
             id={section.id}
             class="section section--content"
-            data-year={section.year}
+            data-year={
+              section.activeYear ||
+              section.year ||
+              (section.years && section.years[0])
+            }
             style={
               section.gradient
                 ? `background: linear-gradient(to right, ${section.gradient.from}, ${section.gradient.to})`
@@ -93,21 +74,31 @@ const {
             }>
             <div class="year__column">
               <div class="year__container">
-                {section.years.map((year) => (
-                  <div
-                    class={`year__display ${
-                      year === section.activeYear ? 'year__display--active' : ''
-                    }`}>
-                    {year}
-                  </div>
-                ))}
+                {section.years &&
+                  section.years.map((year) => (
+                    <div
+                      class={`year__display ${
+                        year === section.activeYear
+                          ? 'year__display--active'
+                          : ''
+                      }`}>
+                      {year}
+                    </div>
+                  ))}
               </div>
             </div>
             <div class="content__column">
               <h2>{section.title}</h2>
-              <p>{section.description}</p>
+              <div class="description-container">
+                {section.description.map((desc) => (
+                  <p set:html={desc} />
+                ))}
+              </div>
               <div class="content__image">
-                <img src={section.image} alt={section.title} />
+                <img
+                  src={section.image || section.imageSrc}
+                  alt={section.title}
+                />
               </div>
             </div>
           </div>
@@ -156,6 +147,7 @@ const {
     &--content {
       display: grid;
       grid-template-columns: 1fr 1fr;
+      border: 1px solid red;
     }
   }
 
@@ -166,22 +158,22 @@ const {
       justify-content: center;
       width: 100%;
       height: 100%;
-      box-shadow: -280px -20px 90px rgba(0, 0, 0, 0.9);
+      box-shadow: -220px -30px 120px rgba(21, 21, 21, 1);
       background: linear-gradient(
         to right,
-        rgba(0, 0, 0, 0.8) 65%,
-        rgba(#a88b49, 1) 100%
+        rgba(21, 21, 21, 1) 50%,
+        #a88b49 100%
       );
       h1 {
         color: #fff;
-        font-size: 3.5rem;
-        margin-bottom: 1.5rem;
+        font-size: 80px;
+        padding-left: 20rem;
       }
 
       p {
         color: #fff;
-        font-size: 1.5rem;
-        line-height: 1.6;
+        font-size: 36px;
+        padding-left: 20rem;
       }
     }
 
@@ -194,6 +186,7 @@ const {
         height: 100%;
         object-fit: cover;
         object-position: -560px;
+        display: block;
       }
     }
   }
@@ -209,13 +202,13 @@ const {
     &__container {
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      gap: 8rem;
     }
 
     &__display {
       font-size: 2.5rem;
       font-weight: bold;
-      transition: all 0.3s ease;
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
       opacity: 0.5;
 
       &--active {
@@ -239,9 +232,15 @@ const {
         margin-bottom: 1rem;
       }
 
-      p {
-        font-size: 1.2rem;
-        line-height: 1.6;
+      .description-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        p {
+          font-size: 1.2rem;
+          line-height: 1.6;
+        }
       }
     }
 
@@ -257,84 +256,33 @@ const {
       }
     }
   }
-
-  .year-indicator {
-    position: fixed;
-    top: 2rem;
-    left: 2rem;
-    z-index: 100;
-    font-weight: bold;
-    font-size: 5rem;
-    opacity: 0.8;
-
-    &--current {
-      transition: all 0.3s ease;
-    }
-  }
 </style>
 
 <script>
-  // 直接嵌入腳本確保它在組件被渲染時執行
+  // 直接導入已安裝的 GSAP 和 ScrollTrigger
+  import { gsap } from 'gsap'
+  import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+  // 註冊插件
+  gsap.registerPlugin(ScrollTrigger)
+
+  // 等待 DOM 完全加載
   document.addEventListener('DOMContentLoaded', () => {
     initHorizontalScroll()
   })
 
-  // 如果頁面已經加載完畢，直接初始化
-  if (
-    document.readyState === 'complete' ||
-    document.readyState === 'interactive'
-  ) {
-    setTimeout(initHorizontalScroll, 1)
-  }
-
   function initHorizontalScroll() {
-    // 檢查GSAP是否加載
-    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-      console.error('GSAP或ScrollTrigger未加載！')
-
-      // 動態加載GSAP和ScrollTrigger
-      const loadGSAP = () => {
-        const gsapScript = document.createElement('script')
-        gsapScript.src =
-          'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js'
-        gsapScript.onload = loadScrollTrigger
-        document.head.appendChild(gsapScript)
-      }
-
-      const loadScrollTrigger = () => {
-        const stScript = document.createElement('script')
-        stScript.src =
-          'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/ScrollTrigger.min.js'
-        stScript.onload = setupAnimation
-        document.head.appendChild(stScript)
-      }
-
-      loadGSAP()
-      return
-    }
-
-    setupAnimation()
-  }
-
-  function setupAnimation() {
-    // 確保GSAP已可用
-    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-      console.error('GSAP仍未加載，無法設置動畫')
-      return
-    }
-
-    gsap.registerPlugin(ScrollTrigger)
-
     const wrapper = document.querySelector('.horizontal-scroll__wrapper')
+    if (!wrapper) return
+
     const container = wrapper.querySelector('.horizontal-scroll__sections')
     const sections = wrapper.querySelectorAll('.section')
-    const yearDisplay = wrapper.querySelector('.year-indicator--current')
 
-    // 設置CSS變量
+    // 设置 CSS 变量
     container.style.setProperty('--section-count', sections.length)
 
-    // 創建橫向滾動動畫
-    const scrollTween = gsap.to(container, {
+    // 创建橫向滾動動畫
+    gsap.to(container, {
       x: () => -(container.scrollWidth - window.innerWidth),
       ease: 'none',
       scrollTrigger: {
@@ -345,38 +293,50 @@ const {
         anticipatePin: 1,
         scrub: 1,
         invalidateOnRefresh: true,
-        onUpdate: (self) => updateYear(self.progress),
+        markers: true,
+        onUpdate: (self) => {
+          const progress = self.progress
+          const direction = self.direction // 1 表示向前滾動，-1 表示向後滾動
+          const totalSections = sections.length
+
+          sections.forEach((section, index) => {
+            if (section.classList.contains('section--intro')) return
+
+            const yearDisplays = section.querySelectorAll('.year__display')
+            if (yearDisplays.length === 0) return
+
+            // 計算每個 section 的位置
+            const sectionStart = (index - 1) / (totalSections - 1)
+            const sectionEnd = index / (totalSections - 1)
+
+            // 判斷當前 section 是否在視圖中（考慮滾動方向）
+            const isInView = progress >= sectionStart && progress < sectionEnd
+
+            if (isInView) {
+              // 找到該 section 的 activeYear
+              const activeYear = section.dataset.year
+
+              yearDisplays.forEach((display) => {
+                // 判斷是否為當前年份
+                if (display.textContent.trim() === activeYear) {
+                  // 無論滾動方向如何，只要在視圖中就添加 active 類
+                  display.classList.add('year__display--active')
+                } else {
+                  display.classList.remove('year__display--active')
+                }
+              })
+            } else {
+              // 如果不在視圖中，移除所有激活狀態
+              yearDisplays.forEach((display) => {
+                display.classList.remove('year__display--active')
+              })
+            }
+          })
+        },
       },
     })
 
-    // 年份更新函數
-    function updateYear(progress) {
-      // 根據滾動進度確定當前是哪個部分
-      const sectionIndex = Math.min(
-        Math.floor(progress * sections.length),
-        sections.length - 1
-      )
-
-      if (sectionIndex >= 0) {
-        const currentSection = sections[sectionIndex]
-        const year = currentSection.getAttribute('data-year')
-
-        if (year && yearDisplay) {
-          // 設置年份並添加動畫效果
-          yearDisplay.textContent = year
-          gsap.fromTo(
-            yearDisplay,
-            { scale: 0.8, opacity: 0.5 },
-            { scale: 1, opacity: 1, duration: 0.3 }
-          )
-        }
-      }
-    }
-
-    // 初始更新年份
-    updateYear(0)
-
-    // 窗口大小調整時重新計算
+    // 窗口大小调整时重新计算
     window.addEventListener('resize', () => {
       ScrollTrigger.refresh()
     })
