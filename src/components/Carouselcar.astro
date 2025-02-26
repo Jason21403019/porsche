@@ -108,18 +108,35 @@
 
 <style lang="scss">
   .taycan-slider {
-    width: 100%;
-    padding: 20px 0;
-    background-image: url('/public/img/graybg.png');
-    background-size: 120%;
-    background-position: center;
-    background-repeat: no-repeat;
+    position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    left: 0%;
+    right: 0%;
+    padding: 60px 0;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('/public/img/graybg.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: -1;
+    }
 
     .splide {
       width: 100%;
       height: 260px;
       max-width: 1200px;
       margin: 0 auto;
+      border-radius: 15px;
+      padding: 20px;
     }
     :global(.splide__arrow) {
       background: transparent;
@@ -143,7 +160,7 @@
         opacity: 1;
       }
       .content-wrapper {
-        background: white;
+        background: rgba(255, 255, 255, 0.9);
         border-radius: 15px;
         padding: 10px;
         padding-top: 32px;
@@ -178,11 +195,16 @@
         width: 120%;
         height: 180px;
         border-radius: 12px;
-
+        transform: none !important;
+        opacity: 1 !important;
+        scale: 1 !important;
         img {
           width: 100%;
           height: 100%;
           object-fit: contain;
+          transform: none !important;
+          opacity: 1 !important;
+          scale: 1 !important;
         }
       }
 

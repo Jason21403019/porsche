@@ -1,7 +1,7 @@
 ---
-import Navbar from "./Navbar.astro";
+import Navbar from './Navbar.astro'
 
-const { src, className = "w-32 h-32" } = Astro.props;
+const { src, className = 'w-32 h-32' } = Astro.props
 ---
 
 <div id="lottie-animation" class={className} data-src={src}>
@@ -12,22 +12,22 @@ const { src, className = "w-32 h-32" } = Astro.props;
 </div>
 
 <script>
-  import { fade } from "astro:transitions";
-  import lottie from "lottie-web";
+  import { fade } from 'astro:transitions'
+  import lottie from 'lottie-web'
 
-  const container = document.getElementById("lottie-animation");
-  let animation;
+  const container = document.getElementById('lottie-animation')
+  let animation
 
   if (container) {
     animation = lottie.loadAnimation({
       container,
-      renderer: "svg",
+      renderer: 'svg',
       loop: false,
       autoplay: true,
       path: container.dataset.src,
-    });
+    })
 
-    animation.setSpeed(1);
+    animation.setSpeed(1)
   }
 </script>
 <style lang="scss">
@@ -46,7 +46,7 @@ const { src, className = "w-32 h-32" } = Astro.props;
     h1 {
       position: absolute;
       // display: block;
-      top: 27%;
+      top: 35%;
       left: 41.5%;
       transform: translate(-50%, -50%);
       z-index: 1;
@@ -56,7 +56,7 @@ const { src, className = "w-32 h-32" } = Astro.props;
     p {
       //到1280字體大小都還可以，但是在往下就要將字體在縮小了。
       position: absolute;
-      top: 38%;
+      top: 45%;
       left: 42.5%;
       transform: translate(-50%, -50%);
       z-index: 1;

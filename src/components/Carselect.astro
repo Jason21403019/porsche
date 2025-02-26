@@ -1,5 +1,6 @@
 ---
 import ModelSwitch from '../components/ModelSwitch.astro'
+import Carouselcar from '../components/Carouselcar.astro'
 const cars = [
   {
     model: 'Taycan',
@@ -38,8 +39,12 @@ const cars = [
         <span class="speed2">0-100 km/h</span>
       </div>
 
+      <div class="carousel-container">
+        <Carouselcar />
+      </div>
+
       <svg style="visibility: hidden; position: absolute; width: 0; height: 0;">
-        <path id="leftPath" d="M 0,0 C -100,-100 -100,-50 -550,50"></path>
+        <path id="leftPath" d="M 0,0 C -100,-100 -100,-50 -550,-100"></path>
         <path id="rightPath" d="M 0,0 C 100,-100 100,-50 550,-200"></path>
       </svg>
     </div>
@@ -70,7 +75,14 @@ const cars = [
   gsap.set(['.circle-left', '.circle-right'], {
     opacity: 0,
     scale: 0,
+    xPercent: 0,
+    yPercent: 100,
+    x: 0,
     y: 0,
+  })
+  gsap.set('carousel-container', {
+    y: 300,
+    opacity: 0,
   })
 
   ScrollTrigger.create({
@@ -97,7 +109,7 @@ const cars = [
       duration: 1,
     })
     .to(
-      '.platform-image',
+      ['.platform-image', '.carousel-container'],
       {
         y: 0,
         opacity: 1,
@@ -166,6 +178,17 @@ const cars = [
       },
       '<'
     )
+    .to(
+      '.carousel-container',
+      {
+        bottom: '-4.2071%',
+        opacity: 1,
+        transform: 'translateY(0)',
+        duration: 1,
+        ease: 'power2.out',
+      },
+      '-=0.5'
+    )
 </script>
 
 <style lang="scss" scoped>
@@ -200,17 +223,17 @@ const cars = [
       font-size: 44px;
       color: white;
       position: absolute;
-      top: 96px;
+      top: 56px;
       left: 68px;
     }
   }
 
   .car-image {
     position: absolute;
-    top: 50%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-width: 60%;
+    max-width: 50%;
     height: auto;
     opacity: 0;
     z-index: 2;
@@ -218,10 +241,10 @@ const cars = [
 
   .platform-image {
     position: absolute;
-    top: 50%;
+    top: 65%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-width: 60%;
+    max-width: 50%;
     height: auto;
     opacity: 0;
   }
@@ -314,6 +337,15 @@ const cars = [
       right: 37px;
       position: absolute;
     }
+  }
+
+  .carousel-container {
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(100px);
   }
 
   //這裡加了動畫圓形位置會跑掉

@@ -4,7 +4,6 @@ import Bendo from '../components/Bendo.astro'
 import Banner from '../components/Banner.astro'
 import Info from '../components/Info.astro'
 import Carselect from '../components/Carselect.astro'
-import Carouselcar from '../components/Carouselcar.astro'
 import HorizontalScroll from '../components/HorizontalScroll.astro'
 const sections = [
   {
@@ -15,12 +14,12 @@ const sections = [
       from: '#a88b49',
       to: '#f8cc69',
     },
-    title: 'Taycan series',
+    title: ['2019s', 'Taycan series'],
     description: [
-      '<p>-800V electrical architecture.</p>',
-      '<p>-Supports fast charging up to 270 kW.</p>',
+      '-800V electrical architecture.',
+      '-Supports fast charging up to 270 kW.',
     ],
-    imageSrc: '/porsche-911.jpg',
+    imageSrc: '/public/img/taycan4.png',
   },
   {
     id: 'model-taycan',
@@ -30,9 +29,12 @@ const sections = [
       from: '#f8cc69',
       to: '#d5bd85',
     },
-    title: '保時捷 Taycan',
-    description: '電動未來，永續創新',
-    imageSrc: '/porsche-taycan.jpg',
+    title: ['2024s', 'Macan Electric version'],
+    description: [
+      '- Based on the PPE platform,',
+      'improve battery managementand battery life.',
+    ],
+    imageSrc: '/public/img/2024scar.png',
   },
   {
     id: 'model-cayenne',
@@ -42,9 +44,11 @@ const sections = [
       from: '#d5bd85',
       to: '#aeaba6',
     },
-    title: '保時捷 Cayenne',
-    description: '豪華SUV的運動基因',
-    imageSrc: '/porsche-cayenne.jpg',
+    title: ['2025s', '718 Series Electrification'],
+    description: [
+      '- Adopt a new lightweight battery design to optimize control performance.',
+    ],
+    imageSrc: '/public/img/2025scar.png',
   },
   {
     id: 'model-macan',
@@ -54,9 +58,14 @@ const sections = [
       from: '#aeaba6',
       to: '#313131',
     },
-    title: '保時捷 Macan',
-    description: '靈活動感的都會精靈',
-    imageSrc: '/porsche-macan.jpg',
+    title: [
+      'Cayenne electric version, other models',
+      'Planned to launch in the next few years',
+    ],
+    description: [
+      '- Using solid-state battery technology may further improve charging efficiency and energy density.',
+    ],
+    imageSrc: '/public/img/futurecar.png',
   },
 ]
 ---
@@ -65,7 +74,6 @@ const sections = [
   <Banner src="/public/porsche3.json" className="w-64 h-64" />
   <Info />
   <Carselect />
-  <Carouselcar />
   <HorizontalScroll
     sections={sections.map((section) => ({
       ...section,

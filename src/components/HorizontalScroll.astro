@@ -13,7 +13,7 @@ interface Props {
     year?: string
     years?: string[]
     activeYear?: string
-    title: string
+    title: string | string[]
     description: string[]
     image?: string
     imageSrc?: string
@@ -88,7 +88,13 @@ const {
               </div>
             </div>
             <div class="content__column">
-              <h2>{section.title}</h2>
+              <div class="title-container">
+                {Array.isArray(section.title) ? (
+                  section.title.map((title) => <h2>{title}</h2>)
+                ) : (
+                  <h2>{section.title}</h2>
+                )}
+              </div>
               <div class="description-container">
                 {section.description.map((desc) => (
                   <p set:html={desc} />
@@ -147,7 +153,6 @@ const {
     &--content {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      border: 1px solid red;
     }
   }
 
@@ -168,6 +173,7 @@ const {
         color: #fff;
         font-size: 80px;
         padding-left: 20rem;
+        margin: 5rem 0;
       }
 
       p {
@@ -202,7 +208,7 @@ const {
     &__container {
       display: flex;
       flex-direction: column;
-      gap: 8rem;
+      gap: 10rem;
     }
 
     &__display {
@@ -226,10 +232,14 @@ const {
       display: flex;
       flex-direction: column;
       gap: 2rem;
-
-      h2 {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
+      .title-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        h2 {
+          font-size: 2.5rem;
+          margin-bottom: 1rem;
+        }
       }
 
       .description-container {
@@ -250,9 +260,9 @@ const {
       overflow: hidden;
 
       img {
-        width: 100%;
+        width: 80%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
       }
     }
   }
@@ -293,7 +303,6 @@ const {
         anticipatePin: 1,
         scrub: 1,
         invalidateOnRefresh: true,
-        markers: true,
         onUpdate: (self) => {
           const progress = self.progress
           const direction = self.direction // 1 表示向前滾動，-1 表示向後滾動
