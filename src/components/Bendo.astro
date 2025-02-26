@@ -1,43 +1,67 @@
 <section class="grid-section">
   <div class="grid-container">
+    <h1 class="grid-title">Social Media Stories</h1>
     <div class="grid-item div1">
+      <video class="media-content" autoplay loop muted playsinline>
+        <source src="/public/img/item1.mp4" type="video/mp4" />
+      </video>
       <div class="overlay">
-        <span class="overlay-text">項目 1</span>
+        <span class="overlay-text"
+          >The new all-electric Macan<br />改變型色，不改獨特</span
+        >
       </div>
     </div>
     <div class="grid-item div2">
+      <img src="/public/img/item2.jpg" alt="item2" class="media-content" />
       <div class="overlay">
-        <span class="overlay-text">項目 2</span>
+        <span class="overlay-text"
+          >當我們在 Mistletoe 下相遇<br />Captured by @tiutiunikoff</span
+        >
       </div>
     </div>
     <div class="grid-item div3">
+      <img src="/public/img/item3.png" alt="item3" class="media-content" />
       <div class="overlay">
-        <span class="overlay-text">項目 3</span>
+        <span class="overlay-text">夜幕降臨<br />電力四射</span>
       </div>
     </div>
     <div class="grid-item div4">
+      <img src="/public/img/item4.png" alt="item4" class="media-content" />
       <div class="overlay">
-        <span class="overlay-text">項目 4</span>
+        <span class="overlay-text"
+          >「每個挑戰跟選擇<br />都會讓你更像自己的樣子」​</span
+        >
       </div>
     </div>
     <div class="grid-item div5">
+      <img src="/public/img/item5.jpg" alt="item5" class="media-content" />
       <div class="overlay">
-        <span class="overlay-text">項目 5</span>
+        <span class="overlay-text"
+          >讓純電 Macan Turbo<br />陪伴 Rima 瑞瑪席丹<br
+          />輕鬆穿梭都會與山海</span
+        >
       </div>
     </div>
     <div class="grid-item div6">
+      <img src="/public/img/item6.jpg" alt="item6" class="media-content" />
       <div class="overlay">
-        <span class="overlay-text">項目 6</span>
+        <span class="overlay-text"
+          >隨著每一代新版本的問世<br />911 GT3 的傳奇仍在延續</span
+        >
       </div>
     </div>
     <div class="grid-item div7">
+      <img src="/public/img/item7.png" alt="item7" class="media-content" />
       <div class="overlay">
-        <span class="overlay-text">項目 7</span>
+        <span class="overlay-text">全新 Carrera S 強勢登場</span>
       </div>
     </div>
     <div class="grid-item div8">
+      <video class="media-content" autoplay loop muted playsinline>
+        <source src="/public/img/item8.mp4" type="video/mp4" />
+      </video>
       <div class="overlay">
-        <span class="overlay-text">項目 8</span>
+        <span class="overlay-text">Mission X | 車款介紹</span>
       </div>
     </div>
   </div>
@@ -58,13 +82,22 @@
 
     .grid-container {
       display: grid;
+      background: linear-gradient(to bottom, #282828 0%, #8e8e8e 100%);
       grid-template-columns: repeat(12, 1fr);
       grid-template-rows: repeat(12, 1fr);
       gap: 1.5rem;
       margin: 0 auto;
       width: 100%;
       height: 100vh;
-
+      .grid-title {
+        grid-column: 2 / 6;
+        grid-row: 1 / 2;
+        color: white;
+        font-size: 44px;
+        text-align: left;
+        padding: 6rem 0 0 0;
+        align-self: center;
+      }
       .grid-item {
         position: relative;
         overflow: hidden;
@@ -73,35 +106,51 @@
         box-shadow: $shadow-sm;
         padding: 1rem;
         transition: all 0.3s ease;
-
+        cursor: pointer;
+        .media-content {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 1;
+        }
         .overlay {
           position: absolute;
           top: 0;
           left: 0;
           width: 100%;
           height: 100%;
-          background-color: rgba(0, 0, 0, 0.7);
+          background-color: rgba(20, 20, 20, 0.5);
           display: flex;
           justify-content: center;
           align-items: center;
           opacity: 0;
           transition: opacity 0.3s ease;
           border-radius: 1rem;
+          z-index: 2;
         }
 
         .overlay-text {
           color: white;
-          font-size: 1.5rem;
+          font-size: 16px;
+          line-height: 1.5;
           font-weight: bold;
+          text-align: center;
+          opacity: 0;
+          transform: translateY(20px);
+          transition: all 0.3s ease;
         }
 
         &:hover {
-          transform: scale(1.05);
-          box-shadow: $shadow-lg;
-          background-color: $hover-bg;
-
           .overlay {
             opacity: 1;
+          }
+
+          .overlay-text {
+            opacity: 1;
+            transform: translateY(0);
           }
         }
       }
@@ -111,21 +160,21 @@
   @for $i from 1 through 8 {
     .div#{$i} {
       @if $i == 1 {
-        grid-area: 2/ 2 / 11 / 4;
+        grid-area: 3 / 2 / 12 / 4;
       } @else if $i == 2 {
-        grid-area: 2 / 4 / 5 / 6;
+        grid-area: 3 / 4 / 6 / 6;
       } @else if $i == 3 {
-        grid-area: 5 / 4 / 11 / 6;
+        grid-area: 6 / 4 / 12 / 6;
       } @else if $i == 4 {
-        grid-area: 2 / 6 / 7 / 8;
+        grid-area: 3 / 6 / 8 / 8;
       } @else if $i == 5 {
-        grid-area: 7 / 6 / 11 / 8;
+        grid-area: 8 / 6 / 12 / 8;
       } @else if $i == 6 {
-        grid-area: 2 / 8 / 5 / 10;
+        grid-area: 3 / 8 / 6 / 10;
       } @else if $i == 7 {
-        grid-area: 5 / 8 / 11 / 10;
+        grid-area: 6 / 8 / 12 / 10;
       } @else if $i == 8 {
-        grid-area: 2/ 10 / 11 / 12;
+        grid-area: 3 / 10 / 12 / 12;
       }
     }
   }

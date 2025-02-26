@@ -7,5 +7,10 @@ export default defineConfig({
     optimizeDeps: {
       include: ['gsap'],
     },
+    server: {
+      hmr: {
+        preserveScroll: true,
+      },
+    },
   },
 })
