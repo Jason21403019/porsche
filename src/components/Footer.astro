@@ -21,7 +21,18 @@
     position: relative;
     background: linear-gradient(to right, #000000, #676767, #ffce60);
     &-container {
-      padding: 150px 0 108px 500px;
+      display: grid;
+      grid-template-columns:
+        [start] 300px
+        [content-start] minmax(0, 1fr)
+        [end];
+      padding: clamp(2rem, 5vw, 150px) clamp(1rem, 3vw, 3rem);
+
+      h1,
+      p,
+      .footer-icon {
+        grid-column: content-start / end;
+      }
       h1 {
         font-size: 64px;
         color: white;
