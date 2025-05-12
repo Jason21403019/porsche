@@ -5,7 +5,7 @@
 <header class="header">
   <nav class="nav">
     <div class="nav__logo">
-      <img class="nav__logo-img" src="./public/img/logo.png" alt="logo" />
+      <img class="nav__logo-img" src="./img/logo.png" alt="logo" />
     </div>
     <div class="nav__menu">
       <ul class="nav__menu-list">
@@ -24,58 +24,58 @@
   </nav>
 </header>
 <script>
-  const navHams = document.querySelector(".nav__hams");
-  const navMenu = document.querySelector(".nav__menu");
-  const navHam = document.querySelectorAll(".nav__ham");
-  const menuItems = document.querySelectorAll(".nav__menu-item");
+  const navHams = document.querySelector('.nav__hams')
+  const navMenu = document.querySelector('.nav__menu')
+  const navHam = document.querySelectorAll('.nav__ham')
+  const menuItems = document.querySelectorAll('.nav__menu-item')
 
   const toggleMenu = (show = false) => {
     if (show) {
-      navMenu?.classList.add("active");
-      navHam.forEach((ham) => ham.classList.add("active"));
+      navMenu?.classList.add('active')
+      navHam.forEach((ham) => ham.classList.add('active'))
       menuItems.forEach((item, index) => {
         setTimeout(() => {
-          item.classList.add("active");
-        }, index * 150);
-      });
+          item.classList.add('active')
+        }, index * 150)
+      })
     } else {
-      navMenu?.classList.remove("active");
-      navHam.forEach((ham) => ham.classList.remove("active"));
-      menuItems.forEach((item) => item.classList.remove("active"));
+      navMenu?.classList.remove('active')
+      navHam.forEach((ham) => ham.classList.remove('active'))
+      menuItems.forEach((item) => item.classList.remove('active'))
     }
-  };
+  }
 
-  navHams?.addEventListener("click", (e) => {
-    e.stopPropagation();
-    const isActive = navMenu?.classList.contains("active");
-    toggleMenu(!isActive);
-  });
+  navHams?.addEventListener('click', (e) => {
+    e.stopPropagation()
+    const isActive = navMenu?.classList.contains('active')
+    toggleMenu(!isActive)
+  })
 
-  navMenu?.addEventListener("click", (e) => {
-    e.stopPropagation();
-  });
+  navMenu?.addEventListener('click', (e) => {
+    e.stopPropagation()
+  })
 
-  document.addEventListener("click", () => {
-    if (navMenu?.classList.contains("active")) {
-      toggleMenu(false);
+  document.addEventListener('click', () => {
+    if (navMenu?.classList.contains('active')) {
+      toggleMenu(false)
     }
-  });
+  })
 
-  let lastScrollPosition = window.scrollY;
-  let ticking = false;
+  let lastScrollPosition = window.scrollY
+  let ticking = false
 
-  window.addEventListener("scroll", () => {
-    lastScrollPosition = window.scrollY;
+  window.addEventListener('scroll', () => {
+    lastScrollPosition = window.scrollY
     if (!ticking) {
       window.requestAnimationFrame(() => {
-        if (navMenu?.classList.contains("active")) {
-          toggleMenu(false);
+        if (navMenu?.classList.contains('active')) {
+          toggleMenu(false)
         }
-        ticking = false;
-      });
-      ticking = true;
+        ticking = false
+      })
+      ticking = true
     }
-  });
+  })
 </script>
 
 <style lang="scss" scoped>
@@ -84,7 +84,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 2;
+    z-index: 2; // 保持原始的 z-index
     .nav {
       margin: 0 auto;
       display: flex;
@@ -175,6 +175,201 @@
               transform: rotate(-15deg) translate(6px, -3px);
             }
           }
+        }
+      }
+    }
+  }
+
+  // 1440px以下的RWD設計
+  @media screen and (max-width: 1440px) {
+    .header {
+      .nav {
+        max-width: 1280px;
+        height: 150px;
+        padding: 0 20px;
+        &__logo {
+          &-img {
+            width: 240px;
+            height: 16px;
+          }
+        }
+        &__menu {
+          width: 580px;
+          height: 400px;
+          &-list {
+            margin-right: 12rem;
+            gap: 28px;
+          }
+          &-item {
+            a {
+              font-size: 22px;
+            }
+          }
+        }
+        &__hams {
+          .nav__ham {
+            width: 45px;
+            height: 3px;
+
+            &.active {
+              &:nth-child(1) {
+                transform: rotate(15deg) translate(6px, 4px);
+              }
+              &:nth-child(2) {
+                transform: rotate(-15deg) translate(5px, -3px);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // 1200px以下（筆記型電腦尺寸）
+  @media screen and (max-width: 1280px) {
+    .header {
+      .nav {
+        max-width: 1024px;
+        height: 130px;
+        &__logo {
+          &-img {
+            width: 220px;
+            height: 15px;
+          }
+        }
+        &__menu {
+          width: 500px;
+          height: 400px;
+          &-list {
+            margin-right: 8rem;
+            gap: 24px;
+          }
+          &-item {
+            a {
+              font-size: 20px;
+            }
+          }
+        }
+        &__hams {
+          .nav__ham {
+            width: 45px;
+            height: 3px;
+
+            &.active {
+              &:nth-child(1) {
+                transform: rotate(15deg) translate(5px, 4px);
+              }
+              &:nth-child(2) {
+                transform: rotate(-15deg) translate(5px, -2px);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // 1024px以下（平板尺寸）
+  @media screen and (max-width: 1024px) {
+    .header {
+      .nav {
+        max-width: 900px;
+        height: 110px;
+        &__logo {
+          &-img {
+            width: 200px;
+            height: 14px;
+          }
+        }
+        &__menu {
+          width: 420px;
+          height: 300px;
+          &-list {
+            margin-right: 6rem;
+            gap: 20px;
+          }
+          &-item {
+            a {
+              font-size: 18px;
+            }
+
+            &.active {
+              transform: translateX(0);
+            }
+          }
+        }
+        &__hams {
+          .nav__ham {
+            width: 40px;
+            height: 2.5px;
+            margin: 3px;
+
+            &.active {
+              &:nth-child(1) {
+                transform: rotate(15deg) translate(5px, 3px);
+              }
+              &:nth-child(2) {
+                transform: rotate(-15deg) translate(4px, -2px);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // 768px以下（小型平板）
+  @media screen and (max-width: 768px) {
+    .header {
+      z-index: 10; // 只在小螢幕尺寸下提高 z-index
+      .nav {
+        max-width: 720px;
+        height: 90px;
+        padding: 0 15px;
+        &__logo {
+          &-img {
+            width: 180px;
+            height: 12px;
+          }
+        }
+        &__menu {
+          width: 100%;
+          &-list {
+            margin-right: 0;
+            gap: 28px; // 增加間隔，從 18px 調整為 28px
+          }
+          &-item {
+            transform: translateX(15px);
+
+            a {
+              font-size: 22px; // 增加文字大小，從 16px 調整為 22px
+            }
+
+            &.active {
+              transform: translateX(0);
+            }
+          }
+
+          &.active {
+            z-index: 40; // 進一步提升 active 狀態選單的 z-index
+          }
+        }
+        &__hams {
+          .nav__ham {
+            width: 35px;
+            height: 2px;
+            margin: 3px;
+
+            &.active {
+              &:nth-child(1) {
+                transform: rotate(15deg) translate(4px, 3px);
+              }
+              &:nth-child(2) {
+                transform: rotate(-15deg) translate(3px, -2px);
+              }
+            }
+          }
+          z-index: 45; // 提高漢堡選單按鈕的 z-index，確保始終在最上層
         }
       }
     }

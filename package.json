@@ -13,9 +13,11 @@
   "dependencies": {
     "@splidejs/splide": "^4.1.4",
     "astro": "^5.2.5",
+    "astro-relative-links": "^0.4.2",
     "gsap": "^3.12.7",
     "lottie-web": "^5.12.2",
-    "sass": "^1.83.4"
+    "sass": "^1.83.4",
+    "terser": "^5.39.0"
   },
   "pnpm": {
     "ignoredBuiltDependencies": [

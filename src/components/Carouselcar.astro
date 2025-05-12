@@ -7,10 +7,10 @@
             <h3 class="car-name">Taycan</h3>
             <div class="additional-content">
               <p class="price">NTD 4,320,000</p>
-              <button class="view-more">See more</button>
+              <button class="view-more" data-car="Taycan">See more</button>
             </div>
             <div class="car-image">
-              <img src="/public/img/taycan.png" alt="Taycan 4" />
+              <img src="/img/taycan.png" alt="Taycan 4" />
             </div>
           </div>
         </div>
@@ -19,10 +19,10 @@
             <h3 class="car-name">Taycan 4</h3>
             <div class="additional-content">
               <p class="price">NTD 4,600,000</p>
-              <button class="view-more">See more</button>
+              <button class="view-more" data-car="Taycan 4">See more</button>
             </div>
             <div class="car-image">
-              <img src="/public/img/taycan4.png" alt="Taycan 4" />
+              <img src="/img/taycan4.png" alt="Taycan 4" />
             </div>
           </div>
         </div>
@@ -31,10 +31,10 @@
             <h3 class="car-name">Taycan 4s</h3>
             <div class="additional-content">
               <p class="price">NTD 5,320,000</p>
-              <button class="view-more">See more</button>
+              <button class="view-more" data-car="Taycan 4s">See more</button>
             </div>
             <div class="car-image">
-              <img src="/public/img/taycan4s.png" alt="Taycan 4" />
+              <img src="/img/taycan4s.png" alt="Taycan 4" />
             </div>
           </div>
         </div>
@@ -43,10 +43,10 @@
             <h3 class="car-name">Taycan GTS</h3>
             <div class="additional-content">
               <p class="price">NTD 6,580,000</p>
-              <button class="view-more">See more</button>
+              <button class="view-more" data-car="Taycan GTS">See more</button>
             </div>
             <div class="car-image">
-              <img src="/public/img/taycan-gts.png" alt="Taycan 4" />
+              <img src="/img/taycan-gts.png" alt="Taycan 4" />
             </div>
           </div>
         </div>
@@ -55,10 +55,11 @@
             <h3 class="car-name">Taycan Turbo</h3>
             <div class="additional-content">
               <p class="price">NTD 7,680,000</p>
-              <button class="view-more">See more</button>
+              <button class="view-more" data-car="Taycan Turbo">See more</button
+              >
             </div>
             <div class="car-image">
-              <img src="/public/img/taycan-turbo.png" alt="Taycan 4" />
+              <img src="/img/taycan-turbo.png" alt="Taycan 4" />
             </div>
           </div>
         </div>
@@ -67,10 +68,12 @@
             <h3 class="car-name">Taycan Turbo S</h3>
             <div class="additional-content">
               <p class="price">NTD 9,250,000</p>
-              <button class="view-more">See more</button>
+              <button class="view-more" data-car="Taycan Turbo S"
+                >See more</button
+              >
             </div>
             <div class="car-image">
-              <img src="/public/img/taycan-Turbo-S.png" alt="Taycan 4" />
+              <img src="/img/Taycan-Turbo-S.png" alt="Taycan 4" />
             </div>
           </div>
         </div>
@@ -79,10 +82,12 @@
             <h3 class="car-name">Taycan Turbo GT</h3>
             <div class="additional-content">
               <p class="price">NTD 10,480,000</p>
-              <button class="view-more">See more</button>
+              <button class="view-more" data-car="Taycan Turbo GT"
+                >See more</button
+              >
             </div>
             <div class="car-image">
-              <img src="/public/img/taycan-turbo-gt.png" alt="Taycan 4" />
+              <img src="/img/taycan-turbo-gt.png" alt="Taycan 4" />
             </div>
           </div>
         </div>
@@ -91,11 +96,13 @@
             <h3 class="car-name">Taycan Turbo GT with Wp</h3>
             <div class="additional-content">
               <p class="price">NTD 10,480,000</p>
-              <button class="view-more">See more</button>
+              <button class="view-more" data-car="Taycan Turbo GT with Wp"
+                >See more</button
+              >
             </div>
             <div class="car-image">
               <img
-                src="/public/img/Taycan-Turbo-GT-with-Weissach-Package.png"
+                src="/img/Taycan-Turbo-GT-with-Weissach-Package.png"
                 alt="Taycan 4"
               />
             </div>
@@ -123,7 +130,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: url('/public/img/graybg.png');
+      background-image: url('/img/graybg.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -132,11 +139,16 @@
 
     .splide {
       width: 100%;
-      height: 260px;
+      height: auto; // 改為自適應高度
       max-width: 1200px;
       margin: 0 auto;
       border-radius: 15px;
       padding: 20px;
+
+      @media (max-width: 768px) {
+        padding: 10px;
+        height: 300px; // 在小尺寸螢幕上設定固定高度
+      }
     }
     :global(.splide__arrow) {
       background: transparent;
@@ -171,6 +183,17 @@
         align-items: center;
         height: 230px;
         width: 184px;
+
+        @media (max-width: 768px) {
+          width: 150px;
+          height: 210px;
+          padding-top: 20px;
+        }
+
+        @media (max-width: 480px) {
+          width: 130px;
+          height: 190px;
+        }
       }
 
       .car-name {
@@ -179,6 +202,16 @@
         margin: 0 0 15px 0;
         text-align: center;
         font-weight: 600;
+
+        @media (max-width: 768px) {
+          font-size: 20px;
+          height: 40px;
+          margin: 0 0 10px 0;
+        }
+
+        @media (max-width: 480px) {
+          font-size: 18px;
+        }
       }
 
       .additional-content {
@@ -198,6 +231,12 @@
         transform: none !important;
         opacity: 1 !important;
         scale: 1 !important;
+
+        @media (max-width: 768px) {
+          width: 100%;
+          height: 140px;
+        }
+
         img {
           width: 100%;
           height: 100%;
@@ -205,6 +244,10 @@
           transform: none !important;
           opacity: 1 !important;
           scale: 1 !important;
+
+          @media (max-width: 768px) {
+            object-position: center 70%;
+          }
         }
       }
 
@@ -233,6 +276,14 @@
         .content-wrapper {
           height: 200px;
           padding-bottom: 25px;
+
+          @media (max-width: 768px) {
+            height: 190px;
+          }
+
+          @media (max-width: 480px) {
+            height: 180px;
+          }
         }
 
         .additional-content {
@@ -241,8 +292,17 @@
         }
         .car-image {
           margin-left: -1rem;
+
+          @media (max-width: 768px) {
+            margin-left: -0.5rem;
+          }
+
           img {
             height: 130%;
+
+            @media (max-width: 768px) {
+              height: 120%;
+            }
           }
         }
       }
@@ -253,6 +313,10 @@
 
         .content-wrapper {
           height: 160px;
+
+          @media (max-width: 768px) {
+            height: 140px;
+          }
         }
 
         .additional-content {
@@ -266,8 +330,17 @@
         }
         .car-image {
           width: 90%;
+
+          @media (max-width: 768px) {
+            width: 80%;
+          }
+
           img {
             height: 140%;
+
+            @media (max-width: 768px) {
+              height: 130%;
+            }
           }
         }
       }
@@ -277,14 +350,27 @@
 
         .content-wrapper {
           height: 120px;
+
+          @media (max-width: 768px) {
+            height: 110px;
+          }
         }
         .additional-content {
           opacity: 0.5;
         }
         .car-image {
           width: 70%;
+
+          @media (max-width: 768px) {
+            width: 60%;
+          }
+
           img {
             height: 140%;
+
+            @media (max-width: 768px) {
+              height: 130%;
+            }
           }
         }
         .price {
@@ -292,6 +378,167 @@
         }
         .view-more {
           display: none;
+        }
+      }
+    }
+  }
+
+  /* 燈窗樣式 */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    overflow-y: auto;
+
+    .modal-content {
+      background-color: #f5f5f5;
+      margin: 5% auto;
+      width: 80%;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      position: relative;
+
+      @media (max-width: 768px) {
+        width: 95%;
+        margin: 3% auto;
+      }
+
+      .modal-header {
+        padding: 20px;
+        border-bottom: 1px solid #e0e0e0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h2 {
+          margin: 0;
+          font-size: 1.8rem;
+          font-weight: 600;
+          color: #333;
+        }
+
+        .close-modal {
+          font-size: 28px;
+          cursor: pointer;
+          color: #666;
+          transition: color 0.3s;
+
+          &:hover {
+            color: #000;
+          }
+        }
+      }
+
+      .modal-body {
+        padding: 20px;
+
+        .config-section {
+          margin-bottom: 30px;
+
+          h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #333;
+            font-weight: 600;
+            border-left: 4px solid #ffce60;
+            padding-left: 10px;
+          }
+
+          .color-options {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+
+            .color-option {
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              cursor: pointer;
+              border: 2px solid #ddd;
+              transition: all 0.3s;
+
+              &:hover,
+              &.selected {
+                transform: scale(1.1);
+                border-color: #ffce60;
+              }
+            }
+          }
+
+          .preview-image {
+            max-width: 500px;
+            margin: 0 auto;
+
+            img {
+              width: 100%;
+              height: auto;
+            }
+          }
+
+          .wheel-options,
+          .seat-options,
+          .interior-options {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+
+            .wheel-option,
+            .seat-option,
+            .interior-option {
+              width: 180px;
+              text-align: center;
+              padding: 15px;
+              border-radius: 10px;
+              border: 1px solid #ddd;
+              cursor: pointer;
+              transition: all 0.3s;
+
+              &:hover,
+              &.selected {
+                border-color: #ffce60;
+                background-color: #fffbeb;
+              }
+
+              img {
+                max-width: 100%;
+                height: auto;
+                margin-bottom: 10px;
+              }
+
+              p {
+                margin: 5px 0 0;
+                font-size: 0.9rem;
+              }
+            }
+          }
+        }
+      }
+
+      .modal-footer {
+        padding: 15px 20px;
+        border-top: 1px solid #e0e0e0;
+        text-align: right;
+
+        .save-config {
+          padding: 10px 30px;
+          background: linear-gradient(#ffce60, #ede1c8, #ffce60);
+          color: #000;
+          border: 1px solid #d4be7c;
+          border-radius: 32px;
+          cursor: pointer;
+          font-size: 16px;
+          font-weight: 600;
+          transition: all 0.3s;
+
+          &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          }
         }
       }
     }
@@ -320,13 +567,29 @@
       waitForTransition: true,
       resetProgress: false,
       updateOnMove: true,
-      padding: { left: '10%', right: '10%' },
+      padding: {left: '10%', right: '10%'},
       breakpoints: {
-        1024: {
+        1280: {
           perPage: 3,
+          padding: {left: '5%', right: '5%'},
+          gap: '0.8rem',
+        },
+        992: {
+          perPage: 2,
+          padding: {left: '3%', right: '3%'},
+          gap: '0.7rem',
         },
         768: {
+          perPage: 1.5,
+          focus: 'center',
+          padding: {left: '2%', right: '2%'},
+          gap: '0.5rem',
+        },
+        480: {
           perPage: 1,
+          focus: 'center',
+          padding: {left: '10%', right: '10%'},
+          gap: '0.3rem',
         },
       },
     })
@@ -342,5 +605,40 @@
     document.querySelectorAll('svg').forEach((svg) => {
       svg.style.fill = '#fff'
     })
+
+    // 修改 view-more 按鈕事件處理
+    document.querySelectorAll('.view-more').forEach((button) => {
+      button.addEventListener('click', function () {
+        const carName = this.getAttribute('data-car')
+        const modal = document.getElementById('carConfigModal')
+        if (modal) {
+          modal.style.display = 'block'
+          document.body.style.overflow = 'hidden'
+          // 觸發配置事件
+          window.dispatchEvent(
+            new CustomEvent('openCarConfig', {
+              detail: {carName: carName},
+            })
+          )
+        }
+      })
+    })
+
+    // 調整箭頭在不同裝置尺寸的位置
+    const adjustArrows = () => {
+      const nextArrow = document.querySelector('.splide__arrow--next')
+      const prevArrow = document.querySelector('.splide__arrow--prev')
+
+      if (window.innerWidth <= 768) {
+        if (nextArrow) nextArrow.style.right = '-1em'
+        if (prevArrow) prevArrow.style.left = '-2em'
+      } else {
+        if (nextArrow) nextArrow.style.right = '-2.5em'
+        if (prevArrow) prevArrow.style.left = '-4em'
+      }
+    }
+
+    adjustArrows()
+    window.addEventListener('resize', adjustArrows)
   })
 </script>

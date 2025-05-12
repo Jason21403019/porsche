@@ -4,7 +4,7 @@ import Carouselcar from '../components/Carouselcar.astro'
 const cars = [
   {
     model: 'Taycan',
-    image: '/public/img/redcar.png',
+    image: '/img/redcar.png',
     className: 'car-image',
     stats: {
       maxSpeed: 250,
@@ -19,13 +19,9 @@ const cars = [
     <div class="content-container">
       <ModelSwitch currentModel="Taycan" />
       <h1 class="title">Model Selection</h1>
-      <img src="/public/img/redcar.png" alt="Car" class="car-image" />
+      <img src="/img/redcar.png" alt="Car" class="car-image" />
 
-      <img
-        src="/public/img/graycan.png"
-        alt="Platform"
-        class="platform-image"
-      />
+      <img src="/img/graycan.png" alt="Platform" class="platform-image" />
       <div class="circle circle-left">
         <div class="border_line"></div>
         <span class="number1">000</span>
@@ -54,12 +50,23 @@ const cars = [
 <script>
   import gsap from 'gsap'
   import ScrollTrigger from 'gsap/ScrollTrigger'
-  import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
+  import {MotionPathPlugin} from 'gsap/MotionPathPlugin'
 
   gsap.registerPlugin(ScrollTrigger, MotionPathPlugin)
 
   const leftTarget = 250
   const rightTarget = 3.3
+
+  // 初始設置，隱藏 ModelSwitch 和標題
+  gsap.set('.title', {
+    opacity: 0,
+    y: -50,
+  })
+
+  gsap.set('.model-switch', {
+    opacity: 0,
+    y: -50,
+  })
 
   gsap.set('.car-image', {
     y: -500,
@@ -67,8 +74,9 @@ const cars = [
     scale: 0,
   })
 
+  // 修改平台圖片的初始位置，確保完全在螢幕下方
   gsap.set('.platform-image', {
-    y: 300,
+    y: '100vh', // 使用視窗高度確保在螢幕下方
     opacity: 0,
   })
 
@@ -80,8 +88,8 @@ const cars = [
     x: 0,
     y: 0,
   })
-  gsap.set('carousel-container', {
-    y: 300,
+  gsap.set('.carousel-container', {
+    y: '100vh', // 同樣確保在螢幕下方
     opacity: 0,
   })
 
@@ -102,6 +110,7 @@ const cars = [
   })
 
   timeline
+
     .to('.car-image', {
       y: 0,
       opacity: 1,
@@ -113,7 +122,8 @@ const cars = [
       {
         y: 0,
         opacity: 1,
-        duration: 1,
+        duration: 1.5, // 增加動畫時間以適應更長的距離
+        ease: 'power2.out', // 添加緩動效果使動畫更自然
       },
       '-=0.5'
     )
@@ -130,10 +140,10 @@ const cars = [
         gsap.to('.circle .number1', {
           duration: 2,
           innerHTML: leftTarget,
-          snap: { innerHTML: 1 },
+          snap: {innerHTML: 1},
           ease: 'power1.inOut',
         })
-        let count = { val: 0 }
+        let count = {val: 0}
         gsap.to(count, {
           val: rightTarget,
           duration: 2,
@@ -178,6 +188,23 @@ const cars = [
       },
       '<'
     )
+    // 先呈現 ModelSwitch 和標題，隨著滾動逐漸出現
+    .to('.title', {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      ease: 'power1.out',
+    })
+    .to(
+      '.model-switch',
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        ease: 'power1.out',
+      },
+      '<'
+    )
     .to(
       '.carousel-container',
       {
@@ -192,9 +219,10 @@ const cars = [
 </script>
 
 <style lang="scss" scoped>
-  @import '../styles/_reset.scss';
+  @use '../styles/_reset.scss';
   .wrapper {
     height: auto;
+    width: 100%;
   }
 
   .section {
@@ -225,6 +253,7 @@ const cars = [
       position: absolute;
       top: 56px;
       left: 68px;
+      opacity: 0; /* 初始隱藏 */
     }
   }
 
@@ -339,6 +368,13 @@ const cars = [
     }
   }
 
+  // 在 768px 及以下螢幕寬度隱藏圓形元素
+  @media screen and (max-width: 1024px) {
+    .circle {
+      display: none;
+    }
+  }
+
   .carousel-container {
     position: absolute;
     bottom: -100%;
@@ -355,6 +391,6 @@ const cars = [
   //   }
   //   to {
   //     transform: rotate(359deg);
-  //   }/public/img/taycan-gts.png
+  //   }/img/taycan-gts.png
   // }
 </style>

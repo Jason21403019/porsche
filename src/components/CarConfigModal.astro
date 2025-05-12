@@ -1,0 +1,1864 @@
+---
+
+---
+
+<!-- Add Splide CSS in head -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css"
+/>
+
+<!-- Modal Structure -->
+<div id="carConfigModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-body">
+      <!-- Left side 30% area: Car Model Data and Menu -->
+      <div class="config-sidebar">
+        <div class="car-info">
+          <h3 id="sidebarCarTitle">Taycan</h3>
+          <img id="sidebarCarImage" src="/img/taycan.png" alt="Car Model" />
+        </div>
+        <!-- Menu in TAB style -->
+        <div class="sidebar-tabs">
+          <button class="tab-button active" data-tab="configure"
+            >Configure Vehicle</button
+          >
+          <button class="tab-button" data-tab="technical"
+            >Technical Specs</button
+          >
+          <button class="tab-button" data-tab="compare">Model Comparison</button
+          >
+          <!-- 未來功能：更多車輛頁籤 
+          <button class="tab-button" data-tab="more">More Vehicles</button>
+          -->
+        </div>
+      </div>
+
+      <!-- Right side 70% area: Content based on selected TAB -->
+      <div class="config-content">
+        <!-- Configure Vehicle TAB content (original configuration block) -->
+        <div class="tab-content active" id="configure-tab">
+          <div class="config-grid">
+            <!-- Color Selection Block - First row, first column -->
+            <div class="config-section">
+              <h3>Color Selection</h3>
+              <div class="splide color-slider">
+                <div class="splide__track">
+                  <ul class="splide__list">
+                    <li class="splide__slide">
+                      <div
+                        class="color-option"
+                        style="background-color: #fff"
+                        data-color="white"
+                      >
+                      </div>
+                    </li>
+                    <li class="splide__slide">
+                      <div
+                        class="color-option"
+                        style="background-color: #000"
+                        data-color="black"
+                      >
+                      </div>
+                    </li>
+                    <li class="splide__slide">
+                      <div
+                        class="color-option"
+                        style="background-color: #d4d4d4"
+                        data-color="silver"
+                      >
+                      </div>
+                    </li>
+                    <li class="splide__slide">
+                      <div
+                        class="color-option"
+                        style="background-color: #c0c0c0"
+                        data-color="metallic"
+                      >
+                      </div>
+                    </li>
+                    <li class="splide__slide">
+                      <div
+                        class="color-option"
+                        style="background-color: #960018"
+                        data-color="red"
+                      >
+                      </div>
+                    </li>
+                    <li class="splide__slide">
+                      <div
+                        class="color-option"
+                        style="background-color: #0147ab"
+                        data-color="blue"
+                      >
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Wheel Selection Block -->
+            <div class="config-section">
+              <h3>Wheel Selection</h3>
+              <div class="splide wheel-slider">
+                <div class="splide__track">
+                  <ul class="splide__list">
+                    <li class="splide__slide">
+                      <div class="wheel-option">
+                        <img src="/img/wheel1.png" alt="Wheel 1" />
+                      </div>
+                    </li>
+                    <li class="splide__slide">
+                      <div class="wheel-option">
+                        <img src="/img/wheel2.png" alt="Wheel 2" />
+                      </div>
+                    </li>
+                    <li class="splide__slide">
+                      <div class="wheel-option">
+                        <img src="/img/wheel3.png" alt="Wheel 3" />
+                      </div>
+                    </li>
+                    <li class="splide__slide">
+                      <div class="wheel-option">
+                        <img src="/img/wheel1.png" alt="Wheel 1" />
+                      </div>
+                    </li>
+                    <li class="splide__slide">
+                      <div class="wheel-option">
+                        <img src="/img/wheel2.png" alt="Wheel 2" />
+                      </div>
+                    </li>
+                    <li class="splide__slide">
+                      <div class="wheel-option">
+                        <img src="/img/wheel3.png" alt="Wheel 3" />
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Seat Selection Block -->
+            <div class="config-section">
+              <h3>Seat Selection</h3>
+              <div class="splide seat-slider">
+                <div class="splide__track">
+                  <ul class="splide__list">
+                    <li class="splide__slide">
+                      <div class="seat-option">
+                        <img src="/img/seat1.png" alt="Seat 1" />
+                      </div>
+                    </li>
+                    <li class="splide__slide">
+                      <div class="seat-option">
+                        <img src="/img/seat2.png" alt="Seat 2" />
+                      </div>
+                    </li>
+                    <li class="splide__slide">
+                      <div class="seat-option">
+                        <img src="/img/seat3.png" alt="Seat 3" />
+                      </div>
+                    </li>
+                    <li class="splide__slide">
+                      <div class="seat-option">
+                        <img src="/img/seat1.png" alt="Seat 1" />
+                      </div>
+                    </li>
+                    <li class="splide__slide">
+                      <div class="seat-option">
+                        <img src="/img/seat2.png" alt="Seat 2" />
+                      </div>
+                    </li>
+                    <li class="splide__slide">
+                      <div class="seat-option">
+                        <img src="/img/seat3.png" alt="Seat 3" />
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Interior Materials Block -->
+            <div class="config-section">
+              <h3>Interior Materials</h3>
+              <div class="splide interior-slider">
+                <div class="splide__track">
+                  <ul class="splide__list">
+                    <li class="splide__slide">
+                      <div class="interior-option">
+                        <img src="/img/interior1.png" alt="Interior 1" />
+                      </div>
+                    </li>
+                    <li class="splide__slide">
+                      <div class="interior-option">
+                        <img src="/img/interior2.png" alt="Interior 2" />
+                      </div>
+                    </li>
+                    <li class="splide__slide">
+                      <div class="interior-option">
+                        <img src="/img/interior3.png" alt="Interior 3" />
+                      </div>
+                    </li>
+                    <li class="splide__slide">
+                      <div class="interior-option">
+                        <img src="/img/interior1.png" alt="Interior 1" />
+                      </div>
+                    </li>
+                    <li class="splide__slide">
+                      <div class="interior-option">
+                        <img src="/img/interior2.png" alt="Interior 2" />
+                      </div>
+                    </li>
+                    <li class="splide__slide">
+                      <div class="interior-option">
+                        <img src="/img/interior3.png" alt="Interior 3" />
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Optional Packages Block (static display) -->
+            <div class="config-section full-width">
+              <h3>Optional Packages</h3>
+              <div class="package-container">
+                <div class="package-option">
+                  <img src="/img/car1.png" alt="Package 1" />
+                </div>
+                <div class="package-option">
+                  <img src="/img/car2.png" alt="Package 2" />
+                </div>
+                <div class="package-option">
+                  <img src="/img/car3.png" alt="Package 3" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technical Specs TAB content -->
+        <div class="tab-content" id="technical-tab">
+          <div class="technical-specs">
+            <h2>Technical Specifications</h2>
+            <div class="specs-grid">
+              <div class="spec-item">
+                <h3>Power System</h3>
+                <p>
+                  Drive System: <span id="techDriveSystem"
+                    >Rear-wheel drive</span
+                  >
+                </p>
+                <p>
+                  Maximum Power: <span id="techPower">300 kW / 408 PS</span>
+                </p>
+                <p>Maximum Torque: <span id="techTorque">345 Nm</span></p>
+              </div>
+              <div class="spec-item">
+                <h3>Performance</h3>
+                <p>
+                  0-100 km/h: <span id="techAcceleration">5.4 seconds</span>
+                </p>
+                <p>Top Speed: <span id="techTopSpeed">230 km/h</span></p>
+              </div>
+              <div class="spec-item">
+                <h3>Battery</h3>
+                <p>Capacity: <span id="techBatteryCapacity">79.2 kWh</span></p>
+                <p>Charging Time (Fast Charge): 22.5 minutes (5% to 80%)</p>
+                <p>Maximum Range: <span id="techRange">431 km (WLTP)</span></p>
+              </div>
+              <div class="spec-item">
+                <h3>Dimensions</h3>
+                <p>Length: 4,963 mm</p>
+                <p>Width: 1,966 mm</p>
+                <p>Height: 1,378 mm</p>
+                <p>Wheelbase: 2,900 mm</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Model Comparison TAB content -->
+        <div class="tab-content" id="compare-tab">
+          <div class="compare-models">
+            <h2>Model Comparison</h2>
+            <div class="compare-table">
+              <table id="modelComparisonTable">
+                <thead>
+                  <tr id="comparisonTableHeader">
+                    <th>Parameters</th>
+                    <!-- 動態生成的表頭 -->
+                  </tr>
+                </thead>
+                <tbody id="comparisonTableBody">
+                  <!-- 動態生成的表格內容 -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 未來功能：更多車輛 TAB 內容 
+        <div class="tab-content" id="more-tab">
+          <div class="more-cars">
+            <h2>More Vehicles</h2>
+            <div class="cars-grid">
+              <div class="car-card">
+                <img src="/img/taycan.png" alt="Taycan" />
+                <h3>Taycan</h3>
+                <p>Starting from: NT$ 4,580,000</p>
+                <button class="car-config-btn">Configure Vehicle</button>
+              </div>
+              <div class="car-card">
+                <img src="/img/911.png" alt="911" />
+                <h3>911</h3>
+                <p>Starting from: NT$ 5,340,000</p>
+                <button class="car-config-btn">Configure Vehicle</button>
+              </div>
+              <div class="car-card">
+                <img src="/img/panamera.png" alt="Panamera" />
+                <h3>Panamera</h3>
+                <p>Starting from: NT$ 4,980,000</p>
+                <button class="car-config-btn">Configure Vehicle</button>
+              </div>
+              <div class="car-card">
+                <img src="/img/cayenne.png" alt="Cayenne" />
+                <h3>Cayenne</h3>
+                <p>Starting from: NT$ 3,880,000</p>
+                <button class="car-config-btn">Configure Vehicle</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+  /* Modal Styles */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    overflow-y: auto;
+
+    .modal-content {
+      background-color: #f5f5f5;
+      margin: 3% auto; // 調整為較小的上下邊距
+      width: 90%;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      position: relative;
+      height: 90vh; // 控制最大高度不超過視口的94%
+
+      @media (max-width: 768px) {
+        width: 95%;
+        margin: 2% auto;
+        height: 96vh;
+      }
+
+      // 確保modal-content下所有div元素都繼承父層寬度
+      & > div,
+      & div {
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .modal-body {
+        padding: 0;
+        display: flex;
+        height: 100%; // 設定為100%以填滿modal-content
+        min-height: auto; // 移除最小高度限制
+        width: 100%;
+
+        @media (max-width: 768px) {
+          flex-direction: column;
+        }
+
+        .config-sidebar {
+          width: 30%;
+          background: linear-gradient(to bottom, #282828, #eec976);
+          padding: 20px;
+          border-right: 1px solid #e0e0e0;
+          overflow-y: auto; // 內容過多時可滾動
+          position: relative; // 使內容區域相對於側邊欄定位
+
+          @media (max-width: 768px) {
+            width: 100%;
+            height: 50%;
+            min-height: 180px;
+            padding: 15px;
+            border-right: none;
+            border-bottom: 1px solid #e0e0e0;
+          }
+
+          @media (max-width: 450px) {
+            height: 25%;
+            min-height: 150px;
+            padding: 10px;
+          }
+
+          .car-info {
+            width: 100%;
+            h3 {
+              font-size: 1.8rem;
+              font-weight: 600;
+              margin-bottom: 15px;
+              color: #ffffff;
+
+              @media (max-width: 768px) {
+                font-size: 1.5rem;
+                margin-bottom: 10px;
+                text-align: center;
+              }
+
+              @media (max-width: 450px) {
+                font-size: 1.3rem;
+                margin-bottom: 8px;
+              }
+            }
+
+            img {
+              position: absolute;
+              bottom: 10%;
+              left: 50%;
+              transform: translateX(-50%);
+              width: 100%;
+              height: auto;
+              max-width: 750px;
+              display: block;
+              max-height: 180px; // 限制側邊欄圖片高度
+              object-fit: contain;
+
+              @media (max-width: 768px) {
+                bottom: 0%;
+                max-height: 120px;
+              }
+
+              @media (max-width: 450px) {
+                max-height: 100px;
+              }
+            }
+          }
+
+          /* 修改選單為 TAB 風格 */
+          .sidebar-tabs {
+            width: 100%;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            @media (max-width: 768px) {
+              margin-top: 10px;
+              flex-direction: row;
+              flex-wrap: wrap;
+              justify-content: center;
+              gap: 5px;
+            }
+
+            .tab-button {
+              width: 100%;
+              padding: 12px 15px;
+              background-color: rgba(255, 255, 255, 0.1);
+              color: #ffffff;
+              border: none;
+              border-radius: 6px;
+              font-size: 1.1rem;
+              font-weight: 500;
+              text-align: left;
+              cursor: pointer;
+              transition: all 0.3s ease;
+
+              @media (max-width: 768px) {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+                flex: 1 1 auto;
+                text-align: center;
+                min-width: 120px;
+              }
+
+              @media (max-width: 450px) {
+                padding: 6px 10px;
+                font-size: 0.8rem;
+                min-width: 100px;
+              }
+
+              &:hover {
+                background-color: rgba(255, 255, 255, 0.2);
+              }
+
+              &.active {
+                background-color: #ffce60;
+                color: #000;
+                font-weight: 600;
+              }
+            }
+          }
+        }
+
+        .config-content {
+          width: 70%;
+          padding: 15px; // 減少內邊距
+          position: relative;
+          overflow-y: auto; // 內容過多時可滾動
+          background-color: #fff;
+
+          @media (max-width: 768px) {
+            width: 100%;
+            height: 70%;
+            padding: 12px;
+          }
+
+          @media (max-width: 450px) {
+            height: 75%;
+            padding: 10px;
+          }
+
+          /* TAB 內容樣式 */
+          .tab-content {
+            width: 100%;
+            display: none;
+            padding: 10px;
+            animation: fadeIn 0.5s ease;
+
+            @media (max-width: 450px) {
+              padding: 5px;
+            }
+
+            &.active {
+              display: block;
+            }
+          }
+
+          /* 技術規格 TAB 的樣式 */
+          .technical-specs {
+            width: 100%;
+            h2 {
+              font-size: 1.8rem;
+              margin-bottom: 20px;
+              color: #333;
+              border-left: 5px solid #ffce60;
+              padding-left: 15px;
+
+              @media (max-width: 768px) {
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+              }
+
+              @media (max-width: 450px) {
+                font-size: 1.3rem;
+                margin-bottom: 12px;
+                padding-left: 10px;
+              }
+            }
+
+            .specs-grid {
+              width: 100%;
+              display: grid;
+              grid-template-columns: repeat(2, 1fr);
+              gap: 20px;
+
+              @media (max-width: 768px) {
+                gap: 15px;
+              }
+
+              @media (max-width: 450px) {
+                grid-template-columns: 1fr;
+                gap: 10px;
+              }
+
+              .spec-item {
+                width: 100%;
+                background-color: #f8f8f8;
+                border-radius: 8px;
+                padding: 15px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+                @media (max-width: 768px) {
+                  padding: 12px;
+                }
+
+                @media (max-width: 450px) {
+                  padding: 10px;
+                }
+
+                h3 {
+                  font-size: 1.2rem;
+                  margin-bottom: 10px;
+                  color: #333;
+                  border-bottom: 2px solid #ffce60;
+                  padding-bottom: 5px;
+
+                  @media (max-width: 768px) {
+                    font-size: 1.1rem;
+                  }
+
+                  @media (max-width: 450px) {
+                    font-size: 1rem;
+                    margin-bottom: 8px;
+                  }
+                }
+
+                p {
+                  margin: 5px 0;
+                  color: #555;
+                  font-size: 1rem;
+
+                  @media (max-width: 450px) {
+                    font-size: 0.9rem;
+                    margin: 4px 0;
+                  }
+                }
+              }
+            }
+          }
+
+          /* 車型比較 TAB 的樣式 */
+          .compare-models {
+            width: 100%;
+            h2 {
+              font-size: 1.8rem;
+              margin-bottom: 20px;
+              color: #333;
+              border-left: 5px solid #ffce60;
+              padding-left: 15px;
+
+              @media (max-width: 768px) {
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+              }
+
+              @media (max-width: 450px) {
+                font-size: 1.3rem;
+                margin-bottom: 12px;
+                padding-left: 10px;
+              }
+            }
+
+            .compare-table {
+              width: 100%;
+              overflow-x: auto;
+
+              @media (max-width: 450px) {
+                margin: 0 -5px; // 增加負邊距以利用更多空間
+              }
+
+              table {
+                width: 100%;
+                border-collapse: collapse;
+
+                th,
+                td {
+                  padding: 12px 15px;
+                  text-align: left;
+                  border-bottom: 1px solid #ddd;
+                }
+
+                th {
+                  background-color: #f2f2f2;
+                  color: #333;
+                  font-weight: 600;
+                }
+
+                tr:nth-child(even) {
+                  background-color: #f9f9f9;
+                }
+
+                tr:hover {
+                  background-color: #f1f1f1;
+                }
+              }
+            }
+          }
+
+          /* 未來功能：更多車輛 TAB 的樣式 
+          .more-cars {
+            h2 {
+              font-size: 1.8rem;
+              margin-bottom: 20px;
+              color: #333;
+              border-left: 5px solid #ffce60;
+              padding-left: 15px;
+            }
+
+            .cars-grid {
+              display: grid;
+              grid-template-columns: repeat(2, 1fr);
+              gap: 20px;
+
+              .car-card {
+                background-color: #f8f8f8;
+                border-radius: 10px;
+                padding: 15px;
+                box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+                text-align: center;
+                transition: transform 0.3s ease;
+
+                &:hover {
+                  transform: translateY(-5px);
+                  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+                }
+
+                img {
+                  width: 100%;
+                  height: auto;
+                  max-height: 140px;
+                  object-fit: contain;
+                  margin-bottom: 10px;
+                }
+
+                h3 {
+                  font-size: 1.4rem;
+                  margin-bottom: 8px;
+                  color: #333;
+                }
+
+                p {
+                  color: #666;
+                  margin-bottom: 15px;
+                }
+
+                .car-config-btn {
+                  background-color: #ffce60;
+                  color: #000;
+                  border: none;
+                  padding: 8px 15px;
+                  border-radius: 5px;
+                  font-weight: 600;
+                  cursor: pointer;
+                  transition: background-color 0.3s ease;
+
+                  &:hover {
+                    background-color: #e0b040;
+                  }
+                }
+              }
+            }
+          }
+          */
+
+          .config-grid {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 10px 8px; // 進一步減少格子間距
+            height: auto; // 確保高度自適應
+            overflow: visible; // 防止內容被裁切
+
+            @media (max-width: 768px) {
+              grid-gap: 8px 6px;
+            }
+
+            @media (max-width: 450px) {
+              grid-template-columns: 1fr;
+              grid-gap: 6px;
+            }
+
+            // 新增跨列元素的樣式
+            .full-width {
+              width: 80%;
+              margin: 0 auto; // 居中顯示
+              grid-column: span 2; // 跨越兩列
+
+              @media (max-width: 768px) {
+                width: 90%;
+              }
+
+              @media (max-width: 450px) {
+                width: 100%;
+                grid-column: span 1;
+              }
+            }
+
+            @media (max-width: 1200px) {
+              grid-template-columns: 1fr;
+
+              .full-width {
+                grid-column: span 1;
+              }
+            }
+          }
+        }
+      }
+
+      .config-section {
+        width: 100%;
+        margin-bottom: 10px; // 減少底部間距
+        padding: 5px 0; // 減少上下內邊距
+        box-sizing: border-box;
+        border: none; // 移除邊框
+        background-color: transparent; // 透明背景
+        overflow: hidden; // 防止內容溢出
+
+        h3 {
+          font-size: 0.9rem; // 縮小標題
+          margin-bottom: 5px; // 減少下方間距
+          color: #333;
+          font-weight: 600;
+          border-left: 4px solid #ffce60;
+          padding-left: 10px;
+        }
+
+        .slider-container {
+          position: relative;
+          width: 100%;
+          margin-bottom: 10px; // 減少底部間距
+          height: 160px; // 減少高度
+          display: flex;
+          align-items: center;
+
+          .slider-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.8);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 5;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+
+            &:hover {
+              background-color: #ffce60;
+            }
+
+            &.prev {
+              left: 10px;
+            }
+
+            &.next {
+              right: 10px;
+            }
+          }
+
+          .slider-wrapper {
+            display: flex;
+            transition: transform 0.5s ease;
+            padding: 10px 50px;
+            width: 100%;
+            justify-content: center;
+          }
+        }
+
+        .color-slider {
+          height: 120px;
+          justify-content: center;
+          gap: 20px;
+
+          .color-option {
+            width: 32px; // 縮小顏色選項
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid #ddd;
+            flex: 0 0 auto;
+            transition: all 0.3s;
+
+            &:hover,
+            &.selected {
+              transform: scale(1.3);
+              border-color: #ffce60;
+            }
+          }
+        }
+
+        .wheel-slider,
+        .seat-slider,
+        .interior-slider {
+          gap: 10px;
+          height: 120px; // 統一高度
+
+          .wheel-option,
+          .seat-option,
+          .interior-option {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-radius: 8px;
+            border: none; // 移除邊框
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 0 0 auto;
+            overflow: hidden; // 確保溢出部分被隱藏
+            background-color: #f5f5f5;
+
+            &:hover {
+              width: 112px;
+              height: 112px;
+              box-shadow: 0 0 8px rgba(255, 206, 96, 0.5);
+              background-color: #fffbeb;
+            }
+
+            &.selected {
+              width: 112px;
+              height: 112px;
+              border: 3px solid #ffce60;
+              box-shadow: 0 0 12px rgba(255, 206, 96, 0.7);
+              background-color: #fffbeb;
+            }
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover; // 保證圖片填滿容器
+              display: block;
+              aspect-ratio: 1 / 1; // 確保圖片保持正方形比例
+              border-radius: 8px; // 圓角邊框
+            }
+
+            p {
+              display: none; // 隱藏文字描述
+            }
+          }
+        }
+
+        // 跨列選項的樣式
+        &.full-width {
+          margin-top: 10px;
+          border-top: 1px solid #eee;
+          padding-top: 15px;
+
+          @media (max-width: 768px) {
+            display: none; // 在768px以下寬度的裝置上隱藏
+          }
+
+          .package-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 10px;
+
+            .package-option {
+              flex: 1;
+              min-width: 280px;
+              max-width: 360px;
+              height: 180px;
+              margin: 0 10px;
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 8px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .splide {
+    padding: 0.5rem 1rem; // 增加水平內邊距
+    margin-bottom: 0.5rem; // 減少底部邊距
+    height: 120px; // 固定所有slider高度為相同的值
+    overflow: visible; // 防止內容被裁切
+
+    &__track {
+      padding: 0; // 移除軌道內邊距
+    }
+
+    &__list {
+      display: flex;
+      justify-content: flex-start; // 修改為居中對齊
+      align-items: center; // 確保垂直居中
+      height: 100%; // 確保列表充滿整個軌道高度
+    }
+
+    &__slide {
+      width: auto; // 重置為自動寬度，避免干擾Splide庫的行為
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%; // 確保每個滑動項目都是相同高度
+      flex: 0 0 auto; // 修改為不自動擴展
+    }
+
+    &__arrow {
+      // 調整箭頭大小和位置
+      transform: translateY(-50%) scale(0.8) !important;
+      background-color: rgba(255, 255, 255, 0.8) !important;
+      border-radius: 50% !important;
+      width: 30px !important;
+      height: 30px !important;
+      opacity: 1 !important; // 确保箭头可见
+      cursor: pointer !important; // 确保鼠标指针样式
+      z-index: 10 !important; // 提高箭头层级
+
+      &--prev {
+        left: -8px !important;
+      }
+
+      &--next {
+        right: -8px !important;
+      }
+
+      &:hover {
+        background-color: #ffce60 !important; // 悬停效果
+      }
+    }
+
+    .wheel-option,
+    .seat-option,
+    .interior-option {
+      width: 100px;
+      height: 100px;
+      text-align: center;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      overflow: hidden;
+      background-color: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:hover {
+        width: 112px;
+        height: 112px;
+        box-shadow: 0 0 8px rgba(255, 206, 96, 0.5);
+        background-color: #fffbeb;
+      }
+
+      &.selected {
+        width: 112px;
+        height: 112px;
+        border: 3px solid #ffce60;
+        box-shadow: 0 0 12px rgba(255, 206, 96, 0.7);
+        background-color: #fffbeb;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      p {
+        display: none; // 隱藏文字描述
+      }
+    }
+
+    // 選配套件滑塊特定樣式
+    &.package-slider {
+      height: 140px; // 增加套件滑塊的高度
+
+      .splide__slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    .package-option {
+      width: 240px;
+      height: 140px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      overflow: hidden;
+      background-color: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        background-color: #fffbeb;
+      }
+
+      &.selected {
+        border: 3px solid #ffce60;
+        box-shadow: 0 0 12px rgba(255, 206, 96, 0.7);
+        background-color: #fffbeb;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-radius: 4px;
+      }
+    }
+  }
+
+  /* 全局樣式：確保動態生成的比較表格有正確的樣式 */
+  :global(#modelComparisonTable) {
+    width: 100%;
+    border-collapse: collapse;
+
+    :global(th),
+    :global(td) {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    :global(th) {
+      background-color: #f2f2f2;
+      color: #333;
+      font-weight: 600;
+    }
+
+    :global(tr:nth-child(even)) {
+      background-color: #f9f9f9;
+    }
+
+    :global(tr:hover) {
+      background-color: #f1f1f1;
+    }
+
+    /* 新增 RWD 450px 的樣式 */
+    @media (max-width: 450px) {
+      font-size: 0.85rem;
+
+      :global(th),
+      :global(td) {
+        padding: 8px 6px;
+        word-break: break-word;
+      }
+
+      :global(th:first-child),
+      :global(td:first-child) {
+        min-width: 90px;
+      }
+    }
+  }
+
+  /* 動畫效果 */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+</style>
+
+<script
+  src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"
+></script>
+<script>
+  // 燈窗功能
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('carConfigModal')
+    const sidebarCarTitle = document.getElementById('sidebarCarTitle')
+    const sidebarCarImage = document.getElementById('sidebarCarImage')
+    // 車型與對應圖片的映射
+    const carImages = {
+      Taycan: 'https://dc.udn.com/roy/test//img/taycan.png',
+      'Taycan 4': 'https://dc.udn.com/roy/test/img/taycan4.png',
+      'Taycan 4S': 'https://dc.udn.com/roy/test/img//taycan4s.png',
+      'Taycan GTS': 'https://dc.udn.com/roy/test/img//taycan-gts.png',
+      'Taycan Turbo': 'https://dc.udn.com/roy/test/img//taycan-turbo.png',
+      'Taycan Turbo S': 'https://dc.udn.com/roy/test/img/Taycan-Turbo-S.png',
+      'Taycan Turbo GT': 'https://dc.udn.com/roy/test/img/taycan-turbo-gt.png',
+      'Taycan Turbo GT with WP':
+        'https://dc.udn.com/roy/test/img/Taycan-Turbo-GT-with-Weissach-Package.png',
+    }
+
+    // 車型名稱規範化函數 - 解決大小寫不一致問題
+    function normalizeCarName(name) {
+      // 將常見縮寫統一為大寫
+      const normalized = name
+        .replace(/\bwp\b/gi, 'WP') // 將 "wp" 轉為 "WP"
+        .replace(/\bgts\b/gi, 'GTS')
+        .replace(/\bgt\b/gi, 'GT')
+        .trim()
+
+      // 檢查是否需要精確匹配
+      for (const key of Object.keys(carImages)) {
+        if (key.toLowerCase() === normalized.toLowerCase()) {
+          return key // 返回正確大小寫的鍵名
+        }
+      }
+      return normalized
+    }
+
+    // 車型技術規格資料
+    const carSpecs = {
+      Taycan: {
+        driveSystem: 'Rear-wheel drive',
+        power: '300 kW / 408 PS',
+        torque: '345 Nm',
+        acceleration: '5.4 seconds',
+        topSpeed: '230 km/h',
+        batteryCapacity: '79.2 kWh',
+        range: '431 km (WLTP)',
+      },
+      'Taycan 4': {
+        driveSystem: 'All-wheel drive',
+        power: '320 kW / 435 PS',
+        torque: '640 Nm',
+        acceleration: '5.1 seconds',
+        topSpeed: '230 km/h',
+        batteryCapacity: '79.2 kWh',
+        range: '450 km (WLTP)',
+      },
+      'Taycan 4S': {
+        driveSystem: 'All-wheel drive',
+        power: '390 kW / 530 PS',
+        torque: '640 Nm',
+        acceleration: '4.0 seconds',
+        topSpeed: '250 km/h',
+        batteryCapacity: '93.4 kWh',
+        range: '463 km (WLTP)',
+      },
+      'Taycan GTS': {
+        driveSystem: 'All-wheel drive',
+        power: '440 kW / 598 PS',
+        torque: '850 Nm',
+        acceleration: '3.7 seconds',
+        topSpeed: '250 km/h',
+        batteryCapacity: '93.4 kWh',
+        range: '504 km (WLTP)',
+      },
+      'Taycan Turbo': {
+        driveSystem: 'All-wheel drive',
+        power: '500 kW / 680 PS',
+        torque: '850 Nm',
+        acceleration: '3.2 seconds',
+        topSpeed: '260 km/h',
+        batteryCapacity: '93.4 kWh',
+        range: '450 km (WLTP)',
+      },
+      'Taycan Turbo S': {
+        driveSystem: 'All-wheel drive',
+        power: '560 kW / 761 PS',
+        torque: '1050 Nm',
+        acceleration: '2.8 seconds',
+        topSpeed: '260 km/h',
+        batteryCapacity: '93.4 kWh',
+        range: '440 km (WLTP)',
+      },
+      'Taycan Turbo GT': {
+        driveSystem: 'All-wheel drive',
+        power: '590 kW / 802 PS',
+        torque: '1050 Nm',
+        acceleration: '2.6 seconds',
+        topSpeed: '290 km/h',
+        batteryCapacity: '93.4 kWh',
+        range: '420 km (WLTP)',
+      },
+      'Taycan Turbo GT with WP': {
+        driveSystem: 'All-wheel drive',
+        power: '590 kW / 802 PS',
+        torque: '1050 Nm',
+        acceleration: '2.6 seconds',
+        topSpeed: '290 km/h',
+        batteryCapacity: '93.4 kWh',
+        range: '420 km (WLTP)',
+      },
+    }
+
+    // 建立車型名稱別名映射，解決大小寫不一致問題
+    const carNameAliases = {
+      'taycan turbo gt with wp': 'Taycan Turbo GT with WP',
+      'taycan turbo gt with weissach package': 'Taycan Turbo GT with WP',
+    }
+
+    // 獲取車型的規格資料 (帶容錯處理)
+    function getCarSpecs(carName) {
+      // 先規範化名稱
+      const normalizedName = normalizeCarName(carName)
+
+      // 直接查找
+      if (carSpecs[normalizedName]) {
+        return carSpecs[normalizedName]
+      }
+
+      // 嘗試使用別名映射
+      const lowerName = normalizedName.toLowerCase()
+      if (carNameAliases[lowerName] && carSpecs[carNameAliases[lowerName]]) {
+        return carSpecs[carNameAliases[lowerName]]
+      }
+
+      // 模糊匹配 - 檢查是否是名稱的一部分
+      for (const key of Object.keys(carSpecs)) {
+        if (
+          key.toLowerCase().includes(lowerName) ||
+          lowerName.includes(key.toLowerCase())
+        ) {
+          return carSpecs[key]
+        }
+      }
+
+      return null // 找不到匹配的規格資料
+    }
+
+    // 獲取車型的圖片 (帶容錯處理)
+    function getCarImage(carName) {
+      // 先規範化名稱
+      const normalizedName = normalizeCarName(carName)
+
+      // 直接查找
+      if (carImages[normalizedName]) {
+        return carImages[normalizedName]
+      }
+
+      // 嘗試使用別名映射
+      const lowerName = normalizedName.toLowerCase()
+      if (carNameAliases[lowerName] && carImages[carNameAliases[lowerName]]) {
+        return carImages[carNameAliases[lowerName]]
+      }
+
+      // 模糊匹配 - 檢查是否是名稱的一部分
+      for (const key of Object.keys(carImages)) {
+        if (
+          key.toLowerCase().includes(lowerName) ||
+          lowerName.includes(key.toLowerCase())
+        ) {
+          return carImages[key]
+        }
+      }
+
+      // 找不到匹配的圖片，使用默認圖片
+      return '/img/taycan.png'
+    }
+
+    // 獲取所有車型的名稱
+    const allCarModels = Object.keys(carSpecs)
+
+    // 接收來自 window 的自定義事件
+    window.addEventListener('openCarConfig', (event) => {
+      if (event.detail && event.detail.carName) {
+        openConfigModal(event.detail.carName)
+      }
+    })
+
+    // 開啟燈窗的函數
+    function openConfigModal(carName) {
+      if (!modal) return
+
+      // 規範化車型名稱
+      const normalizedCarName = normalizeCarName(carName)
+      console.log(
+        `嘗試開啟車型配置: ${carName} (規範化為: ${normalizedCarName})`
+      )
+
+      // 設置側邊欄車型名稱
+      sidebarCarTitle.textContent = normalizedCarName
+
+      // 獲取車輛圖片
+      const imagePath = getCarImage(normalizedCarName)
+      if (imagePath) {
+        sidebarCarImage.src = imagePath
+        sidebarCarImage.alt = normalizedCarName
+        sidebarCarImage.dataset.currentCar = normalizedCarName
+        console.log(`更新車輛圖片: ${normalizedCarName} - ${imagePath}`)
+      } else {
+        console.warn(`找不到車型 "${normalizedCarName}" 的圖片，使用默認圖片`)
+        sidebarCarImage.src = '/img/taycan.png'
+      }
+
+      // 更新技術規格資料
+      const specs = getCarSpecs(normalizedCarName)
+      if (specs) {
+        document.getElementById('techDriveSystem').textContent =
+          specs.driveSystem
+        document.getElementById('techPower').textContent = specs.power
+        document.getElementById('techTorque').textContent = specs.torque
+        document.getElementById('techAcceleration').textContent =
+          specs.acceleration
+        document.getElementById('techTopSpeed').textContent = specs.topSpeed
+        document.getElementById('techBatteryCapacity').textContent =
+          specs.batteryCapacity
+        document.getElementById('techRange').textContent = specs.range
+      } else {
+        console.warn(`找不到車型 "${normalizedCarName}" 的規格資料，使用默認值`)
+      }
+
+      // 更新比較表格
+      updateComparisonTable(normalizedCarName)
+
+      modal.style.display = 'block'
+      document.body.style.overflow = 'hidden' // 防止背景滾動
+
+      // 重置為默認 TAB (配置車輛)
+      activateTab('configure')
+
+      // 確保所有 Splide 輪播到第一張
+      Object.values(splideSliders).forEach((slider) => {
+        if (slider && typeof slider.go === 'function') {
+          slider.go(0)
+        }
+      })
+
+      // 彈窗顯示後重新初始化輪播，解決初始隱藏狀態下的問題
+      setTimeout(() => {
+        Object.values(splideSliders).forEach((slider) => {
+          if (slider && typeof slider.refresh === 'function') {
+            slider.refresh()
+            // 確保從第一張開始展示
+            slider.go(0)
+          }
+        })
+      }, 100)
+    }
+
+    // 點擊燈窗外部關閉
+    window.addEventListener('click', function (event) {
+      if (event.target === modal) {
+        modal.style.display = 'none'
+        document.body.style.overflow = 'auto'
+      }
+    })
+
+    // TAB 切換功能
+    const tabButtons = document.querySelectorAll('.tab-button')
+    const tabContents = document.querySelectorAll('.tab-content')
+
+    function activateTab(tabId) {
+      // 移除所有 tab 按鈕的 active 類別
+      tabButtons.forEach((button) => {
+        button.classList.remove('active')
+      })
+
+      // 移除所有 tab 內容的 active 類別
+      tabContents.forEach((content) => {
+        content.classList.remove('active')
+      })
+
+      // 激活所選 tab 的按鈕
+      const activeButton = document.querySelector(
+        `.tab-button[data-tab="${tabId}"]`
+      )
+      if (activeButton) {
+        activeButton.classList.add('active')
+      }
+
+      // 激活所選 tab 的內容
+      const activeContent = document.getElementById(`${tabId}-tab`)
+      if (activeContent) {
+        activeContent.classList.add('active')
+      }
+
+      // 如果是配置車輛 TAB，確保所有 Splide 滑塊刷新
+      if (tabId === 'configure') {
+        setTimeout(() => {
+          Object.values(splideSliders).forEach((slider) => {
+            if (slider && typeof slider.refresh === 'function') {
+              slider.refresh()
+            }
+          })
+        }, 50)
+      }
+
+      // 如果切換到比較頁籤，更新比較表格
+      if (tabId === 'compare') {
+        const currentCar = sidebarCarTitle.textContent
+        updateComparisonTable(currentCar)
+      }
+    }
+
+    // 綁定 tab 按鈕點擊事件
+    tabButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const tabId = button.getAttribute('data-tab')
+        activateTab(tabId)
+      })
+    })
+
+    // Initialize Splide
+    const commonOptions = {
+      type: 'slide',
+      perPage: 3, // 確保每次顯示恰好三個選項
+      perMove: 1,
+      gap: '1rem', // 增加間距以改善視覺效果
+      pagination: false,
+      arrows: true, // 啟用箭頭導航
+      drag: true,
+      height: '120px',
+      padding: {
+        left: '0', // 移除左右內邊距以確保顯示正好三個項目
+        right: '0',
+      },
+      focus: 'center', // 確保內容居中顯示
+      trimSpace: false, // 禁止修剪空間以確保顯示三個項目
+      autoWidth: false, // 禁用自動寬度
+      fixedWidth: false, // 禁用固定寬度
+      easing: 'cubic-bezier(0.25, 1, 0.5, 1)',
+      classes: {
+        arrows: 'splide__arrows',
+        arrow: 'splide__arrow',
+        prev: 'splide__arrow--prev',
+        next: 'splide__arrow--next',
+      },
+      start: 0, // 碮保從第一張開始
+      breakpoints: {
+        768: {
+          perPage: 2, // 平板上顯示2個
+        },
+        450: {
+          perPage: 1, // 手機上顯示1個
+        },
+      },
+    }
+
+    // 為顏色選擇器設置特殊選項
+    const colorOptions = {
+      ...commonOptions,
+      // 顏色選擇器保持相同的基本設置，但可能需要調整間距
+      gap: '2rem', // 增加顏色選項間的間距
+    }
+
+    // 初始化所有輪播 (移除套件滑塊初始化)
+    let splideSliders = {}
+
+    try {
+      // 確保DOM元素存在再進行初始化
+      if (document.querySelector('.color-slider')) {
+        splideSliders.color = new Splide('.color-slider', colorOptions)
+        splideSliders.color.mount()
+        splideSliders.color.go(0) // 碮保從第一張開始
+      }
+
+      if (document.querySelector('.wheel-slider')) {
+        splideSliders.wheel = new Splide('.wheel-slider', commonOptions)
+        splideSliders.wheel.mount()
+        splideSliders.wheel.go(0)
+      }
+
+      if (document.querySelector('.seat-slider')) {
+        splideSliders.seat = new Splide('.seat-slider', commonOptions)
+        splideSliders.seat.mount()
+        splideSliders.seat.go(0)
+      }
+
+      if (document.querySelector('.interior-slider')) {
+        splideSliders.interior = new Splide('.interior-slider', commonOptions)
+        splideSliders.interior.mount()
+        splideSliders.interior.go(0)
+      }
+
+      // 確保在視窗大小變化時重新計算佈局，但保持在當前選擇的位置
+      window.addEventListener('resize', () => {
+        Object.values(splideSliders).forEach((slider) => {
+          if (slider && typeof slider.refresh === 'function') {
+            const currentIndex = slider.index
+            slider.refresh()
+            slider.go(currentIndex) // 保持在當前選擇的項目
+          }
+        })
+      })
+
+      // 延遲檢查並修復箭頭樣式和事件
+      setTimeout(() => {
+        document.querySelectorAll('.splide__arrow').forEach((arrow) => {
+          // 確保箭頭可見並正確定位
+          arrow.style.opacity = '1'
+          arrow.style.zIndex = '10'
+
+          // 為箭頭添加額外點擊事件（用於除錯和確保功能正常）
+          arrow.addEventListener('click', function (e) {
+            console.log(
+              '箭頭被點擊',
+              this.classList.contains('splide__arrow--prev')
+                ? '上一個'
+                : '下一個'
+            )
+            e.stopPropagation() // 阻止事件冒泡
+          })
+        })
+      }, 200) // 延遲以確保DOM完全渲染
+    } catch (error) {
+      console.error('初始化Splide輪播時出錯:', error)
+    }
+
+    // 選項點擊事件處理
+    const handleOptionClick = (optionClass) => {
+      document.querySelectorAll(`.${optionClass}`).forEach((option) => {
+        option.addEventListener('click', function () {
+          document.querySelectorAll(`.${optionClass}`).forEach((opt) => {
+            opt.classList.remove('selected')
+          })
+          this.classList.add('selected')
+        })
+      })
+    }
+
+    // 綁定所有選項的點擊事件
+    ;[
+      'color-option',
+      'wheel-option',
+      'seat-option',
+      'interior-option',
+      'package-option',
+    ].forEach(handleOptionClick)
+
+    // 顏色選擇功能增強 - 重用現有點擊事件處理並新增控制台輸出
+    document.querySelectorAll('.color-option').forEach((colorOption) => {
+      colorOption.addEventListener('click', function () {
+        const colorName = this.dataset.color
+        const currentCar = sidebarCarImage.dataset.currentCar || 'Taycan'
+        console.log(`已選擇 ${currentCar} 的 ${colorName} 顏色`)
+      })
+    })
+
+    // 修改套件選擇功能
+    document.querySelectorAll('.package-option').forEach((packageOption) => {
+      packageOption.addEventListener('click', function () {
+        // 從 data 屬性獲取套件資訊而不是從子元素
+        const packageName = this.dataset.package || '未命名套件'
+        const packagePrice = this.dataset.price || '價格未定'
+        console.log(`已選擇套件: ${packageName} - ${packagePrice}`)
+
+        // 移除其他套件的選中狀態並設置當前套件為選中
+        document.querySelectorAll('.package-option').forEach((opt) => {
+          opt.classList.remove('selected')
+        })
+        this.classList.add('selected')
+      })
+    })
+
+    // 更多車輛 TAB 中的配置車輛按鈕事件 (未來功能)
+    /*
+    document.querySelectorAll('.car-config-btn').forEach((btn) => {
+      btn.addEventListener('click', function () {
+        const carName = this.parentNode.querySelector('h3').textContent
+        console.log(`要配置的車輛: ${carName}`)
+
+        // 切換到配置車輛 TAB
+        activateTab('configure')
+
+        // 如果需要，更新側邊欄的車型和圖片
+        if (carImages[carName]) {
+          sidebarCarTitle.textContent = carName
+          sidebarCarImage.src = carImages[carName]
+          sidebarCarImage.alt = carName
+          sidebarCarImage.dataset.currentCar = carName
+        }
+      })
+    })
+    */
+
+    // 更新比較表格
+    function updateComparisonTable(selectedCar) {
+      // 獲取表格元素
+      const tableHeader = document.getElementById('comparisonTableHeader')
+      const tableBody = document.getElementById('comparisonTableBody')
+
+      if (!tableHeader || !tableBody) {
+        console.error('比較表格元素不存在')
+        return
+      }
+
+      // 清空表格內容，只保留第一列（參數列）
+      tableHeader.innerHTML = '<th>Parameters</th>'
+      tableBody.innerHTML = ''
+
+      // 規範化所選車型
+      const normalizedSelectedCar = normalizeCarName(selectedCar)
+
+      // 根據螢幕寬度決定要比較的車型數量
+      const screenWidth = window.innerWidth
+      let carsToCompareCount = screenWidth <= 768 ? 2 : 4
+
+      // 額外針對 450px 以下的小螢幕增加判斷
+      if (screenWidth <= 450) {
+        carsToCompareCount = 1 // 在極小螢幕上只顯示選中的車型
+      }
+
+      // 選擇要比較的車型（根據螢幕寬度決定數量，包括當前選中的車型）
+      const carsToCompare = getComparisonCars(
+        normalizedSelectedCar,
+        carsToCompareCount
+      )
+
+      console.log(
+        `比較車型: ${carsToCompare.join(', ')} (螢幕寬度: ${screenWidth}px, 顯示: ${carsToCompareCount}台車)`
+      )
+
+      // 生成表頭
+      carsToCompare.forEach((car) => {
+        const th = document.createElement('th')
+        th.textContent = car
+        tableHeader.appendChild(th)
+      })
+
+      // 定義需要比較的參數和顯示的標籤
+      const comparisonParams = [
+        {key: 'driveSystem', label: 'Drive System'},
+        {key: 'power', label: 'Maximum Power'},
+        {key: 'torque', label: 'Maximum Torque'},
+        {key: 'acceleration', label: 'Acceleration (0-100 km/h)'},
+        {key: 'topSpeed', label: 'Top Speed'},
+        {key: 'batteryCapacity', label: 'Battery Capacity'},
+        {key: 'range', label: 'Maximum Range'},
+      ]
+
+      // 生成表格內容
+      comparisonParams.forEach((param) => {
+        const row = document.createElement('tr')
+
+        // 添加參數名稱
+        const paramCell = document.createElement('td')
+        paramCell.textContent = param.label
+        row.appendChild(paramCell)
+
+        // 為每個車型添加對應參數值
+        carsToCompare.forEach((car) => {
+          const valueCell = document.createElement('td')
+          // 獲取車型規格
+          const specs = getCarSpecs(car)
+
+          if (specs && specs[param.key]) {
+            valueCell.textContent = specs[param.key]
+          } else {
+            valueCell.textContent = 'N/A'
+            console.warn(`車型 ${car} 缺少參數: ${param.key}`)
+          }
+          row.appendChild(valueCell)
+        })
+
+        tableBody.appendChild(row)
+      })
+    }
+
+    // 選擇要比較的車型
+    function getComparisonCars(selectedCar, count) {
+      // 確保 count 為有效值
+      count = Math.max(2, Math.min(count || 4, allCarModels.length))
+
+      // 將選中的車型放在第一位
+      let result = [selectedCar]
+
+      // 按類別分組車型
+      const carGroups = {
+        Base: ['Taycan'],
+        'Entry AWD': ['Taycan 4', 'Taycan 4S'],
+        Performance: ['Taycan GTS', 'Taycan Turbo'],
+        'High Performance': [
+          'Taycan Turbo S',
+          'Taycan Turbo GT',
+          'Taycan Turbo GT with WP',
+        ],
+      }
+
+      // 確定所選車型屬於哪個組
+      let selectedGroup = null
+      for (const [group, cars] of Object.entries(carGroups)) {
+        if (cars.includes(selectedCar)) {
+          selectedGroup = group
+          break
+        }
+      }
+
+      // 從每個組選擇一個車型，優先選擇與所選車型不同組的
+      const groupsToChooseFrom = Object.keys(carGroups).filter(
+        (group) => group !== selectedGroup
+      )
+
+      // 智能選擇比較車型 - 先從不同組別選擇
+      for (const group of groupsToChooseFrom) {
+        if (result.length < count) {
+          // 從該組選擇一個代表性車型
+          const representativeCar = carGroups[group][0]
+          if (!result.includes(representativeCar)) {
+            result.push(representativeCar)
+          }
+        }
+      }
+
+      // 如果還需要添加車型以達到要求的數量，可以從相同組中選擇
+      if (selectedGroup && result.length < count) {
+        for (const car of carGroups[selectedGroup]) {
+          if (car !== selectedCar && result.length < count) {
+            result.push(car)
+          }
+        }
+      }
+
+      // 如果仍未達到要求的數量，從所有車型中選擇尚未選擇的車型
+      if (result.length < count) {
+        for (const car of allCarModels) {
+          if (!result.includes(car) && result.length < count) {
+            result.push(car)
+          }
+        }
+      }
+
+      // 確保不超過要求的數量
+      return result.slice(0, count)
+    }
+
+    // 添加視窗大小變化的事件監聽器，以便在視窗大小改變時更新表格
+    window.addEventListener('resize', () => {
+      // 使用 debounce 技術防止過於頻繁地更新
+      clearTimeout(window.resizeTimeout)
+      window.resizeTimeout = setTimeout(() => {
+        // 僅當比較標籤已啟用時才更新表格
+        const compareTab = document.getElementById('compare-tab')
+        if (compareTab && compareTab.classList.contains('active')) {
+          const currentCar = sidebarCarTitle.textContent
+          updateComparisonTable(currentCar)
+          console.log(`視窗大小已變更，更新比較表格 (當前車型: ${currentCar})`)
+        }
+      }, 250) // 等待 250ms 再觸發更新
+    })
+
+    // 測試函數 - 可在需要時呼叫以驗證映射和數據
+    function testCarData() {
+      console.log('=== 測試車型圖片和資料 ===')
+
+      // 檢查所有車型圖片
+      for (const car of allCarModels) {
+        if (carImages[car]) {
+          console.log(`${car} - 圖片: ${carImages[car]}`)
+        } else {
+          console.error(`${car} - 圖片缺失`)
+        }
+      }
+
+      // 檢查所有車型規格資料
+      for (const car of allCarModels) {
+        if (carSpecs[car]) {
+          console.log(`${car} - 規格資料完整`)
+        } else {
+          console.error(`${car} - 規格資料缺失`)
+        }
+      }
+
+      // 測試比較功能
+      console.log('比較車型示例:')
+      for (const car of ['Taycan', 'Taycan Turbo GT with WP']) {
+        // 測試不同數量的比較車型
+        ;[2, 3, 4].forEach((count) => {
+          const comparisonCars = getComparisonCars(car, count)
+          console.log(
+            `${car} 的比較車型 (${count}台): ${comparisonCars.join(', ')}`
+          )
+        })
+      }
+    }
+
+    // 執行測試 (可以在控制台觀察結果)
+    testCarData()
+  })
+</script>

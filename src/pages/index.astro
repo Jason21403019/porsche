@@ -7,6 +7,8 @@ import Carselect from '../components/Carselect.astro'
 import HorizontalScroll from '../components/HorizontalScroll.astro'
 import Map from '../components/Map.astro'
 import Footer from '../components/Footer.astro'
+import CarConfigModal from '../components/CarConfigModal.astro'
+
 const sections = [
   {
     id: 'model-911',
@@ -21,7 +23,7 @@ const sections = [
       '-800V electrical architecture.',
       '-Supports fast charging up to 270 kW.',
     ],
-    imageSrc: '/public/img/taycan4.png',
+    imageSrc: '/img/taycan4.png',
   },
   {
     id: 'model-taycan',
@@ -36,7 +38,7 @@ const sections = [
       '- Based on the PPE platform,',
       'improve battery managementand battery life.',
     ],
-    imageSrc: '/public/img/2024scar.png',
+    imageSrc: '/img/2024scar.png',
   },
   {
     id: 'model-cayenne',
@@ -50,7 +52,7 @@ const sections = [
     description: [
       '- Adopt a new lightweight battery design to optimize control performance.',
     ],
-    imageSrc: '/public/img/2025scar.png',
+    imageSrc: '/img/2025scar.png',
   },
   {
     id: 'model-macan',
@@ -67,13 +69,16 @@ const sections = [
     description: [
       '- Using solid-state battery technology may further improve charging efficiency and energy density.',
     ],
-    imageSrc: '/public/img/futurecar.png',
+    imageSrc: '/img/futurecar.png',
   },
 ]
 ---
 
 <Layout>
-  <Banner src="/public/porsche3.json" className="w-64 h-64" />
+  <Banner
+    src="https://dc.udn.com/roy/test/porsche3.json"
+    className="w-64 h-64"
+  />
   <Info />
   <Carselect />
   <HorizontalScroll
@@ -85,4 +90,5 @@ const sections = [
   <Bendo />
   <Map />
   <Footer />
+  <CarConfigModal />
 </Layout>

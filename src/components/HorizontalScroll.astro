@@ -32,7 +32,7 @@ const {
     title1: 'Energy',
     title2: 'Track',
     description: 'the future is limitless',
-    image: '../../public/img/historybg.jpg',
+    image: 'https://dc.udn.com/roy/test/img/historybg.jpg',
   },
   sections = [],
 } = Astro.props
@@ -71,7 +71,8 @@ const {
                 : section.backgroundColor
                   ? `background-color: ${section.backgroundColor}`
                   : ''
-            }>
+            }
+          >
             <div class="year__column">
               <div class="year__container">
                 {section.years &&
@@ -81,7 +82,8 @@ const {
                         year === section.activeYear
                           ? 'year__display--active'
                           : ''
-                      }`}>
+                      }`}
+                    >
                       {year}
                     </div>
                   ))}
@@ -270,8 +272,8 @@ const {
 
 <script>
   // 直接導入已安裝的 GSAP 和 ScrollTrigger
-  import { gsap } from 'gsap'
-  import { ScrollTrigger } from 'gsap/ScrollTrigger'
+  import {gsap} from 'gsap'
+  import {ScrollTrigger} from 'gsap/ScrollTrigger'
 
   // 註冊插件
   gsap.registerPlugin(ScrollTrigger)

@@ -29,11 +29,11 @@ import Modal from './Modal.astro'
     display: flex;
     justify-content: center;
     margin-top: -5.3%;
-    background-image: url('/public/img/section1_bg.png');
+    background-image: url('/img/section1_bg.png');
     background-size: cover;
     background-position: center 0%;
     background-repeat: no-repeat;
-    z-index: 2;
+    z-index: 2; // 恢復為原始的 z-index 值
     &__container {
       max-width: 1200px;
       width: 100%;
@@ -81,7 +81,7 @@ import Modal from './Modal.astro'
           font-size: 32px;
           font-weight: 100;
           &::after {
-            content: url('/public/img/circleArrow.png');
+            content: url('/img/circleArrow.png');
             margin-left: 8px;
             vertical-align: -6px;
           }
@@ -105,6 +105,113 @@ import Modal from './Modal.astro'
         z-index: 3;
         // border: 1px solid green;
       }
+    }
+  }
+
+  // 只在 768px 以下修改 z-index
+  @media screen and (max-width: 768px) {
+    .info {
+      z-index: 1; // 只在小螢幕尺寸下降低 z-index
+
+      .files_container {
+        max-width: 90%;
+        height: 350px;
+
+        .file_item1,
+        .file_item2,
+        .file_item3 {
+          height: 100px;
+          padding: 10px;
+
+          h2 {
+            font-size: 18px;
+            text-align: center;
+            line-height: 1.3;
+
+            &::after {
+              content: '';
+              background-image: url('/img/circleArrow.png');
+              background-size: 70%;
+              background-repeat: no-repeat;
+              background-position: center;
+              display: inline-block;
+              width: 20px;
+              height: 20px;
+              margin-left: 5px;
+              vertical-align: -3px;
+            }
+          }
+        }
+
+        .file_item1 {
+          top: 0;
+        }
+
+        .file_item2 {
+          top: 33%;
+        }
+
+        .file_item3 {
+          height: 110px;
+          top: 63%;
+        }
+      }
+    }
+  }
+
+  // 新增 450px 以下的樣式規則
+  @media screen and (max-width: 450px) {
+    .info {
+      margin-top: -7.5%;
+      &__container {
+        width: 90%;
+        padding: 0;
+        margin-top: 60px;
+      }
+
+      &__title {
+        font-size: 28px;
+        margin-bottom: 30px;
+      }
+
+      .files_container {
+        max-width: 100%;
+        width: 100%;
+        height: 320px;
+        margin: 0 auto;
+
+        .file_item1,
+        .file_item2,
+        .file_item3 {
+          width: 95%;
+          height: 100px;
+
+          h2 {
+            font-size: 14px;
+            width: 90%;
+            padding: 0;
+          }
+        }
+
+        .file_item2 {
+          top: 35%;
+        }
+
+        .file_item3 {
+          height: 90px;
+          top: 65%;
+        }
+      }
+    }
+  }
+  @media (max-width:375px) {
+    .info{
+      margin-top: -9%;
+    }
+  }
+  @media (max-width:320px) {
+    .info{
+      margin-top: -11%;
     }
   }
 </style>
