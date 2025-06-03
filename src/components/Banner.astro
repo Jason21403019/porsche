@@ -7,8 +7,12 @@ const {src, className = 'w-32 h-32'} = Astro.props
 <div id="lottie-animation" class={className} data-src={src}>
   <div class="mask"></div>
   <Navbar />
-  <h1>Shift To GREEN ENERGY</h1>
-  <p>Porsche is on the right path towards a sustainable future</p>
+  <h1 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1500">
+    Shift To GREEN ENERGY
+  </h1>
+  <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1700">
+    Porsche is on the right path towards a sustainable future
+  </p>
 </div>
 
 <script>

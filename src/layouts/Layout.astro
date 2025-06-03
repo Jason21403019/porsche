@@ -1,5 +1,7 @@
 ---
 import '../styles/main.scss'
+import 'aos/dist/aos.css' // CSS
+import AOS from 'aos' // JavaScript
 ---
 
 <!doctype html>
@@ -19,14 +21,37 @@ import '../styles/main.scss'
   </head>
   <body>
     <slot />
+    <script>
+      import AOS from 'aos'
+
+      document.addEventListener('DOMContentLoaded', function () {
+        AOS.init({
+          duration: 800,
+          offset: 100,
+          once: true,
+          disable: 'mobile',
+        })
+      })
+    </script>
   </body>
 </html>
+<script is:inline>
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault()
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth',
+      })
+    })
+  })
+</script>
 
-<style lang="scss">
+<style lang="scss" global>
   body {
     font-family: 'Century Gothic', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
   }
 </style>

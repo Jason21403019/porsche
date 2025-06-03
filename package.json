@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@splidejs/splide": "^4.1.4",
+    "aos": "^2.3.4",
     "astro": "^5.2.5",
     "astro-relative-links": "^0.4.2",
     "gsap": "^3.12.7",

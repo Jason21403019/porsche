@@ -12,14 +12,23 @@ const cars = [
     },
   },
 ]
+let isModelTaycan = true
 ---
 
 <div class="wrapper">
   <section class="section animation-section">
     <div class="content-container">
-      <ModelSwitch currentModel="Taycan" />
-      <h1 class="title">Model Selection</h1>
-      <img src="/img/redcar.png" alt="Car" class="car-image" />
+      <div
+        class="car-select"
+        style={`background-color: ${isModelTaycan ? '#313131' : '#8c8c8c'}`}
+      >
+        <ModelSwitch
+          currentModel={isModelTaycan ? 'Taycan' : 'Macan'}
+          client:load
+        />
+        <h1 class="title" id="model-selection">Model Selection</h1>
+        <img src="/img/redcar.png" alt="Car" class="car-image" />
+      </div>
 
       <img src="/img/graycan.png" alt="Platform" class="platform-image" />
       <div class="circle circle-left">
@@ -50,7 +59,7 @@ const cars = [
 <script>
   import gsap from 'gsap'
   import ScrollTrigger from 'gsap/ScrollTrigger'
-  import {MotionPathPlugin} from 'gsap/MotionPathPlugin'
+  import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
 
   gsap.registerPlugin(ScrollTrigger, MotionPathPlugin)
 
@@ -140,10 +149,10 @@ const cars = [
         gsap.to('.circle .number1', {
           duration: 2,
           innerHTML: leftTarget,
-          snap: {innerHTML: 1},
+          snap: { innerHTML: 1 },
           ease: 'power1.inOut',
         })
-        let count = {val: 0}
+        let count = { val: 0 }
         gsap.to(count, {
           val: rightTarget,
           duration: 2,
@@ -216,6 +225,18 @@ const cars = [
       },
       '-=0.5'
     )
+
+  const modelSwitch = document.querySelector('ModelSwitch')
+  const carSelect = document.querySelector('.car-select')
+
+  modelSwitch?.addEventListener('click', () => {
+    const currentModel = modelSwitch.getAttribute('currentModel')
+    const newModel = currentModel === 'Taycan' ? 'Macan' : 'Taycan'
+    const newBgColor = currentModel === 'Taycan' ? '#8c8c8c' : '#313131'
+
+    modelSwitch.setAttribute('currentModel', newModel)
+    carSelect.style.backgroundColor = newBgColor
+  })
 </script>
 
 <style lang="scss" scoped>
@@ -255,6 +276,10 @@ const cars = [
       left: 68px;
       opacity: 0; /* 初始隱藏 */
     }
+  }
+
+  .car-select {
+    transition: background-color 0.3s ease;
   }
 
   .car-image {

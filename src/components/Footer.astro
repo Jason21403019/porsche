@@ -4,13 +4,46 @@
 
 <footer class="footer">
   <div class="footer-container">
-    <h1>Keep abreast<br />of the latest brand news</h1>
-    <p>Office@email.com</p>
+    <h1
+      data-aos="fade-up"
+      data-aos-duration="1000"
+      data-aos-delay="1200"
+      id="footer"
+    >
+      Keep abreast<br />of the latest brand news
+    </h1>
+    <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1300">
+      Office@email.com
+    </p>
     <div class="footer-icon">
-      <img src="/img/ig.svg" alt="ig" />
-      <img src="/img/fb.svg" alt="fb" />
-      <img src="/img/yt.svg" alt="yt" />
-      <img src="/img/lk.svg" alt="lk" />
+      <a
+        href="https://www.instagram.com/porsche/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img src="/img/ig.svg" alt="ig" />
+      </a>
+      <a
+        href="https://www.facebook.com/porsche"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img src="/img/fb.svg" alt="fb" />
+      </a>
+      <a
+        href="https://www.youtube.com/user/Porsche"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img src="/img/yt.svg" alt="yt" />
+      </a>
+      <a
+        href="https://www.linkedin.com/company/porsche-ag"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img src="/img/lk.svg" alt="lk" />
+      </a>
     </div>
   </div>
   <img class="footerimg" src="/img/footerimg.png" alt="footerimg" />
@@ -19,8 +52,26 @@
 <style lang="scss">
   .footer {
     position: relative;
-    background: linear-gradient(to right, #000000, #676767, #ffce60);
+    background: linear-gradient(
+      to right,
+      #000000 0%,
+      #676767 33.33%,
+      #ffce60 66.66%,
+      #000000 100%
+    );
+    background-size: 700% 100%;
+    animation: gradientShift 60s linear infinite;
     overflow: hidden;
+
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+      100% {
+        background-position: -600% 50%;
+      }
+    }
+
     &-container {
       display: grid;
       grid-template-columns:

@@ -47,10 +47,23 @@ const {
           <img src={introSection.image} alt="Intro" />
         </div>
         <div class="intro__content">
-          <h1>{introSection.title}</h1>
-          <h1>{introSection.title1}</h1>
-          <h1>{introSection.title2}</h1>
-          <p>{introSection.description}</p>
+          <h1
+            data-aos="fade-up"
+            data-aos-duration="500"
+            data-aos-delay="1000"
+            id="green-energy"
+          >
+            {introSection.title}
+          </h1>
+          <h1 data-aos="fade-up" data-aos-duration="500" data-aos-delay="1100">
+            {introSection.title1}
+          </h1>
+          <h1 data-aos="fade-up" data-aos-duration="500" data-aos-delay="1200">
+            {introSection.title2}
+          </h1>
+          <p data-aos="fade-up" data-aos-duration="500" data-aos-delay="1300">
+            {introSection.description}
+          </p>
         </div>
       </div>
 
@@ -175,13 +188,13 @@ const {
         color: #fff;
         font-size: 80px;
         padding-left: 20rem;
-        margin: 5rem 0;
+        margin: 2rem 0;
       }
 
       p {
         color: #fff;
         font-size: 36px;
-        padding-left: 20rem;
+        padding-left: 17rem;
       }
     }
 
@@ -204,23 +217,22 @@ const {
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 2rem;
     }
 
     &__container {
       display: flex;
       flex-direction: column;
-      gap: 10rem;
+      gap: 7.5rem;
     }
 
     &__display {
-      font-size: 2.5rem;
+      font-size: 2rem;
       font-weight: bold;
       transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
       opacity: 0.5;
 
       &--active {
-        font-size: 6rem;
+        font-size: 4rem;
         opacity: 1;
         color: #fff;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
@@ -230,23 +242,24 @@ const {
 
   .content {
     &__column {
-      padding: 2rem;
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      align-items: center;
+      gap: 1rem;
       .title-container {
         display: flex;
         flex-direction: column;
+        align-items: center;
         gap: 1rem;
         h2 {
           font-size: 2.5rem;
-          margin-bottom: 1rem;
         }
       }
 
       .description-container {
         display: flex;
         flex-direction: column;
+        align-items: center;
         gap: 1rem;
 
         p {
@@ -262,7 +275,7 @@ const {
       overflow: hidden;
 
       img {
-        width: 80%;
+        width: 100%;
         height: 100%;
         object-fit: contain;
       }
@@ -272,8 +285,8 @@ const {
 
 <script>
   // 直接導入已安裝的 GSAP 和 ScrollTrigger
-  import {gsap} from 'gsap'
-  import {ScrollTrigger} from 'gsap/ScrollTrigger'
+  import { gsap } from 'gsap'
+  import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
   // 註冊插件
   gsap.registerPlugin(ScrollTrigger)
@@ -316,28 +329,23 @@ const {
             const yearDisplays = section.querySelectorAll('.year__display')
             if (yearDisplays.length === 0) return
 
-            // 計算每個 section 的位置
-            const sectionStart = (index - 1) / (totalSections - 1)
-            const sectionEnd = index / (totalSections - 1)
+            // 修改計算邏輯，讓每個 section 有獨立的觸發範圍
+            const sectionStart = index / (totalSections - 1)
+            const sectionEnd = (index + 1) / (totalSections - 1)
 
-            // 判斷當前 section 是否在視圖中（考慮滾動方向）
-            const isInView = progress >= sectionStart && progress < sectionEnd
+            // 調整判斷邏輯
+            const isInView = progress >= sectionStart && progress <= sectionEnd
 
             if (isInView) {
-              // 找到該 section 的 activeYear
               const activeYear = section.dataset.year
-
               yearDisplays.forEach((display) => {
-                // 判斷是否為當前年份
                 if (display.textContent.trim() === activeYear) {
-                  // 無論滾動方向如何，只要在視圖中就添加 active 類
                   display.classList.add('year__display--active')
                 } else {
                   display.classList.remove('year__display--active')
                 }
               })
             } else {
-              // 如果不在視圖中，移除所有激活狀態
               yearDisplays.forEach((display) => {
                 display.classList.remove('year__display--active')
               })
