@@ -156,17 +156,9 @@
       height: 40px;
       border: 2px solid white;
       top: 65%;
-      transition: all 0.3s ease;
 
       svg {
         fill: #fff;
-        transition: fill 0.3s ease;
-      }
-
-      &:hover {
-        svg {
-          fill: #000;
-        }
       }
     }
 
@@ -180,8 +172,7 @@
         opacity: 1;
       }
       .content-wrapper {
-        background: linear-gradient(to bottom, #737373, #d9d9d9);
-        box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        background: rgba(255, 255, 255, 0.9);
         border-radius: 15px;
         padding: 10px;
         padding-top: 32px;
@@ -262,7 +253,7 @@
 
       .price {
         font-size: 18px;
-        color: #666;
+        color: #000;
         margin: 0;
         text-align: center;
       }
@@ -287,6 +278,18 @@
           box-shadow: 0 0 15px rgba(255, 206, 96, 0.25);
           height: 200px;
           padding-bottom: 25px;
+          &::after {
+            content: '';
+            position: absolute;
+            inset: -10px;
+            background: radial-gradient(
+              circle,
+              rgba(255, 206, 96, 0.25) 0%,
+              transparent 70%
+            );
+            z-index: -1;
+            pointer-events: none;
+          }
 
           @media (max-width: 768px) {
             height: 190px;
@@ -578,28 +581,28 @@
       waitForTransition: true,
       resetProgress: false,
       updateOnMove: true,
-      padding: {left: '10%', right: '10%'},
+      padding: { left: '10%', right: '10%' },
       breakpoints: {
         1280: {
           perPage: 3,
-          padding: {left: '5%', right: '5%'},
+          padding: { left: '5%', right: '5%' },
           gap: '0.8rem',
         },
         992: {
           perPage: 2,
-          padding: {left: '3%', right: '3%'},
+          padding: { left: '3%', right: '3%' },
           gap: '0.7rem',
         },
         768: {
           perPage: 1.5,
           focus: 'center',
-          padding: {left: '2%', right: '2%'},
+          padding: { left: '2%', right: '2%' },
           gap: '0.5rem',
         },
         480: {
           perPage: 1,
           focus: 'center',
-          padding: {left: '10%', right: '10%'},
+          padding: { left: '10%', right: '10%' },
           gap: '0.3rem',
         },
       },
@@ -643,7 +646,7 @@
           // 觸發配置事件
           window.dispatchEvent(
             new CustomEvent('openCarConfig', {
-              detail: {carName: carName},
+              detail: { carName: carName },
             })
           )
         }
