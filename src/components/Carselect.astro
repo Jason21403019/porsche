@@ -59,7 +59,7 @@ let isModelTaycan = true
 <script>
   import gsap from 'gsap'
   import ScrollTrigger from 'gsap/ScrollTrigger'
-  import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
+  import {MotionPathPlugin} from 'gsap/MotionPathPlugin'
 
   gsap.registerPlugin(ScrollTrigger, MotionPathPlugin)
 
@@ -160,125 +160,131 @@ let isModelTaycan = true
       },
     })
 
-  timeline
+    timeline
 
-    .to('.car-image', {
-      y: 0,
-      opacity: 1,
-      scale: 1,
-      duration: 1,
-    })
-    .to(
-      ['.platform-image', '.carousel-container'],
-      {
+      .to('.car-image', {
         y: 0,
         opacity: 1,
-        duration: 1.5, // 增加動畫時間以適應更長的距離
-        ease: 'power2.out', // 添加緩動效果使動畫更自然
-      },
-      '-=0.5'
-    )
-    .to('.car-image', {
-      scale: 1.2,
-      duration: 1,
-    })
-    .to(['.circle-left', '.circle-right'], {
-      opacity: 1,
-      scale: 1,
-      duration: 1,
-      ease: 'power1.out',
-      onComplete: () => {
-        gsap.to('.circle .number1', {
-          duration: 2,
-          innerHTML: leftTarget,
-          snap: { innerHTML: 1 },
-          ease: 'power1.inOut',
-        })
-        let count = { val: 0 }
-        gsap.to(count, {
-          val: rightTarget,
-          duration: 2,
-          ease: 'power1.inOut',
-          onUpdate: function () {
-            ;(
-              document.querySelector('.circle .number2') as HTMLElement
-            ).innerText = count.val.toFixed(1)
+        scale: 1,
+        duration: 1,
+      })
+      .to(
+        ['.platform-image', '.carousel-container'],
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1.5, // 增加動畫時間以適應更長的距離
+          ease: 'power2.out', // 添加緩動效果使動畫更自然
+        },
+        '-=0.5'
+      )
+      .to('.car-image', {
+        scale: 1.2,
+        duration: 1,
+      })
+      .to(['.circle-left', '.circle-right'], {
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        ease: 'power1.out',
+        onComplete: () => {
+          gsap.to('.circle .number1', {
+            duration: 2,
+            innerHTML: leftTarget,
+            snap: {innerHTML: 1},
+            ease: 'power1.inOut',
+          })
+          let count = {val: 0}
+          gsap.to(count, {
+            val: rightTarget,
+            duration: 2,
+            ease: 'power1.inOut',
+            onUpdate: function () {
+              ;(
+                document.querySelector('.circle .number2') as HTMLElement
+              ).innerText = count.val.toFixed(1)
+            },
+          })
+        },
+      })
+      .to(
+        '.circle-left',
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 1,
+          motionPath: {
+            path: '#leftPath',
+            align: '#leftPath',
+            autoRotate: false,
+            alignOrigin: [0.5, 0.5],
           },
-        })
-      },
-    })
-    .to(
-      '.circle-left',
-      {
-        opacity: 1,
-        scale: 1,
-        duration: 1,
-        motionPath: {
-          path: '#leftPath',
-          align: '#leftPath',
-          autoRotate: false,
-          alignOrigin: [0.5, 0.5],
+          ease: 'power1.inOut',
         },
-        ease: 'power1.inOut',
-      },
-      '-=0.5'
-    )
-    .to(
-      '.circle-right',
-      {
-        opacity: 1,
-        scale: 1,
-        duration: 1,
-        motionPath: {
-          path: '#rightPath',
-          align: '#rightPath',
-          autoRotate: false,
-          alignOrigin: [0.5, 0.5],
+        '-=0.5'
+      )
+      .to(
+        '.circle-right',
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 1,
+          motionPath: {
+            path: '#rightPath',
+            align: '#rightPath',
+            autoRotate: false,
+            alignOrigin: [0.5, 0.5],
+          },
+          ease: 'power1.inOut',
         },
-        ease: 'power1.inOut',
-      },
-      '<'
-    )
-    // 先呈現 ModelSwitch 和標題，隨著滾動逐漸出現
-    .to('.title', {
-      opacity: 1,
-      y: 0,
-      duration: 0.5,
-      ease: 'power1.out',
-    })
-    .to(
-      '.model-switch',
-      {
+        '<'
+      )
+      // 先呈現 ModelSwitch 和標題，隨著滾動逐漸出現
+      .to('.title', {
         opacity: 1,
         y: 0,
         duration: 0.5,
         ease: 'power1.out',
-      },
-      '<'
-    )
-    .to(
-      '.carousel-container',
-      {
-        bottom: '-4.2071%',
-        opacity: 1,
-        transform: 'translateY(0)',
-        duration: 1,
-        ease: 'power2.out',
-      },
-      '-=0.5'
-    )
+      })
+      .to(
+        '.model-switch',
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: 'power1.out',
+        },
+        '<'
+      )
+      .to(
+        '.carousel-container',
+        {
+          bottom: '-4.2071%',
+          opacity: 1,
+          transform: 'translateY(0)',
+          duration: 1,
+          ease: 'power2.out',
+        },
+        '-=0.5'
+      )
 
-  const modelSwitch = document.querySelector('ModelSwitch')
-  const carSelect = document.querySelector('.car-select')
+    const modelSwitch = document.querySelector('ModelSwitch')
+    const carSelect = document.querySelector('.car-select') as HTMLElement
 
-  modelSwitch?.addEventListener('click', () => {
-    const currentModel = modelSwitch.getAttribute('currentModel')
-    const newModel = currentModel === 'Taycan' ? 'Macan' : 'Taycan'
-    const newBgColor = currentModel === 'Taycan' ? '#8c8c8c' : '#313131'
+    modelSwitch?.addEventListener('click', () => {
+      const currentModel = modelSwitch.getAttribute('currentModel')
+      const newModel = currentModel === 'Taycan' ? 'Macan' : 'Taycan'
+      const newBgColor = currentModel === 'Taycan' ? '#8c8c8c' : '#313131'
 
-    modelSwitch.setAttribute('currentModel', newModel)
-    carSelect.style.backgroundColor = newBgColor
-  })
+      modelSwitch.setAttribute('currentModel', newModel)
+      if (carSelect) {
+        carSelect.style.backgroundColor = newBgColor
+      }
+    })
+  }
+
+  // 初始化動畫
+  initializeAnimations()
 </script>
 
 <style lang="scss" scoped>
@@ -297,7 +303,7 @@ let isModelTaycan = true
 
     &.animation-section {
       // border: 1px solid red;
-      background-color: #8C8C8C;
+      background-color: #8c8c8c;
       overflow: hidden;
     }
   }
@@ -450,7 +456,6 @@ let isModelTaycan = true
     opacity: 0;
     transform: translateY(100px);
   }
-
   //這裡加了動畫圓形位置會跑掉
   // @keyframes spin {
   //   from {
@@ -458,6 +463,6 @@ let isModelTaycan = true
   //   }
   //   to {
   //     transform: rotate(359deg);
-  //   }/img/taycan-gts.png
+  //   }
   // }
 </style>
