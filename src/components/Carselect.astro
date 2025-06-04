@@ -57,165 +57,212 @@ const cars = [
   const leftTarget = 250
   const rightTarget = 3.3
 
-  // 初始設置，隱藏 ModelSwitch 和標題
-  gsap.set('.title', {
-    opacity: 0,
-    y: -50,
-  })
+  // 圖片載入確認函數
+  function checkImageLoaded(selector) {
+    return new Promise((resolve, reject) => {
+      const img = document.querySelector(selector)
+      if (!img) {
+        reject(new Error(`Image element ${selector} not found`))
+        return
+      }
 
-  gsap.set('.model-switch', {
-    opacity: 0,
-    y: -50,
-  })
+      if (img.complete && img.naturalHeight !== 0) {
+        resolve(img)
+      } else {
+        img.onload = () => resolve(img)
+        img.onerror = () => {
+          console.warn(`Failed to load image: ${img.src}`)
+          resolve(img)
+        }
 
-  gsap.set('.car-image', {
-    y: -500,
-    opacity: 0.5,
-    scale: 0,
-  })
+        // 超時處理
+        setTimeout(() => {
+          if (!img.complete) {
+            console.warn(`Image loading timeout: ${img.src}`)
+            resolve(img)
+          }
+        }, 5000)
+      }
+    })
+  }
 
-  // 修改平台圖片的初始位置，確保完全在螢幕下方
-  gsap.set('.platform-image', {
-    y: '100vh', // 使用視窗高度確保在螢幕下方
-    opacity: 0,
-  })
+  // 等待所有圖片載入完成
+  async function initializeAnimations() {
+    try {
+      await Promise.all([
+        checkImageLoaded('.car-image'),
+        checkImageLoaded('.platform-image'),
+      ])
+      console.log('All images loaded successfully')
+    } catch (error) {
+      console.warn('Some images failed to load:', error)
+    }
 
-  gsap.set(['.circle-left', '.circle-right'], {
-    opacity: 0,
-    scale: 0,
-    xPercent: 0,
-    yPercent: 100,
-    x: 0,
-    y: 0,
-  })
-  gsap.set('.carousel-container', {
-    y: '100vh', // 同樣確保在螢幕下方
-    opacity: 0,
-  })
+    // 初始設置，隱藏 ModelSwitch 和標題
+    gsap.set('.title', {
+      opacity: 0,
+      y: -50,
+    })
 
-  ScrollTrigger.create({
-    trigger: '.animation-section',
-    pin: true,
-    start: 'top top',
-    end: '+=300%',
-  })
+    gsap.set('.model-switch', {
+      opacity: 0,
+      y: -50,
+    })
 
-  const timeline = gsap.timeline({
-    scrollTrigger: {
+    gsap.set('.car-image', {
+      y: -500,
+      opacity: 0.5,
+      scale: 0,
+    })
+
+    // 修改平台圖片的初始位置，確保完全在螢幕下方
+    gsap.set('.platform-image', {
+      y: '100vh',
+      opacity: 0,
+    })
+
+    gsap.set(['.circle-left', '.circle-right'], {
+      opacity: 0,
+      scale: 0,
+      xPercent: 0,
+      yPercent: 100,
+      x: 0,
+      y: 0,
+    })
+
+    gsap.set('.carousel-container', {
+      y: '100vh',
+      opacity: 0,
+    })
+
+    ScrollTrigger.create({
       trigger: '.animation-section',
+      pin: true,
       start: 'top top',
       end: '+=300%',
-      scrub: 1,
-    },
-  })
-
-  timeline
-
-    .to('.car-image', {
-      y: 0,
-      opacity: 1,
-      scale: 1,
-      duration: 1,
     })
-    .to(
-      ['.platform-image', '.carousel-container'],
-      {
+
+    const timeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.animation-section',
+        start: 'top top',
+        end: '+=300%',
+        scrub: 1,
+      },
+    })
+
+    timeline
+      .to('.car-image', {
         y: 0,
         opacity: 1,
-        duration: 1.5, // 增加動畫時間以適應更長的距離
-        ease: 'power2.out', // 添加緩動效果使動畫更自然
-      },
-      '-=0.5'
-    )
-    .to('.car-image', {
-      scale: 1.2,
-      duration: 1,
-    })
-    .to(['.circle-left', '.circle-right'], {
-      opacity: 1,
-      scale: 1,
-      duration: 1,
-      ease: 'power1.out',
-      onComplete: () => {
-        gsap.to('.circle .number1', {
-          duration: 2,
-          innerHTML: leftTarget,
-          snap: {innerHTML: 1},
-          ease: 'power1.inOut',
-        })
-        let count = {val: 0}
-        gsap.to(count, {
-          val: rightTarget,
-          duration: 2,
-          ease: 'power1.inOut',
-          onUpdate: function () {
-            ;(
-              document.querySelector('.circle .number2') as HTMLElement
-            ).innerText = count.val.toFixed(1)
+        scale: 1,
+        duration: 1,
+      })
+      .to(
+        ['.platform-image', '.carousel-container'],
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1.5,
+          ease: 'power2.out',
+        },
+        '-=0.5'
+      )
+      .to('.car-image', {
+        scale: 1.2,
+        duration: 1,
+      })
+      .to(['.circle-left', '.circle-right'], {
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        ease: 'power1.out',
+        onComplete: () => {
+          gsap.to('.circle .number1', {
+            duration: 2,
+            innerHTML: leftTarget,
+            snap: {innerHTML: 1},
+            ease: 'power1.inOut',
+          })
+          let count = {val: 0}
+          gsap.to(count, {
+            val: rightTarget,
+            duration: 2,
+            ease: 'power1.inOut',
+            onUpdate: function () {
+              const element = document.querySelector(
+                '.circle .number2'
+              ) as HTMLElement
+              if (element) {
+                element.innerText = count.val.toFixed(1)
+              }
+            },
+          })
+        },
+      })
+      .to(
+        '.circle-left',
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 1,
+          motionPath: {
+            path: '#leftPath',
+            align: '#leftPath',
+            autoRotate: false,
+            alignOrigin: [0.5, 0.5],
           },
-        })
-      },
-    })
-    .to(
-      '.circle-left',
-      {
-        opacity: 1,
-        scale: 1,
-        duration: 1,
-        motionPath: {
-          path: '#leftPath',
-          align: '#leftPath',
-          autoRotate: false,
-          alignOrigin: [0.5, 0.5],
+          ease: 'power1.inOut',
         },
-        ease: 'power1.inOut',
-      },
-      '-=0.5'
-    )
-    .to(
-      '.circle-right',
-      {
-        opacity: 1,
-        scale: 1,
-        duration: 1,
-        motionPath: {
-          path: '#rightPath',
-          align: '#rightPath',
-          autoRotate: false,
-          alignOrigin: [0.5, 0.5],
+        '-=0.5'
+      )
+      .to(
+        '.circle-right',
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 1,
+          motionPath: {
+            path: '#rightPath',
+            align: '#rightPath',
+            autoRotate: false,
+            alignOrigin: [0.5, 0.5],
+          },
+          ease: 'power1.inOut',
         },
-        ease: 'power1.inOut',
-      },
-      '<'
-    )
-    // 先呈現 ModelSwitch 和標題，隨著滾動逐漸出現
-    .to('.title', {
-      opacity: 1,
-      y: 0,
-      duration: 0.5,
-      ease: 'power1.out',
-    })
-    .to(
-      '.model-switch',
-      {
+        '<'
+      )
+      .to('.title', {
         opacity: 1,
         y: 0,
         duration: 0.5,
         ease: 'power1.out',
-      },
-      '<'
-    )
-    .to(
-      '.carousel-container',
-      {
-        bottom: '-4.2071%',
-        opacity: 1,
-        transform: 'translateY(0)',
-        duration: 1,
-        ease: 'power2.out',
-      },
-      '-=0.5'
-    )
+      })
+      .to(
+        '.model-switch',
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: 'power1.out',
+        },
+        '<'
+      )
+      .to(
+        '.carousel-container',
+        {
+          bottom: '-4.2071%',
+          opacity: 1,
+          transform: 'translateY(0)',
+          duration: 1,
+          ease: 'power2.out',
+        },
+        '-=0.5'
+      )
+  }
+
+  // 在 DOM 載入完成後初始化動畫
+  document.addEventListener('DOMContentLoaded', initializeAnimations)
 </script>
 
 <style lang="scss" scoped>
@@ -234,7 +281,7 @@ const cars = [
 
     &.animation-section {
       // border: 1px solid red;
-      background-color: #212121;
+      background-color: #8C8C8C;
       overflow: hidden;
     }
   }
@@ -255,6 +302,12 @@ const cars = [
       left: 68px;
       opacity: 0; /* 初始隱藏 */
     }
+  }
+
+  .car-image,
+  .platform-image {
+    min-height: 200px;
+    background-color: transparent;
   }
 
   .car-image {

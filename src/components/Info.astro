@@ -104,6 +104,10 @@ import Modal from './Modal.astro'
         top: 60%;
         z-index: 3;
         // border: 1px solid green;
+        &:hover {
+          transform: translateY(-5%);
+          height: 170px; // hover 時增加高度來補償位移
+        }
       }
     }
   }
@@ -111,7 +115,7 @@ import Modal from './Modal.astro'
   // 只在 768px 以下修改 z-index
   @media screen and (max-width: 768px) {
     .info {
-      z-index: 1; // 只在小螢幕尺寸下降低 z-index
+      z-index: 1;
 
       .files_container {
         max-width: 90%;
@@ -154,6 +158,9 @@ import Modal from './Modal.astro'
         .file_item3 {
           height: 110px;
           top: 63%;
+          &:hover {
+            height: 120px; // hover 時增加高度來補償位移
+          }
         }
       }
     }
@@ -200,17 +207,20 @@ import Modal from './Modal.astro'
         .file_item3 {
           height: 90px;
           top: 65%;
+          &:hover {
+            height: 100px; // hover 時增加高度來補償位移
+          }
         }
       }
     }
   }
-  @media (max-width:375px) {
-    .info{
+  @media (max-width: 375px) {
+    .info {
       margin-top: -9%;
     }
   }
-  @media (max-width:320px) {
-    .info{
+  @media (max-width: 320px) {
+    .info {
       margin-top: -11%;
     }
   }

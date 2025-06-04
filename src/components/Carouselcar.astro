@@ -156,9 +156,17 @@
       height: 40px;
       border: 2px solid white;
       top: 65%;
+      transition: all 0.3s ease;
 
       svg {
         fill: #fff;
+        transition: fill 0.3s ease;
+      }
+
+      &:hover {
+        svg {
+          fill: #000;
+        }
       }
     }
 
@@ -172,7 +180,8 @@
         opacity: 1;
       }
       .content-wrapper {
-        background: rgba(255, 255, 255, 0.9);
+        background: linear-gradient(to bottom, #737373, #d9d9d9);
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
         border-radius: 15px;
         padding: 10px;
         padding-top: 32px;
@@ -274,6 +283,8 @@
         transform: scale(1);
 
         .content-wrapper {
+          background: linear-gradient(to bottom, #313131, #ffce60);
+          box-shadow: 0 0 15px rgba(255, 206, 96, 0.25);
           height: 200px;
           padding-bottom: 25px;
 
@@ -602,8 +613,23 @@
     })
     document.querySelector('.splide__arrow--next').style.right = '-2.5em'
     document.querySelector('.splide__arrow--prev').style.left = '-4em'
-    document.querySelectorAll('svg').forEach((svg) => {
-      svg.style.fill = '#fff'
+
+    // 設置箭頭樣式和 hover 效果
+    const arrows = document.querySelectorAll('.splide__arrow')
+    arrows.forEach((arrow) => {
+      const svg = arrow.querySelector('svg')
+      if (svg) {
+        svg.style.fill = '#fff'
+        svg.style.transition = 'fill 0.3s ease'
+
+        arrow.addEventListener('mouseenter', () => {
+          svg.style.fill = '#000'
+        })
+
+        arrow.addEventListener('mouseleave', () => {
+          svg.style.fill = '#fff'
+        })
+      }
     })
 
     // 修改 view-more 按鈕事件處理

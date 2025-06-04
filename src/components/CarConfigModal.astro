@@ -12,12 +12,21 @@
 <div id="carConfigModal" class="modal">
   <div class="modal-content">
     <div class="modal-body">
-      <!-- Left side 30% area: Car Model Data and Menu -->
+      <!-- Car Info Section at modal-body level -->
+      <div class="car-info">
+        <h3 id="sidebarCarTitle">Taycan</h3>
+      </div>
+
+      <!-- Car Image directly without wrapper -->
+      <img
+        id="sidebarCarImage"
+        src="/img/taycan.png"
+        alt="Car Model"
+        class="car-info__image car-info__image--mobile car-info__image--small-mobile"
+      />
+
+      <!-- Left side 30% area: Menu -->
       <div class="config-sidebar">
-        <div class="car-info">
-          <h3 id="sidebarCarTitle">Taycan</h3>
-          <img id="sidebarCarImage" src="/img/taycan.png" alt="Car Model" />
-        </div>
         <!-- Menu in TAB style -->
         <div class="sidebar-tabs">
           <button class="tab-button active" data-tab="configure"
@@ -379,9 +388,57 @@
         height: 100%; // 設定為100%以填滿modal-content
         min-height: auto; // 移除最小高度限制
         width: 100%;
+        position: relative; // 作為定位參考點
 
         @media (max-width: 768px) {
           flex-direction: column;
+        }
+
+        .car-info {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 30%; // 調整高度，因為圖片已移出
+          z-index: 10;
+          pointer-events: none;
+          h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #ffffff;
+            position: relative;
+            z-index: 10;
+
+            @media (max-width: 768px) {
+              font-size: 1.5rem;
+              margin-bottom: 10px;
+              text-align: center;
+            }
+
+            @media (max-width: 450px) {
+              font-size: 1.3rem;
+              margin-bottom: 8px;
+            }
+
+            pointer-events: auto; // 恢復標題的點擊事件
+          }
+        }
+
+        .car-info__image {
+          position: absolute;
+          bottom: 0%;
+          left: 10%;
+          width: 40%;
+          height: auto;
+          object-fit: contain;
+          display: block;
+          z-index: 9;
+          pointer-events: auto;
+          @media screen and (max-width: 1024px) {
+            width: 39%;
+        left: 0%;
+          }
         }
 
         .config-sidebar {
@@ -391,6 +448,7 @@
           border-right: 1px solid #e0e0e0;
           overflow-y: auto; // 內容過多時可滾動
           position: relative; // 使內容區域相對於側邊欄定位
+          padding-top: 20px; // 為車輛資訊留出空間
 
           @media (max-width: 768px) {
             width: 100%;
@@ -399,55 +457,14 @@
             padding: 15px;
             border-right: none;
             border-bottom: 1px solid #e0e0e0;
+            padding-top: 15px;
           }
 
           @media (max-width: 450px) {
             height: 25%;
             min-height: 150px;
             padding: 10px;
-          }
-
-          .car-info {
-            width: 100%;
-            h3 {
-              font-size: 1.8rem;
-              font-weight: 600;
-              margin-bottom: 15px;
-              color: #ffffff;
-
-              @media (max-width: 768px) {
-                font-size: 1.5rem;
-                margin-bottom: 10px;
-                text-align: center;
-              }
-
-              @media (max-width: 450px) {
-                font-size: 1.3rem;
-                margin-bottom: 8px;
-              }
-            }
-
-            img {
-              position: absolute;
-              bottom: 10%;
-              left: 50%;
-              transform: translateX(-50%);
-              width: 100%;
-              height: auto;
-              max-width: 750px;
-              display: block;
-              max-height: 180px; // 限制側邊欄圖片高度
-              object-fit: contain;
-
-              @media (max-width: 768px) {
-                bottom: 0%;
-                max-height: 120px;
-              }
-
-              @media (max-width: 450px) {
-                max-height: 100px;
-              }
-            }
+            padding-top: 10px;
           }
 
           /* 修改選單為 TAB 風格 */
@@ -1014,7 +1031,7 @@
       }
 
       &:hover {
-        background-color: #ffce60 !important; // 悬停效果
+        background-color: #ffce60 !important; // 懸停效果
       }
     }
 
@@ -1510,7 +1527,7 @@
         prev: 'splide__arrow--prev',
         next: 'splide__arrow--next',
       },
-      start: 0, // 碮保從第一張開始
+      start: 0, // 確保從第一張開始
       breakpoints: {
         768: {
           perPage: 2, // 平板上顯示2個
@@ -1536,7 +1553,7 @@
       if (document.querySelector('.color-slider')) {
         splideSliders.color = new Splide('.color-slider', colorOptions)
         splideSliders.color.mount()
-        splideSliders.color.go(0) // 碮保從第一張開始
+        splideSliders.color.go(0) // 確保從第一張開始
       }
 
       if (document.querySelector('.wheel-slider')) {
