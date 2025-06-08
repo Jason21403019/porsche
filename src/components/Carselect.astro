@@ -22,10 +22,7 @@ let isModelTaycan = true
         class="car-select"
         style={`background-color: ${isModelTaycan ? '#313131' : '#8c8c8c'}`}
       >
-        <ModelSwitch
-          currentModel={isModelTaycan ? 'Taycan' : 'Macan'}
-          client:load
-        />
+        <ModelSwitch currentModel={isModelTaycan ? 'Taycan' : 'Macan'} />
         <h1 class="title" id="model-selection">Model Selection</h1>
         <img src="/img/redcar.png" alt="Car" class="car-image" />
       </div>
@@ -59,7 +56,7 @@ let isModelTaycan = true
 <script>
   import gsap from 'gsap'
   import ScrollTrigger from 'gsap/ScrollTrigger'
-  import {MotionPathPlugin} from 'gsap/MotionPathPlugin'
+  import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
 
   gsap.registerPlugin(ScrollTrigger, MotionPathPlugin)
 
@@ -191,10 +188,10 @@ let isModelTaycan = true
           gsap.to('.circle .number1', {
             duration: 2,
             innerHTML: leftTarget,
-            snap: {innerHTML: 1},
+            snap: { innerHTML: 1 },
             ease: 'power1.inOut',
           })
-          let count = {val: 0}
+          let count = { val: 0 }
           gsap.to(count, {
             val: rightTarget,
             duration: 2,

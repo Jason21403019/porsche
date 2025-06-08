@@ -409,6 +409,7 @@
             color: #ffffff;
             position: relative;
             z-index: 10;
+            pointer-events: auto; // 恢復標題的點擊事件
 
             @media (max-width: 768px) {
               font-size: 1.5rem;
@@ -420,8 +421,6 @@
               font-size: 1.3rem;
               margin-bottom: 8px;
             }
-
-            pointer-events: auto; // 恢復標題的點擊事件
           }
         }
 
@@ -437,7 +436,7 @@
           pointer-events: auto;
           @media screen and (max-width: 1024px) {
             width: 39%;
-        left: 0%;
+            left: 0%;
           }
         }
 
@@ -1721,13 +1720,13 @@
 
       // 定義需要比較的參數和顯示的標籤
       const comparisonParams = [
-        {key: 'driveSystem', label: 'Drive System'},
-        {key: 'power', label: 'Maximum Power'},
-        {key: 'torque', label: 'Maximum Torque'},
-        {key: 'acceleration', label: 'Acceleration (0-100 km/h)'},
-        {key: 'topSpeed', label: 'Top Speed'},
-        {key: 'batteryCapacity', label: 'Battery Capacity'},
-        {key: 'range', label: 'Maximum Range'},
+        { key: 'driveSystem', label: 'Drive System' },
+        { key: 'power', label: 'Maximum Power' },
+        { key: 'torque', label: 'Maximum Torque' },
+        { key: 'acceleration', label: 'Acceleration (0-100 km/h)' },
+        { key: 'topSpeed', label: 'Top Speed' },
+        { key: 'batteryCapacity', label: 'Battery Capacity' },
+        { key: 'range', label: 'Maximum Range' },
       ]
 
       // 生成表格內容
