@@ -3,8 +3,7 @@ import Layout from '../layouts/Layout.astro'
 import Bendo from '../components/Bendo.astro'
 import Banner from '../components/Banner.astro'
 import Info from '../components/Info.astro'
-import Carselect from '../components/Carselect.astro'
-import HorizontalScroll from '../components/HorizontalScroll.astro'
+import CarTimelineScroll from '../components/CarTimelineScroll.astro'
 import Map from '../components/Map.astro'
 import Footer from '../components/Footer.astro'
 import CarConfigModal from '../components/CarConfigModal.astro'
@@ -80,13 +79,7 @@ const sections = [
     className="w-64 h-64"
   />
   <Info />
-  <Carselect />
-  <HorizontalScroll
-    sections={sections.map((section) => ({
-      ...section,
-      image: section.imageSrc,
-    }))}
-  />
+  <CarTimelineScroll {sections} />
   <Bendo />
   <Map />
   <Footer />

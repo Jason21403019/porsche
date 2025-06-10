@@ -1,18 +1,95 @@
 ---
-import ModelSwitch from '../components/ModelSwitch.astro'
-import Carouselcar from '../components/Carouselcar.astro'
+const carData = {
+  Taycan: {
+    image: '/img/redcar.png',
+    stats: {maxSpeed: 250, acceleration: 3.3},
+    models: [
+      {
+        name: 'Taycan',
+        price: 'NTD 4,320,000',
+        image: '/Taycan/taycan/01-02-Photoroom.png',
+      },
+      {
+        name: 'Taycan 4',
+        price: 'NTD 4,600,000',
+        image: '/Taycan/taycan4/Taycan 4-1.png',
+      },
+      {name: 'Taycan 4s', price: 'NTD 5,320,000', image: '/img/taycan4s.png'},
+      {
+        name: 'Taycan GTS',
+        price: 'NTD 6,580,000',
+        image: '/img/taycan-gts.png',
+      },
+      {
+        name: 'Taycan Turbo',
+        price: 'NTD 7,680,000',
+        image: '/img/taycan-turbo.png',
+      },
+      {
+        name: 'Taycan Turbo S',
+        price: 'NTD 9,250,000',
+        image: '/img/Taycan-Turbo-S.png',
+      },
+      {
+        name: 'Taycan Turbo GT',
+        price: 'NTD 10,480,000',
+        image: '/img/taycan-turbo-gt.png',
+      },
+      {
+        name: 'Taycan Turbo GT with Wp',
+        price: 'NTD 10,480,000',
+        image: '/img/Taycan-Turbo-GT-with-Weissach-Package.png',
+      },
+    ],
+  },
+  Macan: {
+    image: '/Macan/macan/1-02.png',
+    stats: {maxSpeed: 220, acceleration: 4.1},
+    models: [
+      {name: 'Macan', price: 'NTD 3,200,000', image: '/Macan/macan/1-02.png'},
+      {
+        name: 'Macan 4',
+        price: 'NTD 3,500,000',
+        image: '/Macan/Macan 4 Electric/Macan 4 Electric.png',
+      },
+      {
+        name: 'Macan S',
+        price: 'NTD 4,100,000',
+        image: '/Macan/macan s/01-02-Photoroom.png',
+      },
+      {
+        name: 'Macan GTS',
+        price: 'NTD 4,800,000',
+        image: '/Macan/macan gts/01-02.png',
+      },
+      {
+        name: 'Macan Turbo',
+        price: 'NTD 5,500,000',
+        image: '/img/Macan-Turbo-Electric.png',
+      },
+    ],
+  },
+}
+
 const cars = [
   {
     model: 'Taycan',
-    image: '/img/redcar.png',
+    image: carData.Taycan.image,
     className: 'car-image',
-    stats: {
-      maxSpeed: 250,
-      acceleration: 3.3,
-    },
+    stats: carData.Taycan.stats,
+    models: carData.Taycan.models,
+  },
+  {
+    model: 'Macan',
+    image: carData.Macan.image,
+    className: 'car-image',
+    stats: carData.Macan.stats,
+    models: carData.Macan.models,
   },
 ]
 let isModelTaycan = true
+const currentModel = isModelTaycan ? 'Taycan' : 'Macan'
+const currentCar = cars.find((car) => car.model === currentModel) || cars[0]
 ---
 
 <div class="wrapper">
@@ -22,9 +99,30 @@ let isModelTaycan = true
         class="car-select"
         style={`background-color: ${isModelTaycan ? '#313131' : '#8c8c8c'}`}
       >
-        <ModelSwitch currentModel={isModelTaycan ? 'Taycan' : 'Macan'} />
+        <!-- ModelSwitch 組件內容 -->
+        <div class="model-switch">
+          <div class="indicator"></div>
+          <button
+            class={`switch-btn ${currentModel === 'Taycan' ? 'active' : ''}`}
+            data-model="Taycan"
+          >
+            Taycan
+          </button>
+          <button
+            class={`switch-btn ${currentModel === 'Macan' ? 'active' : ''}`}
+            data-model="Macan"
+          >
+            Macan
+          </button>
+        </div>
+
         <h1 class="title" id="model-selection">Model Selection</h1>
-        <img src="/img/redcar.png" alt="Car" class="car-image" />
+        <img
+          src={currentCar.image}
+          alt="Car"
+          class="car-image"
+          id="main-car-image"
+        />
       </div>
 
       <img src="/img/graycan.png" alt="Platform" class="platform-image" />
@@ -40,9 +138,34 @@ let isModelTaycan = true
         <span class="unit2">s</span>
         <span class="speed2">0-100 km/h</span>
       </div>
-
       <div class="carousel-container">
-        <Carouselcar />
+        <!-- Carouselcar 組件內容 -->
+        <div class="taycan-slider" id="car-slider">
+          <div class="splide">
+            <div class="splide__track">
+              <div class="splide__list" id="car-list">
+                {
+                  currentCar.models.map((model) => (
+                    <div class="splide__slide">
+                      <div class="content-wrapper">
+                        <h3 class="car-name">{model.name}</h3>
+                        <div class="additional-content">
+                          <p class="price">{model.price}</p>
+                          <button class="view-more" data-car={model.name}>
+                            See more
+                          </button>
+                        </div>
+                        <div class="car-image-carousel">
+                          <img src={model.image} alt={model.name} />
+                        </div>
+                      </div>
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <svg style="visibility: hidden; position: absolute; width: 0; height: 0;">
@@ -56,232 +179,881 @@ let isModelTaycan = true
 <script>
   import gsap from 'gsap'
   import ScrollTrigger from 'gsap/ScrollTrigger'
-  import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
+  import {MotionPathPlugin} from 'gsap/MotionPathPlugin'
+  import Splide from '@splidejs/splide'
+  import '@splidejs/splide/css'
 
   gsap.registerPlugin(ScrollTrigger, MotionPathPlugin)
+
+  // 效能優化：使用 WeakMap 來避免記憶體洩漏
+  const animationTimelines = new Map()
+
+  // 防抖函數
+  function debounce(func: Function, wait: number) {
+    let timeout: NodeJS.Timeout
+    return function executedFunction(...args: any[]) {
+      const later = () => {
+        clearTimeout(timeout)
+        func(...args)
+      }
+      clearTimeout(timeout)
+      timeout = setTimeout(later, wait)
+    }
+  }
+
+  // 錯誤處理包裝器
+  function safeExecute(
+    func: Function,
+    errorMsg: string = 'Function execution failed'
+  ) {
+    try {
+      return func()
+    } catch (error) {
+      console.warn(`${errorMsg}:`, error)
+      return null
+    }
+  }
 
   const leftTarget = 250
   const rightTarget = 3.3
 
-  // 圖片載入確認函數
-  function checkImageLoaded(selector) {
+  // 定義全域變數
+  let currentModel = 'Taycan'
+  let splide = null
+  let isInitialized = false
+
+  // 移除重複的 carData 定義，直接使用前端腳本中的統一資料
+  const carData = {
+    Taycan: {
+      image: '/img/redcar.png',
+      stats: {maxSpeed: 250, acceleration: 3.3},
+      models: [
+        {
+          name: 'Taycan',
+          price: 'NTD 4,320,000',
+          image: '/Taycan/taycan/01-02-Photoroom.png',
+        },
+        {
+          name: 'Taycan 4',
+          price: 'NTD 4,600,000',
+          image: '/Taycan/taycan4/Taycan 4-1.png',
+        },
+        {name: 'Taycan 4s', price: 'NTD 5,320,000', image: '/img/taycan4s.png'},
+        {
+          name: 'Taycan GTS',
+          price: 'NTD 6,580,000',
+          image: '/img/taycan-gts.png',
+        },
+        {
+          name: 'Taycan Turbo',
+          price: 'NTD 7,680,000',
+          image: '/img/taycan-turbo.png',
+        },
+        {
+          name: 'Taycan Turbo S',
+          price: 'NTD 9,250,000',
+          image: '/img/Taycan-Turbo-S.png',
+        },
+        {
+          name: 'Taycan Turbo GT',
+          price: 'NTD 10,480,000',
+          image: '/img/taycan-turbo-gt.png',
+        },
+        {
+          name: 'Taycan Turbo GT with Wp',
+          price: 'NTD 10,480,000',
+          image: '/img/Taycan-Turbo-GT-with-Weissach-Package.png',
+        },
+      ],
+    },
+    Macan: {
+      image: '/Macan/macan/1-02.png',
+      stats: {maxSpeed: 220, acceleration: 4.1},
+      models: [
+        {name: 'Macan', price: 'NTD 3,200,000', image: '/Macan/macan/1-02.png'},
+        {
+          name: 'Macan 4',
+          price: 'NTD 3,500,000',
+          image: '/Macan/Macan 4 Electric/Macan 4 Electric.png',
+        },
+        {
+          name: 'Macan S',
+          price: 'NTD 4,100,000',
+          image: '/Macan/macan s/01-02-Photoroom.png',
+        },
+        {
+          name: 'Macan GTS',
+          price: 'NTD 4,800,000',
+          image: '/Macan/macan gts/01-02.png',
+        },
+        {
+          name: 'Macan Turbo',
+          price: 'NTD 5,500,000',
+          image: '/img/Macan-Turbo-Electric.png',
+        },
+      ],
+    },
+  }
+
+  // 優化圖片載入確認函數
+  function checkImageLoaded(selector: string, timeout: number = 10000) {
     return new Promise((resolve, reject) => {
-      const img = document.querySelector(selector)
+      const img = document.querySelector(selector) as HTMLImageElement
       if (!img) {
         reject(new Error(`Image element ${selector} not found`))
         return
       }
 
+      // 檢查是否已經載入
       if (img.complete && img.naturalHeight !== 0) {
         resolve(img)
-      } else {
-        img.onload = () => resolve(img)
-        img.onerror = () => {
-          console.warn(`Failed to load image: ${img.src}`)
-          resolve(img)
-        }
-
-        // 超時處理
-        setTimeout(() => {
-          if (!img.complete) {
-            console.warn(`Image loading timeout: ${img.src}`)
-            resolve(img)
-          }
-        }, 5000)
+        return
       }
+
+      // 設置載入事件
+      const onLoad = () => {
+        cleanup()
+        resolve(img)
+      }
+
+      const onError = () => {
+        cleanup()
+        console.warn(`Failed to load image: ${img.src}`)
+        resolve(img) // 即使失敗也繼續，避免阻塞
+      }
+
+      const onTimeout = () => {
+        cleanup()
+        console.warn(`Image loading timeout: ${img.src}`)
+        resolve(img)
+      }
+
+      const cleanup = () => {
+        img.removeEventListener('load', onLoad)
+        img.removeEventListener('error', onError)
+        clearTimeout(timeoutId)
+      }
+
+      img.addEventListener('load', onLoad)
+      img.addEventListener('error', onError)
+      const timeoutId = setTimeout(onTimeout, timeout)
     })
   }
 
-  // 等待所有圖片載入完成
-  async function initializeAnimations() {
-    try {
-      await Promise.all([
-        checkImageLoaded('.car-image'),
-        checkImageLoaded('.platform-image'),
-      ])
-      console.log('All images loaded successfully')
-    } catch (error) {
-      console.warn('Some images failed to load:', error)
-    }
-
-    // 初始設置，隱藏 ModelSwitch 和標題
-    gsap.set('.title', {
-      opacity: 0,
-      y: -50,
-    })
-
-    gsap.set('.model-switch', {
-      opacity: 0,
-      y: -50,
-    })
-
-    gsap.set('.car-image', {
-      y: -500,
-      opacity: 0.5,
-      scale: 0,
-    })
-
-    // 修改平台圖片的初始位置，確保完全在螢幕下方
-    gsap.set('.platform-image', {
-      y: '100vh',
-      opacity: 0,
-    })
-
-    gsap.set(['.circle-left', '.circle-right'], {
-      opacity: 0,
-      scale: 0,
-      xPercent: 0,
-      yPercent: 100,
-      x: 0,
-      y: 0,
-    })
-
-    gsap.set('.carousel-container', {
-      y: '100vh',
-      opacity: 0,
-    })
-
-    ScrollTrigger.create({
-      trigger: '.animation-section',
-      pin: true,
-      start: 'top top',
-      end: '+=300%',
-    })
-
-    const timeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: '.animation-section',
-        start: 'top top',
-        end: '+=300%',
-        scrub: 1,
-      },
-    })
-
-    timeline
-
-      .to('.car-image', {
-        y: 0,
-        opacity: 1,
-        scale: 1,
-        duration: 1,
+  // 圖片預載入函數
+  function preloadImages(imageUrls: string[]) {
+    return Promise.allSettled(
+      imageUrls.map((url) => {
+        return new Promise((resolve, reject) => {
+          const img = new Image()
+          img.onload = () => resolve(img)
+          img.onerror = () => reject(new Error(`Failed to preload: ${url}`))
+          img.src = url
+        })
       })
-      .to(
-        ['.platform-image', '.carousel-container'],
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1.5, // 增加動畫時間以適應更長的距離
-          ease: 'power2.out', // 添加緩動效果使動畫更自然
-        },
-        '-=0.5'
-      )
-      .to('.car-image', {
-        scale: 1.2,
-        duration: 1,
-      })
-      .to(['.circle-left', '.circle-right'], {
-        opacity: 1,
-        scale: 1,
-        duration: 1,
-        ease: 'power1.out',
-        onComplete: () => {
-          gsap.to('.circle .number1', {
-            duration: 2,
-            innerHTML: leftTarget,
-            snap: { innerHTML: 1 },
-            ease: 'power1.inOut',
-          })
-          let count = { val: 0 }
-          gsap.to(count, {
-            val: rightTarget,
-            duration: 2,
-            ease: 'power1.inOut',
-            onUpdate: function () {
-              ;(
-                document.querySelector('.circle .number2') as HTMLElement
-              ).innerText = count.val.toFixed(1)
-            },
-          })
-        },
-      })
-      .to(
-        '.circle-left',
-        {
-          opacity: 1,
-          scale: 1,
-          duration: 1,
-          motionPath: {
-            path: '#leftPath',
-            align: '#leftPath',
-            autoRotate: false,
-            alignOrigin: [0.5, 0.5],
-          },
-          ease: 'power1.inOut',
-        },
-        '-=0.5'
-      )
-      .to(
-        '.circle-right',
-        {
-          opacity: 1,
-          scale: 1,
-          duration: 1,
-          motionPath: {
-            path: '#rightPath',
-            align: '#rightPath',
-            autoRotate: false,
-            alignOrigin: [0.5, 0.5],
-          },
-          ease: 'power1.inOut',
-        },
-        '<'
-      )
-      // 先呈現 ModelSwitch 和標題，隨著滾動逐漸出現
-      .to('.title', {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-        ease: 'power1.out',
-      })
-      .to(
-        '.model-switch',
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.5,
-          ease: 'power1.out',
-        },
-        '<'
-      )
-      .to(
-        '.carousel-container',
-        {
-          bottom: '-4.2071%',
-          opacity: 1,
-          transform: 'translateY(0)',
-          duration: 1,
-          ease: 'power2.out',
-        },
-        '-=0.5'
-      )
+    )
+  }
 
-    const modelSwitch = document.querySelector('ModelSwitch')
+  // ModelSwitch 功能
+  function initModelSwitch() {
+    const buttons = document.querySelectorAll('.switch-btn')
+    const indicator = document.querySelector('.indicator') as HTMLElement
     const carSelect = document.querySelector('.car-select') as HTMLElement
 
-    modelSwitch?.addEventListener('click', () => {
-      const currentModel = modelSwitch.getAttribute('currentModel')
-      const newModel = currentModel === 'Taycan' ? 'Macan' : 'Taycan'
-      const newBgColor = currentModel === 'Taycan' ? '#8c8c8c' : '#313131'
+    if (!buttons.length || !indicator || !carSelect) {
+      console.warn('ModelSwitch elements not found')
+      return
+    }
 
-      modelSwitch.setAttribute('currentModel', newModel)
-      if (carSelect) {
-        carSelect.style.backgroundColor = newBgColor
+    function updateIndicator(model: string) {
+      const activeButton = document.querySelector(
+        `.switch-btn[data-model="${model}"]`
+      ) as HTMLElement
+      if (activeButton) {
+        const index = [...buttons].indexOf(activeButton)
+        if (indicator) {
+          // 使用 GSAP 動畫提升效能
+          gsap.to(indicator, {
+            x: `${index * 100}%`,
+            duration: 0.3,
+            ease: 'power2.out',
+          })
+        }
+
+        // 延遲更新按鈕狀態以配合動畫
+        setTimeout(() => {
+          buttons.forEach((btn) => btn.classList.remove('active'))
+          activeButton.classList.add('active')
+        }, 50)
+      }
+    }
+
+    // 防抖的模型切換函數
+    const debouncedSwitchModel = debounce((model: string) => {
+      if (model === currentModel) return
+
+      currentModel = model
+      const data = carData[model]
+      if (!data) return
+
+      const newBgColor = model === 'Taycan' ? '#313131' : '#8c8c8c'
+
+      // 停止之前的動畫
+      const prevTimeline = animationTimelines.get('modelSwitch')
+      if (prevTimeline) {
+        prevTimeline.kill()
+      }
+
+      // 創建新的動畫時間線
+      const timeline = gsap.timeline()
+      animationTimelines.set('modelSwitch', timeline)
+
+      // 背景顏色動畫
+      timeline.to(carSelect, {
+        backgroundColor: newBgColor,
+        duration: 0.5,
+        ease: 'power2.out',
+      })
+
+      // 主車輛圖片動畫
+      const mainCarImage = document.getElementById(
+        'main-car-image'
+      ) as HTMLImageElement
+      if (mainCarImage) {
+        timeline
+          .to(
+            mainCarImage,
+            {
+              opacity: 0.3,
+              scale: 0.8,
+              duration: 0.3,
+              onComplete: () => {
+                mainCarImage.src = data.image
+              },
+            },
+            0
+          )
+          .to(mainCarImage, {
+            opacity: 1,
+            scale: 1,
+            duration: 0.3,
+            ease: 'back.out(1.7)',
+          })
+      }
+
+      // 更新統計數據和輪播
+      updateStats(data.stats.maxSpeed, data.stats.acceleration)
+      updateCarousel(data.models)
+      updateIndicator(model)
+    }, 300)
+
+    function updateStats(maxSpeed: number, acceleration: number) {
+      // 停止之前的統計動畫
+      const prevStatsTimeline = animationTimelines.get('stats')
+      if (prevStatsTimeline) {
+        prevStatsTimeline.kill()
+      }
+
+      const statsTimeline = gsap.timeline()
+      animationTimelines.set('stats', statsTimeline)
+
+      statsTimeline.to('.circle .number1', {
+        duration: 1,
+        innerHTML: maxSpeed,
+        snap: {innerHTML: 1},
+        ease: 'power2.inOut',
+      })
+
+      let count = {
+        val: parseFloat(
+          (document.querySelector('.circle .number2') as HTMLElement)
+            ?.innerText || '0'
+        ),
+      }
+
+      statsTimeline.to(
+        count,
+        {
+          val: acceleration,
+          duration: 1,
+          ease: 'power2.inOut',
+          onUpdate: function () {
+            const element = document.querySelector(
+              '.circle .number2'
+            ) as HTMLElement
+            if (element) {
+              element.innerText = count.val.toFixed(1)
+            }
+          },
+        },
+        0
+      )
+    }
+
+    function updateCarousel(models: any[]) {
+      if (!splide) return
+
+      // 停止之前的輪播動畫
+      const prevCarouselTimeline = animationTimelines.get('carousel')
+      if (prevCarouselTimeline) {
+        prevCarouselTimeline.kill()
+      }
+
+      const carouselTimeline = gsap.timeline()
+      animationTimelines.set('carousel', carouselTimeline)
+
+      const carList = document.getElementById('car-list')
+      if (!carList) return
+
+      carouselTimeline
+        .to('.taycan-slider', {
+          opacity: 0.3,
+          duration: 0.3,
+          onComplete: () => {
+            safeExecute(() => {
+              // 清空現有內容
+              carList.innerHTML = ''
+
+              // 添加新的幻燈片
+              const fragment = document.createDocumentFragment()
+              models.forEach((model) => {
+                const slide = document.createElement('div')
+                slide.className = 'splide__slide'
+                slide.innerHTML = `
+                <div class="content-wrapper">
+                  <h3 class="car-name">${model.name}</h3>
+                  <div class="additional-content">
+                    <p class="price">${model.price}</p>
+                    <button class="view-more" data-car="${model.name}">See more</button>
+                  </div>
+                  <div class="car-image-carousel">
+                    <img src="${model.image}" alt="${model.name}" loading="lazy" />
+                  </div>
+                </div>
+              `
+                fragment.appendChild(slide)
+              })
+              carList.appendChild(fragment)
+
+              // 重新初始化 Splide
+              splide.refresh()
+              bindViewMoreButtons()
+            }, 'Update carousel content failed')
+          },
+        })
+        .to('.taycan-slider', {
+          opacity: 1,
+          duration: 0.3,
+        })
+    }
+
+    // 綁定查看更多按鈕事件
+    function bindViewMoreButtons() {
+      safeExecute(() => {
+        document.querySelectorAll('.view-more').forEach((button) => {
+          button.addEventListener('click', function () {
+            const carName = this.getAttribute('data-car')
+            const modal = document.getElementById('carConfigModal')
+            if (modal) {
+              modal.style.display = 'block'
+              document.body.style.overflow = 'hidden'
+              window.dispatchEvent(
+                new CustomEvent('openCarConfig', {
+                  detail: {carName: carName},
+                })
+              )
+            }
+          })
+        })
+      }, 'Bind view more buttons failed')
+    }
+
+    // 添加事件監聽器
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault()
+        const model = btn.getAttribute('data-model')
+        if (model) {
+          debouncedSwitchModel(model)
+        }
+      })
+    })
+
+    // 初始化指示器位置
+    updateIndicator(currentModel)
+  }
+
+  // 優化 Splide 輪播功能
+  function initCarousel() {
+    return safeExecute(() => {
+      splide = new Splide('.splide', {
+        type: 'loop',
+        perPage: 4,
+        focus: 'center',
+        gap: '1rem',
+        pagination: false,
+        arrows: true,
+        speed: 800,
+        rewind: false,
+        autoWidth: false,
+        clones: 4,
+        preloadPages: 2,
+        visible: 'true',
+        cloneStatus: true,
+        waitForTransition: true,
+        resetProgress: false,
+        updateOnMove: true,
+        lazyLoad: 'nearby',
+        padding: {left: '10%', right: '10%'},
+        breakpoints: {
+          1024: {
+            perPage: 3,
+            focus: 'center',
+            padding: {left: '15%', right: '15%'},
+            gap: '0.8rem',
+          },
+          992: {
+            perPage: 2,
+            padding: {left: '5%', right: '5%'},
+            gap: '0.5rem',
+          },
+          768: {
+            perPage: 1.5,
+            focus: 'center',
+            padding: {left: '5%', right: '5%'},
+            gap: '0.5rem',
+          },
+          480: {
+            perPage: 1,
+            focus: 'center',
+            padding: {left: '10%', right: '10%'},
+            gap: '0.3rem',
+          },
+        },
+      })
+
+      splide.mount()
+
+      // 事件監聽器
+      splide.on('mounted', function () {
+        setTimeout(() => {
+          splide.refresh()
+          setupArrowStyles()
+        }, 100)
+      })
+
+      splide.on(
+        'moved',
+        debounce(() => {
+          // 預載入鄰近圖片
+          preloadNearbyImages()
+        }, 200)
+      )
+
+      bindViewMoreButtons()
+      return splide
+    }, 'Initialize carousel failed')
+  }
+
+  // 設置箭頭樣式
+  function setupArrowStyles() {
+    safeExecute(() => {
+      const nextArrow = document.querySelector(
+        '.splide__arrow--next'
+      ) as HTMLElement
+      const prevArrow = document.querySelector(
+        '.splide__arrow--prev'
+      ) as HTMLElement
+      const arrows = document.querySelectorAll('.splide__arrow')
+
+      if (nextArrow) nextArrow.style.right = '-2.5em'
+      if (prevArrow) prevArrow.style.left = '-4em'
+
+      arrows.forEach((arrow) => {
+        const svg = arrow.querySelector('svg') as SVGElement
+        if (svg) {
+          svg.style.fill = '#fff'
+          svg.style.transition = 'fill 0.3s ease'
+
+          arrow.addEventListener('mouseenter', () => {
+            svg.style.fill = '#000'
+          })
+
+          arrow.addEventListener('mouseleave', () => {
+            svg.style.fill = '#fff'
+          })
+        }
+      })
+
+      // 響應式箭頭位置調整
+      const adjustArrows = debounce(() => {
+        if (window.innerWidth <= 768) {
+          if (nextArrow) nextArrow.style.right = '-1em'
+          if (prevArrow) prevArrow.style.left = '-2em'
+        } else {
+          if (nextArrow) nextArrow.style.right = '-2.5em'
+          if (prevArrow) prevArrow.style.left = '-4em'
+        }
+      }, 100)
+
+      adjustArrows()
+      window.addEventListener('resize', adjustArrows)
+    }, 'Setup arrow styles failed')
+  }
+
+  // 預載入鄰近圖片
+  function preloadNearbyImages() {
+    if (!splide) return
+
+    safeExecute(() => {
+      const activeIndex = splide.index
+      const slides = document.querySelectorAll('.splide__slide')
+      const imagesToPreload = []
+
+      // 預載入前後各2張圖片
+      for (let i = -2; i <= 2; i++) {
+        const targetIndex = (activeIndex + i + slides.length) % slides.length
+        const slide = slides[targetIndex]
+        const img = slide?.querySelector('img')
+        if (img && img.src) {
+          imagesToPreload.push(img.src)
+        }
+      }
+
+      if (imagesToPreload.length > 0) {
+        preloadImages(imagesToPreload)
+      }
+    }, 'Preload nearby images failed')
+  }
+
+  // 綁定查看更多按鈕事件
+  function bindViewMoreButtons() {
+    safeExecute(() => {
+      // 移除舊的事件監聽器
+      document.querySelectorAll('.view-more').forEach((button) => {
+        const newButton = button.cloneNode(true)
+        button.parentNode?.replaceChild(newButton, button)
+      })
+
+      // 添加新的事件監聽器
+      document.querySelectorAll('.view-more').forEach((button) => {
+        button.addEventListener('click', function (e) {
+          e.preventDefault()
+          const carName = this.getAttribute('data-car')
+          const modal = document.getElementById('carConfigModal')
+          if (modal) {
+            modal.style.display = 'block'
+            document.body.style.overflow = 'hidden'
+            window.dispatchEvent(
+              new CustomEvent('openCarConfig', {
+                detail: {carName: carName},
+              })
+            )
+          }
+        })
+      })
+    }, 'Bind view more buttons failed')
+  }
+
+  // 優化初始化動畫函數
+  async function initializeAnimations() {
+    if (isInitialized) return
+
+    try {
+      // 預載入所有圖片
+      const allImages = []
+      Object.values(carData).forEach((car) => {
+        allImages.push(car.image)
+        car.models.forEach((model) => allImages.push(model.image))
+      })
+
+      // 並行載入關鍵圖片和預載入其他圖片
+      await Promise.allSettled([
+        checkImageLoaded('.car-image'),
+        checkImageLoaded('.platform-image'),
+        preloadImages(allImages.slice(0, 10)), // 預載入前10張圖片
+      ])
+
+      console.log('Critical images loaded, initializing components...')
+
+      // 初始化組件
+      initModelSwitch()
+      const carouselResult = initCarousel()
+
+      if (!carouselResult) {
+        throw new Error('Carousel initialization failed')
+      }
+
+      // 設置初始動畫狀態
+      setupInitialAnimationStates()
+
+      // 創建滾動觸發器
+      createScrollTrigger()
+
+      isInitialized = true
+      console.log('Animation initialization completed')
+    } catch (error) {
+      console.error('Animation initialization failed:', error)
+      // 降級處理：即使失敗也要初始化基本功能
+      safeExecute(() => {
+        initModelSwitch()
+        initCarousel()
+      }, 'Fallback initialization failed')
+    }
+  }
+
+  // 設置初始動畫狀態
+  function setupInitialAnimationStates() {
+    safeExecute(() => {
+      // 根據螢幕尺寸設置不同的初始狀態
+      const isMobile = window.innerWidth <= 768
+      const isTablet = window.innerWidth <= 1024
+
+      gsap.set('.title', {opacity: 0, y: -50})
+      gsap.set('.model-switch', {opacity: 0, y: -50})
+      gsap.set('.car-image', {y: -500, opacity: 0.5, scale: 0})
+
+      // 針對不同螢幕尺寸調整platform-image位置
+      gsap.set('.platform-image', {
+        y: isMobile ? '80vh' : isTablet ? '90vh' : '100vh',
+        opacity: 0,
+      })
+
+      gsap.set(['.circle-left', '.circle-right'], {
+        opacity: 0,
+        scale: 0,
+        xPercent: 0,
+        yPercent: 100,
+        x: 0,
+        y: 0,
+      })
+
+      // 針對不同螢幕尺寸調整carousel-container位置
+      gsap.set('.carousel-container', {
+        y: isMobile ? '60vh' : isTablet ? '80vh' : '100vh',
+        opacity: 0,
+      })
+    }, 'Setup initial animation states failed')
+  }
+
+  // 創建滾動觸發器
+  function createScrollTrigger() {
+    safeExecute(() => {
+      // 清理之前的 ScrollTrigger
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
+
+      // 根據螢幕尺寸調整ScrollTrigger參數
+      const isMobile = window.innerWidth <= 768
+      const isTablet = window.innerWidth <= 1024
+
+      const scrollEnd = isMobile ? '+=200%' : isTablet ? '+=250%' : '+=300%'
+
+      ScrollTrigger.create({
+        trigger: '.animation-section',
+        pin: true,
+        start: 'top top',
+        end: scrollEnd,
+        onRefresh: () => {
+          console.log('ScrollTrigger refreshed')
+        },
+      })
+
+      const timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.animation-section',
+          start: 'top top',
+          end: scrollEnd,
+          scrub: 1,
+          onComplete: () => {
+            console.log('Animation timeline completed')
+          },
+        },
+      })
+
+      // 根據螢幕尺寸調整動畫參數
+      const carImageScale = isTablet ? 1.1 : 1.2
+      const platformImageY = isMobile ? '10vh' : isTablet ? '15vh' : '0'
+      const carouselBottom = isMobile ? '-2%' : isTablet ? '-3%' : '-4.2071%'
+
+      // 動畫序列
+      timeline
+        .to('.car-image', {y: 0, opacity: 1, scale: 1, duration: 1})
+        .to(
+          ['.platform-image', '.carousel-container'],
+          {
+            y: platformImageY,
+            opacity: 1,
+            duration: 1.5,
+            ease: 'power2.out',
+          },
+          '-=0.5'
+        )
+        .to('.car-image', {scale: carImageScale, duration: 1})
+        .to(['.circle-left', '.circle-right'], {
+          opacity: isTablet ? 0 : 1, // 在平板和手機上隱藏圓形
+          scale: isTablet ? 0 : 1,
+          duration: 1,
+          ease: 'power1.out',
+          onComplete: () => {
+            if (!isTablet) {
+              animateNumbers()
+            }
+          },
+        })
+
+      // 只在桌面版本執行圓形移動動畫
+      if (!isTablet) {
+        timeline
+          .to(
+            '.circle-left',
+            {
+              opacity: 1,
+              scale: 1,
+              duration: 1,
+              motionPath: {
+                path: '#leftPath',
+                align: '#leftPath',
+                autoRotate: false,
+                alignOrigin: [0.5, 0.5],
+              },
+              ease: 'power1.inOut',
+            },
+            '-=0.5'
+          )
+          .to(
+            '.circle-right',
+            {
+              opacity: 1,
+              scale: 1,
+              duration: 1,
+              motionPath: {
+                path: '#rightPath',
+                align: '#rightPath',
+                autoRotate: false,
+                alignOrigin: [0.5, 0.5],
+              },
+              ease: 'power1.inOut',
+            },
+            '<'
+          )
+      }
+
+      timeline
+        .to('.title', {opacity: 1, y: 0, duration: 0.5, ease: 'power1.out'})
+        .to(
+          '.model-switch',
+          {opacity: 1, y: 0, duration: 0.5, ease: 'power1.out'},
+          '<'
+        )
+        .to(
+          '.carousel-container',
+          {
+            bottom: carouselBottom,
+            opacity: 1,
+            transform: 'translateY(0)',
+            duration: 1,
+            ease: 'power2.out',
+          },
+          '-=0.5'
+        )
+
+      animationTimelines.set('main', timeline)
+    }, 'Create scroll trigger failed')
+  }
+
+  // 動畫數字計數
+  function animateNumbers() {
+    safeExecute(() => {
+      const numberTimeline = gsap.timeline()
+
+      numberTimeline.to('.circle .number1', {
+        duration: 2,
+        innerHTML: leftTarget,
+        snap: {innerHTML: 1},
+        ease: 'power1.inOut',
+      })
+
+      let count = {val: 0}
+      numberTimeline.to(
+        count,
+        {
+          val: rightTarget,
+          duration: 2,
+          ease: 'power1.inOut',
+          onUpdate: function () {
+            const element = document.querySelector(
+              '.circle .number2'
+            ) as HTMLElement
+            if (element) {
+              element.innerText = count.val.toFixed(1)
+            }
+          },
+        },
+        0
+      )
+
+      animationTimelines.set('numbers', numberTimeline)
+    }, 'Animate numbers failed')
+  }
+
+  // 清理函數
+  function cleanup() {
+    // 清理所有動畫時間線
+    animationTimelines.forEach((timeline) => {
+      if (timeline && timeline.kill) {
+        timeline.kill()
       }
     })
+    animationTimelines.clear()
+
+    // 清理 ScrollTrigger
+    ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
+
+    // 清理 Splide
+    if (splide) {
+      splide.destroy()
+      splide = null
+    }
+
+    isInitialized = false
   }
+
+  // 頁面可見性變化處理
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      // 頁面隱藏時暫停動畫
+      animationTimelines.forEach((timeline) => {
+        if (timeline && timeline.pause) {
+          timeline.pause()
+        }
+      })
+    } else {
+      // 頁面顯示時恢復動畫
+      animationTimelines.forEach((timeline) => {
+        if (timeline && timeline.resume) {
+          timeline.resume()
+        }
+      })
+    }
+  })
+
+  // 頁面卸載時清理
+  window.addEventListener('beforeunload', cleanup)
 
   // 初始化動畫
   initializeAnimations()
+
+  // 響應式處理
+  const handleResize = debounce(() => {
+    if (isInitialized) {
+      cleanup()
+      setTimeout(() => {
+        initializeAnimations()
+      }, 100)
+    }
+  }, 500)
+
+  window.addEventListener('resize', handleResize)
 </script>
 
 <style lang="scss" scoped>
@@ -336,6 +1108,16 @@ let isModelTaycan = true
     height: auto;
     opacity: 0;
     z-index: 2;
+
+    @media screen and (max-width: 1024px) {
+      top: 35%;
+      max-width: 55%;
+    }
+
+    @media screen and (max-width: 768px) {
+      top: 40%;
+      max-width: 65%;
+    }
   }
 
   .platform-image {
@@ -346,6 +1128,16 @@ let isModelTaycan = true
     max-width: 50%;
     height: auto;
     opacity: 0;
+
+    @media screen and (max-width: 1024px) {
+      top: 60%;
+      max-width: 60%;
+    }
+
+    @media screen and (max-width: 768px) {
+      top: 55%;
+      max-width: 70%;
+    }
   }
 
   .circle {
@@ -438,6 +1230,108 @@ let isModelTaycan = true
     }
   }
 
+  /* ModelSwitch 樣式 */
+  .model-switch {
+    position: absolute;
+    top: 15%;
+    right: 50%;
+    z-index: 10;
+    display: flex;
+    transform: translate(50%, 0);
+    background-color: #b0b0b0;
+    border-radius: 44px;
+    width: 300px;
+    padding: 4px;
+  }
+
+  .switch-btn {
+    font-size: 24px;
+    padding: 12px 24px;
+    border-radius: 44px;
+    color: white;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    transition:
+      color 0.3s ease,
+      font-weight 0.3s ease;
+
+    &.active {
+      color: #212121;
+      font-weight: 600;
+    }
+  }
+
+  .indicator {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: calc(50%);
+    height: calc(100%);
+    background: linear-gradient(to right, #ffffff 0%, #ffce60 100%);
+    border-radius: 44px;
+    transition: transform 0.3s cubic-bezier(0.58, -0.56, 0.38, 1.53);
+    z-index: 1;
+  }
+
+  /* Carouselcar 樣式 */
+  .taycan-slider {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    left: 0%;
+    right: 0%;
+    padding: 60px 0;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('/img/graybg.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: -1;
+    }
+
+    .splide {
+      width: 100%;
+      height: auto;
+      max-width: 1200px;
+      margin: 0 auto;
+      border-radius: 15px;
+      padding: 20px;
+
+      @media (max-width: 768px) {
+        padding: 10px;
+        height: 300px;
+      }
+    }
+
+    :global(.splide__arrow) {
+      background: transparent;
+      width: 40px;
+      height: 40px;
+      border: 2px solid white;
+      top: 65%;
+
+      svg {
+        fill: #fff;
+      }
+    }
+
+    .splide__list {
+      align-items: flex-end;
+    }
+  }
+
   // 在 768px 及以下螢幕寬度隱藏圓形元素
   @media screen and (max-width: 1024px) {
     .circle {
@@ -452,8 +1346,15 @@ let isModelTaycan = true
     width: 100%;
     opacity: 0;
     transform: translateY(100px);
-  }
-  //這裡加了動畫圓形位置會跑掉
+
+    @media screen and (max-width: 1024px) {
+      bottom: -80%;
+    }
+
+    @media screen and (max-width: 768px) {
+      bottom: -60%;
+    }
+  } //這裡加了動畫圓形位置會跑掉
   // @keyframes spin {
   //   from {
   //     transform: rotate(0);
@@ -462,4 +1363,314 @@ let isModelTaycan = true
   //     transform: rotate(359deg);
   //   }
   // }
+</style>
+
+<style is:global>
+  /* 動態生成的 Splide 內容樣式 */
+  .splide__slide {
+    transition: all 0.5s ease;
+  }
+
+  .splide__slide.is-clone {
+    opacity: 1;
+  }
+
+  .splide__slide .content-wrapper {
+    background: linear-gradient(180deg, #737373 0%, #d9d9d9 100%);
+    border-radius: 15px;
+    padding: 10px;
+    padding-top: 32px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 230px;
+    width: 184px;
+    position: relative;
+  }
+
+  .splide__slide .content-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: -10px;
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.5) 0%,
+      transparent 0%
+    );
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  @media (max-width: 768px) {
+    .splide__slide .content-wrapper {
+      width: 150px;
+      height: 210px;
+      padding-top: 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .splide__slide .content-wrapper {
+      width: 130px;
+      height: 190px;
+    }
+  }
+
+  .splide__slide .car-name {
+    height: 48px;
+    font-size: 24px;
+    margin: 0 0 15px 0;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    .splide__slide .car-name {
+      font-size: 20px;
+      height: 40px;
+      margin: 0 0 10px 0;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .splide__slide .car-name {
+      font-size: 18px;
+    }
+  }
+
+  .splide__slide .additional-content {
+    width: 100%;
+    opacity: 0;
+    max-height: 0;
+    transition: all 0.5s ease;
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .splide__slide .car-image-carousel {
+    margin: 0 auto;
+    width: 120%;
+    height: 180px;
+    border-radius: 12px;
+    transform: none !important;
+    opacity: 1 !important;
+    scale: 1 !important;
+  }
+
+  @media (max-width: 768px) {
+    .splide__slide .car-image-carousel {
+      width: 100%;
+      height: 140px;
+    }
+  }
+
+  .splide__slide .car-image-carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform: none !important;
+    opacity: 1 !important;
+    scale: 1 !important;
+  }
+
+  @media (max-width: 768px) {
+    .splide__slide .car-image-carousel img {
+      object-position: center 70%;
+    }
+  }
+
+  .splide__slide .price {
+    font-size: 18px;
+    color: #000;
+    margin: 0;
+    text-align: center;
+  }
+
+  .splide__slide .view-more {
+    padding: 5px 25px;
+    background: linear-gradient(#ffce60, #ede1c8, #ffce60);
+    color: #000;
+    border: 1px solid;
+    border-image: linear-gradient(to right, #ffffff, #666);
+    border-radius: 32px;
+    cursor: pointer;
+    font-size: 16px;
+    align-self: center;
+    transition: all 0.3s ease;
+  }
+
+  .splide__slide .view-more:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Active slide styles */
+  .splide__slide.is-active {
+    transform: scale(1);
+  }
+
+  .splide__slide.is-active .content-wrapper {
+    background: linear-gradient(to bottom, #313131, #ffce60);
+    box-shadow: 0 0 15px rgba(255, 206, 96, 0.25);
+    height: 200px;
+    padding-bottom: 25px;
+  }
+
+  .splide__slide.is-active .content-wrapper::after {
+    background: radial-gradient(
+      circle,
+      rgba(255, 206, 96, 0.25) 0%,
+      transparent 70%
+    );
+  }
+
+  @media (max-width: 768px) {
+    .splide__slide.is-active .content-wrapper {
+      height: 190px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .splide__slide.is-active .content-wrapper {
+      height: 180px;
+    }
+  }
+
+  .splide__slide.is-active .additional-content {
+    opacity: 1;
+    max-height: 220px;
+  }
+
+  .splide__slide.is-active .car-image-carousel {
+    margin-left: -1rem;
+  }
+
+  @media (max-width: 768px) {
+    .splide__slide.is-active .car-image-carousel {
+      margin-left: -0.5rem;
+    }
+  }
+
+  .splide__slide.is-active .car-image-carousel img {
+    height: 130%;
+  }
+
+  @media (max-width: 768px) {
+    .splide__slide.is-active .car-image-carousel img {
+      height: 120%;
+    }
+  }
+
+  /* Previous and Next slide styles */
+  .splide__slide.is-prev,
+  .splide__slide.is-next {
+    transform: scale(1);
+  }
+
+  .splide__slide.is-prev .content-wrapper,
+  .splide__slide.is-next .content-wrapper {
+    height: 160px;
+  }
+
+  @media (max-width: 768px) {
+    .splide__slide.is-prev .content-wrapper,
+    .splide__slide.is-next .content-wrapper {
+      height: 140px;
+    }
+  }
+
+  .splide__slide.is-prev .additional-content,
+  .splide__slide.is-next .additional-content {
+    opacity: 0.7;
+    max-height: 50px;
+  }
+
+  .splide__slide.is-prev .additional-content .specs,
+  .splide__slide.is-next .additional-content .specs,
+  .splide__slide.is-prev .additional-content .view-more,
+  .splide__slide.is-next .additional-content .view-more {
+    display: none;
+  }
+
+  .splide__slide.is-prev .car-image-carousel,
+  .splide__slide.is-next .car-image-carousel {
+    width: 90%;
+  }
+
+  @media (max-width: 768px) {
+    .splide__slide.is-prev .car-image-carousel,
+    .splide__slide.is-next .car-image-carousel {
+      width: 80%;
+    }
+  }
+
+  .splide__slide.is-prev .car-image-carousel img,
+  .splide__slide.is-next .car-image-carousel img {
+    height: 140%;
+  }
+
+  @media (max-width: 768px) {
+    .splide__slide.is-prev .car-image-carousel img,
+    .splide__slide.is-next .car-image-carousel img {
+      height: 130%;
+    }
+  }
+
+  /* Other slides styles */
+  .splide__slide:not(.is-active):not(.is-prev):not(.is-next) {
+    transform: scale(1);
+  }
+
+  .splide__slide:not(.is-active):not(.is-prev):not(.is-next) .content-wrapper {
+    height: 120px;
+  }
+
+  @media (max-width: 768px) {
+    .splide__slide:not(.is-active):not(.is-prev):not(.is-next)
+      .content-wrapper {
+      height: 110px;
+    }
+  }
+
+  .splide__slide:not(.is-active):not(.is-prev):not(.is-active)
+    .additional-content {
+    opacity: 0.5;
+  }
+
+  .splide__slide:not(.is-active):not(.is-prev):not(.is-active)
+    .car-image-carousel {
+    width: 70%;
+  }
+
+  @media (max-width: 768px) {
+    .splide__slide:not(.is-active):not(.is-prev):not(.is-active)
+      .car-image-carousel {
+      width: 60%;
+    }
+  }
+
+  .splide__slide:not(.is-active):not(.is-prev):not(.is-active)
+    .car-image-carousel
+    img {
+    height: 140%;
+  }
+
+  @media (max-width: 768px) {
+    .splide__slide:not(.is-active):not(.is-prev):not(.is-active)
+      .car-image-carousel
+      img {
+      height: 130%;
+    }
+  }
+
+  .splide__slide:not(.is-active):not(.is-prev):not(.is-active) .price {
+    display: none;
+  }
+
+  .splide__slide:not(.is-active):not(.is-prev):not(.is-active) .view-more {
+    display: none;
+  }
 </style>

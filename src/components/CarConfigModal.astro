@@ -438,6 +438,11 @@
             width: 39%;
             left: 0%;
           }
+          @media (max-width: 768px) {
+            width: 70%;
+            left: 15%;
+            bottom: 58%;
+          }
         }
 
         .config-sidebar {
@@ -1185,8 +1190,7 @@
   document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('carConfigModal')
     const sidebarCarTitle = document.getElementById('sidebarCarTitle')
-    const sidebarCarImage = document.getElementById('sidebarCarImage')
-    // 車型與對應圖片的映射
+    const sidebarCarImage = document.getElementById('sidebarCarImage') // 車型與對應圖片的映射
     const carImages = {
       Taycan: 'https://dc.udn.com/roy/test//img/taycan.png',
       'Taycan 4': 'https://dc.udn.com/roy/test/img/taycan4.png',
@@ -1197,6 +1201,12 @@
       'Taycan Turbo GT': 'https://dc.udn.com/roy/test/img/taycan-turbo-gt.png',
       'Taycan Turbo GT with WP':
         'https://dc.udn.com/roy/test/img/Taycan-Turbo-GT-with-Weissach-Package.png',
+      // Macan 系列圖片
+      Macan: '/Macan/macan/1-02.png',
+      'Macan 4': '/Macan/Macan 4 Electric/Macan 4 Electric.png',
+      'Macan S': '/Macan/macan s/01-02-Photoroom.png',
+      'Macan GTS': '/Macan/macan gts/01-02.png',
+      'Macan Turbo': '/img/Macan-Turbo-Electric.png',
     }
 
     // 車型名稱規範化函數 - 解決大小寫不一致問題
@@ -1291,12 +1301,64 @@
         batteryCapacity: '93.4 kWh',
         range: '420 km (WLTP)',
       },
+      // Macan 系列規格
+      Macan: {
+        driveSystem: 'Rear-wheel drive',
+        power: '250 kW / 340 PS',
+        torque: '563 Nm',
+        acceleration: '5.7 seconds',
+        topSpeed: '220 km/h',
+        batteryCapacity: '100 kWh',
+        range: '613 km (WLTP)',
+      },
+      'Macan 4': {
+        driveSystem: 'All-wheel drive',
+        power: '300 kW / 408 PS',
+        torque: '650 Nm',
+        acceleration: '5.2 seconds',
+        topSpeed: '220 km/h',
+        batteryCapacity: '100 kWh',
+        range: '591 km (WLTP)',
+      },
+      'Macan S': {
+        driveSystem: 'All-wheel drive',
+        power: '380 kW / 516 PS',
+        torque: '820 Nm',
+        acceleration: '4.1 seconds',
+        topSpeed: '240 km/h',
+        batteryCapacity: '100 kWh',
+        range: '516 km (WLTP)',
+      },
+      'Macan GTS': {
+        driveSystem: 'All-wheel drive',
+        power: '440 kW / 598 PS',
+        torque: '1130 Nm',
+        acceleration: '3.7 seconds',
+        topSpeed: '250 km/h',
+        batteryCapacity: '100 kWh',
+        range: '490 km (WLTP)',
+      },
+      'Macan Turbo': {
+        driveSystem: 'All-wheel drive',
+        power: '470 kW / 639 PS',
+        torque: '1130 Nm',
+        acceleration: '3.3 seconds',
+        topSpeed: '260 km/h',
+        batteryCapacity: '100 kWh',
+        range: '465 km (WLTP)',
+      },
     }
 
     // 建立車型名稱別名映射，解決大小寫不一致問題
     const carNameAliases = {
       'taycan turbo gt with wp': 'Taycan Turbo GT with WP',
       'taycan turbo gt with weissach package': 'Taycan Turbo GT with WP',
+      // Macan 別名
+      'macan electric': 'Macan',
+      'macan 4 electric': 'Macan 4',
+      'macan s electric': 'Macan S',
+      'macan gts electric': 'Macan GTS',
+      'macan turbo electric': 'Macan Turbo',
     }
 
     // 獲取車型的規格資料 (帶容錯處理)
@@ -1720,13 +1782,13 @@
 
       // 定義需要比較的參數和顯示的標籤
       const comparisonParams = [
-        { key: 'driveSystem', label: 'Drive System' },
-        { key: 'power', label: 'Maximum Power' },
-        { key: 'torque', label: 'Maximum Torque' },
-        { key: 'acceleration', label: 'Acceleration (0-100 km/h)' },
-        { key: 'topSpeed', label: 'Top Speed' },
-        { key: 'batteryCapacity', label: 'Battery Capacity' },
-        { key: 'range', label: 'Maximum Range' },
+        {key: 'driveSystem', label: 'Drive System'},
+        {key: 'power', label: 'Maximum Power'},
+        {key: 'torque', label: 'Maximum Torque'},
+        {key: 'acceleration', label: 'Acceleration (0-100 km/h)'},
+        {key: 'topSpeed', label: 'Top Speed'},
+        {key: 'batteryCapacity', label: 'Battery Capacity'},
+        {key: 'range', label: 'Maximum Range'},
       ]
 
       // 生成表格內容
@@ -1760,53 +1822,83 @@
     // 選擇要比較的車型
     function getComparisonCars(selectedCar, count) {
       // 確保 count 為有效值
-      count = Math.max(2, Math.min(count || 4, allCarModels.length))
-
-      // 將選中的車型放在第一位
-      let result = [selectedCar]
-
-      // 按類別分組車型
+      count = Math.max(2, Math.min(count || 4, allCarModels.length)) // 將選中的車型放在第一位
+      let result = [selectedCar] // 按類別分組車型 - 優化 MACAN 分組邏輯
       const carGroups = {
-        Base: ['Taycan'],
-        'Entry AWD': ['Taycan 4', 'Taycan 4S'],
-        Performance: ['Taycan GTS', 'Taycan Turbo'],
-        'High Performance': [
-          'Taycan Turbo S',
+        // Taycan 系列分組
+        'Taycan Entry Level': ['Taycan', 'Taycan 4'],
+        'Taycan Mid-Range': ['Taycan 4S', 'Taycan GTS'],
+        'Taycan High Performance': ['Taycan Turbo', 'Taycan Turbo S'],
+        'Taycan Ultra Performance': [
           'Taycan Turbo GT',
           'Taycan Turbo GT with WP',
         ],
-      }
 
-      // 確定所選車型屬於哪個組
-      let selectedGroup = null
+        // Macan 系列分組 - 重新優化分組
+        'Macan Entry Level': ['Macan', 'Macan 4'],
+        'Macan Sport Performance': ['Macan S'],
+        'Macan High Performance': ['Macan GTS'],
+        'Macan Ultimate Performance': ['Macan Turbo'],
+
+        // 跨系列比較分組 - 按性能等級
+        'Entry Electric SUV/Sedan': ['Taycan', 'Macan'],
+        'AWD Electric Vehicles': ['Taycan 4', 'Macan 4'],
+        'Sport Performance Electric': ['Taycan GTS', 'Macan S'],
+        'Ultimate Performance': ['Taycan Turbo GT', 'Macan Turbo'],
+      } // 確定所選車型屬於哪個組 - 支援多組歸屬
+      let selectedGroups = []
       for (const [group, cars] of Object.entries(carGroups)) {
         if (cars.includes(selectedCar)) {
-          selectedGroup = group
-          break
+          selectedGroups.push(group)
         }
       }
 
-      // 從每個組選擇一個車型，優先選擇與所選車型不同組的
-      const groupsToChooseFrom = Object.keys(carGroups).filter(
-        (group) => group !== selectedGroup
-      )
+      // 智能選擇比較車型的優先級策略
+      const getComparisonPriority = (selectedCar) => {
+        const carSeries = selectedCar.startsWith('Taycan') ? 'Taycan' : 'Macan'
+        const otherSeries = carSeries === 'Taycan' ? 'Macan' : 'Taycan'
 
-      // 智能選擇比較車型 - 先從不同組別選擇
-      for (const group of groupsToChooseFrom) {
-        if (result.length < count) {
-          // 從該組選擇一個代表性車型
-          const representativeCar = carGroups[group][0]
-          if (!result.includes(representativeCar)) {
-            result.push(representativeCar)
+        // 優先級順序：
+        // 1. 同性能等級的對手品牌車型
+        // 2. 同系列不同性能等級車型
+        // 3. 其他系列車型
+
+        const priorityGroups = []
+
+        // 找到跨系列比較分組
+        for (const group of selectedGroups) {
+          if (group.includes('Electric') && carGroups[group].length > 1) {
+            priorityGroups.push(group)
           }
         }
+
+        // 添加同系列其他性能等級
+        for (const [group, cars] of Object.entries(carGroups)) {
+          if (group.includes(carSeries) && !selectedGroups.includes(group)) {
+            priorityGroups.push(group)
+          }
+        }
+
+        // 添加對手系列車型
+        for (const [group, cars] of Object.entries(carGroups)) {
+          if (group.includes(otherSeries)) {
+            priorityGroups.push(group)
+          }
+        }
+
+        return priorityGroups
       }
 
-      // 如果還需要添加車型以達到要求的數量，可以從相同組中選擇
-      if (selectedGroup && result.length < count) {
-        for (const car of carGroups[selectedGroup]) {
-          if (car !== selectedCar && result.length < count) {
-            result.push(car)
+      const priorityGroups = getComparisonPriority(selectedCar)
+
+      // 按優先級選擇比較車型
+      for (const group of priorityGroups) {
+        if (result.length < count && carGroups[group]) {
+          for (const car of carGroups[group]) {
+            if (!result.includes(car) && result.length < count) {
+              result.push(car)
+              break // 每組只選一台代表車型
+            }
           }
         }
       }
@@ -1822,13 +1914,14 @@
 
       // 確保不超過要求的數量
       return result.slice(0, count)
-    }
-
-    // 添加視窗大小變化的事件監聽器，以便在視窗大小改變時更新表格
+    } // 添加視窗大小變化的事件監聽器，以便在視窗大小改變時更新表格
+    let resizeTimeout: NodeJS.Timeout | undefined
     window.addEventListener('resize', () => {
       // 使用 debounce 技術防止過於頻繁地更新
-      clearTimeout(window.resizeTimeout)
-      window.resizeTimeout = setTimeout(() => {
+      if (resizeTimeout) {
+        clearTimeout(resizeTimeout)
+      }
+      resizeTimeout = setTimeout(() => {
         // 僅當比較標籤已啟用時才更新表格
         const compareTab = document.getElementById('compare-tab')
         if (compareTab && compareTab.classList.contains('active')) {
@@ -1859,12 +1952,11 @@
         } else {
           console.error(`${car} - 規格資料缺失`)
         }
-      }
+      } // 測試比較功能 - 包含 MACAN 車型測試
+      console.log('=== 新分組方式比較車型測試 ===')
 
-      // 測試比較功能
-      console.log('比較車型示例:')
-      for (const car of ['Taycan', 'Taycan Turbo GT with WP']) {
-        // 測試不同數量的比較車型
+      // 測試 Taycan 系列
+      for (const car of ['Taycan', 'Taycan 4S', 'Taycan Turbo GT']) {
         ;[2, 3, 4].forEach((count) => {
           const comparisonCars = getComparisonCars(car, count)
           console.log(
@@ -1872,6 +1964,38 @@
           )
         })
       }
+
+      // 測試 Macan 系列
+      console.log('--- MACAN 系列比較測試 ---')
+      for (const car of [
+        'Macan',
+        'Macan 4',
+        'Macan S',
+        'Macan GTS',
+        'Macan Turbo',
+      ]) {
+        ;[2, 3, 4].forEach((count) => {
+          const comparisonCars = getComparisonCars(car, count)
+          console.log(
+            `${car} 的比較車型 (${count}台): ${comparisonCars.join(', ')}`
+          )
+        })
+      }
+
+      // 測試跨系列比較
+      console.log('--- 跨系列比較測試 ---')
+      const crossSeriesTests = [
+        {selected: 'Taycan', expected: 'Should include Macan'},
+        {selected: 'Macan GTS', expected: 'Should include Taycan GTS'},
+        {selected: 'Macan Turbo', expected: 'Should include Taycan Turbo GT'},
+      ]
+
+      crossSeriesTests.forEach((test) => {
+        const comparisonCars = getComparisonCars(test.selected, 3)
+        console.log(
+          `${test.selected} 跨系列比較: ${comparisonCars.join(', ')} (${test.expected})`
+        )
+      })
     }
 
     // 執行測試 (可以在控制台觀察結果)
