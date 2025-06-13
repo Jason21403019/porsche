@@ -25,12 +25,12 @@ const carData = {
       {
         name: 'Taycan',
         price: 'NTD 4,320,000',
-        image: '/Taycan/taycan/01-02-Photoroom.png',
+        image: '/img/Taycan/taycan/01-02-Photoroom.png',
       },
       {
         name: 'Taycan 4',
         price: 'NTD 4,600,000',
-        image: '/Taycan/taycan4/Taycan 4-1.png',
+        image: '/img/Taycan/taycan4/Taycan 4-1.png',
       },
       {name: 'Taycan 4s', price: 'NTD 5,320,000', image: '/img/taycan4s.png'},
       {
@@ -61,24 +61,28 @@ const carData = {
     ],
   },
   Macan: {
-    image: '/Macan/macan/1-02.png',
+    image: '/img/Macan/macan/1-02.png',
     stats: {maxSpeed: 220, acceleration: 4.1},
     models: [
-      {name: 'Macan', price: 'NTD 3,200,000', image: '/Macan/macan/1-02.png'},
+      {
+        name: 'Macan',
+        price: 'NTD 3,200,000',
+        image: '/img/Macan/macan/1-02.png',
+      },
       {
         name: 'Macan 4',
         price: 'NTD 3,500,000',
-        image: '/Macan/Macan 4 Electric/Macan 4 Electric.png',
+        image: '/img/Macan/Macan 4 Electric/Macan 4 Electric.png',
       },
       {
         name: 'Macan S',
         price: 'NTD 4,100,000',
-        image: '/Macan/macan s/01-02-Photoroom.png',
+        image: '/img/Macan/macan s/01-02-Photoroom.png',
       },
       {
         name: 'Macan GTS',
         price: 'NTD 4,800,000',
-        image: '/Macan/macan gts/01-02.png',
+        image: '/img/Macan/macan gts/01-02.png',
       },
       {
         name: 'Macan Turbo',
@@ -123,7 +127,7 @@ const introSection = {
       <div class="content-container">
         <div
           class="car-select"
-          style={`background-color: ${currentCar.model === 'Taycan' ? '#313131' : '#8c8c8c'}`}
+          style={`background-color: ${currentCar.model === 'Taycan' ? '#313131' : '#8C8C8C'}`}
         >
           <!-- ModelSwitch 組件內容 -->
           <div class="model-switch">
@@ -217,28 +221,16 @@ const introSection = {
             <img src={introSection.image} alt="Intro" />
           </div>
           <div class="intro__content">
-            <h1
-              data-aos="fade-up"
-              data-aos-duration="500"
-              data-aos-delay="1000"
-            >
+            <h1 data-aos="fade-up" data-aos-duration="500" data-aos-delay="500">
               {introSection.title}
             </h1>
-            <h1
-              data-aos="fade-up"
-              data-aos-duration="500"
-              data-aos-delay="1100"
-            >
+            <h1 data-aos="fade-up" data-aos-duration="500" data-aos-delay="550">
               {introSection.title1}
             </h1>
-            <h1
-              data-aos="fade-up"
-              data-aos-duration="500"
-              data-aos-delay="1200"
-            >
+            <h1 data-aos="fade-up" data-aos-duration="500" data-aos-delay="600">
               {introSection.title2}
             </h1>
-            <p data-aos="fade-up" data-aos-duration="500" data-aos-delay="1300">
+            <p data-aos="fade-up" data-aos-duration="500" data-aos-delay="650">
               {introSection.description}
             </p>
           </div>
@@ -1038,16 +1030,17 @@ const introSection = {
   }
 
   /* Other slides styles */
-  .splide__slide:not(.is-active):not(.is-prev):not(.is-next) {
+  .splide__slide:not(.is-active):not(.is-prev):not(.is-active) {
     transform: scale(1);
   }
 
-  .splide__slide:not(.is-active):not(.is-prev):not(.is-next) .content-wrapper {
+  .splide__slide:not(.is-active):not(.is-prev):not(.is-active)
+    .content-wrapper {
     height: 120px;
   }
 
   @media (max-width: 768px) {
-    .splide__slide:not(.is-active):not(.is-prev):not(.is-next)
+    .splide__slide:not(.is-active):not(.is-prev):not(.is-active)
       .content-wrapper {
       height: 110px;
     }
@@ -1139,12 +1132,12 @@ const introSection = {
         {
           name: 'Taycan',
           price: 'NTD 4,320,000',
-          image: '/Taycan/taycan/01-02-Photoroom.png',
+          image: '/img/Taycan/taycan/01-02-Photoroom.png',
         },
         {
           name: 'Taycan 4',
           price: 'NTD 4,600,000',
-          image: '/Taycan/taycan4/Taycan 4-1.png',
+          image: '/img/Taycan/taycan4/Taycan 4-1.png',
         },
         {name: 'Taycan 4s', price: 'NTD 5,320,000', image: '/img/taycan4s.png'},
         {
@@ -1175,24 +1168,28 @@ const introSection = {
       ],
     },
     Macan: {
-      image: '/Macan/macan/1-02.png',
+      image: '/img/Macan/macan/1-02.png',
       stats: {maxSpeed: 220, acceleration: 4.1},
       models: [
-        {name: 'Macan', price: 'NTD 3,200,000', image: '/Macan/macan/1-02.png'},
+        {
+          name: 'Macan',
+          price: 'NTD 3,200,000',
+          image: '/img/Macan/macan/1-02.png',
+        },
         {
           name: 'Macan 4',
           price: 'NTD 3,500,000',
-          image: '/Macan/Macan 4 Electric/Macan 4 Electric.png',
+          image: '/img/Macan/Macan 4 Electric/Macan 4 Electric.png',
         },
         {
           name: 'Macan S',
           price: 'NTD 4,100,000',
-          image: '/Macan/macan s/01-02-Photoroom.png',
+          image: '/img/Macan/macan s/01-02-Photoroom.png',
         },
         {
           name: 'Macan GTS',
           price: 'NTD 4,800,000',
-          image: '/Macan/macan gts/01-02.png',
+          image: '/img/Macan/macan gts/01-02.png',
         },
         {
           name: 'Macan Turbo',
@@ -1312,7 +1309,8 @@ const introSection = {
       const data = carData[model]
       if (!data) return
 
-      const newBgColor = model === 'Taycan' ? '#313131' : '#8c8c8c'
+      const newBgColor = model === 'Taycan' ? '#313131' : '#8C8C8C'
+      const newSectionBgColor = model === 'Taycan' ? '#282828' : '#8C8C8C'
 
       const prevTimeline = animationTimelines.get('modelSwitch')
       if (prevTimeline) {
@@ -1327,6 +1325,22 @@ const introSection = {
         duration: 0.5,
         ease: 'power2.out',
       })
+
+      // 同時更新 animation-section 的背景色
+      const animationSection = document.querySelector(
+        '.animation-section'
+      ) as HTMLElement
+      if (animationSection) {
+        timeline.to(
+          animationSection,
+          {
+            backgroundColor: newSectionBgColor,
+            duration: 0.5,
+            ease: 'power2.out',
+          },
+          0
+        )
+      }
 
       const mainCarImage = document.getElementById(
         'main-car-image'
