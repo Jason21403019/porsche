@@ -1240,28 +1240,51 @@ export const getCarConfiguration = (carModel) => {
   }
 }
 
-// 導入 JSON 資料
-import macanTree from './macanTree.json'
-import taycanTree from './taycanTree.json'
+// JSON 資料載入
+let macanTree = {}
+let taycanTree = {}
+
+// 載入 JSON 資料的異步函數
+const loadJsonData = async () => {
+  try {
+    const [macanResponse, taycanResponse] = await Promise.all([
+      fetch('/js/macanTree.json'),
+      fetch('/js/taycanTree.json'),
+    ])
+
+    macanTree = await macanResponse.json()
+    taycanTree = await taycanResponse.json()
+
+    // 更新 JSON 路徑映射
+    updateJsonDataMap()
+  } catch (error) {
+    console.error('Failed to load JSON data:', error)
+  }
+}
 
 // JSON 路徑映射
-const jsonDataMap = {
-  Macan: macanTree.macan.macan,
-  'Macan 4': macanTree.macan['Macan 4 Electric'],
-  'Macan 4S': macanTree.macan['Macan 4S Electric'],
-  'Macan S': macanTree.macan['macan s'],
-  'Macan GTS': macanTree.macan['macan gts'],
-  'Macan T': macanTree.macan['Macan t Electric'],
-  'Macan Turbo': macanTree.macan['Macan Turbo Electric'],
-  Taycan: taycanTree.taycan.taycan,
-  'Taycan 4': taycanTree.taycan.taycan4,
-  'Taycan 4S': taycanTree.taycan['Taycan 4S'],
-  'Taycan GTS': taycanTree.taycan['taycan gts'],
-  'Taycan Turbo': taycanTree.taycan['taycan turbo'],
-  'Taycan Turbo S': taycanTree.taycan['Taycan Turbo S'],
-  'Taycan Turbo GT': taycanTree.taycan['taycan turbo gt'],
-  'Taycan Turbo GT with WP':
-    taycanTree.taycan['Taycan Turbo GT with Weissach Package'],
+let jsonDataMap = {}
+
+// 更新 JSON 資料映射的函數
+const updateJsonDataMap = () => {
+  jsonDataMap = {
+    Macan: macanTree.macan?.macan || {},
+    'Macan 4': macanTree.macan?.['Macan 4 Electric'] || {},
+    'Macan 4S': macanTree.macan?.['Macan 4S Electric'] || {},
+    'Macan S': macanTree.macan?.['macan s'] || {},
+    'Macan GTS': macanTree.macan?.['macan gts'] || {},
+    'Macan T': macanTree.macan?.['Macan t Electric'] || {},
+    'Macan Turbo': macanTree.macan?.['Macan Turbo Electric'] || {},
+    Taycan: taycanTree.taycan?.taycan || {},
+    'Taycan 4': taycanTree.taycan?.taycan4 || {},
+    'Taycan 4S': taycanTree.taycan?.['Taycan 4S'] || {},
+    'Taycan GTS': taycanTree.taycan?.['taycan gts'] || {},
+    'Taycan Turbo': taycanTree.taycan?.['taycan turbo'] || {},
+    'Taycan Turbo S': taycanTree.taycan?.['Taycan Turbo S'] || {},
+    'Taycan Turbo GT': taycanTree.taycan?.['taycan turbo gt'] || {},
+    'Taycan Turbo GT with WP':
+      taycanTree.taycan?.['Taycan Turbo GT with Weissach Package'] || {},
+  }
 }
 
 // 獲取輪圈圖片路徑 - 使用 JSON 檔案中的實際路徑
@@ -1575,3 +1598,9 @@ const getOptionalPackageImagePathSpecial = (
 
   return null // 無特殊處理
 }
+
+// 初始化 JSON 資料
+loadJsonData()
+
+// 導出載入函數供外部使用
+export { loadJsonData }

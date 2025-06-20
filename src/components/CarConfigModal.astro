@@ -1229,10 +1229,14 @@
     getPackageImagePath,
     getOptionalPackageImagePath,
     getColorMainImagePath,
-  } from '/src/data/carData.js'
+    loadJsonData,
+  } from '/js/carData.js'
 
   // 燈窗功能
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', async () => {
+    // 確保 JSON 資料已載入
+    await loadJsonData()
+
     const modal = document.getElementById('carConfigModal')
     const sidebarCarTitle = document.getElementById('sidebarCarTitle')
     const sidebarCarImage = document.getElementById('sidebarCarImage')
