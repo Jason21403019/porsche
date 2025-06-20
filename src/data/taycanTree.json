@@ -1,0 +1,646 @@
+{
+  "taycan": {
+    "taycan": {
+      "01-02-Photoroom.png": "../img/Taycan/taycan/01-02-Photoroom.png",
+      "01-1.png": "../img/Taycan/taycan/01-1.png",
+      "01-color-C9D1D3": {
+        "wheel01": {
+          "01.png": "../img/Taycan/taycan/01-color-C9D1D3/wheel01/01.png",
+          "Optional": {
+            "01-02.png": "../img/Taycan/taycan/01-color-C9D1D3/wheel01/Optional/01-02.png",
+            "01-03.png": "../img/Taycan/taycan/01-color-C9D1D3/wheel01/Optional/01-03.png",
+            "01-1.png": "../img/Taycan/taycan/01-color-C9D1D3/wheel01/Optional/01-1.png",
+            "01-4.png": "../img/Taycan/taycan/01-color-C9D1D3/wheel01/Optional/01-4.png"
+          }
+        },
+        "wheel02": {
+          "02.png": "../img/Taycan/taycan/01-color-C9D1D3/wheel02/02.png",
+          "Optional": {
+            "02-1.png": "../img/Taycan/taycan/01-color-C9D1D3/wheel02/Optional/02-1.png",
+            "02-2.png": "../img/Taycan/taycan/01-color-C9D1D3/wheel02/Optional/02-2.png",
+            "02-3.png": "../img/Taycan/taycan/01-color-C9D1D3/wheel02/Optional/02-3.png",
+            "02-4.png": "../img/Taycan/taycan/01-color-C9D1D3/wheel02/Optional/02-4.png"
+          }
+        },
+        "wheel03": {
+          "03.png": "../img/Taycan/taycan/01-color-C9D1D3/wheel03/03.png",
+          "Optional": {
+            "03-1.png": "../img/Taycan/taycan/01-color-C9D1D3/wheel03/Optional/03-1.png",
+            "03-2.png": "../img/Taycan/taycan/01-color-C9D1D3/wheel03/Optional/03-2.png",
+            "03-3.png": "../img/Taycan/taycan/01-color-C9D1D3/wheel03/Optional/03-3.png",
+            "03-4.png": "../img/Taycan/taycan/01-color-C9D1D3/wheel03/Optional/03-4.png"
+          }
+        }
+      },
+      "02-color-7DBCC6": {
+        "wheel01": {
+          "01.png": "../img/Taycan/taycan/02-color-7DBCC6/wheel01/01.png",
+          "Optional": {
+            "01-02.png": "../img/Taycan/taycan/02-color-7DBCC6/wheel01/Optional/01-02.png",
+            "01-03.png": "../img/Taycan/taycan/02-color-7DBCC6/wheel01/Optional/01-03.png",
+            "01-04.png": "../img/Taycan/taycan/02-color-7DBCC6/wheel01/Optional/01-04.png",
+            "01-1.png": "../img/Taycan/taycan/02-color-7DBCC6/wheel01/Optional/01-1.png"
+          }
+        },
+        "wheel02": {
+          "02.png": "../img/Taycan/taycan/02-color-7DBCC6/wheel02/02.png",
+          "Optional": {
+            "01-04.png": "../img/Taycan/taycan/02-color-7DBCC6/wheel02/Optional/01-04.png",
+            "02-1.png": "../img/Taycan/taycan/02-color-7DBCC6/wheel02/Optional/02-1.png",
+            "02-2.png": "../img/Taycan/taycan/02-color-7DBCC6/wheel02/Optional/02-2.png",
+            "02-3.png": "../img/Taycan/taycan/02-color-7DBCC6/wheel02/Optional/02-3.png"
+          }
+        },
+        "wheel03": {
+          "03.png": "../img/Taycan/taycan/02-color-7DBCC6/wheel03/03.png",
+          "Optional": {
+            "01-04.png": "../img/Taycan/taycan/02-color-7DBCC6/wheel03/Optional/01-04.png",
+            "03-1.png": "../img/Taycan/taycan/02-color-7DBCC6/wheel03/Optional/03-1.png",
+            "03-2.png": "../img/Taycan/taycan/02-color-7DBCC6/wheel03/Optional/03-2.png",
+            "03-3.png": "../img/Taycan/taycan/02-color-7DBCC6/wheel03/Optional/03-3.png"
+          }
+        }
+      },
+      "03-color-C69BA3": {
+        "wheel01": {
+          "01.png": "../img/Taycan/taycan/03-color-C69BA3/wheel01/01.png",
+          "Optional": {
+            "01-1.png": "../img/Taycan/taycan/03-color-C69BA3/wheel01/Optional/01-1.png",
+            "01-2.png": "../img/Taycan/taycan/03-color-C69BA3/wheel01/Optional/01-2.png",
+            "01-3.png": "../img/Taycan/taycan/03-color-C69BA3/wheel01/Optional/01-3.png",
+            "01-4.png": "../img/Taycan/taycan/03-color-C69BA3/wheel01/Optional/01-4.png"
+          }
+        },
+        "wheel02": {
+          "02.png": "../img/Taycan/taycan/03-color-C69BA3/wheel02/02.png",
+          "Optional": {
+            "01-1.png": "../img/Taycan/taycan/03-color-C69BA3/wheel02/Optional/01-1.png",
+            "01-2.png": "../img/Taycan/taycan/03-color-C69BA3/wheel02/Optional/01-2.png",
+            "01-3.png": "../img/Taycan/taycan/03-color-C69BA3/wheel02/Optional/01-3.png",
+            "01-4.png": "../img/Taycan/taycan/03-color-C69BA3/wheel02/Optional/01-4.png"
+          }
+        },
+        "wheel03": {
+          "03.png": "../img/Taycan/taycan/03-color-C69BA3/wheel03/03.png",
+          "Optional": {
+            "02-4.png": "../img/Taycan/taycan/03-color-C69BA3/wheel03/Optional/02-4.png",
+            "03-1.png": "../img/Taycan/taycan/03-color-C69BA3/wheel03/Optional/03-1.png",
+            "03-2.png": "../img/Taycan/taycan/03-color-C69BA3/wheel03/Optional/03-2.png",
+            "03-3.png": "../img/Taycan/taycan/03-color-C69BA3/wheel03/Optional/03-3.png"
+          }
+        }
+      }
+    },
+    "Taycan 4S": {
+      "01-color-B78B99": {
+        "wheel01": {
+          "01.png": "../img/Taycan/Taycan 4S/01-color-B78B99/wheel01/01.png",
+          "Optional": {
+            "01-1.png": "../img/Taycan/Taycan 4S/01-color-B78B99/wheel01/Optional/01-1.png",
+            "01-2.png": "../img/Taycan/Taycan 4S/01-color-B78B99/wheel01/Optional/01-2.png",
+            "01-3.png": "../img/Taycan/Taycan 4S/01-color-B78B99/wheel01/Optional/01-3.png",
+            "01-4.png": "../img/Taycan/Taycan 4S/01-color-B78B99/wheel01/Optional/01-4.png"
+          }
+        },
+        "wheel02": {
+          "02.png": "../img/Taycan/Taycan 4S/01-color-B78B99/wheel02/02.png",
+          "Optional": {
+            "02-1.png": "../img/Taycan/Taycan 4S/01-color-B78B99/wheel02/Optional/02-1.png",
+            "02-2.png": "../img/Taycan/Taycan 4S/01-color-B78B99/wheel02/Optional/02-2.png",
+            "02-3.png": "../img/Taycan/Taycan 4S/01-color-B78B99/wheel02/Optional/02-3.png",
+            "02-4.png": "../img/Taycan/Taycan 4S/01-color-B78B99/wheel02/Optional/02-4.png"
+          }
+        },
+        "wheel03": {
+          "01.png": "../img/Taycan/Taycan 4S/01-color-B78B99/wheel03/01.png",
+          "Optional": {
+            "03-1.png": "../img/Taycan/Taycan 4S/01-color-B78B99/wheel03/Optional/03-1.png",
+            "03-2.png": "../img/Taycan/Taycan 4S/01-color-B78B99/wheel03/Optional/03-2.png",
+            "03-3.png": "../img/Taycan/Taycan 4S/01-color-B78B99/wheel03/Optional/03-3.png",
+            "03-4.png": "../img/Taycan/Taycan 4S/01-color-B78B99/wheel03/Optional/03-4.png"
+          }
+        }
+      },
+      "02-color-293A71": {
+        "wheel01": {
+          "01.png": "../img/Taycan/Taycan 4S/02-color-293A71/wheel01/01.png",
+          "Optional": {
+            "01-1.png": "../img/Taycan/Taycan 4S/02-color-293A71/wheel01/Optional/01-1.png",
+            "01-2.png": "../img/Taycan/Taycan 4S/02-color-293A71/wheel01/Optional/01-2.png",
+            "01-3.png": "../img/Taycan/Taycan 4S/02-color-293A71/wheel01/Optional/01-3.png",
+            "01-4.png": "../img/Taycan/Taycan 4S/02-color-293A71/wheel01/Optional/01-4.png"
+          }
+        },
+        "wheel02": {
+          "02.png": "../img/Taycan/Taycan 4S/02-color-293A71/wheel02/02.png",
+          "Optional": {
+            "02-1-Photoroom.png": "../img/Taycan/Taycan 4S/02-color-293A71/wheel02/Optional/02-1-Photoroom.png",
+            "02-2.png": "../img/Taycan/Taycan 4S/02-color-293A71/wheel02/Optional/02-2.png",
+            "02-3.png": "../img/Taycan/Taycan 4S/02-color-293A71/wheel02/Optional/02-3.png",
+            "02-4.png": "../img/Taycan/Taycan 4S/02-color-293A71/wheel02/Optional/02-4.png"
+          }
+        },
+        "wheel03": {
+          "03.png": "../img/Taycan/Taycan 4S/02-color-293A71/wheel03/03.png",
+          "Optional": {
+            "03-1.png": "../img/Taycan/Taycan 4S/02-color-293A71/wheel03/Optional/03-1.png",
+            "03-2.png": "../img/Taycan/Taycan 4S/02-color-293A71/wheel03/Optional/03-2.png",
+            "03-3.png": "../img/Taycan/Taycan 4S/02-color-293A71/wheel03/Optional/03-3.png",
+            "03-4.png": "../img/Taycan/Taycan 4S/02-color-293A71/wheel03/Optional/03-4.png"
+          }
+        }
+      },
+      "03-color-A42333": {
+        "wheel01": {
+          "01.png": "../img/Taycan/Taycan 4S/03-color-A42333/wheel01/01.png",
+          "Optional": {
+            "01-1.png": "../img/Taycan/Taycan 4S/03-color-A42333/wheel01/Optional/01-1.png",
+            "01-2.png": "../img/Taycan/Taycan 4S/03-color-A42333/wheel01/Optional/01-2.png",
+            "01-3.png": "../img/Taycan/Taycan 4S/03-color-A42333/wheel01/Optional/01-3.png",
+            "01-4.png": "../img/Taycan/Taycan 4S/03-color-A42333/wheel01/Optional/01-4.png"
+          }
+        },
+        "wheel02": {
+          "02.png": "../img/Taycan/Taycan 4S/03-color-A42333/wheel02/02.png",
+          "Optional": {
+            "02-1.png": "../img/Taycan/Taycan 4S/03-color-A42333/wheel02/Optional/02-1.png",
+            "02-2.png": "../img/Taycan/Taycan 4S/03-color-A42333/wheel02/Optional/02-2.png",
+            "02-3.png": "../img/Taycan/Taycan 4S/03-color-A42333/wheel02/Optional/02-3.png",
+            "02-4.png": "../img/Taycan/Taycan 4S/03-color-A42333/wheel02/Optional/02-4.png"
+          }
+        },
+        "wheel03": {
+          "03.png": "../img/Taycan/Taycan 4S/03-color-A42333/wheel03/03.png",
+          "Optional": {
+            "02-4.png": "../img/Taycan/Taycan 4S/03-color-A42333/wheel03/Optional/02-4.png",
+            "03-1.png": "../img/Taycan/Taycan 4S/03-color-A42333/wheel03/Optional/03-1.png",
+            "03-2.png": "../img/Taycan/Taycan 4S/03-color-A42333/wheel03/Optional/03-2.png",
+            "03-3.png": "../img/Taycan/Taycan 4S/03-color-A42333/wheel03/Optional/03-3.png"
+          }
+        }
+      },
+      "Taycan 4S (1).png": "../img/Taycan/Taycan 4S/Taycan 4S (1).png",
+      "Taycan 4S.png": "../img/Taycan/Taycan 4S/Taycan 4S.png"
+    },
+    "taycan gts": {
+      "01-color-B21D2A": {
+        "wheel01": {
+          "01.png": "../img/Taycan/taycan gts/01-color-B21D2A/wheel01/01.png",
+          "Optional": {
+            "01-2.png": "../img/Taycan/taycan gts/01-color-B21D2A/wheel01/Optional/01-2.png",
+            "01-3.png": "../img/Taycan/taycan gts/01-color-B21D2A/wheel01/Optional/01-3.png",
+            "01-4.png": "../img/Taycan/taycan gts/01-color-B21D2A/wheel01/Optional/01-4.png",
+            "02.png": "../img/Taycan/taycan gts/01-color-B21D2A/wheel01/Optional/02.png"
+          }
+        },
+        "wheel02": {
+          "02.png": "../img/Taycan/taycan gts/01-color-B21D2A/wheel02/02.png",
+          "Optional": {
+            "01-2.png": "../img/Taycan/taycan gts/01-color-B21D2A/wheel02/Optional/01-2.png",
+            "01-3.png": "../img/Taycan/taycan gts/01-color-B21D2A/wheel02/Optional/01-3.png",
+            "01-4.png": "../img/Taycan/taycan gts/01-color-B21D2A/wheel02/Optional/01-4.png",
+            "01.png": "../img/Taycan/taycan gts/01-color-B21D2A/wheel02/Optional/01.png"
+          }
+        },
+        "wheel03": {
+          "03.png": "../img/Taycan/taycan gts/01-color-B21D2A/wheel03/03.png",
+          "Optional": {
+            "03-1.png": "../img/Taycan/taycan gts/01-color-B21D2A/wheel03/Optional/03-1.png",
+            "03-2.png": "../img/Taycan/taycan gts/01-color-B21D2A/wheel03/Optional/03-2.png",
+            "03-3.png": "../img/Taycan/taycan gts/01-color-B21D2A/wheel03/Optional/03-3.png",
+            "03-4.png": "../img/Taycan/taycan gts/01-color-B21D2A/wheel03/Optional/03-4.png"
+          }
+        }
+      },
+      "02-color-16317C": {
+        "wheel01": {
+          "01.png": "../img/Taycan/taycan gts/02-color-16317C/wheel01/01.png",
+          "Optional": {
+            "01-1.png": "../img/Taycan/taycan gts/02-color-16317C/wheel01/Optional/01-1.png",
+            "01-2.png": "../img/Taycan/taycan gts/02-color-16317C/wheel01/Optional/01-2.png",
+            "01-3.png": "../img/Taycan/taycan gts/02-color-16317C/wheel01/Optional/01-3.png",
+            "01-4.png": "../img/Taycan/taycan gts/02-color-16317C/wheel01/Optional/01-4.png"
+          }
+        },
+        "wheel02": {
+          "01.png": "../img/Taycan/taycan gts/02-color-16317C/wheel02/01.png",
+          "Optional": {
+            "01-2.png": "../img/Taycan/taycan gts/02-color-16317C/wheel02/Optional/01-2.png",
+            "01-3.png": "../img/Taycan/taycan gts/02-color-16317C/wheel02/Optional/01-3.png",
+            "01-4.png": "../img/Taycan/taycan gts/02-color-16317C/wheel02/Optional/01-4.png",
+            "02-1.png": "../img/Taycan/taycan gts/02-color-16317C/wheel02/Optional/02-1.png"
+          }
+        },
+        "wheel03": {
+          "03.png": "../img/Taycan/taycan gts/02-color-16317C/wheel03/03.png",
+          "Optional": {
+            "01-4.png": "../img/Taycan/taycan gts/02-color-16317C/wheel03/Optional/01-4.png",
+            "03-1.png": "../img/Taycan/taycan gts/02-color-16317C/wheel03/Optional/03-1.png",
+            "03-2.png": "../img/Taycan/taycan gts/02-color-16317C/wheel03/Optional/03-2.png",
+            "03-3.png": "../img/Taycan/taycan gts/02-color-16317C/wheel03/Optional/03-3.png"
+          }
+        }
+      },
+      "03-color-8A819B": {
+        "wheel01": {
+          "01.png": "../img/Taycan/taycan gts/03-color-8A819B/wheel01/01.png",
+          "Optional": {
+            "01-1.png": "../img/Taycan/taycan gts/03-color-8A819B/wheel01/Optional/01-1.png",
+            "01-2.png": "../img/Taycan/taycan gts/03-color-8A819B/wheel01/Optional/01-2.png",
+            "01-3.png": "../img/Taycan/taycan gts/03-color-8A819B/wheel01/Optional/01-3.png",
+            "01-4.png": "../img/Taycan/taycan gts/03-color-8A819B/wheel01/Optional/01-4.png"
+          }
+        },
+        "wheel02": {
+          "01.png": "../img/Taycan/taycan gts/03-color-8A819B/wheel02/01.png",
+          "Optional": {
+            "01-2.png": "../img/Taycan/taycan gts/03-color-8A819B/wheel02/Optional/01-2.png",
+            "01-3.png": "../img/Taycan/taycan gts/03-color-8A819B/wheel02/Optional/01-3.png",
+            "01-4.png": "../img/Taycan/taycan gts/03-color-8A819B/wheel02/Optional/01-4.png",
+            "02-1.png": "../img/Taycan/taycan gts/03-color-8A819B/wheel02/Optional/02-1.png"
+          }
+        },
+        "wheel03": {
+          "03.png": "../img/Taycan/taycan gts/03-color-8A819B/wheel03/03.png",
+          "Optional": {
+            "01-4.png": "../img/Taycan/taycan gts/03-color-8A819B/wheel03/Optional/01-4.png",
+            "03-1.png": "../img/Taycan/taycan gts/03-color-8A819B/wheel03/Optional/03-1.png",
+            "03-2.png": "../img/Taycan/taycan gts/03-color-8A819B/wheel03/Optional/03-2.png",
+            "03-3.png": "../img/Taycan/taycan gts/03-color-8A819B/wheel03/Optional/03-3.png"
+          }
+        }
+      },
+      "taycan gts(1).png": "../img/Taycan/taycan gts/taycan gts(1).png",
+      "Taycan GTS.png": "../img/Taycan/taycan gts/Taycan GTS.png"
+    },
+    "taycan turbo": {
+      "01-color-1A1A1A": {
+        "wheel01": {
+          "01.png": "../img/Taycan/taycan turbo/01-color-1A1A1A/wheel01/01.png",
+          "Optional": {
+            "01-1.png": "../img/Taycan/taycan turbo/01-color-1A1A1A/wheel01/Optional/01-1.png",
+            "01-2.png": "../img/Taycan/taycan turbo/01-color-1A1A1A/wheel01/Optional/01-2.png",
+            "01-3.png": "../img/Taycan/taycan turbo/01-color-1A1A1A/wheel01/Optional/01-3.png",
+            "01-4.png": "../img/Taycan/taycan turbo/01-color-1A1A1A/wheel01/Optional/01-4.png"
+          }
+        },
+        "wheel02": {
+          "01.png": "../img/Taycan/taycan turbo/01-color-1A1A1A/wheel02/01.png",
+          "Optional": {
+            "01-1.png": "../img/Taycan/taycan turbo/01-color-1A1A1A/wheel02/Optional/01-1.png",
+            "01-2.png": "../img/Taycan/taycan turbo/01-color-1A1A1A/wheel02/Optional/01-2.png",
+            "01-3.png": "../img/Taycan/taycan turbo/01-color-1A1A1A/wheel02/Optional/01-3.png",
+            "01-4.png": "../img/Taycan/taycan turbo/01-color-1A1A1A/wheel02/Optional/01-4.png"
+          }
+        },
+        "wheel03": {
+          "00.png": "../img/Taycan/taycan turbo/01-color-1A1A1A/wheel03/00.png",
+          "Optional": {
+            "01-4.png": "../img/Taycan/taycan turbo/01-color-1A1A1A/wheel03/Optional/01-4.png",
+            "01.png": "../img/Taycan/taycan turbo/01-color-1A1A1A/wheel03/Optional/01.png",
+            "02.png": "../img/Taycan/taycan turbo/01-color-1A1A1A/wheel03/Optional/02.png",
+            "03.png": "../img/Taycan/taycan turbo/01-color-1A1A1A/wheel03/Optional/03.png"
+          }
+        }
+      },
+      "01.png": "../img/Taycan/taycan turbo/01.png",
+      "02-color-112C70": {
+        "wheel01": {
+          "01.png": "../img/Taycan/taycan turbo/02-color-112C70/wheel01/01.png",
+          "Optional": {
+            "01-Photoroom.png": "../img/Taycan/taycan turbo/02-color-112C70/wheel01/Optional/01-Photoroom.png",
+            "02.png": "../img/Taycan/taycan turbo/02-color-112C70/wheel01/Optional/02.png",
+            "03.png": "../img/Taycan/taycan turbo/02-color-112C70/wheel01/Optional/03.png",
+            "04.png": "../img/Taycan/taycan turbo/02-color-112C70/wheel01/Optional/04.png"
+          }
+        },
+        "wheel02": {
+          "01.png": "../img/Taycan/taycan turbo/02-color-112C70/wheel02/01.png",
+          "Optional": {
+            "01-01.png": "../img/Taycan/taycan turbo/02-color-112C70/wheel02/Optional/01-01.png",
+            "02-2.png": "../img/Taycan/taycan turbo/02-color-112C70/wheel02/Optional/02-2.png",
+            "02-3.png": "../img/Taycan/taycan turbo/02-color-112C70/wheel02/Optional/02-3.png",
+            "04.png": "../img/Taycan/taycan turbo/02-color-112C70/wheel02/Optional/04.png"
+          }
+        },
+        "wheel03": {
+          "00.png": "../img/Taycan/taycan turbo/02-color-112C70/wheel03/00.png",
+          "Optional": {
+            "03-1.png": "../img/Taycan/taycan turbo/02-color-112C70/wheel03/Optional/03-1.png",
+            "03-2.png": "../img/Taycan/taycan turbo/02-color-112C70/wheel03/Optional/03-2.png",
+            "03-3.png": "../img/Taycan/taycan turbo/02-color-112C70/wheel03/Optional/03-3.png",
+            "04.png": "../img/Taycan/taycan turbo/02-color-112C70/wheel03/Optional/04.png"
+          }
+        }
+      },
+      "02.png": "../img/Taycan/taycan turbo/02.png",
+      "03-color-C11B30": {
+        "wheel01": {
+          "01.png": "../img/Taycan/taycan turbo/03-color-C11B30/wheel01/01.png",
+          "Optional": {
+            "03-01.png": "../img/Taycan/taycan turbo/03-color-C11B30/wheel01/Optional/03-01.png",
+            "03-2.png": "../img/Taycan/taycan turbo/03-color-C11B30/wheel01/Optional/03-2.png",
+            "03-3.png": "../img/Taycan/taycan turbo/03-color-C11B30/wheel01/Optional/03-3.png",
+            "03-4.png": "../img/Taycan/taycan turbo/03-color-C11B30/wheel01/Optional/03-4.png"
+          }
+        },
+        "wheel02": {
+          "01.png": "../img/Taycan/taycan turbo/03-color-C11B30/wheel02/01.png",
+          "Optional": {
+            "02-1.png": "../img/Taycan/taycan turbo/03-color-C11B30/wheel02/Optional/02-1.png",
+            "02-2.png": "../img/Taycan/taycan turbo/03-color-C11B30/wheel02/Optional/02-2.png",
+            "02-3.png": "../img/Taycan/taycan turbo/03-color-C11B30/wheel02/Optional/02-3.png",
+            "03-4.png": "../img/Taycan/taycan turbo/03-color-C11B30/wheel02/Optional/03-4.png"
+          }
+        },
+        "wheel03": {
+          "00.png": "../img/Taycan/taycan turbo/03-color-C11B30/wheel03/00.png",
+          "Optional": {
+            "03-01.png": "../img/Taycan/taycan turbo/03-color-C11B30/wheel03/Optional/03-01.png",
+            "03-02.png": "../img/Taycan/taycan turbo/03-color-C11B30/wheel03/Optional/03-02.png",
+            "03-03.png": "../img/Taycan/taycan turbo/03-color-C11B30/wheel03/Optional/03-03.png",
+            "03-4.png": "../img/Taycan/taycan turbo/03-color-C11B30/wheel03/Optional/03-4.png"
+          }
+        }
+      }
+    },
+    "taycan turbo gt": {
+      "01-color-2F5C66": {
+        "wheel01": {
+          "00.png": "../img/Taycan/taycan turbo gt/01-color-2F5C66/wheel01/00.png",
+          "Optional": {
+            "01-01.png": "../img/Taycan/taycan turbo gt/01-color-2F5C66/wheel01/Optional/01-01.png",
+            "01-02.png": "../img/Taycan/taycan turbo gt/01-color-2F5C66/wheel01/Optional/01-02.png",
+            "01-03.png": "../img/Taycan/taycan turbo gt/01-color-2F5C66/wheel01/Optional/01-03.png",
+            "01-04.png": "../img/Taycan/taycan turbo gt/01-color-2F5C66/wheel01/Optional/01-04.png"
+          }
+        },
+        "wheel02": {
+          "00.png": "../img/Taycan/taycan turbo gt/01-color-2F5C66/wheel02/00.png",
+          "Optional": {
+            "01-04.png": "../img/Taycan/taycan turbo gt/01-color-2F5C66/wheel02/Optional/01-04.png",
+            "02-1 (2).png": "../img/Taycan/taycan turbo gt/01-color-2F5C66/wheel02/Optional/02-1 (2).png",
+            "02-2.png": "../img/Taycan/taycan turbo gt/01-color-2F5C66/wheel02/Optional/02-2.png",
+            "02-3.png": "../img/Taycan/taycan turbo gt/01-color-2F5C66/wheel02/Optional/02-3.png"
+          }
+        },
+        "wheel03": {
+          "00.png": "../img/Taycan/taycan turbo gt/01-color-2F5C66/wheel03/00.png",
+          "Optional": {
+            "01-04.png": "../img/Taycan/taycan turbo gt/01-color-2F5C66/wheel03/Optional/01-04.png",
+            "01.png": "../img/Taycan/taycan turbo gt/01-color-2F5C66/wheel03/Optional/01.png",
+            "02-2.png": "../img/Taycan/taycan turbo gt/01-color-2F5C66/wheel03/Optional/02-2.png",
+            "02-3.png": "../img/Taycan/taycan turbo gt/01-color-2F5C66/wheel03/Optional/02-3.png"
+          }
+        }
+      },
+      "02-color-8C9B98": {
+        "wheel01": {
+          "01.png": "../img/Taycan/taycan turbo gt/02-color-8C9B98/wheel01/01.png",
+          "Optional": {
+            "01.png": "../img/Taycan/taycan turbo gt/02-color-8C9B98/wheel01/Optional/01.png",
+            "02.png": "../img/Taycan/taycan turbo gt/02-color-8C9B98/wheel01/Optional/02.png",
+            "03.png": "../img/Taycan/taycan turbo gt/02-color-8C9B98/wheel01/Optional/03.png",
+            "04.png": "../img/Taycan/taycan turbo gt/02-color-8C9B98/wheel01/Optional/04.png"
+          }
+        },
+        "wheel02": {
+          "00.png": "../img/Taycan/taycan turbo gt/02-color-8C9B98/wheel02/00.png",
+          "Optional": {
+            "01.png": "../img/Taycan/taycan turbo gt/02-color-8C9B98/wheel02/Optional/01.png",
+            "02.png": "../img/Taycan/taycan turbo gt/02-color-8C9B98/wheel02/Optional/02.png",
+            "03.png": "../img/Taycan/taycan turbo gt/02-color-8C9B98/wheel02/Optional/03.png",
+            "04.png": "../img/Taycan/taycan turbo gt/02-color-8C9B98/wheel02/Optional/04.png"
+          }
+        },
+        "wheel03": {
+          "00.png": "../img/Taycan/taycan turbo gt/02-color-8C9B98/wheel03/00.png",
+          "Optional": {
+            "03-1.png": "../img/Taycan/taycan turbo gt/02-color-8C9B98/wheel03/Optional/03-1.png",
+            "03-2.png": "../img/Taycan/taycan turbo gt/02-color-8C9B98/wheel03/Optional/03-2.png",
+            "03-3.png": "../img/Taycan/taycan turbo gt/02-color-8C9B98/wheel03/Optional/03-3.png",
+            "04.png": "../img/Taycan/taycan turbo gt/02-color-8C9B98/wheel03/Optional/04.png"
+          }
+        }
+      },
+      "03-color-3D377C": {
+        "wheel01": {
+          "00.png": "../img/Taycan/taycan turbo gt/03-color-3D377C/wheel01/00.png",
+          "Optional": {
+            "01.png": "../img/Taycan/taycan turbo gt/03-color-3D377C/wheel01/Optional/01.png",
+            "02.png": "../img/Taycan/taycan turbo gt/03-color-3D377C/wheel01/Optional/02.png",
+            "03.png": "../img/Taycan/taycan turbo gt/03-color-3D377C/wheel01/Optional/03.png",
+            "04.png": "../img/Taycan/taycan turbo gt/03-color-3D377C/wheel01/Optional/04.png"
+          }
+        },
+        "wheel02": {
+          "00.png": "../img/Taycan/taycan turbo gt/03-color-3D377C/wheel02/00.png",
+          "Optional": {
+            "01.png": "../img/Taycan/taycan turbo gt/03-color-3D377C/wheel02/Optional/01.png",
+            "02.png": "../img/Taycan/taycan turbo gt/03-color-3D377C/wheel02/Optional/02.png",
+            "03.png": "../img/Taycan/taycan turbo gt/03-color-3D377C/wheel02/Optional/03.png",
+            "04.png": "../img/Taycan/taycan turbo gt/03-color-3D377C/wheel02/Optional/04.png"
+          }
+        },
+        "wheel03": {
+          "00.png": "../img/Taycan/taycan turbo gt/03-color-3D377C/wheel03/00.png",
+          "Optional": {
+            "01.png": "../img/Taycan/taycan turbo gt/03-color-3D377C/wheel03/Optional/01.png",
+            "02.png": "../img/Taycan/taycan turbo gt/03-color-3D377C/wheel03/Optional/02.png",
+            "03.png": "../img/Taycan/taycan turbo gt/03-color-3D377C/wheel03/Optional/03.png",
+            "04.png": "../img/Taycan/taycan turbo gt/03-color-3D377C/wheel03/Optional/04.png"
+          }
+        }
+      },
+      "Taycan Turbo GT 01-Photoroom.png": "../img/Taycan/taycan turbo gt/Taycan Turbo GT 01-Photoroom.png",
+      "Taycan Turbo GT 02-Photoroom (1).png": "../img/Taycan/taycan turbo gt/Taycan Turbo GT 02-Photoroom (1).png"
+    },
+    "Taycan Turbo GT with Weissach Package": {
+      "01-color-3A3577": {
+        "00.png": "../img/Taycan/Taycan Turbo GT with Weissach Package/01-color-3A3577/00.png",
+        "Optional": {
+          "01.png": "../img/Taycan/Taycan Turbo GT with Weissach Package/01-color-3A3577/Optional/01.png",
+          "02.png": "../img/Taycan/Taycan Turbo GT with Weissach Package/01-color-3A3577/Optional/02.png",
+          "03.png": "../img/Taycan/Taycan Turbo GT with Weissach Package/01-color-3A3577/Optional/03.png",
+          "04.png": "../img/Taycan/Taycan Turbo GT with Weissach Package/01-color-3A3577/Optional/04.png"
+        }
+      },
+      "02-color-B6BEBF": {
+        "01.png": "../img/Taycan/Taycan Turbo GT with Weissach Package/02-color-B6BEBF/01.png",
+        "02.png": "../img/Taycan/Taycan Turbo GT with Weissach Package/02-color-B6BEBF/02.png",
+        "03.png": "../img/Taycan/Taycan Turbo GT with Weissach Package/02-color-B6BEBF/03.png",
+        "04.png": "../img/Taycan/Taycan Turbo GT with Weissach Package/02-color-B6BEBF/04.png"
+      },
+      "03-color-364B51": {
+        "01.png": "../img/Taycan/Taycan Turbo GT with Weissach Package/03-color-364B51/01.png",
+        "02.png": "../img/Taycan/Taycan Turbo GT with Weissach Package/03-color-364B51/02.png",
+        "03.png": "../img/Taycan/Taycan Turbo GT with Weissach Package/03-color-364B51/03.png",
+        "04.png": "../img/Taycan/Taycan Turbo GT with Weissach Package/03-color-364B51/04.png"
+      },
+      "Taycan Turbo GT with Weissach 01.png": "../img/Taycan/Taycan Turbo GT with Weissach Package/Taycan Turbo GT with Weissach 01.png",
+      "Taycan Turbo GT with Weissach 02.png": "../img/Taycan/Taycan Turbo GT with Weissach Package/Taycan Turbo GT with Weissach 02.png"
+    },
+    "Taycan Turbo S": {
+      "01-color-BCBFC1": {
+        "wheel01": {
+          "01.png": "../img/Taycan/Taycan Turbo S/01-color-BCBFC1/wheel01/01.png",
+          "Optional": {
+            "01-1.png": "../img/Taycan/Taycan Turbo S/01-color-BCBFC1/wheel01/Optional/01-1.png",
+            "01-2.png": "../img/Taycan/Taycan Turbo S/01-color-BCBFC1/wheel01/Optional/01-2.png",
+            "01-3.png": "../img/Taycan/Taycan Turbo S/01-color-BCBFC1/wheel01/Optional/01-3.png",
+            "01-4.png": "../img/Taycan/Taycan Turbo S/01-color-BCBFC1/wheel01/Optional/01-4.png"
+          }
+        },
+        "wheel02": {
+          "02.png": "../img/Taycan/Taycan Turbo S/01-color-BCBFC1/wheel02/02.png",
+          "Optional": {
+            "02-1.png": "../img/Taycan/Taycan Turbo S/01-color-BCBFC1/wheel02/Optional/02-1.png",
+            "02-2.png": "../img/Taycan/Taycan Turbo S/01-color-BCBFC1/wheel02/Optional/02-2.png",
+            "02-3.png": "../img/Taycan/Taycan Turbo S/01-color-BCBFC1/wheel02/Optional/02-3.png",
+            "02-4.png": "../img/Taycan/Taycan Turbo S/01-color-BCBFC1/wheel02/Optional/02-4.png"
+          }
+        },
+        "wheel03": {
+          "03.png": "../img/Taycan/Taycan Turbo S/01-color-BCBFC1/wheel03/03.png",
+          "Optional": {
+            "03-1.png": "../img/Taycan/Taycan Turbo S/01-color-BCBFC1/wheel03/Optional/03-1.png",
+            "03-2.png": "../img/Taycan/Taycan Turbo S/01-color-BCBFC1/wheel03/Optional/03-2.png",
+            "03-3.png": "../img/Taycan/Taycan Turbo S/01-color-BCBFC1/wheel03/Optional/03-3.png",
+            "03-4.png": "../img/Taycan/Taycan Turbo S/01-color-BCBFC1/wheel03/Optional/03-4.png"
+          }
+        }
+      },
+      "02-color-142466": {
+        "wheel01": {
+          "01.png": "../img/Taycan/Taycan Turbo S/02-color-142466/wheel01/01.png",
+          "Optional": {
+            "01-1.png": "../img/Taycan/Taycan Turbo S/02-color-142466/wheel01/Optional/01-1.png",
+            "01-2.png": "../img/Taycan/Taycan Turbo S/02-color-142466/wheel01/Optional/01-2.png",
+            "01-3.png": "../img/Taycan/Taycan Turbo S/02-color-142466/wheel01/Optional/01-3.png",
+            "01-4.png": "../img/Taycan/Taycan Turbo S/02-color-142466/wheel01/Optional/01-4.png"
+          }
+        },
+        "wheel02": {
+          "02.png": "../img/Taycan/Taycan Turbo S/02-color-142466/wheel02/02.png",
+          "Optional": {
+            "02-1.png": "../img/Taycan/Taycan Turbo S/02-color-142466/wheel02/Optional/02-1.png",
+            "02-2.png": "../img/Taycan/Taycan Turbo S/02-color-142466/wheel02/Optional/02-2.png",
+            "02-3.png": "../img/Taycan/Taycan Turbo S/02-color-142466/wheel02/Optional/02-3.png",
+            "02-4.png": "../img/Taycan/Taycan Turbo S/02-color-142466/wheel02/Optional/02-4.png"
+          }
+        },
+        "wheel03": {
+          "03.png": "../img/Taycan/Taycan Turbo S/02-color-142466/wheel03/03.png",
+          "Optional": {
+            "03-1.png": "../img/Taycan/Taycan Turbo S/02-color-142466/wheel03/Optional/03-1.png",
+            "03-2.png": "../img/Taycan/Taycan Turbo S/02-color-142466/wheel03/Optional/03-2.png",
+            "03-3.png": "../img/Taycan/Taycan Turbo S/02-color-142466/wheel03/Optional/03-3.png",
+            "03-4.png": "../img/Taycan/Taycan Turbo S/02-color-142466/wheel03/Optional/03-4.png"
+          }
+        }
+      },
+      "03-color-B70606": {
+        "00.png": "../img/Taycan/Taycan Turbo S/03-color-B70606/00.png",
+        "Optional": {
+          "03-1.png": "../img/Taycan/Taycan Turbo S/03-color-B70606/Optional/03-1.png",
+          "03-2.png": "../img/Taycan/Taycan Turbo S/03-color-B70606/Optional/03-2.png",
+          "03-3.png": "../img/Taycan/Taycan Turbo S/03-color-B70606/Optional/03-3.png",
+          "03-4.png": "../img/Taycan/Taycan Turbo S/03-color-B70606/Optional/03-4.png"
+        }
+      },
+      "Taycan Turbo S (1).png": "../img/Taycan/Taycan Turbo S/Taycan Turbo S (1).png",
+      "Taycan Turbo S.png": "../img/Taycan/Taycan Turbo S/Taycan Turbo S.png"
+    },
+    "taycan4": {
+      "01-color-939999": {
+        "wheel01": {
+          "01.png": "../img/Taycan/taycan4/01-color-939999/wheel01/01.png",
+          "Optional": {
+            "01-1.png": "../img/Taycan/taycan4/01-color-939999/wheel01/Optional/01-1.png",
+            "01-2.png": "../img/Taycan/taycan4/01-color-939999/wheel01/Optional/01-2.png",
+            "01-3.png": "../img/Taycan/taycan4/01-color-939999/wheel01/Optional/01-3.png",
+            "01-4.png": "../img/Taycan/taycan4/01-color-939999/wheel01/Optional/01-4.png"
+          }
+        },
+        "wheel02": {
+          "02.png": "../img/Taycan/taycan4/01-color-939999/wheel02/02.png",
+          "Optional": {
+            "02-1.png": "../img/Taycan/taycan4/01-color-939999/wheel02/Optional/02-1.png",
+            "02-2.png": "../img/Taycan/taycan4/01-color-939999/wheel02/Optional/02-2.png",
+            "02-3.png": "../img/Taycan/taycan4/01-color-939999/wheel02/Optional/02-3.png",
+            "02-4.png": "../img/Taycan/taycan4/01-color-939999/wheel02/Optional/02-4.png"
+          }
+        },
+        "wheel03": {
+          "03.png": "../img/Taycan/taycan4/01-color-939999/wheel03/03.png",
+          "Optional": {
+            "03-1.png": "../img/Taycan/taycan4/01-color-939999/wheel03/Optional/03-1.png",
+            "03-2.png": "../img/Taycan/taycan4/01-color-939999/wheel03/Optional/03-2.png",
+            "03-3.png": "../img/Taycan/taycan4/01-color-939999/wheel03/Optional/03-3.png",
+            "03-4.png": "../img/Taycan/taycan4/01-color-939999/wheel03/Optional/03-4.png"
+          }
+        }
+      },
+      "02-color-173075": {
+        "wheel01": {
+          "01.png": "../img/Taycan/taycan4/02-color-173075/wheel01/01.png",
+          "Optional": {
+            "01-02.png": "../img/Taycan/taycan4/02-color-173075/wheel01/Optional/01-02.png",
+            "01-03.png": "../img/Taycan/taycan4/02-color-173075/wheel01/Optional/01-03.png",
+            "01-04.png": "../img/Taycan/taycan4/02-color-173075/wheel01/Optional/01-04.png",
+            "01-1.png": "../img/Taycan/taycan4/02-color-173075/wheel01/Optional/01-1.png"
+          }
+        },
+        "wheel02": {
+          "02.png": "../img/Taycan/taycan4/02-color-173075/wheel02/02.png",
+          "Optional": {
+            "02-1.png": "../img/Taycan/taycan4/02-color-173075/wheel02/Optional/02-1.png",
+            "02-2.png": "../img/Taycan/taycan4/02-color-173075/wheel02/Optional/02-2.png",
+            "02-3.png": "../img/Taycan/taycan4/02-color-173075/wheel02/Optional/02-3.png",
+            "02-4.png": "../img/Taycan/taycan4/02-color-173075/wheel02/Optional/02-4.png"
+          }
+        },
+        "wheel03": {
+          "03.png": "../img/Taycan/taycan4/02-color-173075/wheel03/03.png",
+          "Optional": {
+            "03-1.png": "../img/Taycan/taycan4/02-color-173075/wheel03/Optional/03-1.png",
+            "03-2.png": "../img/Taycan/taycan4/02-color-173075/wheel03/Optional/03-2.png",
+            "03-3.png": "../img/Taycan/taycan4/02-color-173075/wheel03/Optional/03-3.png",
+            "03-4.png": "../img/Taycan/taycan4/02-color-173075/wheel03/Optional/03-4.png"
+          }
+        }
+      },
+      "03-color-4F0C84": {
+        "wheel01": {
+          "01.png": "../img/Taycan/taycan4/03-color-4F0C84/wheel01/01.png",
+          "Optional": {
+            "01-1.png": "../img/Taycan/taycan4/03-color-4F0C84/wheel01/Optional/01-1.png",
+            "01-2.png": "../img/Taycan/taycan4/03-color-4F0C84/wheel01/Optional/01-2.png",
+            "01-3.png": "../img/Taycan/taycan4/03-color-4F0C84/wheel01/Optional/01-3.png",
+            "01-4.png": "../img/Taycan/taycan4/03-color-4F0C84/wheel01/Optional/01-4.png"
+          }
+        },
+        "wheel02": {
+          "02.png": "../img/Taycan/taycan4/03-color-4F0C84/wheel02/02.png",
+          "Optional": {
+            "02-1.png": "../img/Taycan/taycan4/03-color-4F0C84/wheel02/Optional/02-1.png",
+            "02-2.png": "../img/Taycan/taycan4/03-color-4F0C84/wheel02/Optional/02-2.png",
+            "02-3.png": "../img/Taycan/taycan4/03-color-4F0C84/wheel02/Optional/02-3.png",
+            "02-4.png": "../img/Taycan/taycan4/03-color-4F0C84/wheel02/Optional/02-4.png"
+          }
+        },
+        "wheel03": {
+          "03.png": "../img/Taycan/taycan4/03-color-4F0C84/wheel03/03.png",
+          "Optional": {
+            "02-4.png": "../img/Taycan/taycan4/03-color-4F0C84/wheel03/Optional/02-4.png",
+            "03-1.png": "../img/Taycan/taycan4/03-color-4F0C84/wheel03/Optional/03-1.png",
+            "03-2.png": "../img/Taycan/taycan4/03-color-4F0C84/wheel03/Optional/03-2.png",
+            "03-3.png": "../img/Taycan/taycan4/03-color-4F0C84/wheel03/Optional/03-3.png"
+          }
+        }
+      },
+      "Taycan 4 (2).png": "../img/Taycan/taycan4/Taycan 4 (2).png",
+      "Taycan 4-1.png": "../img/Taycan/taycan4/Taycan 4-1.png"
+    }
+  }
+}

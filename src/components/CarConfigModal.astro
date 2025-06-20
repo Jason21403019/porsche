@@ -54,95 +54,18 @@
               <div class="splide color-slider">
                 <div class="splide__track">
                   <ul class="splide__list">
-                    <li class="splide__slide">
-                      <div
-                        class="color-option"
-                        style="background-color: #fff"
-                        data-color="white"
-                      >
-                      </div>
-                    </li>
-                    <li class="splide__slide">
-                      <div
-                        class="color-option"
-                        style="background-color: #000"
-                        data-color="black"
-                      >
-                      </div>
-                    </li>
-                    <li class="splide__slide">
-                      <div
-                        class="color-option"
-                        style="background-color: #d4d4d4"
-                        data-color="silver"
-                      >
-                      </div>
-                    </li>
-                    <li class="splide__slide">
-                      <div
-                        class="color-option"
-                        style="background-color: #c0c0c0"
-                        data-color="metallic"
-                      >
-                      </div>
-                    </li>
-                    <li class="splide__slide">
-                      <div
-                        class="color-option"
-                        style="background-color: #960018"
-                        data-color="red"
-                      >
-                      </div>
-                    </li>
-                    <li class="splide__slide">
-                      <div
-                        class="color-option"
-                        style="background-color: #0147ab"
-                        data-color="blue"
-                      >
-                      </div>
-                    </li>
+                    <!-- 顏色選項將由 JavaScript 動態生成 -->
                   </ul>
                 </div>
               </div>
             </div>
-
             <!-- Wheel Selection Block -->
             <div class="config-section">
               <h3>Wheel Selection</h3>
               <div class="splide wheel-slider">
                 <div class="splide__track">
                   <ul class="splide__list">
-                    <li class="splide__slide">
-                      <div class="wheel-option">
-                        <img src="/img/wheel1.png" alt="Wheel 1" />
-                      </div>
-                    </li>
-                    <li class="splide__slide">
-                      <div class="wheel-option">
-                        <img src="/img/wheel2.png" alt="Wheel 2" />
-                      </div>
-                    </li>
-                    <li class="splide__slide">
-                      <div class="wheel-option">
-                        <img src="/img/wheel3.png" alt="Wheel 3" />
-                      </div>
-                    </li>
-                    <li class="splide__slide">
-                      <div class="wheel-option">
-                        <img src="/img/wheel1.png" alt="Wheel 1" />
-                      </div>
-                    </li>
-                    <li class="splide__slide">
-                      <div class="wheel-option">
-                        <img src="/img/wheel2.png" alt="Wheel 2" />
-                      </div>
-                    </li>
-                    <li class="splide__slide">
-                      <div class="wheel-option">
-                        <img src="/img/wheel3.png" alt="Wheel 3" />
-                      </div>
-                    </li>
+                    <!-- 輪框選項將由 JavaScript 動態生成 -->
                   </ul>
                 </div>
               </div>
@@ -229,20 +152,11 @@
                 </div>
               </div>
             </div>
-
-            <!-- Optional Packages Block (static display) -->
+            <!-- Optional Packages Block (dynamic display) -->
             <div class="config-section full-width">
               <h3>Optional Packages</h3>
               <div class="package-container">
-                <div class="package-option">
-                  <img src="/img/car1.png" alt="Package 1" />
-                </div>
-                <div class="package-option">
-                  <img src="/img/car2.png" alt="Package 2" />
-                </div>
-                <div class="package-option">
-                  <img src="/img/car3.png" alt="Package 3" />
-                </div>
+                <!-- 套件選項將由 JavaScript 動態生成 -->
               </div>
             </div>
           </div>
@@ -252,39 +166,8 @@
         <div class="tab-content" id="technical-tab">
           <div class="technical-specs">
             <h2>Technical Specifications</h2>
-            <div class="specs-grid">
-              <div class="spec-item">
-                <h3>Power System</h3>
-                <p>
-                  Drive System: <span id="techDriveSystem"
-                    >Rear-wheel drive</span
-                  >
-                </p>
-                <p>
-                  Maximum Power: <span id="techPower">300 kW / 408 PS</span>
-                </p>
-                <p>Maximum Torque: <span id="techTorque">345 Nm</span></p>
-              </div>
-              <div class="spec-item">
-                <h3>Performance</h3>
-                <p>
-                  0-100 km/h: <span id="techAcceleration">5.4 seconds</span>
-                </p>
-                <p>Top Speed: <span id="techTopSpeed">230 km/h</span></p>
-              </div>
-              <div class="spec-item">
-                <h3>Battery</h3>
-                <p>Capacity: <span id="techBatteryCapacity">79.2 kWh</span></p>
-                <p>Charging Time (Fast Charge): 22.5 minutes (5% to 80%)</p>
-                <p>Maximum Range: <span id="techRange">431 km (WLTP)</span></p>
-              </div>
-              <div class="spec-item">
-                <h3>Dimensions</h3>
-                <p>Length: 4,963 mm</p>
-                <p>Width: 1,966 mm</p>
-                <p>Height: 1,378 mm</p>
-                <p>Wheelbase: 2,900 mm</p>
-              </div>
+            <div class="specs-grid" id="specsGrid">
+              <!-- 動態生成的技術規格內容 -->
             </div>
           </div>
         </div>
@@ -561,9 +444,10 @@
             }
           }
 
-          /* 技術規格 TAB 的樣式 */
+          /* 技術規格 TAB 的樣式 - 簡化版本 */
           .technical-specs {
             width: 100%;
+
             h2 {
               font-size: 1.8rem;
               margin-bottom: 20px;
@@ -597,176 +481,87 @@
                 grid-template-columns: 1fr;
                 gap: 10px;
               }
-
-              .spec-item {
-                width: 100%;
-                background-color: #f8f8f8;
-                border-radius: 8px;
-                padding: 15px;
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-
-                @media (max-width: 768px) {
-                  padding: 12px;
-                }
-
-                @media (max-width: 450px) {
-                  padding: 10px;
-                }
-
-                h3 {
-                  font-size: 1.2rem;
-                  margin-bottom: 10px;
-                  color: #333;
-                  border-bottom: 2px solid #ffce60;
-                  padding-bottom: 5px;
-
-                  @media (max-width: 768px) {
-                    font-size: 1.1rem;
-                  }
-
-                  @media (max-width: 450px) {
-                    font-size: 1rem;
-                    margin-bottom: 8px;
-                  }
-                }
-
-                p {
-                  margin: 5px 0;
-                  color: #555;
-                  font-size: 1rem;
-
-                  @media (max-width: 450px) {
-                    font-size: 0.9rem;
-                    margin: 4px 0;
-                  }
-                }
-              }
             }
           }
 
-          /* 車型比較 TAB 的樣式 */
-          .compare-models {
+          /* 全局樣式：確保動態生成的技術規格內容有正確的樣式 */
+          :global(.specs-grid .spec-item) {
             width: 100%;
-            h2 {
-              font-size: 1.8rem;
-              margin-bottom: 20px;
-              color: #333;
-              border-left: 5px solid #ffce60;
-              padding-left: 15px;
+            background-color: #f8f8f8;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition:
+              transform 0.2s ease,
+              box-shadow 0.2s ease;
+          }
 
-              @media (max-width: 768px) {
-                font-size: 1.5rem;
-                margin-bottom: 15px;
-              }
+          :global(.specs-grid .spec-item:hover) {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+          }
 
-              @media (max-width: 450px) {
-                font-size: 1.3rem;
-                margin-bottom: 12px;
-                padding-left: 10px;
-              }
+          :global(.specs-grid .spec-item h3) {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #333;
+            border-bottom: 2px solid #ffce60;
+            padding-bottom: 5px;
+            font-weight: 600;
+          }
+
+          :global(.specs-grid .spec-item p) {
+            margin: 8px 0;
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.4;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+
+          :global(.specs-grid .spec-item .spec-value) {
+            font-weight: 600;
+            color: #333;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.95em;
+          }
+
+          /* 響應式全局樣式 */
+          @media (max-width: 768px) {
+            :global(.specs-grid .spec-item) {
+              padding: 12px;
             }
 
-            .compare-table {
-              width: 100%;
-              overflow-x: auto;
-
-              @media (max-width: 450px) {
-                margin: 0 -5px; // 增加負邊距以利用更多空間
-              }
-
-              table {
-                width: 100%;
-                border-collapse: collapse;
-
-                th,
-                td {
-                  padding: 12px 15px;
-                  text-align: left;
-                  border-bottom: 1px solid #ddd;
-                }
-
-                th {
-                  background-color: #f2f2f2;
-                  color: #333;
-                  font-weight: 600;
-                }
-
-                tr:nth-child(even) {
-                  background-color: #f9f9f9;
-                }
-
-                tr:hover {
-                  background-color: #f1f1f1;
-                }
-              }
+            :global(.specs-grid .spec-item h3) {
+              font-size: 1.1rem;
             }
           }
 
-          /* 未來功能：更多車輛 TAB 的樣式 
-          .more-cars {
-            h2 {
-              font-size: 1.8rem;
-              margin-bottom: 20px;
-              color: #333;
-              border-left: 5px solid #ffce60;
-              padding-left: 15px;
+          @media (max-width: 450px) {
+            :global(.specs-grid .spec-item) {
+              padding: 10px;
             }
 
-            .cars-grid {
-              display: grid;
-              grid-template-columns: repeat(2, 1fr);
-              gap: 20px;
+            :global(.specs-grid .spec-item h3) {
+              font-size: 1rem;
+              margin-bottom: 8px;
+            }
 
-              .car-card {
-                background-color: #f8f8f8;
-                border-radius: 10px;
-                padding: 15px;
-                box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-                text-align: center;
-                transition: transform 0.3s ease;
+            :global(.specs-grid .spec-item p) {
+              font-size: 0.9rem;
+              margin: 6px 0;
+              flex-direction: column;
+              align-items: flex-start;
+              gap: 2px;
+            }
 
-                &:hover {
-                  transform: translateY(-5px);
-                  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-                }
-
-                img {
-                  width: 100%;
-                  height: auto;
-                  max-height: 140px;
-                  object-fit: contain;
-                  margin-bottom: 10px;
-                }
-
-                h3 {
-                  font-size: 1.4rem;
-                  margin-bottom: 8px;
-                  color: #333;
-                }
-
-                p {
-                  color: #666;
-                  margin-bottom: 15px;
-                }
-
-                .car-config-btn {
-                  background-color: #ffce60;
-                  color: #000;
-                  border: none;
-                  padding: 8px 15px;
-                  border-radius: 5px;
-                  font-weight: 600;
-                  cursor: pointer;
-                  transition: background-color 0.3s ease;
-
-                  &:hover {
-                    background-color: #e0b040;
-                  }
-                }
-              }
+            :global(.specs-grid .spec-item .spec-value) {
+              font-size: 0.9em;
+              padding: 1px 6px;
             }
           }
-          */
 
           .config-grid {
             width: 100%;
@@ -877,20 +672,33 @@
             justify-content: center;
           }
         }
-
         .color-slider {
           height: 120px;
-          justify-content: center;
-          gap: 20px;
+
+          .splide__list {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            padding: 10px 0;
+          }
+
+          .splide__slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+          }
 
           .color-option {
-            width: 32px; // 縮小顏色選項
+            width: 32px;
             height: 32px;
             border-radius: 50%;
             cursor: pointer;
             border: 2px solid #ddd;
             flex: 0 0 auto;
             transition: all 0.3s;
+            margin: 0 auto;
 
             &:hover,
             &.selected {
@@ -989,30 +797,165 @@
     }
   }
 
+  /* 技術規格樣式 */
+  .technical-specs {
+    padding: 20px;
+    height: 100%;
+    overflow-y: auto;
+
+    h2 {
+      color: #333;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #ffce60;
+      padding-bottom: 10px;
+    }
+
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+
+      .spec-item {
+        background: white;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border: 1px solid #e0e0e0;
+
+        h3 {
+          color: #333;
+          font-size: 1.2rem;
+          margin-bottom: 15px;
+          border-left: 4px solid #ffce60;
+          padding-left: 10px;
+        }
+
+        p {
+          margin-bottom: 8px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          span:first-child {
+            color: #666;
+            font-weight: 500;
+          }
+
+          .spec-value {
+            color: #333;
+            font-weight: 600;
+            text-align: right;
+          }
+        }
+      }
+
+      .error-message {
+        grid-column: 1 / -1;
+        text-align: center;
+        padding: 40px;
+        color: #666;
+        font-style: italic;
+        background: #f9f9f9;
+        border-radius: 8px;
+      }
+    }
+  }
+
+  /* 比較表格樣式 */
+  .compare-models {
+    padding: 20px;
+    height: 100%;
+    overflow-y: auto;
+
+    h2 {
+      color: #333;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #ffce60;
+      padding-bottom: 10px;
+    }
+
+    .compare-table {
+      overflow-x: auto;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 600px;
+
+        th,
+        td {
+          padding: 12px 15px;
+          text-align: left;
+          border-bottom: 1px solid #e0e0e0;
+        }
+
+        th {
+          background-color: #f8f9fa;
+          font-weight: 600;
+          color: #333;
+          position: sticky;
+          top: 0;
+          z-index: 10;
+
+          &:first-child {
+            background-color: #ffce60;
+            color: #333;
+            font-weight: 700;
+          }
+        }
+
+        td {
+          color: #555;
+
+          &:first-child {
+            font-weight: 500;
+            background-color: #fffbeb;
+          }
+        }
+
+        tr:hover {
+          background-color: #f8f9fa;
+        }
+      }
+    }
+  }
   .splide {
-    padding: 0.5rem 1rem; // 增加水平內邊距
-    margin-bottom: 0.5rem; // 減少底部邊距
-    height: 120px; // 固定所有slider高度為相同的值
-    overflow: visible; // 防止內容被裁切
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+    height: 120px;
+    overflow: visible;
+    display: flex;
+    align-items: center;
 
     &__track {
-      padding: 0; // 移除軌道內邊距
+      padding: 0;
+      overflow: visible;
+      height: 100%;
+      display: flex;
+      align-items: center;
     }
 
     &__list {
       display: flex;
-      justify-content: flex-start; // 修改為居中對齊
-      align-items: center; // 確保垂直居中
-      height: 100%; // 確保列表充滿整個軌道高度
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      overflow: visible;
     }
 
     &__slide {
-      width: auto; // 重置為自動寬度，避免干擾Splide庫的行為
+      width: auto;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100%; // 確保每個滑動項目都是相同高度
-      flex: 0 0 auto; // 修改為不自動擴展
+      height: 100%;
+      flex: 0 0 auto;
+      overflow: visible;
     }
 
     &__arrow {
@@ -1079,17 +1022,6 @@
 
       p {
         display: none; // 隱藏文字描述
-      }
-    }
-
-    // 選配套件滑塊特定樣式
-    &.package-slider {
-      height: 140px; // 增加套件滑塊的高度
-
-      .splide__slide {
-        display: flex;
-        justify-content: center;
-        align-items: center;
       }
     }
 
@@ -1180,203 +1112,160 @@
       opacity: 1;
     }
   }
+  /* Package container specific styles */
+  .package-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      padding: 15px 0;
+    }
+
+    @media (max-width: 450px) {
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+      padding: 12px 0;
+    }
+
+    .package-option {
+      width: 100%;
+      min-height: 150px;
+      background: #f8f9fa;
+      border: 2px solid #e9ecef;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 15px;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        border-color: #ffce60;
+      }
+
+      &.selected {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(255, 206, 96, 0.4);
+        border-color: #ffce60;
+        background-color: #fffbeb;
+      }
+
+      img {
+        width: 100%;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 10px;
+      }
+
+      .package-name {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 5px;
+      }
+
+      .package-price {
+        font-size: 0.8rem;
+        color: #666;
+        font-weight: 500;
+      }
+      @media (max-width: 768px) {
+        min-height: 130px;
+        padding: 12px;
+
+        img {
+          height: 60px;
+        }
+
+        .package-name {
+          font-size: 0.8rem;
+        }
+
+        .package-price {
+          font-size: 0.7rem;
+        }
+      }
+
+      @media (max-width: 450px) {
+        min-height: 120px;
+        padding: 10px;
+
+        img {
+          height: 50px;
+        }
+      }
+    }
+  }
 </style>
 
 <script
   src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"
 ></script>
-<script>
+<script type="module">
+  // 修正導入路徑 - 確保指向正確的資料檔案位置
+  import {
+    carImages,
+    carSpecs,
+    carNameAliases,
+    carGroups,
+    comparisonParams,
+    allCarModels,
+    getCarConfiguration,
+    getAvailableColors,
+    getAvailableWheels,
+    getWheelImagePath,
+    optionalPackages,
+    getOptionalPackages,
+    getPackageImagePath,
+    getOptionalPackageImagePath,
+    getColorMainImagePath,
+  } from '/src/data/carData.js'
+
   // 燈窗功能
   document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('carConfigModal')
     const sidebarCarTitle = document.getElementById('sidebarCarTitle')
-    const sidebarCarImage = document.getElementById('sidebarCarImage') // 車型與對應圖片的映射
-    const carImages = {
-      Taycan: 'https://dc.udn.com/roy/test//img/taycan.png',
-      'Taycan 4': 'https://dc.udn.com/roy/test/img/taycan4.png',
-      'Taycan 4S': 'https://dc.udn.com/roy/test/img//taycan4s.png',
-      'Taycan GTS': 'https://dc.udn.com/roy/test/img//taycan-gts.png',
-      'Taycan Turbo': 'https://dc.udn.com/roy/test/img//taycan-turbo.png',
-      'Taycan Turbo S': 'https://dc.udn.com/roy/test/img/Taycan-Turbo-S.png',
-      'Taycan Turbo GT': 'https://dc.udn.com/roy/test/img/taycan-turbo-gt.png',
-      'Taycan Turbo GT with WP':
-        'https://dc.udn.com/roy/test/img/Taycan-Turbo-GT-with-Weissach-Package.png', // Macan 系列圖片
-      Macan: '/img/Macan/macan/1-02.png',
-      'Macan 4': '/img/Macan/Macan 4 Electric/Macan 4 Electric.png',
-      'Macan S': '/img/Macan/macan s/01-02-Photoroom.png',
-      'Macan GTS': '/img/Macan/macan gts/01-02.png',
-      'Macan Turbo': '/img/Macan-Turbo-Electric.png',
-    }
+    const sidebarCarImage = document.getElementById('sidebarCarImage')
 
-    // 車型名稱規範化函數 - 解決大小寫不一致問題
+    // 車型名稱規範化函數
     function normalizeCarName(name) {
-      // 將常見縮寫統一為大寫
       const normalized = name
-        .replace(/\bwp\b/gi, 'WP') // 將 "wp" 轉為 "WP"
+        .replace(/\bwp\b/gi, 'WP')
         .replace(/\bgts\b/gi, 'GTS')
         .replace(/\bgt\b/gi, 'GT')
         .trim()
 
-      // 檢查是否需要精確匹配
       for (const key of Object.keys(carImages)) {
         if (key.toLowerCase() === normalized.toLowerCase()) {
-          return key // 返回正確大小寫的鍵名
+          return key
         }
       }
       return normalized
     }
 
-    // 車型技術規格資料
-    const carSpecs = {
-      Taycan: {
-        driveSystem: 'Rear-wheel drive',
-        power: '300 kW / 408 PS',
-        torque: '345 Nm',
-        acceleration: '5.4 seconds',
-        topSpeed: '230 km/h',
-        batteryCapacity: '79.2 kWh',
-        range: '431 km (WLTP)',
-      },
-      'Taycan 4': {
-        driveSystem: 'All-wheel drive',
-        power: '320 kW / 435 PS',
-        torque: '640 Nm',
-        acceleration: '5.1 seconds',
-        topSpeed: '230 km/h',
-        batteryCapacity: '79.2 kWh',
-        range: '450 km (WLTP)',
-      },
-      'Taycan 4S': {
-        driveSystem: 'All-wheel drive',
-        power: '390 kW / 530 PS',
-        torque: '640 Nm',
-        acceleration: '4.0 seconds',
-        topSpeed: '250 km/h',
-        batteryCapacity: '93.4 kWh',
-        range: '463 km (WLTP)',
-      },
-      'Taycan GTS': {
-        driveSystem: 'All-wheel drive',
-        power: '440 kW / 598 PS',
-        torque: '850 Nm',
-        acceleration: '3.7 seconds',
-        topSpeed: '250 km/h',
-        batteryCapacity: '93.4 kWh',
-        range: '504 km (WLTP)',
-      },
-      'Taycan Turbo': {
-        driveSystem: 'All-wheel drive',
-        power: '500 kW / 680 PS',
-        torque: '850 Nm',
-        acceleration: '3.2 seconds',
-        topSpeed: '260 km/h',
-        batteryCapacity: '93.4 kWh',
-        range: '450 km (WLTP)',
-      },
-      'Taycan Turbo S': {
-        driveSystem: 'All-wheel drive',
-        power: '560 kW / 761 PS',
-        torque: '1050 Nm',
-        acceleration: '2.8 seconds',
-        topSpeed: '260 km/h',
-        batteryCapacity: '93.4 kWh',
-        range: '440 km (WLTP)',
-      },
-      'Taycan Turbo GT': {
-        driveSystem: 'All-wheel drive',
-        power: '590 kW / 802 PS',
-        torque: '1050 Nm',
-        acceleration: '2.6 seconds',
-        topSpeed: '290 km/h',
-        batteryCapacity: '93.4 kWh',
-        range: '420 km (WLTP)',
-      },
-      'Taycan Turbo GT with WP': {
-        driveSystem: 'All-wheel drive',
-        power: '590 kW / 802 PS',
-        torque: '1050 Nm',
-        acceleration: '2.6 seconds',
-        topSpeed: '290 km/h',
-        batteryCapacity: '93.4 kWh',
-        range: '420 km (WLTP)',
-      },
-      // Macan 系列規格
-      Macan: {
-        driveSystem: 'Rear-wheel drive',
-        power: '250 kW / 340 PS',
-        torque: '563 Nm',
-        acceleration: '5.7 seconds',
-        topSpeed: '220 km/h',
-        batteryCapacity: '100 kWh',
-        range: '613 km (WLTP)',
-      },
-      'Macan 4': {
-        driveSystem: 'All-wheel drive',
-        power: '300 kW / 408 PS',
-        torque: '650 Nm',
-        acceleration: '5.2 seconds',
-        topSpeed: '220 km/h',
-        batteryCapacity: '100 kWh',
-        range: '591 km (WLTP)',
-      },
-      'Macan S': {
-        driveSystem: 'All-wheel drive',
-        power: '380 kW / 516 PS',
-        torque: '820 Nm',
-        acceleration: '4.1 seconds',
-        topSpeed: '240 km/h',
-        batteryCapacity: '100 kWh',
-        range: '516 km (WLTP)',
-      },
-      'Macan GTS': {
-        driveSystem: 'All-wheel drive',
-        power: '440 kW / 598 PS',
-        torque: '1130 Nm',
-        acceleration: '3.7 seconds',
-        topSpeed: '250 km/h',
-        batteryCapacity: '100 kWh',
-        range: '490 km (WLTP)',
-      },
-      'Macan Turbo': {
-        driveSystem: 'All-wheel drive',
-        power: '470 kW / 639 PS',
-        torque: '1130 Nm',
-        acceleration: '3.3 seconds',
-        topSpeed: '260 km/h',
-        batteryCapacity: '100 kWh',
-        range: '465 km (WLTP)',
-      },
-    }
-
-    // 建立車型名稱別名映射，解決大小寫不一致問題
-    const carNameAliases = {
-      'taycan turbo gt with wp': 'Taycan Turbo GT with WP',
-      'taycan turbo gt with weissach package': 'Taycan Turbo GT with WP',
-      // Macan 別名
-      'macan electric': 'Macan',
-      'macan 4 electric': 'Macan 4',
-      'macan s electric': 'Macan S',
-      'macan gts electric': 'Macan GTS',
-      'macan turbo electric': 'Macan Turbo',
-    }
-
-    // 獲取車型的規格資料 (帶容錯處理)
+    // 獲取車型的規格資料
     function getCarSpecs(carName) {
-      // 先規範化名稱
       const normalizedName = normalizeCarName(carName)
 
-      // 直接查找
       if (carSpecs[normalizedName]) {
         return carSpecs[normalizedName]
       }
 
-      // 嘗試使用別名映射
       const lowerName = normalizedName.toLowerCase()
       if (carNameAliases[lowerName] && carSpecs[carNameAliases[lowerName]]) {
         return carSpecs[carNameAliases[lowerName]]
       }
 
-      // 模糊匹配 - 檢查是否是名稱的一部分
       for (const key of Object.keys(carSpecs)) {
         if (
           key.toLowerCase().includes(lowerName) ||
@@ -1386,26 +1275,22 @@
         }
       }
 
-      return null // 找不到匹配的規格資料
+      return null
     }
 
-    // 獲取車型的圖片 (帶容錯處理)
+    // 獲取車型的圖片
     function getCarImage(carName) {
-      // 先規範化名稱
       const normalizedName = normalizeCarName(carName)
 
-      // 直接查找
       if (carImages[normalizedName]) {
         return carImages[normalizedName]
       }
 
-      // 嘗試使用別名映射
       const lowerName = normalizedName.toLowerCase()
       if (carNameAliases[lowerName] && carImages[carNameAliases[lowerName]]) {
         return carImages[carNameAliases[lowerName]]
       }
 
-      // 模糊匹配 - 檢查是否是名稱的一部分
       for (const key of Object.keys(carImages)) {
         if (
           key.toLowerCase().includes(lowerName) ||
@@ -1415,29 +1300,373 @@
         }
       }
 
-      // 找不到匹配的圖片，使用默認圖片
       return '/img/taycan.png'
+    } // 獲取所有車型的名稱
+    const allCarModels = Object.keys(carSpecs)
+
+    // 全局變量來追蹤當前選擇的顏色和輪框
+    let currentCarConfiguration = null
+    let selectedColorIndex = 0
+    let selectedWheelIndex = 0 // 動態更新顏色選項
+    function updateColorOptions(carModel) {
+      const colorSlider = document.querySelector('.color-slider .splide__list')
+      if (!colorSlider) return
+
+      const availableColors = getAvailableColors(carModel)
+
+      // 清空現有選項
+      colorSlider.innerHTML = ''
+
+      // 生成新的顏色選項
+      availableColors.forEach((color, index) => {
+        const slide = document.createElement('li')
+        slide.className = 'splide__slide'
+
+        const colorOption = document.createElement('div')
+        colorOption.className = 'color-option'
+        colorOption.style.backgroundColor = color.backgroundColor
+        colorOption.dataset.colorCode = color.colorCode
+        colorOption.dataset.colorName = color.colorName
+        colorOption.dataset.colorIndex = index
+        colorOption.title = color.colorName // 確保顏色選項的基本樣式
+        colorOption.style.width = '32px'
+        colorOption.style.height = '32px'
+        colorOption.style.borderRadius = '50%'
+        colorOption.style.cursor = 'pointer'
+        colorOption.style.border = '2px solid #ddd'
+        colorOption.style.transition = 'all 0.3s'
+        colorOption.style.flexShrink = '0'
+        colorOption.style.margin = '0 auto'
+        colorOption.style.display = 'block'
+
+        // 如果是第一個顏色，應用選中狀態的樣式
+        if (index === 0) {
+          colorOption.classList.add('selected')
+          colorOption.style.transform = 'scale(1.3)'
+          colorOption.style.borderColor = '#ffce60'
+        }
+
+        slide.appendChild(colorOption)
+        colorSlider.appendChild(slide)
+      })
+
+      // 刷新顏色滑塊
+      if (splideSliders.color) {
+        splideSliders.color.refresh()
+        splideSliders.color.go(0)
+      }
+
+      // 綁定顏色選擇事件
+      bindColorSelectionEvents(carModel)
+    } // 動態更新輪框選項
+    function updateWheelOptions(carModel, colorCode) {
+      const wheelSlider = document.querySelector('.wheel-slider .splide__list')
+      if (!wheelSlider) return
+
+      // 清空現有選項
+      wheelSlider.innerHTML = ''
+
+      // 生成輪框選項
+      for (let wheelNumber = 1; wheelNumber <= 3; wheelNumber++) {
+        const slide = document.createElement('li')
+        slide.className = 'splide__slide'
+
+        const wheelOption = document.createElement('div')
+        wheelOption.className = 'wheel-option'
+        wheelOption.dataset.wheelNumber = wheelNumber
+
+        // 確保輪框選項的基本樣式
+        wheelOption.style.width = '100px'
+        wheelOption.style.height = '100px'
+        wheelOption.style.display = 'flex'
+        wheelOption.style.justifyContent = 'center'
+        wheelOption.style.alignItems = 'center'
+        wheelOption.style.textAlign = 'center'
+        wheelOption.style.borderRadius = '8px'
+        wheelOption.style.cursor = 'pointer'
+        wheelOption.style.transition = 'all 0.3s ease'
+        wheelOption.style.flexShrink = '0'
+        wheelOption.style.overflow = 'hidden'
+        wheelOption.style.backgroundColor = '#f5f5f5'
+
+        // 如果是第一個輪框，應用選中狀態的樣式
+        if (wheelNumber === 1) {
+          wheelOption.classList.add('selected')
+          wheelOption.style.width = '112px'
+          wheelOption.style.height = '112px'
+          wheelOption.style.border = '3px solid #ffce60'
+          wheelOption.style.boxShadow = '0 0 12px rgba(255, 206, 96, 0.7)'
+          wheelOption.style.backgroundColor = '#fffbeb'
+        }
+
+        const img = document.createElement('img')
+        const wheelImagePath = getWheelImagePath(
+          carModel,
+          colorCode,
+          wheelNumber
+        )
+        img.src = wheelImagePath || '/img/wheel1.png' // 使用預設圖片作為後備
+        img.alt = `Wheel ${wheelNumber}`
+        img.style.width = '100%'
+        img.style.height = '100%'
+        img.style.objectFit = 'cover'
+        img.style.display = 'block'
+        img.style.aspectRatio = '1 / 1'
+        img.style.borderRadius = '8px'
+
+        img.onerror = function () {
+          // 如果圖片載入失敗，使用預設圖片
+          this.src = `/img/wheel${wheelNumber}.png`
+        }
+
+        wheelOption.appendChild(img)
+        slide.appendChild(wheelOption)
+        wheelSlider.appendChild(slide)
+      }
+
+      // 刷新輪框滑塊
+      if (splideSliders.wheel) {
+        splideSliders.wheel.refresh()
+        splideSliders.wheel.go(0)
+      }
+
+      // 綁定輪框選擇事件
+      bindWheelSelectionEvents()
+    } // 動態更新套件選項
+    function updatePackageOptions(carModel, colorCode, wheelNumber) {
+      const packageContainer = document.querySelector('.package-container')
+      if (!packageContainer) return
+
+      const availablePackages = getOptionalPackages(carModel)
+
+      // 清空現有選項
+      packageContainer.innerHTML = ''
+
+      // 生成新的套件選項
+      availablePackages.forEach((package_, index) => {
+        const packageOption = document.createElement('div')
+        packageOption.className = 'package-option'
+        packageOption.dataset.package = package_.name
+        packageOption.dataset.price = package_.price
+        packageOption.dataset.packageIndex = index
+        packageOption.title = `${package_.name} - ${package_.price}`
+
+        // 手動應用基本樣式 - 簡化為圖片容器
+        packageOption.style.cssText = `
+          width: 240px;
+          height: 140px;
+          border-radius: 8px;
+          border: none;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          overflow: hidden;
+          background-color: #f5f5f5;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          box-sizing: border-box;
+        `
+
+        // 創建圖片元素
+        const img = document.createElement('img')
+        // 使用新的參數格式：colorCode 和 wheelNumber 而不是 colorIndex 和 wheelIndex
+        const packageImagePath = package_.getImagePath
+          ? package_.getImagePath(colorCode, wheelNumber)
+          : package_.fallbackImage || '/img/car1.png'
+        img.src = packageImagePath
+        img.alt = package_.name
+
+        // 圖片樣式 - 填滿整個容器
+        img.style.cssText = `
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+          border-radius: 4px;
+        `
+
+        packageOption.appendChild(img)
+        packageContainer.appendChild(packageOption)
+      })
+
+      // 綁定套件選擇事件
+      bindPackageSelectionEvents()
     }
 
-    // 獲取所有車型的名稱
-    const allCarModels = Object.keys(carSpecs)
+    // 綁定顏色選擇事件
+    function bindColorSelectionEvents(carModel) {
+      document
+        .querySelectorAll('.color-option')
+        .forEach((colorOption, index) => {
+          // 添加 hover 效果
+          colorOption.addEventListener('mouseenter', function () {
+            if (!this.classList.contains('selected')) {
+              this.style.transform = 'scale(1.3)'
+              this.style.borderColor = '#ffce60'
+            }
+          })
+
+          colorOption.addEventListener('mouseleave', function () {
+            if (!this.classList.contains('selected')) {
+              this.style.transform = 'scale(1)'
+              this.style.borderColor = '#ddd'
+            }
+          })
+
+          colorOption.addEventListener('click', function () {
+            // 移除其他顏色的選中狀態
+            document.querySelectorAll('.color-option').forEach((opt) => {
+              opt.classList.remove('selected')
+              opt.style.transform = 'scale(1)'
+              opt.style.borderColor = '#ddd'
+            }) // 設置當前顏色為選中
+            this.classList.add('selected')
+            this.style.transform = 'scale(1.3)'
+            this.style.borderColor = '#ffce60'
+
+            const colorCode = this.dataset.colorCode
+            const colorName = this.dataset.colorName
+            selectedColorIndex = index
+
+            console.log(
+              `已選擇 ${carModel} 的 ${colorName} 顏色 (代碼: ${colorCode})`
+            )
+
+            // 更新輪框選項以反映新顏色
+            updateWheelOptions(carModel, colorCode)
+
+            // 更新套件選項以反映新顏色和當前輪框
+            const currentWheelNumber = selectedWheelIndex + 1
+            updatePackageOptions(carModel, colorCode, currentWheelNumber)
+          })
+        })
+    } // 綁定輪框選擇事件
+    function bindWheelSelectionEvents() {
+      document
+        .querySelectorAll('.wheel-option')
+        .forEach((wheelOption, index) => {
+          // 添加 hover 效果
+          wheelOption.addEventListener('mouseenter', function () {
+            if (!this.classList.contains('selected')) {
+              this.style.width = '112px'
+              this.style.height = '112px'
+              this.style.boxShadow = '0 0 8px rgba(255, 206, 96, 0.5)'
+              this.style.backgroundColor = '#fffbeb'
+            }
+          })
+
+          wheelOption.addEventListener('mouseleave', function () {
+            if (!this.classList.contains('selected')) {
+              this.style.width = '100px'
+              this.style.height = '100px'
+              this.style.boxShadow = 'none'
+              this.style.backgroundColor = '#f5f5f5'
+            }
+          })
+
+          wheelOption.addEventListener('click', function () {
+            // 移除其他輪框的選中狀態
+            document.querySelectorAll('.wheel-option').forEach((opt) => {
+              opt.classList.remove('selected')
+              opt.style.width = '100px'
+              opt.style.height = '100px'
+              opt.style.border = 'none'
+              opt.style.boxShadow = 'none'
+              opt.style.backgroundColor = '#f5f5f5'
+            }) // 設置當前輪框為選中
+            this.classList.add('selected')
+            this.style.width = '112px'
+            this.style.height = '112px'
+            this.style.border = '3px solid #ffce60'
+            this.style.boxShadow = '0 0 12px rgba(255, 206, 96, 0.7)'
+            this.style.backgroundColor = '#fffbeb'
+
+            const wheelNumber = this.dataset.wheelNumber
+            selectedWheelIndex = index
+
+            console.log(`已選擇輪框 ${wheelNumber}`)
+
+            // 更新套件選項以反映新輪框和當前顏色
+            const currentCar = sidebarCarTitle.textContent
+            if (
+              currentCarConfiguration &&
+              currentCarConfiguration.colors.length > 0
+            ) {
+              const selectedColor =
+                currentCarConfiguration.colors[selectedColorIndex] ||
+                currentCarConfiguration.colors[0]
+              updatePackageOptions(
+                currentCar,
+                selectedColor.colorCode,
+                wheelNumber
+              )
+            }
+          })
+        })
+    } // 綁定套件選擇事件 - 簡化版本，只處理圖片
+    function bindPackageSelectionEvents() {
+      document
+        .querySelectorAll('.package-option')
+        .forEach((packageOption, index) => {
+          // 添加 hover 效果
+          packageOption.addEventListener('mouseenter', function () {
+            if (!this.classList.contains('selected')) {
+              this.style.transform = 'translateY(-5px)'
+              this.style.boxShadow = '0 8px 16px rgba(0, 0, 0, 0.1)'
+              this.style.backgroundColor = '#fffbeb'
+            }
+          })
+
+          packageOption.addEventListener('mouseleave', function () {
+            if (!this.classList.contains('selected')) {
+              this.style.transform = 'none'
+              this.style.boxShadow = 'none'
+              this.style.backgroundColor = '#f5f5f5'
+            }
+          })
+
+          packageOption.addEventListener('click', function () {
+            // 移除其他套件的選中狀態
+            document.querySelectorAll('.package-option').forEach((opt) => {
+              opt.classList.remove('selected')
+              opt.style.transform = 'none'
+              opt.style.boxShadow = 'none'
+              opt.style.backgroundColor = '#f5f5f5'
+              opt.style.border = 'none'
+            })
+
+            // 設置當前套件為選中
+            this.classList.add('selected')
+            this.style.transform = 'translateY(-5px)'
+            this.style.boxShadow = '0 0 12px rgba(255, 206, 96, 0.7)'
+            this.style.backgroundColor = '#fffbeb'
+            this.style.border = '3px solid #ffce60'
+
+            const packageName = this.dataset.package
+            const packagePrice = this.dataset.price
+            const packageIndex = this.dataset.packageIndex
+
+            console.log(`已選擇套件: ${packageName} - ${packagePrice}`)
+          })
+        })
+    }
 
     // 接收來自 window 的自定義事件
     window.addEventListener('openCarConfig', (event) => {
       if (event.detail && event.detail.carName) {
         openConfigModal(event.detail.carName)
       }
-    })
-
-    // 開啟燈窗的函數
+    }) // 開啟燈窗的函數
     function openConfigModal(carName) {
       if (!modal) return
 
-      // 規範化車型名稱
       const normalizedCarName = normalizeCarName(carName)
       console.log(
         `嘗試開啟車型配置: ${carName} (規範化為: ${normalizedCarName})`
       )
+
+      // 獲取車型的完整配置
+      currentCarConfiguration = getCarConfiguration(normalizedCarName)
 
       // 設置側邊欄車型名稱
       sidebarCarTitle.textContent = normalizedCarName
@@ -1454,22 +1683,21 @@
         sidebarCarImage.src = '/img/taycan.png'
       }
 
-      // 更新技術規格資料
-      const specs = getCarSpecs(normalizedCarName)
-      if (specs) {
-        document.getElementById('techDriveSystem').textContent =
-          specs.driveSystem
-        document.getElementById('techPower').textContent = specs.power
-        document.getElementById('techTorque').textContent = specs.torque
-        document.getElementById('techAcceleration').textContent =
-          specs.acceleration
-        document.getElementById('techTopSpeed').textContent = specs.topSpeed
-        document.getElementById('techBatteryCapacity').textContent =
-          specs.batteryCapacity
-        document.getElementById('techRange').textContent = specs.range
-      } else {
-        console.warn(`找不到車型 "${normalizedCarName}" 的規格資料，使用默認值`)
+      // 動態更新顏色和輪框選項
+      updateColorOptions(normalizedCarName) // 如果有可用顏色，使用第一個顏色更新輪框選項
+      if (
+        currentCarConfiguration &&
+        currentCarConfiguration.colors.length > 0
+      ) {
+        const firstColor = currentCarConfiguration.colors[0]
+        updateWheelOptions(normalizedCarName, firstColor.colorCode)
+
+        // 初始化套件選項
+        updatePackageOptions(normalizedCarName, firstColor.colorCode, 1)
       }
+
+      // 動態更新技術規格 (替代原本的靜態更新)
+      updateTechnicalSpecs(normalizedCarName)
 
       // 更新比較表格
       updateComparisonTable(normalizedCarName)
@@ -1534,16 +1762,32 @@
       const activeContent = document.getElementById(`${tabId}-tab`)
       if (activeContent) {
         activeContent.classList.add('active')
-      }
-
-      // 如果是配置車輛 TAB，確保所有 Splide 滑塊刷新
+      } // 如果是配置車輛 TAB，確保所有 Splide 滑塊刷新
       if (tabId === 'configure') {
         setTimeout(() => {
           Object.values(splideSliders).forEach((slider) => {
             if (slider && typeof slider.refresh === 'function') {
               slider.refresh()
             }
-          })
+          }) // 確保顏色和輪框選項是最新的
+          const currentCar = sidebarCarTitle.textContent
+          if (currentCar && currentCarConfiguration) {
+            updateColorOptions(currentCar)
+            if (currentCarConfiguration.colors.length > 0) {
+              const selectedColor =
+                currentCarConfiguration.colors[selectedColorIndex] ||
+                currentCarConfiguration.colors[0]
+              updateWheelOptions(currentCar, selectedColor.colorCode)
+
+              // 更新套件選項
+              const currentWheelNumber = selectedWheelIndex + 1
+              updatePackageOptions(
+                currentCar,
+                selectedColor.colorCode,
+                currentWheelNumber
+              )
+            }
+          }
         }, 50)
       }
 
@@ -1551,6 +1795,12 @@
       if (tabId === 'compare') {
         const currentCar = sidebarCarTitle.textContent
         updateComparisonTable(currentCar)
+      }
+
+      // 如果切換到技術規格頁籤，更新技術規格內容
+      if (tabId === 'technical') {
+        const currentCar = sidebarCarTitle.textContent
+        updateTechnicalSpecs(currentCar)
       }
     }
 
@@ -1571,7 +1821,6 @@
       pagination: false,
       arrows: true, // 啟用箭頭導航
       drag: true,
-      height: '120px',
       padding: {
         left: '0', // 移除左右內邊距以確保顯示正好三個項目
         right: '0',
@@ -1596,13 +1845,26 @@
           perPage: 1, // 手機上顯示1個
         },
       },
-    }
-
-    // 為顏色選擇器設置特殊選項
+    } // 為顏色選擇器設置特殊選項
     const colorOptions = {
       ...commonOptions,
-      // 顏色選擇器保持相同的基本設置，但可能需要調整間距
-      gap: '2rem', // 增加顏色選項間的間距
+      gap: '1.5rem',
+      perPage: 5,
+      focus: 'center',
+      padding: {
+        left: '2rem',
+        right: '2rem',
+      },
+      breakpoints: {
+        768: {
+          perPage: 3,
+          gap: '1rem',
+        },
+        450: {
+          perPage: 2,
+          gap: '0.5rem',
+        },
+      },
     }
 
     // 初始化所有輪播 (移除套件滑塊初始化)
@@ -1627,14 +1889,11 @@
         splideSliders.seat.mount()
         splideSliders.seat.go(0)
       }
-
       if (document.querySelector('.interior-slider')) {
         splideSliders.interior = new Splide('.interior-slider', commonOptions)
         splideSliders.interior.mount()
         splideSliders.interior.go(0)
-      }
-
-      // 確保在視窗大小變化時重新計算佈局，但保持在當前選擇的位置
+      } // 確保在視窗大小變化時重新計算佈局，但保持在當前選擇的位置
       window.addEventListener('resize', () => {
         Object.values(splideSliders).forEach((slider) => {
           if (slider && typeof slider.refresh === 'function') {
@@ -1642,6 +1901,14 @@
             slider.refresh()
             slider.go(currentIndex) // 保持在當前選擇的項目
           }
+        }) // 重新應用套件選項的響應式樣式 - 簡化版本
+        const packageOptions = document.querySelectorAll('.package-option')
+
+        packageOptions.forEach((option) => {
+          // 套件選項現在是固定尺寸的圖片容器，不需要響應式調整
+          // 保持固定的 240x140 尺寸
+          option.style.width = '240px'
+          option.style.height = '140px'
         })
       })
 
@@ -1666,9 +1933,7 @@
       }, 200) // 延遲以確保DOM完全渲染
     } catch (error) {
       console.error('初始化Splide輪播時出錯:', error)
-    }
-
-    // 選項點擊事件處理
+    } // 選項點擊事件處理（僅保留座椅、內裝和套件選項）
     const handleOptionClick = (optionClass) => {
       document.querySelectorAll(`.${optionClass}`).forEach((option) => {
         option.addEventListener('click', function () {
@@ -1678,41 +1943,10 @@
           this.classList.add('selected')
         })
       })
-    }
+    } // 綁定座椅和內裝選項的點擊事件（顏色、輪框和套件選項由動態函數處理）
+    ;['seat-option', 'interior-option'].forEach(handleOptionClick)
 
-    // 綁定所有選項的點擊事件
-    ;[
-      'color-option',
-      'wheel-option',
-      'seat-option',
-      'interior-option',
-      'package-option',
-    ].forEach(handleOptionClick)
-
-    // 顏色選擇功能增強 - 重用現有點擊事件處理並新增控制台輸出
-    document.querySelectorAll('.color-option').forEach((colorOption) => {
-      colorOption.addEventListener('click', function () {
-        const colorName = this.dataset.color
-        const currentCar = sidebarCarImage.dataset.currentCar || 'Taycan'
-        console.log(`已選擇 ${currentCar} 的 ${colorName} 顏色`)
-      })
-    })
-
-    // 修改套件選擇功能
-    document.querySelectorAll('.package-option').forEach((packageOption) => {
-      packageOption.addEventListener('click', function () {
-        // 從 data 屬性獲取套件資訊而不是從子元素
-        const packageName = this.dataset.package || '未命名套件'
-        const packagePrice = this.dataset.price || '價格未定'
-        console.log(`已選擇套件: ${packageName} - ${packagePrice}`)
-
-        // 移除其他套件的選中狀態並設置當前套件為選中
-        document.querySelectorAll('.package-option').forEach((opt) => {
-          opt.classList.remove('selected')
-        })
-        this.classList.add('selected')
-      })
-    })
+    // 套件選擇功能現在由 bindPackageSelectionEvents() 動態處理
 
     // 更多車輛 TAB 中的配置車輛按鈕事件 (未來功能)
     /*
@@ -1737,7 +1971,6 @@
 
     // 更新比較表格
     function updateComparisonTable(selectedCar) {
-      // 獲取表格元素
       const tableHeader = document.getElementById('comparisonTableHeader')
       const tableBody = document.getElementById('comparisonTableBody')
 
@@ -1746,30 +1979,20 @@
         return
       }
 
-      // 清空表格內容，只保留第一列（參數列）
       tableHeader.innerHTML = '<th>Parameters</th>'
       tableBody.innerHTML = ''
 
-      // 規範化所選車型
       const normalizedSelectedCar = normalizeCarName(selectedCar)
-
-      // 根據螢幕寬度決定要比較的車型數量
       const screenWidth = window.innerWidth
       let carsToCompareCount = screenWidth <= 768 ? 2 : 4
 
-      // 額外針對 450px 以下的小螢幕增加判斷
       if (screenWidth <= 450) {
-        carsToCompareCount = 1 // 在極小螢幕上只顯示選中的車型
+        carsToCompareCount = 1
       }
 
-      // 選擇要比較的車型（根據螢幕寬度決定數量，包括當前選中的車型）
       const carsToCompare = getComparisonCars(
         normalizedSelectedCar,
         carsToCompareCount
-      )
-
-      console.log(
-        `比較車型: ${carsToCompare.join(', ')} (螢幕寬度: ${screenWidth}px, 顯示: ${carsToCompareCount}台車)`
       )
 
       // 生成表頭
@@ -1779,30 +2002,16 @@
         tableHeader.appendChild(th)
       })
 
-      // 定義需要比較的參數和顯示的標籤
-      const comparisonParams = [
-        {key: 'driveSystem', label: 'Drive System'},
-        {key: 'power', label: 'Maximum Power'},
-        {key: 'torque', label: 'Maximum Torque'},
-        {key: 'acceleration', label: 'Acceleration (0-100 km/h)'},
-        {key: 'topSpeed', label: 'Top Speed'},
-        {key: 'batteryCapacity', label: 'Battery Capacity'},
-        {key: 'range', label: 'Maximum Range'},
-      ]
-
       // 生成表格內容
       comparisonParams.forEach((param) => {
         const row = document.createElement('tr')
 
-        // 添加參數名稱
         const paramCell = document.createElement('td')
         paramCell.textContent = param.label
         row.appendChild(paramCell)
 
-        // 為每個車型添加對應參數值
         carsToCompare.forEach((car) => {
           const valueCell = document.createElement('td')
-          // 獲取車型規格
           const specs = getCarSpecs(car)
 
           if (specs && specs[param.key]) {
@@ -1818,33 +2027,108 @@
       })
     }
 
+    // 動態生成技術規格內容 - 簡化版本，依賴全局樣式
+    function updateTechnicalSpecs(selectedCar) {
+      const specsGrid = document.getElementById('specsGrid')
+      if (!specsGrid) {
+        console.error('技術規格容器不存在')
+        return
+      }
+
+      // 清空現有內容
+      specsGrid.innerHTML = ''
+
+      const normalizedCarName = normalizeCarName(selectedCar)
+      const specs = getCarSpecs(normalizedCarName)
+
+      if (!specs) {
+        const errorMessage = document.createElement('div')
+        errorMessage.className = 'error-message'
+        errorMessage.style.cssText = `
+          padding: 20px;
+          text-align: center;
+          color: #666;
+          font-style: italic;
+          background-color: #f9f9f9;
+          border-radius: 8px;
+          grid-column: 1 / -1;
+        `
+        errorMessage.textContent = `找不到 ${normalizedCarName} 的技術規格資料`
+        specsGrid.appendChild(errorMessage)
+        return
+      }
+
+      // 定義規格分類和對應的標籤
+      const specCategories = [
+        {
+          title: 'Power System',
+          specs: [
+            {key: 'driveSystem', label: 'Drive System'},
+            {key: 'power', label: 'Maximum Power'},
+            {key: 'torque', label: 'Maximum Torque'},
+          ],
+        },
+        {
+          title: 'Performance',
+          specs: [
+            {key: 'acceleration', label: '0-100 km/h'},
+            {key: 'topSpeed', label: 'Top Speed'},
+          ],
+        },
+        {
+          title: 'Battery & Range',
+          specs: [
+            {key: 'batteryCapacity', label: 'Battery Capacity'},
+            {key: 'range', label: 'Maximum Range'},
+          ],
+        },
+        {
+          title: 'Dimensions',
+          specs: [
+            {key: 'length', label: 'Length'},
+            {key: 'width', label: 'Width'},
+            {key: 'height', label: 'Height'},
+            {key: 'wheelbase', label: 'Wheelbase'},
+          ],
+        },
+      ]
+
+      // 動態生成規格卡片，依賴全局樣式
+      specCategories.forEach((category) => {
+        const specItem = document.createElement('div')
+        specItem.className = 'spec-item'
+
+        const title = document.createElement('h3')
+        title.textContent = category.title
+        specItem.appendChild(title)
+
+        category.specs.forEach((spec) => {
+          const p = document.createElement('p')
+          const value = specs[spec.key] || 'N/A'
+
+          const label = document.createElement('span')
+          label.textContent = spec.label + ':'
+
+          const valueSpan = document.createElement('span')
+          valueSpan.className = 'spec-value'
+          valueSpan.textContent = value
+
+          p.appendChild(label)
+          p.appendChild(valueSpan)
+          specItem.appendChild(p)
+        })
+
+        specsGrid.appendChild(specItem)
+      })
+
+      console.log(`已更新 ${normalizedCarName} 的技術規格`)
+    }
+
     // 選擇要比較的車型
     function getComparisonCars(selectedCar, count) {
-      // 確保 count 為有效值
-      count = Math.max(2, Math.min(count || 4, allCarModels.length)) // 將選中的車型放在第一位
-      let result = [selectedCar] // 按類別分組車型 - 優化 MACAN 分組邏輯
-      const carGroups = {
-        // Taycan 系列分組
-        'Taycan Entry Level': ['Taycan', 'Taycan 4'],
-        'Taycan Mid-Range': ['Taycan 4S', 'Taycan GTS'],
-        'Taycan High Performance': ['Taycan Turbo', 'Taycan Turbo S'],
-        'Taycan Ultra Performance': [
-          'Taycan Turbo GT',
-          'Taycan Turbo GT with WP',
-        ],
+      count = Math.max(2, Math.min(count || 4, allCarModels.length))
+      let result = [selectedCar]
 
-        // Macan 系列分組 - 重新優化分組
-        'Macan Entry Level': ['Macan', 'Macan 4'],
-        'Macan Sport Performance': ['Macan S'],
-        'Macan High Performance': ['Macan GTS'],
-        'Macan Ultimate Performance': ['Macan Turbo'],
-
-        // 跨系列比較分組 - 按性能等級
-        'Entry Electric SUV/Sedan': ['Taycan', 'Macan'],
-        'AWD Electric Vehicles': ['Taycan 4', 'Macan 4'],
-        'Sport Performance Electric': ['Taycan GTS', 'Macan S'],
-        'Ultimate Performance': ['Taycan Turbo GT', 'Macan Turbo'],
-      } // 確定所選車型屬於哪個組 - 支援多組歸屬
       let selectedGroups = []
       for (const [group, cars] of Object.entries(carGroups)) {
         if (cars.includes(selectedCar)) {
@@ -1852,33 +2136,23 @@
         }
       }
 
-      // 智能選擇比較車型的優先級策略
       const getComparisonPriority = (selectedCar) => {
         const carSeries = selectedCar.startsWith('Taycan') ? 'Taycan' : 'Macan'
-        const otherSeries = carSeries === 'Taycan' ? 'Macan' : 'Taycan'
-
-        // 優先級順序：
-        // 1. 同性能等級的對手品牌車型
-        // 2. 同系列不同性能等級車型
-        // 3. 其他系列車型
-
         const priorityGroups = []
 
-        // 找到跨系列比較分組
         for (const group of selectedGroups) {
           if (group.includes('Electric') && carGroups[group].length > 1) {
             priorityGroups.push(group)
           }
         }
 
-        // 添加同系列其他性能等級
         for (const [group, cars] of Object.entries(carGroups)) {
           if (group.includes(carSeries) && !selectedGroups.includes(group)) {
             priorityGroups.push(group)
           }
         }
 
-        // 添加對手系列車型
+        const otherSeries = carSeries === 'Taycan' ? 'Macan' : 'Taycan'
         for (const [group, cars] of Object.entries(carGroups)) {
           if (group.includes(otherSeries)) {
             priorityGroups.push(group)
@@ -1890,19 +2164,17 @@
 
       const priorityGroups = getComparisonPriority(selectedCar)
 
-      // 按優先級選擇比較車型
       for (const group of priorityGroups) {
         if (result.length < count && carGroups[group]) {
           for (const car of carGroups[group]) {
             if (!result.includes(car) && result.length < count) {
               result.push(car)
-              break // 每組只選一台代表車型
+              break
             }
           }
         }
       }
 
-      // 如果仍未達到要求的數量，從所有車型中選擇尚未選擇的車型
       if (result.length < count) {
         for (const car of allCarModels) {
           if (!result.includes(car) && result.length < count) {
@@ -1911,10 +2183,11 @@
         }
       }
 
-      // 確保不超過要求的數量
       return result.slice(0, count)
-    } // 添加視窗大小變化的事件監聽器，以便在視窗大小改變時更新表格
-    let resizeTimeout: NodeJS.Timeout | undefined
+    }
+
+    // 添加視窗大小變化的事件監聽器，以便在視窗大小改變時更新表格
+    let resizeTimeout
     window.addEventListener('resize', () => {
       // 使用 debounce 技術防止過於頻繁地更新
       if (resizeTimeout) {
@@ -1929,9 +2202,7 @@
           console.log(`視窗大小已變更，更新比較表格 (當前車型: ${currentCar})`)
         }
       }, 250) // 等待 250ms 再觸發更新
-    })
-
-    // 測試函數 - 可在需要時呼叫以驗證映射和數據
+    }) // 測試函數 - 可在需要時呼叫以驗證映射和數據
     function testCarData() {
       console.log('=== 測試車型圖片和資料 ===')
 
@@ -1951,7 +2222,32 @@
         } else {
           console.error(`${car} - 規格資料缺失`)
         }
-      } // 測試比較功能 - 包含 MACAN 車型測試
+      }
+
+      // 測試新的顏色和輪框配置
+      console.log('=== 測試顏色和輪框配置 ===')
+      for (const car of allCarModels) {
+        const configuration = getCarConfiguration(car)
+        if (configuration && configuration.colors.length > 0) {
+          console.log(`${car} - ${configuration.colors.length} 種顏色可用`)
+          configuration.colors.forEach((color, index) => {
+            console.log(
+              `  顏色 ${index + 1}: ${color.colorName} (${color.colorCode})`
+            )
+            color.wheels.forEach((wheel, wheelIndex) => {
+              if (wheel.imagePath) {
+                console.log(`    輪框 ${wheelIndex + 1}: ${wheel.imagePath}`)
+              } else {
+                console.warn(`    輪框 ${wheelIndex + 1}: 路徑缺失`)
+              }
+            })
+          })
+        } else {
+          console.warn(`${car} - 顏色配置缺失`)
+        }
+      }
+
+      // 測試比較功能 - 包含 MACAN 車型測試
       console.log('=== 新分組方式比較車型測試 ===')
 
       // 測試 Taycan 系列

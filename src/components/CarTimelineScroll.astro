@@ -563,7 +563,6 @@ const introSection = {
         height: 300px;
       }
     }
-
     :global(.splide__arrow) {
       background: transparent;
       width: 40px;
@@ -572,8 +571,12 @@ const introSection = {
       top: 65%;
 
       svg {
-        fill: #fff;
+        fill: #fff !important;
       }
+    }
+
+    :global(.taycan-slider .splide__arrow svg) {
+      fill: #fff !important;
     }
 
     .splide__list {
@@ -1080,9 +1083,18 @@ const introSection = {
   .splide__slide:not(.is-active):not(.is-prev):not(.is-active) .price {
     display: none;
   }
-
   .splide__slide:not(.is-active):not(.is-prev):not(.is-active) .view-more {
     display: none;
+  }
+
+  /* 強制覆蓋 Splide 箭頭顏色 */
+  .splide__arrow svg,
+  .splide__arrow--prev svg,
+  .splide__arrow--next svg,
+  .taycan-slider .splide__arrow svg,
+  .taycan-slider .splide__arrow--prev svg,
+  .taycan-slider .splide__arrow--next svg {
+    fill: #fff !important;
   }
 </style>
 
@@ -1567,15 +1579,15 @@ const introSection = {
       arrows.forEach((arrow) => {
         const svg = arrow.querySelector('svg') as SVGElement
         if (svg) {
-          svg.style.fill = '#fff'
+          svg.style.setProperty('fill', '#FFF', 'important')
           svg.style.transition = 'fill 0.3s ease'
 
           arrow.addEventListener('mouseenter', () => {
-            svg.style.fill = '#000'
+            svg.style.setProperty('fill', '#FFF', 'important')
           })
 
           arrow.addEventListener('mouseleave', () => {
-            svg.style.fill = '#fff'
+            svg.style.setProperty('fill', '#FFF', 'important')
           })
         }
       })
