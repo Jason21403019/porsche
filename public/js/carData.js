@@ -631,8 +631,15 @@ export const optionalPackages = {
       description: 'Premium comfort and convenience features',
       price: 'NT$ 85,000',
       features: ['Heated seats', 'Ambient lighting', 'Premium audio system'],
-      getImagePath: (colorCode, wheelNumber) => {
-        return getOptionalPackageImagePath('Taycan', colorCode, wheelNumber, 1)
+      getImagePath: (colorCode, wheelNumber, currentCarModel) => {
+        // 使用智能函數，首選當前車型，回退到基本版 Taycan
+        return getSmartPackageImagePath(
+          currentCarModel || 'Taycan',
+          'Taycan',
+          colorCode,
+          wheelNumber,
+          1
+        )
       },
       fallbackImage: '/img/packages/taycan/comfort-default.png',
     },
@@ -645,8 +652,15 @@ export const optionalPackages = {
         'Parking assist',
         'Head-up display',
       ],
-      getImagePath: (colorCode, wheelNumber) => {
-        return getOptionalPackageImagePath('Taycan', colorCode, wheelNumber, 2)
+      getImagePath: (colorCode, wheelNumber, currentCarModel) => {
+        // 使用智能函數，首選當前車型，回退到基本版 Taycan
+        return getSmartPackageImagePath(
+          currentCarModel || 'Taycan',
+          'Taycan',
+          colorCode,
+          wheelNumber,
+          2
+        )
       },
       fallbackImage: '/img/packages/taycan/tech-default.png',
     },
@@ -779,7 +793,26 @@ optionalPackages['Taycan 4S'] = [
     },
     fallbackImage: '/img/packages/taycan4s/sportplus-default.png',
   },
-  ...optionalPackages.Taycan.slice(1), // 複製其他套件
+  {
+    name: 'Comfort Package',
+    description: 'Premium comfort and convenience features',
+    price: 'NT$ 85,000',
+    features: ['Heated seats', 'Ambient lighting', 'Premium audio system'],
+    getImagePath: (colorCode, wheelNumber, currentCarModel) => {
+      return getOptionalPackageImagePath('Taycan 4S', colorCode, wheelNumber, 1)
+    },
+    fallbackImage: '/img/packages/taycan/comfort-default.png',
+  },
+  {
+    name: 'Tech Package',
+    description: 'Advanced technology and driver assistance',
+    price: 'NT$ 95,000',
+    features: ['Adaptive cruise control', 'Parking assist', 'Head-up display'],
+    getImagePath: (colorCode, wheelNumber, currentCarModel) => {
+      return getOptionalPackageImagePath('Taycan 4S', colorCode, wheelNumber, 2)
+    },
+    fallbackImage: '/img/packages/taycan/tech-default.png',
+  },
 ]
 
 optionalPackages['Taycan GTS'] = [
@@ -798,7 +831,36 @@ optionalPackages['Taycan GTS'] = [
     },
     fallbackImage: '/img/packages/taycangts/gts-default.png',
   },
-  ...optionalPackages['Taycan 4S'].slice(1),
+  {
+    name: 'Comfort Package',
+    description: 'Premium comfort and convenience features',
+    price: 'NT$ 85,000',
+    features: ['Heated seats', 'Ambient lighting', 'Premium audio system'],
+    getImagePath: (colorCode, wheelNumber, currentCarModel) => {
+      return getOptionalPackageImagePath(
+        'Taycan GTS',
+        colorCode,
+        wheelNumber,
+        1
+      )
+    },
+    fallbackImage: '/img/packages/taycan/comfort-default.png',
+  },
+  {
+    name: 'Tech Package',
+    description: 'Advanced technology and driver assistance',
+    price: 'NT$ 95,000',
+    features: ['Adaptive cruise control', 'Parking assist', 'Head-up display'],
+    getImagePath: (colorCode, wheelNumber, currentCarModel) => {
+      return getOptionalPackageImagePath(
+        'Taycan GTS',
+        colorCode,
+        wheelNumber,
+        2
+      )
+    },
+    fallbackImage: '/img/packages/taycan/tech-default.png',
+  },
 ]
 
 optionalPackages['Taycan Turbo'] = [
@@ -817,7 +879,36 @@ optionalPackages['Taycan Turbo'] = [
     },
     fallbackImage: '/img/packages/taycanturbo/turbo-default.png',
   },
-  ...optionalPackages['Taycan GTS'].slice(1),
+  {
+    name: 'Comfort Package',
+    description: 'Premium comfort and convenience features',
+    price: 'NT$ 85,000',
+    features: ['Heated seats', 'Ambient lighting', 'Premium audio system'],
+    getImagePath: (colorCode, wheelNumber, currentCarModel) => {
+      return getOptionalPackageImagePath(
+        'Taycan Turbo',
+        colorCode,
+        wheelNumber,
+        1
+      )
+    },
+    fallbackImage: '/img/packages/taycan/comfort-default.png',
+  },
+  {
+    name: 'Tech Package',
+    description: 'Advanced technology and driver assistance',
+    price: 'NT$ 95,000',
+    features: ['Adaptive cruise control', 'Parking assist', 'Head-up display'],
+    getImagePath: (colorCode, wheelNumber, currentCarModel) => {
+      return getOptionalPackageImagePath(
+        'Taycan Turbo',
+        colorCode,
+        wheelNumber,
+        2
+      )
+    },
+    fallbackImage: '/img/packages/taycan/tech-default.png',
+  },
 ]
 
 optionalPackages['Taycan Turbo S'] = [
@@ -836,7 +927,36 @@ optionalPackages['Taycan Turbo S'] = [
     },
     fallbackImage: '/img/packages/taycanturbos/turbos-default.png',
   },
-  ...optionalPackages['Taycan Turbo'].slice(1),
+  {
+    name: 'Comfort Package',
+    description: 'Premium comfort and convenience features',
+    price: 'NT$ 85,000',
+    features: ['Heated seats', 'Ambient lighting', 'Premium audio system'],
+    getImagePath: (colorCode, wheelNumber, currentCarModel) => {
+      return getOptionalPackageImagePath(
+        'Taycan Turbo S',
+        colorCode,
+        wheelNumber,
+        1
+      )
+    },
+    fallbackImage: '/img/packages/taycan/comfort-default.png',
+  },
+  {
+    name: 'Tech Package',
+    description: 'Advanced technology and driver assistance',
+    price: 'NT$ 95,000',
+    features: ['Adaptive cruise control', 'Parking assist', 'Head-up display'],
+    getImagePath: (colorCode, wheelNumber, currentCarModel) => {
+      return getOptionalPackageImagePath(
+        'Taycan Turbo S',
+        colorCode,
+        wheelNumber,
+        2
+      )
+    },
+    fallbackImage: '/img/packages/taycan/tech-default.png',
+  },
 ]
 
 optionalPackages['Taycan Turbo GT'] = [
@@ -855,7 +975,36 @@ optionalPackages['Taycan Turbo GT'] = [
     },
     fallbackImage: '/img/packages/taycanturbot/gt-default.png',
   },
-  ...optionalPackages['Taycan Turbo S'].slice(1),
+  {
+    name: 'Comfort Package',
+    description: 'Premium comfort and convenience features',
+    price: 'NT$ 85,000',
+    features: ['Heated seats', 'Ambient lighting', 'Premium audio system'],
+    getImagePath: (colorCode, wheelNumber, currentCarModel) => {
+      return getOptionalPackageImagePath(
+        'Taycan Turbo GT',
+        colorCode,
+        wheelNumber,
+        1
+      )
+    },
+    fallbackImage: '/img/packages/taycan/comfort-default.png',
+  },
+  {
+    name: 'Tech Package',
+    description: 'Advanced technology and driver assistance',
+    price: 'NT$ 95,000',
+    features: ['Adaptive cruise control', 'Parking assist', 'Head-up display'],
+    getImagePath: (colorCode, wheelNumber, currentCarModel) => {
+      return getOptionalPackageImagePath(
+        'Taycan Turbo GT',
+        colorCode,
+        wheelNumber,
+        2
+      )
+    },
+    fallbackImage: '/img/packages/taycan/tech-default.png',
+  },
 ]
 
 optionalPackages['Taycan Turbo GT with WP'] = [
@@ -874,7 +1023,36 @@ optionalPackages['Taycan Turbo GT with WP'] = [
     },
     fallbackImage: '/img/packages/taycanturbotWP/weissach-default.png',
   },
-  ...optionalPackages['Taycan Turbo GT'].slice(1),
+  {
+    name: 'Comfort Package',
+    description: 'Premium comfort and convenience features',
+    price: 'NT$ 85,000',
+    features: ['Heated seats', 'Ambient lighting', 'Premium audio system'],
+    getImagePath: (colorCode, wheelNumber, currentCarModel) => {
+      return getOptionalPackageImagePath(
+        'Taycan Turbo GT with WP',
+        colorCode,
+        wheelNumber,
+        1
+      )
+    },
+    fallbackImage: '/img/packages/taycan/comfort-default.png',
+  },
+  {
+    name: 'Tech Package',
+    description: 'Advanced technology and driver assistance',
+    price: 'NT$ 95,000',
+    features: ['Adaptive cruise control', 'Parking assist', 'Head-up display'],
+    getImagePath: (colorCode, wheelNumber, currentCarModel) => {
+      return getOptionalPackageImagePath(
+        'Taycan Turbo GT with WP',
+        colorCode,
+        wheelNumber,
+        2
+      )
+    },
+    fallbackImage: '/img/packages/taycan/tech-default.png',
+  },
 ]
 
 // Macan 系列的其他車型
@@ -889,7 +1067,26 @@ optionalPackages['Macan T'] = [
     },
     fallbackImage: '/img/packages/macant/t-default.png',
   },
-  ...optionalPackages.Macan.slice(1),
+  {
+    name: 'Urban Package',
+    description: 'City driving convenience features',
+    price: 'NT$ 75,000',
+    features: ['Parking sensors', 'City mode', 'Urban styling'],
+    getImagePath: (colorCode, wheelNumber) => {
+      return getOptionalPackageImagePath('Macan T', colorCode, wheelNumber, 1)
+    },
+    fallbackImage: '/img/packages/macan/urban-default.png',
+  },
+  {
+    name: 'Family Package',
+    description: 'Family-oriented comfort and safety',
+    price: 'NT$ 80,000',
+    features: ['Child safety locks', 'Rear entertainment', 'Extra storage'],
+    getImagePath: (colorCode, wheelNumber) => {
+      return getOptionalPackageImagePath('Macan T', colorCode, wheelNumber, 2)
+    },
+    fallbackImage: '/img/packages/macan/family-default.png',
+  },
 ]
 
 optionalPackages['Macan 4S'] = [
@@ -903,7 +1100,26 @@ optionalPackages['Macan 4S'] = [
     },
     fallbackImage: '/img/packages/macan4s/4s-default.png',
   },
-  ...optionalPackages['Macan 4'].slice(1),
+  {
+    name: 'Luxury Package',
+    description: 'Premium luxury features',
+    price: 'NT$ 105,000',
+    features: ['Luxury leather', 'Premium materials', 'Ambient lighting'],
+    getImagePath: (colorCode, wheelNumber) => {
+      return getOptionalPackageImagePath('Macan 4S', colorCode, wheelNumber, 1)
+    },
+    fallbackImage: '/img/packages/macan4/luxury-default.png',
+  },
+  {
+    name: 'Adventure Package',
+    description: 'Adventure and outdoor activity features',
+    price: 'NT$ 85,000',
+    features: ['Roof rails', 'Towing package', 'Adventure accessories'],
+    getImagePath: (colorCode, wheelNumber) => {
+      return getOptionalPackageImagePath('Macan 4S', colorCode, wheelNumber, 2)
+    },
+    fallbackImage: '/img/packages/macan4/adventure-default.png',
+  },
 ]
 optionalPackages['Macan S'] = [
   {
@@ -916,7 +1132,26 @@ optionalPackages['Macan S'] = [
     },
     fallbackImage: '/img/packages/macans/s-default.png',
   },
-  ...optionalPackages.Macan.slice(1),
+  {
+    name: 'Urban Package',
+    description: 'City driving convenience features',
+    price: 'NT$ 75,000',
+    features: ['Parking sensors', 'City mode', 'Urban styling'],
+    getImagePath: (colorCode, wheelNumber) => {
+      return getOptionalPackageImagePath('Macan S', colorCode, wheelNumber, 1)
+    },
+    fallbackImage: '/img/packages/macan/urban-default.png',
+  },
+  {
+    name: 'Family Package',
+    description: 'Family-oriented comfort and safety',
+    price: 'NT$ 80,000',
+    features: ['Child safety locks', 'Rear entertainment', 'Extra storage'],
+    getImagePath: (colorCode, wheelNumber) => {
+      return getOptionalPackageImagePath('Macan S', colorCode, wheelNumber, 2)
+    },
+    fallbackImage: '/img/packages/macan/family-default.png',
+  },
 ]
 
 optionalPackages['Macan GTS'] = [
@@ -930,7 +1165,26 @@ optionalPackages['Macan GTS'] = [
     },
     fallbackImage: '/img/packages/macangts/gts-default.png',
   },
-  ...optionalPackages['Macan S'].slice(1),
+  {
+    name: 'Urban Package',
+    description: 'City driving convenience features',
+    price: 'NT$ 75,000',
+    features: ['Parking sensors', 'City mode', 'Urban styling'],
+    getImagePath: (colorCode, wheelNumber) => {
+      return getOptionalPackageImagePath('Macan GTS', colorCode, wheelNumber, 1)
+    },
+    fallbackImage: '/img/packages/macan/urban-default.png',
+  },
+  {
+    name: 'Family Package',
+    description: 'Family-oriented comfort and safety',
+    price: 'NT$ 80,000',
+    features: ['Child safety locks', 'Rear entertainment', 'Extra storage'],
+    getImagePath: (colorCode, wheelNumber) => {
+      return getOptionalPackageImagePath('Macan GTS', colorCode, wheelNumber, 2)
+    },
+    fallbackImage: '/img/packages/macan/family-default.png',
+  },
 ]
 
 optionalPackages['Macan Turbo'] = [
@@ -949,7 +1203,36 @@ optionalPackages['Macan Turbo'] = [
     },
     fallbackImage: '/img/packages/macanturbo/turbo-default.png',
   },
-  ...optionalPackages['Macan GTS'].slice(1),
+  {
+    name: 'Urban Package',
+    description: 'City driving convenience features',
+    price: 'NT$ 75,000',
+    features: ['Parking sensors', 'City mode', 'Urban styling'],
+    getImagePath: (colorCode, wheelNumber) => {
+      return getOptionalPackageImagePath(
+        'Macan Turbo',
+        colorCode,
+        wheelNumber,
+        1
+      )
+    },
+    fallbackImage: '/img/packages/macan/urban-default.png',
+  },
+  {
+    name: 'Family Package',
+    description: 'Family-oriented comfort and safety',
+    price: 'NT$ 80,000',
+    features: ['Child safety locks', 'Rear entertainment', 'Extra storage'],
+    getImagePath: (colorCode, wheelNumber) => {
+      return getOptionalPackageImagePath(
+        'Macan Turbo',
+        colorCode,
+        wheelNumber,
+        2
+      )
+    },
+    fallbackImage: '/img/packages/macan/family-default.png',
+  },
 ]
 
 // 獲取車型的可選套件列表
@@ -1346,6 +1629,80 @@ export const getWheelImagePath = (carModel, colorCode, wheelNumber) => {
 }
 
 // 獲取選配套件圖片路徑 - 使用 JSON 檔案中的實際路徑
+// 智能套件圖片路徑函數 - 支援跨車型回退
+export const getSmartPackageImagePath = (
+  preferredCarModel,
+  fallbackCarModel,
+  colorCode,
+  wheelNumber,
+  packageIndex
+) => {
+  console.log(`🧠 智能套件圖片路徑查找:`)
+  console.log(`   - 首選車型: ${preferredCarModel}`)
+  console.log(`   - 回退車型: ${fallbackCarModel}`)
+  console.log(`   - 顏色代碼: ${colorCode}`)
+  console.log(`   - 輪框編號: ${wheelNumber}`)
+  console.log(`   - 套件索引: ${packageIndex}`)
+
+  // 首先嘗試在首選車型中查找
+  const preferredResult = getOptionalPackageImagePath(
+    preferredCarModel,
+    colorCode,
+    wheelNumber,
+    packageIndex
+  )
+  if (preferredResult !== '/img/car1.png') {
+    console.log(`   - ✅ 在首選車型中找到: ${preferredResult}`)
+    return preferredResult
+  }
+
+  // 如果首選車型中找不到，嘗試回退車型
+  if (fallbackCarModel && fallbackCarModel !== preferredCarModel) {
+    console.log(`   - 🔄 回退到: ${fallbackCarModel}`)
+    const fallbackResult = getOptionalPackageImagePath(
+      fallbackCarModel,
+      colorCode,
+      wheelNumber,
+      packageIndex
+    )
+    if (fallbackResult !== '/img/car1.png') {
+      console.log(`   - ✅ 在回退車型中找到: ${fallbackResult}`)
+      return fallbackResult
+    }
+  }
+
+  // 如果都找不到，嘗試在回退車型中使用第一個可用顏色
+  if (fallbackCarModel && fallbackCarModel !== preferredCarModel) {
+    const fallbackModelData = jsonDataMap[fallbackCarModel]
+    if (fallbackModelData) {
+      const availableColors = Object.keys(fallbackModelData)
+        .filter((key) => key.includes('color'))
+        .map((key) => {
+          const match = key.match(/color-?([A-F0-9]+)/i)
+          return match ? match[1] : null
+        })
+        .filter(Boolean)
+
+      if (availableColors.length > 0) {
+        console.log(`   - 🔄 嘗試回退車型的第一個顏色: ${availableColors[0]}`)
+        const firstColorResult = getOptionalPackageImagePath(
+          fallbackCarModel,
+          availableColors[0],
+          wheelNumber,
+          packageIndex
+        )
+        if (firstColorResult !== '/img/car1.png') {
+          console.log(`   - ✅ 使用回退顏色找到: ${firstColorResult}`)
+          return firstColorResult
+        }
+      }
+    }
+  }
+
+  console.log(`   - ❌ 所有嘗試都失敗，返回預設圖片`)
+  return '/img/car1.png'
+}
+
 export const getOptionalPackageImagePath = (
   carModel,
   colorCode,
@@ -1354,12 +1711,15 @@ export const getOptionalPackageImagePath = (
 ) => {
   const modelData = jsonDataMap[carModel]
   if (!modelData) {
+    console.log(`⚠️ 找不到車型數據: ${carModel}`)
     return `/img/car1.png`
   }
+
   // 使用輔助函數查找顏色鍵值
   const colorKey = findColorKey(modelData, colorCode)
 
   if (!colorKey || !modelData[colorKey]) {
+    console.log(`⚠️ 找不到顏色 ${colorCode} 在車型 ${carModel} 中`)
     return `/img/car1.png`
   }
   const colorData = modelData[colorKey]
@@ -1372,6 +1732,7 @@ export const getOptionalPackageImagePath = (
     packageIndex
   )
   if (specialResult !== null) {
+    console.log(`✅ 特殊處理成功: ${specialResult}`)
     return specialResult
   }
 
@@ -1383,15 +1744,20 @@ export const getOptionalPackageImagePath = (
 
     // 根據 packageIndex 選擇對應的選配圖片
     if (imageKeys[packageIndex]) {
-      return optionalImages[imageKeys[packageIndex]]
+      const selectedPath = optionalImages[imageKeys[packageIndex]]
+      console.log(`✅ 找到套件圖片: ${selectedPath}`)
+      return selectedPath
     }
 
     // 如果指定的 index 不存在，返回第一個可用的選配圖片
     if (imageKeys.length > 0) {
-      return optionalImages[imageKeys[0]]
+      const fallbackPath = optionalImages[imageKeys[0]]
+      console.log(`✅ 使用第一個可用圖片: ${fallbackPath}`)
+      return fallbackPath
     }
   }
 
+  console.log(`⚠️ 未找到 Optional 圖片，返回預設`)
   return `/img/car1.png`
 }
 
@@ -1472,7 +1838,9 @@ export const getPackageImagePath = (
 
 // 輔助函數：查找匹配的顏色鍵值
 const findColorKey = (modelData, colorCode) => {
-  if (!modelData || !colorCode) return null
+  if (!modelData || !colorCode) {
+    return null
+  }
 
   // 標準化顏色代碼
   const normalizedColorCode = colorCode.toLowerCase().replace(/[^a-z0-9]/g, '')
@@ -1491,7 +1859,10 @@ const findColorKey = (modelData, colorCode) => {
     const key = Object.keys(modelData).find((k) =>
       k.toLowerCase().includes(pattern.toLowerCase())
     )
-    if (key) return key
+    if (key) {
+      console.log(`🎯 顏色匹配成功: ${colorCode} → ${key}`)
+      return key
+    }
   }
 
   // 如果都沒找到，嘗試部分匹配
@@ -1499,6 +1870,12 @@ const findColorKey = (modelData, colorCode) => {
     const normalizedKey = key.toLowerCase().replace(/[^a-z0-9]/g, '')
     return normalizedKey.includes(normalizedColorCode) && key.includes('color')
   })
+
+  if (partialMatch) {
+    console.log(`🎯 部分匹配成功: ${colorCode} → ${partialMatch}`)
+  } else {
+    console.log(`❌ 顏色匹配失敗: ${colorCode}`)
+  }
 
   return partialMatch || null
 }

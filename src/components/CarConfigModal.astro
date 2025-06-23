@@ -1228,6 +1228,7 @@
     getOptionalPackages,
     getPackageImagePath,
     getOptionalPackageImagePath,
+    getSmartPackageImagePath,
     getColorMainImagePath,
     loadJsonData,
   } from '/js/carData.js'
@@ -1402,7 +1403,6 @@
           wheelOption.style.boxShadow = '0 0 12px rgba(255, 206, 96, 0.7)'
           wheelOption.style.backgroundColor = '#fffbeb'
         }
-
         const img = document.createElement('img')
         const wheelImagePath = getWheelImagePath(
           carModel,
@@ -1411,6 +1411,10 @@
         )
         img.src = wheelImagePath || '/img/wheel1.png' // 使用預設圖片作為後備
         img.alt = `Wheel ${wheelNumber}`
+
+        console.log(
+          `🛞 輪框 ${wheelNumber} 圖片路徑: ${wheelImagePath || '使用預設圖片'}`
+        )
         img.style.width = '100%'
         img.style.height = '100%'
         img.style.objectFit = 'cover'
@@ -1420,7 +1424,9 @@
 
         img.onerror = function () {
           // 如果圖片載入失敗，使用預設圖片
+          console.warn(`⚠️ 輪框圖片載入失敗: ${this.src}，改用預設圖片`)
           this.src = `/img/wheel${wheelNumber}.png`
+          console.log(`🔄 使用預設輪框圖片: /img/wheel${wheelNumber}.png`)
         }
 
         wheelOption.appendChild(img)
@@ -1469,14 +1475,19 @@
           justify-content: center;
           align-items: center;
           box-sizing: border-box;
-        `
-
-        // 創建圖片元素
+        ` // 創建圖片元素
         const img = document.createElement('img')
         // 使用新的參數格式：colorCode 和 wheelNumber 而不是 colorIndex 和 wheelIndex
+        console.log(
+          `� 載入套件圖片: ${package_.name} (車型: ${carModel}, 顏色: ${colorCode})`
+        )
+
         const packageImagePath = package_.getImagePath
-          ? package_.getImagePath(colorCode, wheelNumber)
+          ? package_.getImagePath(colorCode, wheelNumber, carModel)
           : package_.fallbackImage || '/img/car1.png'
+
+        console.log(`🖼️ 套件圖片路徑: ${packageImagePath}`)
+
         img.src = packageImagePath
         img.alt = package_.name
 
@@ -1533,8 +1544,9 @@
             selectedColorIndex = index
 
             console.log(
-              `已選擇 ${carModel} 的 ${colorName} 顏色 (代碼: ${colorCode})`
+              `🎨 已選擇 ${carModel} 的 ${colorName} 顏色 (代碼: ${colorCode})`
             )
+            console.log(`🔄 正在更新輪框選項以匹配新顏色...`)
 
             // 更新輪框選項以反映新顏色
             updateWheelOptions(carModel, colorCode)
@@ -1588,7 +1600,8 @@
             const wheelNumber = this.dataset.wheelNumber
             selectedWheelIndex = index
 
-            console.log(`已選擇輪框 ${wheelNumber}`)
+            console.log(`🛞 已選擇輪框 ${wheelNumber}`)
+            console.log(`🔄 正在更新套件選項以匹配新輪框...`)
 
             // 更新套件選項以反映新輪框和當前顏色
             const currentCar = sidebarCarTitle.textContent
@@ -1650,7 +1663,16 @@
             const packagePrice = this.dataset.price
             const packageIndex = this.dataset.packageIndex
 
-            console.log(`已選擇套件: ${packageName} - ${packagePrice}`)
+            console.log(`📦 已選擇套件: ${packageName} - ${packagePrice}`)
+            console.log(`📊 套件圖片資訊:`)
+            const packageImg = this.querySelector('img')
+            if (packageImg) {
+              console.log(`   - 圖片來源: ${packageImg.src}`)
+              console.log(`   - 圖片alt: ${packageImg.alt}`)
+              console.log(
+                `   - 載入狀態: ${packageImg.complete ? '✅ 已載入' : '⏳ 載入中'}`
+              )
+            }
           })
         })
     }
@@ -1673,18 +1695,26 @@
       currentCarConfiguration = getCarConfiguration(normalizedCarName)
 
       // 設置側邊欄車型名稱
-      sidebarCarTitle.textContent = normalizedCarName
-
-      // 獲取車輛圖片
+      sidebarCarTitle.textContent = normalizedCarName // 獲取車輛圖片
       const imagePath = getCarImage(normalizedCarName)
       if (imagePath) {
         sidebarCarImage.src = imagePath
         sidebarCarImage.alt = normalizedCarName
         sidebarCarImage.dataset.currentCar = normalizedCarName
-        console.log(`更新車輛圖片: ${normalizedCarName} - ${imagePath}`)
+        console.log(`🚗 更新車輛圖片: ${normalizedCarName} - ${imagePath}`)
+
+        // 額外的圖片調試資訊
+        console.log(`📊 圖片資訊詳情:`)
+        console.log(`   - 車型名稱: ${normalizedCarName}`)
+        console.log(`   - 圖片路徑: ${imagePath}`)
+        console.log(`   - 圖片元素ID: ${sidebarCarImage.id}`)
+        console.log(`   - 圖片元素類別: ${sidebarCarImage.className}`)
       } else {
-        console.warn(`找不到車型 "${normalizedCarName}" 的圖片，使用默認圖片`)
+        console.warn(
+          `⚠️ 找不到車型 "${normalizedCarName}" 的圖片，使用默認圖片`
+        )
         sidebarCarImage.src = '/img/taycan.png'
+        console.log(`🔄 使用默認圖片: /img/taycan.png`)
       }
 
       // 動態更新顏色和輪框選項
@@ -2299,5 +2329,100 @@
 
     // 執行測試 (可以在控制台觀察結果)
     testCarData()
+
+    // 新增：圖片調試函數 - 在控制台輸出圖片相關資訊
+    function consoleLogImages() {
+      console.log('=== 圖片資訊調試 ===')
+
+      // 輸出所有車型的主要圖片
+      console.log('1. 車型主要圖片:')
+      for (const [carName, imagePath] of Object.entries(carImages)) {
+        console.log(`   ${carName}: ${imagePath}`)
+      }
+
+      // 輸出當前模態框中顯示的圖片
+      console.log('\n2. 當前模態框圖片:')
+      const currentCarImage = document.getElementById('sidebarCarImage')
+      if (currentCarImage) {
+        console.log(
+          `   當前車型: ${currentCarImage.dataset.currentCar || '未設定'}`
+        )
+        console.log(`   圖片來源: ${currentCarImage.src}`)
+        console.log(`   圖片alt: ${currentCarImage.alt}`)
+      }
+
+      // 輸出所有顏色選項的圖片資訊
+      console.log('\n3. 顏色選項圖片:')
+      document
+        .querySelectorAll('.color-option')
+        .forEach((colorOption, index) => {
+          const colorName = colorOption.dataset.colorName
+          const colorCode = colorOption.dataset.colorCode
+          console.log(`   顏色 ${index + 1}: ${colorName} (${colorCode})`)
+          console.log(`   背景色: ${colorOption.style.backgroundColor}`)
+        })
+
+      // 輸出所有輪框選項的圖片
+      console.log('\n4. 輪框圖片:')
+      document.querySelectorAll('.wheel-option img').forEach((img, index) => {
+        console.log(`   輪框 ${index + 1}: ${img.src}`)
+        console.log(`   alt: ${img.alt}`)
+      })
+
+      // 輸出座椅圖片
+      console.log('\n5. 座椅圖片:')
+      document.querySelectorAll('.seat-option img').forEach((img, index) => {
+        console.log(`   座椅 ${index + 1}: ${img.src}`)
+        console.log(`   alt: ${img.alt}`)
+      })
+
+      // 輸出內裝圖片
+      console.log('\n6. 內裝圖片:')
+      document
+        .querySelectorAll('.interior-option img')
+        .forEach((img, index) => {
+          console.log(`   內裝 ${index + 1}: ${img.src}`)
+          console.log(`   alt: ${img.alt}`)
+        })
+
+      // 輸出套件圖片
+      console.log('\n7. 套件圖片:')
+      document.querySelectorAll('.package-option img').forEach((img, index) => {
+        const packageOption = img.parentElement
+        const packageName = packageOption.dataset.package
+        const packagePrice = packageOption.dataset.price
+        console.log(`   套件 ${index + 1}: ${packageName} - ${packagePrice}`)
+        console.log(`   圖片: ${img.src}`)
+        console.log(`   alt: ${img.alt}`)
+      })
+
+      // 檢查圖片載入狀態
+      console.log('\n8. 圖片載入狀態檢查:')
+      const allImages = document.querySelectorAll('#carConfigModal img')
+      allImages.forEach((img, index) => {
+        const isLoaded = img.complete && img.naturalHeight !== 0
+        const status = isLoaded ? '✅ 已載入' : '❌ 載入失敗'
+        console.log(`   圖片 ${index + 1}: ${status} - ${img.src}`)
+      })
+    } // 將函數暴露到全域，方便在控制台調用
+    window.consoleLogImages = consoleLogImages
+
+    // 添加鍵盤快捷鍵 Ctrl+Shift+I 來觸發圖片調試
+    document.addEventListener('keydown', function (event) {
+      if (event.ctrlKey && event.shiftKey && event.key === 'I') {
+        event.preventDefault()
+        console.clear()
+        console.log('🔍 手動觸發圖片調試 (Ctrl+Shift+I)')
+        consoleLogImages()
+      }
+    })
+
+    // 自動執行一次圖片調試
+    setTimeout(() => {
+      consoleLogImages()
+      console.log('\n💡 提示:')
+      console.log('   - 可以在控制台輸入 consoleLogImages() 來重新檢查圖片資訊')
+      console.log('   - 或按 Ctrl+Shift+I 快速觸發圖片調試')
+    }, 1000)
   })
 </script>
