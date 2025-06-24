@@ -92,21 +92,6 @@
                         <img src="/img/seat3.png" alt="Seat 3" />
                       </div>
                     </li>
-                    <li class="splide__slide">
-                      <div class="seat-option">
-                        <img src="/img/seat1.png" alt="Seat 1" />
-                      </div>
-                    </li>
-                    <li class="splide__slide">
-                      <div class="seat-option">
-                        <img src="/img/seat2.png" alt="Seat 2" />
-                      </div>
-                    </li>
-                    <li class="splide__slide">
-                      <div class="seat-option">
-                        <img src="/img/seat3.png" alt="Seat 3" />
-                      </div>
-                    </li>
                   </ul>
                 </div>
               </div>
@@ -118,21 +103,6 @@
               <div class="splide interior-slider">
                 <div class="splide__track">
                   <ul class="splide__list">
-                    <li class="splide__slide">
-                      <div class="interior-option">
-                        <img src="/img/interior1.png" alt="Interior 1" />
-                      </div>
-                    </li>
-                    <li class="splide__slide">
-                      <div class="interior-option">
-                        <img src="/img/interior2.png" alt="Interior 2" />
-                      </div>
-                    </li>
-                    <li class="splide__slide">
-                      <div class="interior-option">
-                        <img src="/img/interior3.png" alt="Interior 3" />
-                      </div>
-                    </li>
                     <li class="splide__slide">
                       <div class="interior-option">
                         <img src="/img/interior1.png" alt="Interior 1" />
@@ -191,40 +161,6 @@
             </div>
           </div>
         </div>
-
-        <!-- 未來功能：更多車輛 TAB 內容 
-        <div class="tab-content" id="more-tab">
-          <div class="more-cars">
-            <h2>More Vehicles</h2>
-            <div class="cars-grid">
-              <div class="car-card">
-                <img src="/img/taycan.png" alt="Taycan" />
-                <h3>Taycan</h3>
-                <p>Starting from: NT$ 4,580,000</p>
-                <button class="car-config-btn">Configure Vehicle</button>
-              </div>
-              <div class="car-card">
-                <img src="/img/911.png" alt="911" />
-                <h3>911</h3>
-                <p>Starting from: NT$ 5,340,000</p>
-                <button class="car-config-btn">Configure Vehicle</button>
-              </div>
-              <div class="car-card">
-                <img src="/img/panamera.png" alt="Panamera" />
-                <h3>Panamera</h3>
-                <p>Starting from: NT$ 4,980,000</p>
-                <button class="car-config-btn">Configure Vehicle</button>
-              </div>
-              <div class="car-card">
-                <img src="/img/cayenne.png" alt="Cayenne" />
-                <h3>Cayenne</h3>
-                <p>Starting from: NT$ 3,880,000</p>
-                <button class="car-config-btn">Configure Vehicle</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        -->
       </div>
     </div>
   </div>
@@ -1311,8 +1247,10 @@
 
     // 全局變量來追蹤當前選擇的顏色和輪框
     let currentCarConfiguration = null
-    let selectedColorIndex = 0
-    let selectedWheelIndex = 0 // 動態更新顏色選項
+    let selectedColorIndex = 1
+    let selectedWheelIndex = 1 // 預設都為第二個
+
+    // 動態更新顏色選項
     function updateColorOptions(carModel) {
       const colorSlider = document.querySelector('.color-slider .splide__list')
       if (!colorSlider) return
@@ -1344,8 +1282,8 @@
         colorOption.style.margin = '0 auto'
         colorOption.style.display = 'block'
 
-        // 如果是第一個顏色，應用選中狀態的樣式
-        if (index === 0) {
+        // 如果是第二個顏色，應用選中狀態的樣式
+        if (index === 1) {
           colorOption.classList.add('selected')
           colorOption.style.transform = 'scale(1.3)'
           colorOption.style.borderColor = '#ffce60'
@@ -1394,8 +1332,8 @@
         wheelOption.style.overflow = 'hidden'
         wheelOption.style.backgroundColor = '#f5f5f5'
 
-        // 如果是第一個輪框，應用選中狀態的樣式
-        if (wheelNumber === 1) {
+        // 如果是第二個輪框，應用選中狀態的樣式
+        if (wheelNumber === 2) {
           wheelOption.classList.add('selected')
           wheelOption.style.width = '112px'
           wheelOption.style.height = '112px'
@@ -1412,9 +1350,6 @@
         img.src = wheelImagePath || '/img/wheel1.png' // 使用預設圖片作為後備
         img.alt = `Wheel ${wheelNumber}`
 
-        console.log(
-          `🛞 輪框 ${wheelNumber} 圖片路徑: ${wheelImagePath || '使用預設圖片'}`
-        )
         img.style.width = '100%'
         img.style.height = '100%'
         img.style.objectFit = 'cover'
@@ -1426,7 +1361,6 @@
           // 如果圖片載入失敗，使用預設圖片
           console.warn(`⚠️ 輪框圖片載入失敗: ${this.src}，改用預設圖片`)
           this.src = `/img/wheel${wheelNumber}.png`
-          console.log(`🔄 使用預設輪框圖片: /img/wheel${wheelNumber}.png`)
         }
 
         wheelOption.appendChild(img)
@@ -1478,15 +1412,10 @@
         ` // 創建圖片元素
         const img = document.createElement('img')
         // 使用新的參數格式：colorCode 和 wheelNumber 而不是 colorIndex 和 wheelIndex
-        console.log(
-          `� 載入套件圖片: ${package_.name} (車型: ${carModel}, 顏色: ${colorCode})`
-        )
 
         const packageImagePath = package_.getImagePath
           ? package_.getImagePath(colorCode, wheelNumber, carModel)
           : package_.fallbackImage || '/img/car1.png'
-
-        console.log(`🖼️ 套件圖片路徑: ${packageImagePath}`)
 
         img.src = packageImagePath
         img.alt = package_.name
@@ -1543,11 +1472,6 @@
             const colorName = this.dataset.colorName
             selectedColorIndex = index
 
-            console.log(
-              `🎨 已選擇 ${carModel} 的 ${colorName} 顏色 (代碼: ${colorCode})`
-            )
-            console.log(`🔄 正在更新輪框選項以匹配新顏色...`)
-
             // 更新輪框選項以反映新顏色
             updateWheelOptions(carModel, colorCode)
 
@@ -1599,9 +1523,6 @@
 
             const wheelNumber = this.dataset.wheelNumber
             selectedWheelIndex = index
-
-            console.log(`🛞 已選擇輪框 ${wheelNumber}`)
-            console.log(`🔄 正在更新套件選項以匹配新輪框...`)
 
             // 更新套件選項以反映新輪框和當前顏色
             const currentCar = sidebarCarTitle.textContent
@@ -1658,21 +1579,6 @@
             this.style.boxShadow = '0 0 12px rgba(255, 206, 96, 0.7)'
             this.style.backgroundColor = '#fffbeb'
             this.style.border = '3px solid #ffce60'
-
-            const packageName = this.dataset.package
-            const packagePrice = this.dataset.price
-            const packageIndex = this.dataset.packageIndex
-
-            console.log(`📦 已選擇套件: ${packageName} - ${packagePrice}`)
-            console.log(`📊 套件圖片資訊:`)
-            const packageImg = this.querySelector('img')
-            if (packageImg) {
-              console.log(`   - 圖片來源: ${packageImg.src}`)
-              console.log(`   - 圖片alt: ${packageImg.alt}`)
-              console.log(
-                `   - 載入狀態: ${packageImg.complete ? '✅ 已載入' : '⏳ 載入中'}`
-              )
-            }
           })
         })
     }
@@ -1687,9 +1593,6 @@
       if (!modal) return
 
       const normalizedCarName = normalizeCarName(carName)
-      console.log(
-        `嘗試開啟車型配置: ${carName} (規範化為: ${normalizedCarName})`
-      )
 
       // 獲取車型的完整配置
       currentCarConfiguration = getCarConfiguration(normalizedCarName)
@@ -1701,20 +1604,11 @@
         sidebarCarImage.src = imagePath
         sidebarCarImage.alt = normalizedCarName
         sidebarCarImage.dataset.currentCar = normalizedCarName
-        console.log(`🚗 更新車輛圖片: ${normalizedCarName} - ${imagePath}`)
-
-        // 額外的圖片調試資訊
-        console.log(`📊 圖片資訊詳情:`)
-        console.log(`   - 車型名稱: ${normalizedCarName}`)
-        console.log(`   - 圖片路徑: ${imagePath}`)
-        console.log(`   - 圖片元素ID: ${sidebarCarImage.id}`)
-        console.log(`   - 圖片元素類別: ${sidebarCarImage.className}`)
       } else {
         console.warn(
           `⚠️ 找不到車型 "${normalizedCarName}" 的圖片，使用默認圖片`
         )
         sidebarCarImage.src = '/img/taycan.png'
-        console.log(`🔄 使用默認圖片: /img/taycan.png`)
       }
 
       // 動態更新顏色和輪框選項
@@ -1900,6 +1794,25 @@
         },
       },
     }
+    const packageOptions = {
+      ...commonOptions,
+      perPage: 3, // 套件選項每頁顯示4個
+      gap: '1rem',
+      padding: {
+        left: '0rem',
+        right: '0rem',
+      },
+      breakpoints: {
+        768: {
+          perPage: 3,
+          gap: '1rem',
+        },
+        450: {
+          perPage: 2,
+          gap: '0.5rem',
+        },
+      },
+    }
 
     // 初始化所有輪播 (移除套件滑塊初始化)
     let splideSliders = {}
@@ -1913,13 +1826,13 @@
       }
 
       if (document.querySelector('.wheel-slider')) {
-        splideSliders.wheel = new Splide('.wheel-slider', commonOptions)
+        splideSliders.wheel = new Splide('.wheel-slider', packageOptions)
         splideSliders.wheel.mount()
         splideSliders.wheel.go(0)
       }
 
       if (document.querySelector('.seat-slider')) {
-        splideSliders.seat = new Splide('.seat-slider', commonOptions)
+        splideSliders.seat = new Splide('.seat-slider', packageOptions)
         splideSliders.seat.mount()
         splideSliders.seat.go(0)
       }
@@ -1955,12 +1868,6 @@
 
           // 為箭頭添加額外點擊事件（用於除錯和確保功能正常）
           arrow.addEventListener('click', function (e) {
-            console.log(
-              '箭頭被點擊',
-              this.classList.contains('splide__arrow--prev')
-                ? '上一個'
-                : '下一個'
-            )
             e.stopPropagation() // 阻止事件冒泡
           })
         })
@@ -1979,29 +1886,6 @@
       })
     } // 綁定座椅和內裝選項的點擊事件（顏色、輪框和套件選項由動態函數處理）
     ;['seat-option', 'interior-option'].forEach(handleOptionClick)
-
-    // 套件選擇功能現在由 bindPackageSelectionEvents() 動態處理
-
-    // 更多車輛 TAB 中的配置車輛按鈕事件 (未來功能)
-    /*
-    document.querySelectorAll('.car-config-btn').forEach((btn) => {
-      btn.addEventListener('click', function () {
-        const carName = this.parentNode.querySelector('h3').textContent
-        console.log(`要配置的車輛: ${carName}`)
-
-        // 切換到配置車輛 TAB
-        activateTab('configure')
-
-        // 如果需要，更新側邊欄的車型和圖片
-        if (carImages[carName]) {
-          sidebarCarTitle.textContent = carName
-          sidebarCarImage.src = carImages[carName]
-          sidebarCarImage.alt = carName
-          sidebarCarImage.dataset.currentCar = carName
-        }
-      })
-    })
-    */
 
     // 更新比較表格
     function updateComparisonTable(selectedCar) {
@@ -2154,8 +2038,6 @@
 
         specsGrid.appendChild(specItem)
       })
-
-      console.log(`已更新 ${normalizedCarName} 的技術規格`)
     }
 
     // 選擇要比較的車型
@@ -2233,196 +2115,8 @@
         if (compareTab && compareTab.classList.contains('active')) {
           const currentCar = sidebarCarTitle.textContent
           updateComparisonTable(currentCar)
-          console.log(`視窗大小已變更，更新比較表格 (當前車型: ${currentCar})`)
         }
       }, 250) // 等待 250ms 再觸發更新
     }) // 測試函數 - 可在需要時呼叫以驗證映射和數據
-    function testCarData() {
-      console.log('=== 測試車型圖片和資料 ===')
-
-      // 檢查所有車型圖片
-      for (const car of allCarModels) {
-        if (carImages[car]) {
-          console.log(`${car} - 圖片: ${carImages[car]}`)
-        } else {
-          console.error(`${car} - 圖片缺失`)
-        }
-      }
-
-      // 檢查所有車型規格資料
-      for (const car of allCarModels) {
-        if (carSpecs[car]) {
-          console.log(`${car} - 規格資料完整`)
-        } else {
-          console.error(`${car} - 規格資料缺失`)
-        }
-      }
-
-      // 測試新的顏色和輪框配置
-      console.log('=== 測試顏色和輪框配置 ===')
-      for (const car of allCarModels) {
-        const configuration = getCarConfiguration(car)
-        if (configuration && configuration.colors.length > 0) {
-          console.log(`${car} - ${configuration.colors.length} 種顏色可用`)
-          configuration.colors.forEach((color, index) => {
-            console.log(
-              `  顏色 ${index + 1}: ${color.colorName} (${color.colorCode})`
-            )
-            color.wheels.forEach((wheel, wheelIndex) => {
-              if (wheel.imagePath) {
-                console.log(`    輪框 ${wheelIndex + 1}: ${wheel.imagePath}`)
-              } else {
-                console.warn(`    輪框 ${wheelIndex + 1}: 路徑缺失`)
-              }
-            })
-          })
-        } else {
-          console.warn(`${car} - 顏色配置缺失`)
-        }
-      }
-
-      // 測試比較功能 - 包含 MACAN 車型測試
-      console.log('=== 新分組方式比較車型測試 ===')
-
-      // 測試 Taycan 系列
-      for (const car of ['Taycan', 'Taycan 4S', 'Taycan Turbo GT']) {
-        ;[2, 3, 4].forEach((count) => {
-          const comparisonCars = getComparisonCars(car, count)
-          console.log(
-            `${car} 的比較車型 (${count}台): ${comparisonCars.join(', ')}`
-          )
-        })
-      }
-
-      // 測試 Macan 系列
-      console.log('--- MACAN 系列比較測試 ---')
-      for (const car of [
-        'Macan',
-        'Macan 4',
-        'Macan S',
-        'Macan GTS',
-        'Macan Turbo',
-      ]) {
-        ;[2, 3, 4].forEach((count) => {
-          const comparisonCars = getComparisonCars(car, count)
-          console.log(
-            `${car} 的比較車型 (${count}台): ${comparisonCars.join(', ')}`
-          )
-        })
-      }
-
-      // 測試跨系列比較
-      console.log('--- 跨系列比較測試 ---')
-      const crossSeriesTests = [
-        {selected: 'Taycan', expected: 'Should include Macan'},
-        {selected: 'Macan GTS', expected: 'Should include Taycan GTS'},
-        {selected: 'Macan Turbo', expected: 'Should include Taycan Turbo GT'},
-      ]
-
-      crossSeriesTests.forEach((test) => {
-        const comparisonCars = getComparisonCars(test.selected, 3)
-        console.log(
-          `${test.selected} 跨系列比較: ${comparisonCars.join(', ')} (${test.expected})`
-        )
-      })
-    }
-
-    // 執行測試 (可以在控制台觀察結果)
-    testCarData()
-
-    // 新增：圖片調試函數 - 在控制台輸出圖片相關資訊
-    function consoleLogImages() {
-      console.log('=== 圖片資訊調試 ===')
-
-      // 輸出所有車型的主要圖片
-      console.log('1. 車型主要圖片:')
-      for (const [carName, imagePath] of Object.entries(carImages)) {
-        console.log(`   ${carName}: ${imagePath}`)
-      }
-
-      // 輸出當前模態框中顯示的圖片
-      console.log('\n2. 當前模態框圖片:')
-      const currentCarImage = document.getElementById('sidebarCarImage')
-      if (currentCarImage) {
-        console.log(
-          `   當前車型: ${currentCarImage.dataset.currentCar || '未設定'}`
-        )
-        console.log(`   圖片來源: ${currentCarImage.src}`)
-        console.log(`   圖片alt: ${currentCarImage.alt}`)
-      }
-
-      // 輸出所有顏色選項的圖片資訊
-      console.log('\n3. 顏色選項圖片:')
-      document
-        .querySelectorAll('.color-option')
-        .forEach((colorOption, index) => {
-          const colorName = colorOption.dataset.colorName
-          const colorCode = colorOption.dataset.colorCode
-          console.log(`   顏色 ${index + 1}: ${colorName} (${colorCode})`)
-          console.log(`   背景色: ${colorOption.style.backgroundColor}`)
-        })
-
-      // 輸出所有輪框選項的圖片
-      console.log('\n4. 輪框圖片:')
-      document.querySelectorAll('.wheel-option img').forEach((img, index) => {
-        console.log(`   輪框 ${index + 1}: ${img.src}`)
-        console.log(`   alt: ${img.alt}`)
-      })
-
-      // 輸出座椅圖片
-      console.log('\n5. 座椅圖片:')
-      document.querySelectorAll('.seat-option img').forEach((img, index) => {
-        console.log(`   座椅 ${index + 1}: ${img.src}`)
-        console.log(`   alt: ${img.alt}`)
-      })
-
-      // 輸出內裝圖片
-      console.log('\n6. 內裝圖片:')
-      document
-        .querySelectorAll('.interior-option img')
-        .forEach((img, index) => {
-          console.log(`   內裝 ${index + 1}: ${img.src}`)
-          console.log(`   alt: ${img.alt}`)
-        })
-
-      // 輸出套件圖片
-      console.log('\n7. 套件圖片:')
-      document.querySelectorAll('.package-option img').forEach((img, index) => {
-        const packageOption = img.parentElement
-        const packageName = packageOption.dataset.package
-        const packagePrice = packageOption.dataset.price
-        console.log(`   套件 ${index + 1}: ${packageName} - ${packagePrice}`)
-        console.log(`   圖片: ${img.src}`)
-        console.log(`   alt: ${img.alt}`)
-      })
-
-      // 檢查圖片載入狀態
-      console.log('\n8. 圖片載入狀態檢查:')
-      const allImages = document.querySelectorAll('#carConfigModal img')
-      allImages.forEach((img, index) => {
-        const isLoaded = img.complete && img.naturalHeight !== 0
-        const status = isLoaded ? '✅ 已載入' : '❌ 載入失敗'
-        console.log(`   圖片 ${index + 1}: ${status} - ${img.src}`)
-      })
-    } // 將函數暴露到全域，方便在控制台調用
-    window.consoleLogImages = consoleLogImages
-
-    // 添加鍵盤快捷鍵 Ctrl+Shift+I 來觸發圖片調試
-    document.addEventListener('keydown', function (event) {
-      if (event.ctrlKey && event.shiftKey && event.key === 'I') {
-        event.preventDefault()
-        console.clear()
-        console.log('🔍 手動觸發圖片調試 (Ctrl+Shift+I)')
-        consoleLogImages()
-      }
-    })
-
-    // 自動執行一次圖片調試
-    setTimeout(() => {
-      consoleLogImages()
-      console.log('\n💡 提示:')
-      console.log('   - 可以在控制台輸入 consoleLogImages() 來重新檢查圖片資訊')
-      console.log('   - 或按 Ctrl+Shift+I 快速觸發圖片調試')
-    }, 1000)
   })
 </script>

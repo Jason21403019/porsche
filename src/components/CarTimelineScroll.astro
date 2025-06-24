@@ -779,321 +779,337 @@ const introSection = {
 </style>
 
 <style is:global>
-  /* 動態生成的 Splide 內容樣式 */
-  .splide__slide {
-    transition: all 0.5s ease;
+  /* 動態生成的 Splide 內容樣式 - 提高優先級 */
+  .taycan-slider .splide__slide {
+    transition: all 0.5s ease !important;
   }
 
-  .splide__slide.is-clone {
-    opacity: 1;
+  .taycan-slider .splide__slide.is-clone {
+    opacity: 1 !important;
   }
 
-  .splide__slide .content-wrapper {
-    background: linear-gradient(180deg, #737373 0%, #d9d9d9 100%);
-    border-radius: 15px;
-    padding: 10px;
-    padding-top: 32px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    transition: all 0.5s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 230px;
-    width: 184px;
-    position: relative;
+  .taycan-slider .splide__slide .content-wrapper {
+    background: linear-gradient(180deg, #737373 0%, #d9d9d9 100%) !important;
+    border-radius: 15px !important;
+    padding: 10px !important;
+    padding-top: 32px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.5s ease !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    height: 230px !important;
+    width: 184px !important;
+    position: relative !important;
   }
 
-  .splide__slide .content-wrapper::after {
-    content: '';
-    position: absolute;
-    inset: -10px;
+  .taycan-slider .splide__slide .content-wrapper::after {
+    content: '' !important;
+    position: absolute !important;
+    inset: -10px !important;
     background: radial-gradient(
       circle,
       rgba(255, 255, 255, 0.5) 0%,
       transparent 0%
-    );
-    z-index: -1;
-    pointer-events: none;
+    ) !important;
+    z-index: -1 !important;
+    pointer-events: none !important;
   }
 
   @media (max-width: 768px) {
-    .splide__slide .content-wrapper {
-      width: 150px;
-      height: 210px;
-      padding-top: 20px;
+    .taycan-slider .splide__slide .content-wrapper {
+      width: 150px !important;
+      height: 210px !important;
+      padding-top: 20px !important;
     }
   }
 
   @media (max-width: 480px) {
-    .splide__slide .content-wrapper {
-      width: 130px;
-      height: 190px;
+    .taycan-slider .splide__slide .content-wrapper {
+      width: 130px !important;
+      height: 190px !important;
     }
   }
 
-  .splide__slide .car-name {
-    height: 48px;
-    font-size: 24px;
-    margin: 0 0 15px 0;
-    text-align: center;
-    font-weight: 600;
+  .taycan-slider .splide__slide .car-name {
+    height: 48px !important;
+    font-size: 24px !important;
+    margin: 0 0 15px 0 !important;
+    text-align: center !important;
+    font-weight: 600 !important;
   }
 
   @media (max-width: 768px) {
-    .splide__slide .car-name {
-      font-size: 20px;
-      height: 40px;
-      margin: 0 0 10px 0;
+    .taycan-slider .splide__slide .car-name {
+      font-size: 20px !important;
+      height: 40px !important;
+      margin: 0 0 10px 0 !important;
     }
   }
 
   @media (max-width: 480px) {
-    .splide__slide .car-name {
-      font-size: 18px;
+    .taycan-slider .splide__slide .car-name {
+      font-size: 18px !important;
     }
   }
 
-  .splide__slide .additional-content {
-    width: 100%;
-    opacity: 0;
-    max-height: 0;
-    transition: all 0.5s ease;
-    gap: 15px;
-    display: flex;
-    flex-direction: column;
+  .taycan-slider .splide__slide .additional-content {
+    width: 100% !important;
+    opacity: 0 !important;
+    max-height: 0 !important;
+    transition: all 0.5s ease !important;
+    gap: 15px !important;
+    display: flex !important;
+    flex-direction: column !important;
   }
 
-  .splide__slide .car-image-carousel {
-    margin: 0 auto;
-    width: 120%;
-    height: 180px;
-    border-radius: 12px;
+  .taycan-slider .splide__slide .car-image-carousel {
+    margin: 0 auto !important;
+    width: 120% !important;
+    height: 180px !important;
+    border-radius: 12px !important;
     transform: none !important;
     opacity: 1 !important;
     scale: 1 !important;
   }
 
   @media (max-width: 768px) {
-    .splide__slide .car-image-carousel {
-      width: 100%;
-      height: 140px;
+    .taycan-slider .splide__slide .car-image-carousel {
+      width: 100% !important;
+      height: 140px !important;
     }
   }
 
-  .splide__slide .car-image-carousel img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+  .taycan-slider .splide__slide .car-image-carousel img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
     transform: none !important;
     opacity: 1 !important;
     scale: 1 !important;
   }
 
   @media (max-width: 768px) {
-    .splide__slide .car-image-carousel img {
-      object-position: center 70%;
+    .taycan-slider .splide__slide .car-image-carousel img {
+      object-position: center 70% !important;
     }
   }
 
-  .splide__slide .price {
-    font-size: 18px;
-    color: #000;
-    margin: 0;
-    text-align: center;
+  .taycan-slider .splide__slide .price {
+    font-size: 18px !important;
+    color: #000 !important;
+    margin: 0 !important;
+    text-align: center !important;
   }
 
-  .splide__slide .view-more {
-    padding: 5px 25px;
-    background: linear-gradient(#ffce60, #ede1c8, #ffce60);
-    color: #000;
-    border: 1px solid;
-    border-image: linear-gradient(to right, #ffffff, #666);
-    border-radius: 32px;
-    cursor: pointer;
-    font-size: 16px;
-    align-self: center;
-    transition: all 0.3s ease;
+  .taycan-slider .splide__slide .view-more {
+    padding: 5px 25px !important;
+    background: linear-gradient(#ffce60, #ede1c8, #ffce60) !important;
+    color: #000 !important;
+    border: 1px solid !important;
+    border-image: linear-gradient(to right, #ffffff, #666) !important;
+    border-radius: 32px !important;
+    cursor: pointer !important;
+    font-size: 16px !important;
+    align-self: center !important;
+    transition: all 0.3s ease !important;
   }
 
-  .splide__slide .view-more:hover {
-    transform: scale(1.05);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  .taycan-slider .splide__slide .view-more:hover {
+    transform: scale(1.05) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
   }
 
-  /* Active slide styles */
-  .splide__slide.is-active {
-    transform: scale(1);
+  /* Active slide styles - 最高優先級 */
+  .taycan-slider .splide__slide.is-active {
+    transform: scale(1) !important;
   }
 
-  .splide__slide.is-active .content-wrapper {
-    background: linear-gradient(to bottom, #313131, #ffce60);
-    box-shadow: 0 0 15px rgba(255, 206, 96, 0.25);
-    height: 200px;
-    padding-bottom: 25px;
+  .taycan-slider .splide__slide.is-active .content-wrapper {
+    background: linear-gradient(to bottom, #313131, #ffce60) !important;
+    box-shadow: 0 0 15px rgba(255, 206, 96, 0.25) !important;
+    height: 200px !important;
+    padding-bottom: 25px !important;
   }
 
-  .splide__slide.is-active .content-wrapper::after {
+  .taycan-slider .splide__slide.is-active .content-wrapper::after {
     background: radial-gradient(
       circle,
       rgba(255, 206, 96, 0.25) 0%,
       transparent 70%
-    );
+    ) !important;
   }
 
   @media (max-width: 768px) {
-    .splide__slide.is-active .content-wrapper {
-      height: 190px;
+    .taycan-slider .splide__slide.is-active .content-wrapper {
+      height: 190px !important;
     }
   }
 
   @media (max-width: 480px) {
-    .splide__slide.is-active .content-wrapper {
-      height: 180px;
+    .taycan-slider .splide__slide.is-active .content-wrapper {
+      height: 180px !important;
     }
   }
 
-  .splide__slide.is-active .additional-content {
-    opacity: 1;
-    max-height: 220px;
+  .taycan-slider .splide__slide.is-active .additional-content {
+    opacity: 1 !important;
+    max-height: 220px !important;
   }
 
-  .splide__slide.is-active .car-image-carousel {
-    margin-left: -1rem;
+  .taycan-slider .splide__slide.is-active .car-image-carousel {
+    margin-left: -1rem !important;
   }
 
   @media (max-width: 768px) {
-    .splide__slide.is-active .car-image-carousel {
-      margin-left: -0.5rem;
+    .taycan-slider .splide__slide.is-active .car-image-carousel {
+      margin-left: -0.5rem !important;
     }
   }
 
-  .splide__slide.is-active .car-image-carousel img {
-    height: 130%;
+  .taycan-slider .splide__slide.is-active .car-image-carousel img {
+    height: 130% !important;
   }
 
   @media (max-width: 768px) {
-    .splide__slide.is-active .car-image-carousel img {
-      height: 120%;
+    .taycan-slider .splide__slide.is-active .car-image-carousel img {
+      height: 120% !important;
     }
   }
 
-  /* Previous and Next slide styles */
-  .splide__slide.is-prev,
-  .splide__slide.is-next {
-    transform: scale(1);
+  /* Previous and Next slide styles - 提高優先級 */
+  .taycan-slider .splide__slide.is-prev,
+  .taycan-slider .splide__slide.is-next {
+    transform: scale(1) !important;
   }
 
-  .splide__slide.is-prev .content-wrapper,
-  .splide__slide.is-next .content-wrapper {
-    height: 160px;
+  .taycan-slider .splide__slide.is-prev .content-wrapper,
+  .taycan-slider .splide__slide.is-next .content-wrapper {
+    height: 160px !important;
   }
 
   @media (max-width: 768px) {
-    .splide__slide.is-prev .content-wrapper,
-    .splide__slide.is-next .content-wrapper {
-      height: 140px;
+    .taycan-slider .splide__slide.is-prev .content-wrapper,
+    .taycan-slider .splide__slide.is-next .content-wrapper {
+      height: 140px !important;
     }
   }
 
-  .splide__slide.is-prev .additional-content,
-  .splide__slide.is-next .additional-content {
-    opacity: 0.7;
-    max-height: 50px;
+  .taycan-slider .splide__slide.is-prev .additional-content,
+  .taycan-slider .splide__slide.is-next .additional-content {
+    opacity: 0.7 !important;
+    max-height: 50px !important;
   }
 
-  .splide__slide.is-prev .additional-content .specs,
-  .splide__slide.is-next .additional-content .specs,
-  .splide__slide.is-prev .additional-content .view-more,
-  .splide__slide.is-next .additional-content .view-more {
-    display: none;
+  .taycan-slider .splide__slide.is-prev .additional-content .specs,
+  .taycan-slider .splide__slide.is-next .additional-content .specs,
+  .taycan-slider .splide__slide.is-prev .additional-content .view-more,
+  .taycan-slider .splide__slide.is-next .additional-content .view-more {
+    display: none !important;
   }
 
-  .splide__slide.is-prev .car-image-carousel,
-  .splide__slide.is-next .car-image-carousel {
-    width: 90%;
+  .taycan-slider .splide__slide.is-prev .car-image-carousel,
+  .taycan-slider .splide__slide.is-next .car-image-carousel {
+    width: 90% !important;
   }
 
   @media (max-width: 768px) {
-    .splide__slide.is-prev .car-image-carousel,
-    .splide__slide.is-next .car-image-carousel {
-      width: 80%;
+    .taycan-slider .splide__slide.is-prev .car-image-carousel,
+    .taycan-slider .splide__slide.is-next .car-image-carousel {
+      width: 80% !important;
     }
   }
 
-  .splide__slide.is-prev .car-image-carousel img,
-  .splide__slide.is-next .car-image-carousel img {
-    height: 140%;
+  .taycan-slider .splide__slide.is-prev .car-image-carousel img,
+  .taycan-slider .splide__slide.is-next .car-image-carousel img {
+    height: 140% !important;
   }
 
   @media (max-width: 768px) {
-    .splide__slide.is-prev .car-image-carousel img,
-    .splide__slide.is-next .car-image-carousel img {
-      height: 130%;
+    .taycan-slider .splide__slide.is-prev .car-image-carousel img,
+    .taycan-slider .splide__slide.is-next .car-image-carousel img {
+      height: 130% !important;
     }
   }
 
-  /* Other slides styles */
-  .splide__slide:not(.is-active):not(.is-prev):not(.is-active) {
-    transform: scale(1);
+  /* Other slides styles - 提高優先級 */
+  .taycan-slider .splide__slide:not(.is-active):not(.is-prev):not(.is-next) {
+    transform: scale(1) !important;
   }
 
-  .splide__slide:not(.is-active):not(.is-prev):not(.is-active)
+  .taycan-slider
+    .splide__slide:not(.is-active):not(.is-prev):not(.is-next)
     .content-wrapper {
-    height: 120px;
+    height: 120px !important;
   }
 
   @media (max-width: 768px) {
-    .splide__slide:not(.is-active):not(.is-prev):not(.is-active)
+    .taycan-slider
+      .splide__slide:not(.is-active):not(.is-prev):not(.is-next)
       .content-wrapper {
-      height: 110px;
+      height: 110px !important;
     }
   }
 
-  .splide__slide:not(.is-active):not(.is-prev):not(.is-active)
+  .taycan-slider
+    .splide__slide:not(.is-active):not(.is-prev):not(.is-next)
     .additional-content {
-    opacity: 0.5;
+    opacity: 0.5 !important;
   }
 
-  .splide__slide:not(.is-active):not(.is-prev):not(.is-active)
+  .taycan-slider
+    .splide__slide:not(.is-active):not(.is-prev):not(.is-next)
     .car-image-carousel {
-    width: 70%;
+    width: 70% !important;
   }
 
   @media (max-width: 768px) {
-    .splide__slide:not(.is-active):not(.is-prev):not(.is-active)
+    .taycan-slider
+      .splide__slide:not(.is-active):not(.is-prev):not(.is-next)
       .car-image-carousel {
-      width: 60%;
+      width: 60% !important;
     }
   }
 
-  .splide__slide:not(.is-active):not(.is-prev):not(.is-active)
+  .taycan-slider
+    .splide__slide:not(.is-active):not(.is-prev):not(.is-next)
     .car-image-carousel
     img {
-    height: 140%;
+    height: 140% !important;
   }
 
   @media (max-width: 768px) {
-    .splide__slide:not(.is-active):not(.is-prev):not(.is-active)
+    .taycan-slider
+      .splide__slide:not(.is-active):not(.is-prev):not(.is-next)
       .car-image-carousel
       img {
-      height: 130%;
+      height: 130% !important;
     }
   }
 
-  .splide__slide:not(.is-active):not(.is-prev):not(.is-active) .price {
-    display: none;
-  }
-  .splide__slide:not(.is-active):not(.is-prev):not(.is-active) .view-more {
-    display: none;
+  .taycan-slider
+    .splide__slide:not(.is-active):not(.is-prev):not(.is-next)
+    .price {
+    display: none !important;
   }
 
-  /* 強制覆蓋 Splide 箭頭顏色 */
-  .splide__arrow svg,
-  .splide__arrow--prev svg,
-  .splide__arrow--next svg,
+  .taycan-slider
+    .splide__slide:not(.is-active):not(.is-prev):not(.is-next)
+    .view-more {
+    display: none !important;
+  }
+
+  /* 強制覆蓋 Splide 箭頭顏色 - 最高優先級 */
   .taycan-slider .splide__arrow svg,
   .taycan-slider .splide__arrow--prev svg,
   .taycan-slider .splide__arrow--next svg {
+    fill: #fff !important;
+  }
+
+  /* 確保箭頭在所有狀態下都是白色 */
+  .taycan-slider .splide__arrow:hover svg,
+  .taycan-slider .splide__arrow:focus svg,
+  .taycan-slider .splide__arrow:active svg {
     fill: #fff !important;
   }
 </style>
@@ -2005,3 +2021,5 @@ const introSection = {
 
   window.addEventListener('resize', handleResize)
 </script>
+}, 500) window.addEventListener('resize', handleResize)
+
