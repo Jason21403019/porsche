@@ -1541,7 +1541,6 @@ const loadJsonData = async () => {
     // 更新 JSON 路徑映射
     updateJsonDataMap()
   } catch (error) {
-    console.error('Failed to load JSON data:', error)
   }
 }
 
@@ -1637,13 +1636,6 @@ export const getSmartPackageImagePath = (
   wheelNumber,
   packageIndex
 ) => {
-  console.log(`🧠 智能套件圖片路徑查找:`)
-  console.log(`   - 首選車型: ${preferredCarModel}`)
-  console.log(`   - 回退車型: ${fallbackCarModel}`)
-  console.log(`   - 顏色代碼: ${colorCode}`)
-  console.log(`   - 輪框編號: ${wheelNumber}`)
-  console.log(`   - 套件索引: ${packageIndex}`)
-
   // 首先嘗試在首選車型中查找
   const preferredResult = getOptionalPackageImagePath(
     preferredCarModel,
@@ -1652,13 +1644,11 @@ export const getSmartPackageImagePath = (
     packageIndex
   )
   if (preferredResult !== '/img/car1.png') {
-    console.log(`   - ✅ 在首選車型中找到: ${preferredResult}`)
     return preferredResult
   }
 
   // 如果首選車型中找不到，嘗試回退車型
   if (fallbackCarModel && fallbackCarModel !== preferredCarModel) {
-    console.log(`   - 🔄 回退到: ${fallbackCarModel}`)
     const fallbackResult = getOptionalPackageImagePath(
       fallbackCarModel,
       colorCode,
@@ -1666,7 +1656,6 @@ export const getSmartPackageImagePath = (
       packageIndex
     )
     if (fallbackResult !== '/img/car1.png') {
-      console.log(`   - ✅ 在回退車型中找到: ${fallbackResult}`)
       return fallbackResult
     }
   }
@@ -1684,7 +1673,6 @@ export const getSmartPackageImagePath = (
         .filter(Boolean)
 
       if (availableColors.length > 0) {
-        console.log(`   - 🔄 嘗試回退車型的第一個顏色: ${availableColors[0]}`)
         const firstColorResult = getOptionalPackageImagePath(
           fallbackCarModel,
           availableColors[0],
@@ -1692,14 +1680,12 @@ export const getSmartPackageImagePath = (
           packageIndex
         )
         if (firstColorResult !== '/img/car1.png') {
-          console.log(`   - ✅ 使用回退顏色找到: ${firstColorResult}`)
           return firstColorResult
         }
       }
     }
   }
 
-  console.log(`   - ❌ 所有嘗試都失敗，返回預設圖片`)
   return '/img/car1.png'
 }
 
@@ -1711,7 +1697,6 @@ export const getOptionalPackageImagePath = (
 ) => {
   const modelData = jsonDataMap[carModel]
   if (!modelData) {
-    console.log(`⚠️ 找不到車型數據: ${carModel}`)
     return `/img/car1.png`
   }
 
@@ -1719,7 +1704,6 @@ export const getOptionalPackageImagePath = (
   const colorKey = findColorKey(modelData, colorCode)
 
   if (!colorKey || !modelData[colorKey]) {
-    console.log(`⚠️ 找不到顏色 ${colorCode} 在車型 ${carModel} 中`)
     return `/img/car1.png`
   }
   const colorData = modelData[colorKey]
@@ -1732,7 +1716,6 @@ export const getOptionalPackageImagePath = (
     packageIndex
   )
   if (specialResult !== null) {
-    console.log(`✅ 特殊處理成功: ${specialResult}`)
     return specialResult
   }
 
@@ -1745,19 +1728,16 @@ export const getOptionalPackageImagePath = (
     // 根據 packageIndex 選擇對應的選配圖片
     if (imageKeys[packageIndex]) {
       const selectedPath = optionalImages[imageKeys[packageIndex]]
-      console.log(`✅ 找到套件圖片: ${selectedPath}`)
       return selectedPath
     }
 
     // 如果指定的 index 不存在，返回第一個可用的選配圖片
     if (imageKeys.length > 0) {
       const fallbackPath = optionalImages[imageKeys[0]]
-      console.log(`✅ 使用第一個可用圖片: ${fallbackPath}`)
       return fallbackPath
     }
   }
 
-  console.log(`⚠️ 未找到 Optional 圖片，返回預設`)
   return `/img/car1.png`
 }
 
@@ -1860,7 +1840,6 @@ const findColorKey = (modelData, colorCode) => {
       k.toLowerCase().includes(pattern.toLowerCase())
     )
     if (key) {
-      console.log(`🎯 顏色匹配成功: ${colorCode} → ${key}`)
       return key
     }
   }
@@ -1872,9 +1851,7 @@ const findColorKey = (modelData, colorCode) => {
   })
 
   if (partialMatch) {
-    console.log(`🎯 部分匹配成功: ${colorCode} → ${partialMatch}`)
   } else {
-    console.log(`❌ 顏色匹配失敗: ${colorCode}`)
   }
 
   return partialMatch || null
@@ -1898,11 +1875,9 @@ export const getAvailableColorCodes = (carModel) => {
 export const debugCarModelData = (carModel) => {
   const modelData = jsonDataMap[carModel]
   if (!modelData) {
-    console.log(`No data found for car model: ${carModel}`)
     return null
   }
 
-  console.log(`Data structure for ${carModel}:`, Object.keys(modelData))
   return modelData
 }
 

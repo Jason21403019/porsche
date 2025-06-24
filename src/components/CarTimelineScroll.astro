@@ -1690,7 +1690,6 @@ const introSection = {
         preloadImages(allImages.slice(0, 10)),
       ])
 
-      console.log('Critical images loaded, initializing components...')
 
       initModelSwitch()
       const carouselResult = initCarousel()
@@ -1703,7 +1702,6 @@ const introSection = {
       createScrollTrigger()
 
       isInitialized = true
-      console.log('Animation initialization completed')
       return Promise.resolve()
     } catch (error) {
       console.error('Animation initialization failed:', error)
@@ -1764,7 +1762,6 @@ const introSection = {
         id: 'carselect-animation', // 添加 ID 來區分不同的 ScrollTrigger
         refreshPriority: 0, // 設置較高的優先級
         onRefresh: () => {
-          console.log('ScrollTrigger refreshed')
         },
       })
 
