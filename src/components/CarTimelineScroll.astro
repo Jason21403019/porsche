@@ -14,13 +14,13 @@ interface Props {
   }>
 }
 
-const {sections} = Astro.props
+const { sections } = Astro.props
 
 // 車款數據
 const carData = {
   Taycan: {
     image: '/img/redcar.png',
-    stats: {maxSpeed: 250, acceleration: 3.3},
+    stats: { maxSpeed: 250, acceleration: 3.3 },
     models: [
       {
         name: 'Taycan',
@@ -32,7 +32,7 @@ const carData = {
         price: 'NTD 4,600,000',
         image: '/img/Taycan/taycan4/Taycan 4-1.png',
       },
-      {name: 'Taycan 4s', price: 'NTD 5,320,000', image: '/img/taycan4s.png'},
+      { name: 'Taycan 4s', price: 'NTD 5,320,000', image: '/img/taycan4s.png' },
       {
         name: 'Taycan GTS',
         price: 'NTD 6,580,000',
@@ -62,7 +62,7 @@ const carData = {
   },
   Macan: {
     image: '/img/Macan/macan/1-02.png',
-    stats: {maxSpeed: 220, acceleration: 4.1},
+    stats: { maxSpeed: 220, acceleration: 4.1 },
     models: [
       {
         name: 'Macan',
@@ -116,7 +116,7 @@ const introSection = {
   title1: 'Energy',
   title2: 'Track',
   description: 'the future is limitless',
-  image: 'https://dc.udn.com/roy/test/img/historybg.jpg',
+  image: '/img/historybg.jpg',
 }
 ---
 
@@ -127,21 +127,18 @@ const introSection = {
       <div class="content-container">
         <div
           class="car-select"
-          style={`background-color: ${currentCar.model === 'Taycan' ? '#313131' : '#8C8C8C'}`}
-        >
+          style={`background-color: ${currentCar.model === 'Taycan' ? '#313131' : '#8C8C8C'}`}>
           <!-- ModelSwitch 組件內容 -->
           <div class="model-switch">
             <div class="indicator"></div>
             <button
               class={`switch-btn ${currentCar.model === 'Taycan' ? 'active' : ''}`}
-              data-model="Taycan"
-            >
+              data-model="Taycan">
               Taycan
             </button>
             <button
               class={`switch-btn ${currentCar.model === 'Macan' ? 'active' : ''}`}
-              data-model="Macan"
-            >
+              data-model="Macan">
               Macan
             </button>
           </div>
@@ -202,8 +199,7 @@ const introSection = {
         </div>
 
         <svg
-          style="visibility: hidden; position: absolute; width: 0; height: 0;"
-        >
+          style="visibility: hidden; position: absolute; width: 0; height: 0;">
           <path id="leftPath" d="M 0,0 C -100,-100 -100,-50 -550,-100"></path>
           <path id="rightPath" d="M 0,0 C 100,-100 100,-50 550,-200"></path>
         </svg>
@@ -249,8 +245,7 @@ const introSection = {
                 section.gradient
                   ? `background: linear-gradient(to right, ${section.gradient.from}, ${section.gradient.to})`
                   : ''
-              }
-            >
+              }>
               <div class="year__column">
                 <div class="year__container">
                   {section.years &&
@@ -260,8 +255,7 @@ const introSection = {
                           year === section.activeYear
                             ? 'year__display--active'
                             : ''
-                        }`}
-                      >
+                        }`}>
                         {year}
                       </div>
                     ))}
@@ -1117,7 +1111,7 @@ const introSection = {
 <script>
   import gsap from 'gsap'
   import ScrollTrigger from 'gsap/ScrollTrigger'
-  import {MotionPathPlugin} from 'gsap/MotionPathPlugin'
+  import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
   import Splide from '@splidejs/splide'
   import '@splidejs/splide/css'
 
@@ -1155,7 +1149,7 @@ const introSection = {
   const carData = {
     Taycan: {
       image: '/img/redcar.png',
-      stats: {maxSpeed: 250, acceleration: 3.3},
+      stats: { maxSpeed: 250, acceleration: 3.3 },
       models: [
         {
           name: 'Taycan',
@@ -1167,7 +1161,11 @@ const introSection = {
           price: 'NTD 4,600,000',
           image: '/img/Taycan/taycan4/Taycan 4-1.png',
         },
-        {name: 'Taycan 4s', price: 'NTD 5,320,000', image: '/img/taycan4s.png'},
+        {
+          name: 'Taycan 4s',
+          price: 'NTD 5,320,000',
+          image: '/img/taycan4s.png',
+        },
         {
           name: 'Taycan GTS',
           price: 'NTD 6,580,000',
@@ -1197,7 +1195,7 @@ const introSection = {
     },
     Macan: {
       image: '/img/Macan/macan/1-02.png',
-      stats: {maxSpeed: 220, acceleration: 4.1},
+      stats: { maxSpeed: 220, acceleration: 4.1 },
       models: [
         {
           name: 'Macan',
@@ -1385,7 +1383,7 @@ const introSection = {
             0
           )
           .set(mainCarImage, {
-            attr: {src: data.image},
+            attr: { src: data.image },
           })
           .to(mainCarImage, {
             opacity: 1,
@@ -1412,7 +1410,7 @@ const introSection = {
       statsTimeline.to('.circle .number1', {
         duration: 1,
         innerHTML: maxSpeed,
-        snap: {innerHTML: 1},
+        snap: { innerHTML: 1 },
         ease: 'power2.inOut',
       })
 
@@ -1529,29 +1527,29 @@ const introSection = {
         resetProgress: false,
         updateOnMove: true,
         lazyLoad: 'nearby',
-        padding: {left: '10%', right: '10%'},
+        padding: { left: '10%', right: '10%' },
         breakpoints: {
           1024: {
             perPage: 3,
             focus: 'center',
-            padding: {left: '15%', right: '15%'},
+            padding: { left: '15%', right: '15%' },
             gap: '0.8rem',
           },
           992: {
             perPage: 2,
-            padding: {left: '5%', right: '5%'},
+            padding: { left: '5%', right: '5%' },
             gap: '0.5rem',
           },
           768: {
             perPage: 1.5,
             focus: 'center',
-            padding: {left: '5%', right: '5%'},
+            padding: { left: '5%', right: '5%' },
             gap: '0.5rem',
           },
           480: {
             perPage: 1,
             focus: 'center',
-            padding: {left: '10%', right: '10%'},
+            padding: { left: '10%', right: '10%' },
             gap: '0.3rem',
           },
         },
@@ -1665,7 +1663,7 @@ const introSection = {
             document.body.style.overflow = 'hidden'
             window.dispatchEvent(
               new CustomEvent('openCarConfig', {
-                detail: {carName: carName},
+                detail: { carName: carName },
               })
             )
           }
@@ -1689,7 +1687,6 @@ const introSection = {
         checkImageLoaded('.platform-image'),
         preloadImages(allImages.slice(0, 10)),
       ])
-
 
       initModelSwitch()
       const carouselResult = initCarousel()
@@ -1719,9 +1716,9 @@ const introSection = {
       const isMobile = window.innerWidth <= 768
       const isTablet = window.innerWidth <= 1024
 
-      gsap.set('.title', {opacity: 0, y: -50})
-      gsap.set('.model-switch', {opacity: 0, y: -50})
-      gsap.set('.car-image', {y: -500, opacity: 0.5, scale: 0})
+      gsap.set('.title', { opacity: 0, y: -50 })
+      gsap.set('.model-switch', { opacity: 0, y: -50 })
+      gsap.set('.car-image', { y: -500, opacity: 0.5, scale: 0 })
 
       gsap.set('.platform-image', {
         y: isMobile ? '80vh' : isTablet ? '90vh' : '100vh',
@@ -1761,8 +1758,7 @@ const introSection = {
         end: scrollEnd,
         id: 'carselect-animation', // 添加 ID 來區分不同的 ScrollTrigger
         refreshPriority: 0, // 設置較高的優先級
-        onRefresh: () => {
-        },
+        onRefresh: () => {},
       })
 
       const timeline = gsap.timeline({
@@ -1781,7 +1777,7 @@ const introSection = {
       const carouselBottom = isMobile ? '-2%' : isTablet ? '-3%' : '-4.2071%'
 
       timeline
-        .to('.car-image', {y: 0, opacity: 1, scale: 1, duration: 1})
+        .to('.car-image', { y: 0, opacity: 1, scale: 1, duration: 1 })
         .to(
           ['.platform-image', '.carousel-container'],
           {
@@ -1792,7 +1788,7 @@ const introSection = {
           },
           '-=0.5'
         )
-        .to('.car-image', {scale: carImageScale, duration: 1})
+        .to('.car-image', { scale: carImageScale, duration: 1 })
         .to(['.circle-left', '.circle-right'], {
           opacity: isTablet ? 0 : 1,
           scale: isTablet ? 0 : 1,
@@ -1842,10 +1838,10 @@ const introSection = {
       }
 
       timeline
-        .to('.title', {opacity: 1, y: 0, duration: 0.5, ease: 'power1.out'})
+        .to('.title', { opacity: 1, y: 0, duration: 0.5, ease: 'power1.out' })
         .to(
           '.model-switch',
-          {opacity: 1, y: 0, duration: 0.5, ease: 'power1.out'},
+          { opacity: 1, y: 0, duration: 0.5, ease: 'power1.out' },
           '<'
         )
         .to(
@@ -1872,11 +1868,11 @@ const introSection = {
       numberTimeline.to('.circle .number1', {
         duration: 2,
         innerHTML: leftTarget,
-        snap: {innerHTML: 1},
+        snap: { innerHTML: 1 },
         ease: 'power1.inOut',
       })
 
-      let count = {val: 0}
+      let count = { val: 0 }
       numberTimeline.to(
         count,
         {
@@ -2018,4 +2014,3 @@ const introSection = {
 
   window.addEventListener('resize', handleResize)
 </script>
-

@@ -1,7 +1,7 @@
 ---
 import Navbar from './Navbar.astro'
 
-const {src, className = 'w-32 h-32'} = Astro.props
+const { src, className = 'w-32 h-32' } = Astro.props
 ---
 
 <div id="lottie-animation" class={className} data-src={src}>
@@ -16,7 +16,7 @@ const {src, className = 'w-32 h-32'} = Astro.props
 </div>
 
 <script>
-  import {fade} from 'astro:transitions'
+  import { fade } from 'astro:transitions'
   import lottie from 'lottie-web'
 
   const container = document.getElementById('lottie-animation')
