@@ -1751,14 +1751,36 @@ const introSection = {
 
       const scrollEnd = isMobile ? '+=200%' : isTablet ? '+=250%' : '+=300%'
 
+      // 修改第一個 ScrollTrigger
       ScrollTrigger.create({
         trigger: '.animation-section',
         pin: true,
         start: 'top top',
         end: scrollEnd,
-        id: 'carselect-animation', // 添加 ID 來區分不同的 ScrollTrigger
-        refreshPriority: 0, // 設置較高的優先級
-        onRefresh: () => {},
+        id: 'carselect-animation',
+        refreshPriority: 1, // 提高優先級
+        pinSpacing: true, // 確保有正確的間距
+        onRefresh: () => {
+          // 刷新時確保元素狀態正確
+          gsap.set('.animation-section', {
+            visibility: 'visible',
+            opacity: 1,
+            backgroundColor: currentModel === 'Taycan' ? '#282828' : '#8C8C8C',
+          })
+        },
+        // 添加回調函數防止白屏
+        onEnter: () => {
+          gsap.set('.animation-section', { visibility: 'visible', opacity: 1 })
+        },
+        onLeave: () => {
+          gsap.set('.animation-section', { visibility: 'visible', opacity: 1 })
+        },
+        onEnterBack: () => {
+          gsap.set('.animation-section', { visibility: 'visible', opacity: 1 })
+        },
+        onLeaveBack: () => {
+          gsap.set('.animation-section', { visibility: 'visible', opacity: 1 })
+        },
       })
 
       const timeline = gsap.timeline({
@@ -1911,20 +1933,38 @@ const introSection = {
       sections.length.toString()
     )
 
-    // 創建橫向滾動動畫，確保它在 animation-section 完全滾動完成後開始
+    // 修改這裡：添加防止白屏的設置
     gsap.to(container, {
       x: () => -(totalWidth - window.innerWidth),
       ease: 'none',
       scrollTrigger: {
         trigger: wrapper,
-        start: 'top top', // 當 horizontal-scroll-wrapper 到達頂部時開始
+        start: 'top top',
         end: () => `+=${totalWidth - window.innerWidth}`,
         pin: true,
         anticipatePin: 1,
         scrub: 1,
         invalidateOnRefresh: true,
         id: 'horizontal-scroll',
-        refreshPriority: -1, // 設置較低的優先級，讓 Carselect 動畫先執行
+        refreshPriority: -1,
+        // 添加這些設置來防止白屏
+        pinSpacing: false, // 防止額外的空白
+        onEnter: () => {
+          // 確保容器可見
+          gsap.set(wrapper, { visibility: 'visible', opacity: 1 })
+        },
+        onLeave: () => {
+          // 離開時保持可見
+          gsap.set(wrapper, { visibility: 'visible', opacity: 1 })
+        },
+        onEnterBack: () => {
+          // 回滾進入時確保可見
+          gsap.set(wrapper, { visibility: 'visible', opacity: 1 })
+        },
+        onLeaveBack: () => {
+          // 回滾離開時保持可見
+          gsap.set(wrapper, { visibility: 'visible', opacity: 1 })
+        },
         onUpdate: (self) => {
           const progress = self.progress
           const totalSections = sections.length
@@ -1935,7 +1975,6 @@ const introSection = {
             const yearDisplays = section.querySelectorAll('.year__display')
             if (yearDisplays.length === 0) return
 
-            // 修改計算邏輯，讓每個 section 有獨立的觸發範圍
             const sectionStart = index / (totalSections - 1)
             const sectionEnd = (index + 1) / (totalSections - 1)
             const isInView = progress >= sectionStart && progress <= sectionEnd
@@ -1960,9 +1999,11 @@ const introSection = {
     })
 
     // 窗口大小調整時重新計算
-    window.addEventListener('resize', () => {
+    const debouncedRefresh = debounce(() => {
       ScrollTrigger.refresh()
-    })
+    }, 250)
+
+    window.addEventListener('resize', debouncedRefresh)
   }
 
   // 清理函數
